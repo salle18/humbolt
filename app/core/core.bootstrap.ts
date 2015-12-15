@@ -1,3 +1,4 @@
+import {Type} from "../../node_modules/angular2/src/facade/lang";
 "use strict";
 
 // import Angular2 deps
@@ -42,7 +43,7 @@ bootstrap(App, [
 	//appServicesInjectables, // alternative way of filling the injector with all the classes we want to be able to inject
 	ROUTER_PROVIDERS,
 	HTTP_PROVIDERS,
-	bind(LocationStrategy).toClass(PathLocationStrategy) // enables the following: /#/<component_name> rather than /<component_name>
+	bind(LocationStrategy).toClass(<Type>PathLocationStrategy) // enables the following: /#/<component_name> rather than /<component_name>
 	//todo replace with
 	//bind(LocationStrategy).toClass(HTML5LocationStrategy) // enable HTML5 history API location strategy
 
