@@ -8,12 +8,10 @@ System.config({
 
 	map: {
 		"@reactivex/rxjs": "npm:@reactivex/rxjs@5.0.0-alpha.7",
-		"FortAwesome/Font-Awesome": "github:FortAwesome/Font-Awesome@4.5.0",
 		"angular2": "npm:angular2@2.0.0-alpha.46",
 		"babel": "npm:babel-core@6.1.21",
 		"babel-runtime": "npm:babel-runtime@6.1.18",
 		"core-js": "npm:core-js@1.2.6",
-		"font-awesome": "npm:font-awesome@4.4.0",
 		"lodash": "npm:lodash@3.10.1",
 		"normalize.css": "github:necolas/normalize.css@3.0.3",
 		"reflect-metadata": "npm:reflect-metadata@0.1.2",
@@ -486,9 +484,6 @@ System.config({
 			"buffer": "github:jspm/nodelibs-buffer@0.1.0",
 			"create-hash": "npm:create-hash@1.1.2",
 			"crypto": "github:jspm/nodelibs-crypto@0.1.0"
-		},
-		"npm:font-awesome@4.4.0": {
-			"css": "github:systemjs/plugin-css@0.1.19"
 		},
 		"npm:get-stdin@4.0.1": {
 			"buffer": "github:jspm/nodelibs-buffer@0.1.0",
