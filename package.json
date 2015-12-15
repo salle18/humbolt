@@ -27,6 +27,7 @@
 	  "babel-runtime": "npm:babel-runtime@^6.1.18",
 	  "normalize.css": "github:necolas/normalize.css@^3.0.3",
 	  "reflect-metadata": "npm:reflect-metadata@^0.1.2",
+	  "twbs/bootstrap": "github:twbs/bootstrap@4.0.0-alpha.2",
 	  "zone.js": "npm:zone.js@^0.5.8"
 	},
 	"devDependencies": {
