@@ -18,6 +18,11 @@
 @import "layout/_theme";
 @import "layout/_print";
 // Components
+@import "../components/csmp-panel/csmp-panel";
+@import "../components/csmp-element-list/csmp-element-list";
+@import "../components/csmp-element/csmp-element";
+@import "../components/csmp-canvas/csmp-canvas";
+
 // Pages
 @import "../pages/home/_home";
 // Tests
