@@ -12,6 +12,7 @@ System.config({
 		"babel": "npm:babel-core@6.1.21",
 		"babel-runtime": "npm:babel-runtime@6.1.18",
 		"core-js": "npm:core-js@1.2.6",
+		"google/material-design-lite": "github:google/material-design-lite@1.0.6",
 		"lodash": "npm:lodash@3.10.1",
 		"normalize.css": "github:necolas/normalize.css@3.0.3",
 		"reflect-metadata": "npm:reflect-metadata@0.1.2",
