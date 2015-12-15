@@ -3,7 +3,7 @@
   "strict": true,
   "devel": true,
   "browser": true,
-  "forin": true,
+  "forin": false,
   "curly": true,
   "bitwise": true,
   "eqeqeq": true,
