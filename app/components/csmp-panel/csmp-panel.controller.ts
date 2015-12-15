@@ -1,14 +1,12 @@
-import {View, Component, NgFor} from "angular2/angular2";
+import {Component, NgFor} from "angular2/angular2";
 import {Element} from "../../csmp/Element";
 import * as ElementDefinitions from "../../csmp/ElementDefinitions";
 import {CsmpElement} from "../csmp-element/csmp-element.controller";
 
 @Component({
-	selector: "csmp-panel"
-})
-@View({
-	directives: [NgFor, CsmpElement],
-	templateUrl: "components/csmp-panel/csmp-panel.template.html"
+	selector: "csmp-panel",
+	templateUrl: "components/csmp-panel/csmp-panel.template.html",
+	directives: [NgFor, CsmpElement]
 })
 export class CsmpPanel {
 
