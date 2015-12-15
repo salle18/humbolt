@@ -8,6 +8,7 @@ System.config({
 
 	map: {
 		"@reactivex/rxjs": "npm:@reactivex/rxjs@5.0.0-alpha.7",
+		"FortAwesome/Font-Awesome": "github:FortAwesome/Font-Awesome@4.5.0",
 		"angular2": "npm:angular2@2.0.0-alpha.46",
 		"babel": "npm:babel-core@6.1.21",
 		"babel-runtime": "npm:babel-runtime@6.1.18",
