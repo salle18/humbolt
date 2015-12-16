@@ -1,36 +1,35 @@
-<nav>
-	<ul>
-		<li>
-			<a href="#">Fajl <span class=""></span></a>
-			<ul class="dropdown-menu">
-				<li><a href="#"><span class="fa fa-file-o"></span> Novi dokument</a></li>
-				<li class="divider"></li>
-				<li><a href="#"><span class="fa fa-folder-open"></span> Otvori...</a></li>
-				<li><a href="#"><span class="fa fa-floppy-o"></span> Sačuvaj...</a></li>
-			</ul>
-		</li>
-		<li>
-			<div>
-				<button type="button">Obriši <span class="fa fa-trash-o"></span></button>
-				<button type="button" class="btn btn-default navbar-btn">Rotiraj <span
-						class="glyphicon glyphicon-refresh"></span></button>
-			</div>
-		</li>
-	</ul>
-	<form>
-		<div>
+<div class="mdl-layout__header-row">
+	<nav class="mdl-navigation">
+		<button type="button" id="csmp-menu-file" class="mdl-button"><span
+				class="material-icons">more_vert</span> Fajl
+		</button>
+		<ul csmp-upgrade-element class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="csmp-menu-file">
+			<li class="mdl-menu__item"><span class="material-icons">add</span> Nova simulacija</a></li>
+			<li class="mdl-menu__item"><span class="material-icons">cloud_download</span> Otvori...</a></li>
+			<li class="mdl-menu__item"><span class="material-icons">cloud_upload</span> Sačuvaj...</a></li>
+		</ul>
+
+		<button type="button" class="mdl-button"><span class="material-icons">delete</span>
+			Obriši
+		</button>
+		<button type="button" class="mdl-button"><span class="material-icons">rotate_right</span>
+			Rotiraj
+		</button>
+		<div class="mdl-layout-spacer"></div>
+		<div class="mdl-textfield">
 			<label>Interval:</label>
-			<input type="number" step="any">
-			<label>Trajanje:</label>
-			<input type="number" step="any">
-			<button type="submit">Pokreni <span class="glyphicon glyphicon-play"></span>
-			</button>
+			<input type="number" class="mdl-textfield__input" step="any">
 		</div>
-	</form>
-	<ul>
-		<li>
-			<button type="button"><span class="glyphicon glyphicon-question-sign"></span> Help
-			</button>
-		</li>
-	</ul>
-</nav>
+		<div class="mdl-textfield">
+			<label>Trajanje:</label>
+			<input type="number" class="mdl-textfield__input" step="any">
+		</div>
+		<button type="submit" class="mdl-button mdl-button--accent">
+			Simuliraj <span class="material-icons">play_arrow</span>
+		</button>
+		<div class="mdl-layout-spacer"></div>
+		<button type="button" class="mdl-button"><span class="material-icons">help</span>
+			Help
+		</button>
+	</nav>
+</div>
