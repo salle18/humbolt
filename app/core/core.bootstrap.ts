@@ -21,7 +21,7 @@ import "sporritt/jsPlumb";
 import {Home} from "../pages/home/home";
 
 // app services
-import {appServicesInjectables} from "core/services/services";
+import {appServicesInjectables} from "./services/services";
 
 @Component({
 	selector: "app",
