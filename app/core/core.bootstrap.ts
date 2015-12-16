@@ -1,4 +1,3 @@
-import {Type} from "../../node_modules/angular2/src/facade/lang";
 "use strict";
 
 // import Angular2 deps
@@ -6,13 +5,17 @@ import "zone.js";
 import "reflect-metadata";
 
 // import Angular 2
-import {Component, CORE_DIRECTIVES, bind, bootstrap} from "angular2/angular2";
+import {Component, CORE_DIRECTIVES, bind, bootstrap, Type} from "angular2/angular2";
 import {Http, HTTP_PROVIDERS} from "angular2/http";
 
 // import Angular 2 Component Router
 // reference: http://blog.thoughtram.io/angular/2015/06/16/routing-in-angular-2.html
 import {RouteConfig, Route, RouterOutlet, RouterLink, Router, LocationStrategy, PathLocationStrategy, ROUTER_PROVIDERS} from "angular2/router";
 // todo add HTML5LocationStrategy (whatever the new name) & remove path location strategy
+
+// Material design lite global
+import "google/material-design-lite";
+import "sporritt/jsPlumb";
 
 // app components
 import {Home} from "../pages/home/home";
