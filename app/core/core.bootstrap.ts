@@ -21,7 +21,7 @@ import "sporritt/jsPlumb";
 import {Home} from "../pages/home/home";
 
 // app services
-//import {appServicesInjectables} from "core/services/services";
+import {appServicesInjectables} from "core/services/services";
 
 @Component({
 	selector: "app",
@@ -43,7 +43,7 @@ console.log("Bootstrapping the App");
 
 // in [] is the list of injector bindings. Those bindings are used when an injector is created. Passing these here make the bindings available application-wide
 bootstrap(App, [
-	//appServicesInjectables, // alternative way of filling the injector with all the classes we want to be able to inject
+	appServicesInjectables, // alternative way of filling the injector with all the classes we want to be able to inject
 	ROUTER_PROVIDERS,
 	HTTP_PROVIDERS,
 	bind(LocationStrategy).toClass(<Type>PathLocationStrategy) // enables the following: /#/<component_name> rather than /<component_name>
