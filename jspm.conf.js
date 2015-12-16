@@ -16,6 +16,7 @@ System.config({
 		"lodash": "npm:lodash@3.10.1",
 		"normalize.css": "github:necolas/normalize.css@3.0.3",
 		"reflect-metadata": "npm:reflect-metadata@0.1.2",
+		"sporritt/jsPlumb": "github:sporritt/jsPlumb@2.0.5",
 		"traceur": "github:jmcriffey/bower-traceur@0.0.92",
 		"traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.92",
 		"zone.js": "npm:zone.js@0.5.8",
