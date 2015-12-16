@@ -1,14 +1,6 @@
-<div class="container-fluid">
-	<div class="row">
-		<csmp-menu></csmp-menu>
-	</div>
-	<div class="row">
-		<csmp-panel class="col-sm-2">
-			<csmp-element-list></csmp-element-list>
-		</csmp-panel>
-		<csmp-canvas class="col-sm-7"></csmp-canvas>
-		<csmp-panel class="col-sm-3">
-			<csmp-inspector></csmp-inspector>
-		</csmp-panel>
-	</div>
+<csmp-menu class="mdl-layout__header"></csmp-menu>
+<div class="mdl-grid">
+	<csmp-element-list class="mdl-cell mdl-cell--2-col mdl-shadow--2dp"></csmp-element-list>
+	<csmp-canvas class="mdl-cell mdl-cell--7-col"></csmp-canvas>
+	<csmp-inspector class="mdl-cell mdl-cell--3-col mdl-shadow--2dp"></csmp-inspector>
 </div>
