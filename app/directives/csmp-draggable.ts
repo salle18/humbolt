@@ -4,7 +4,7 @@ import {PlumbService} from "../core/services/PlumbService";
 @Directive({
 	selector: "[csmp-draggable]"
 })
-export class CsmpUpgradeElement {
+export class CsmpDraggable {
 
 	constructor(elementRef:ElementRef, plumbService:PlumbService) {
 		plumbService.draggable(elementRef.nativeElement);
