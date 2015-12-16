@@ -13,3 +13,8 @@ body {
   -ms-user-select: none;
   user-select: none; // Sprečava selekciju teksta na drag
 }
+
+app {
+  height: 100%;
+  display: block;
+}
