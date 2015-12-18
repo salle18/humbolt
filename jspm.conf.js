@@ -13,6 +13,7 @@ System.config({
 		"babel-runtime": "npm:babel-runtime@6.1.18",
 		"core-js": "npm:core-js@1.2.6",
 		"google/material-design-lite": "github:google/material-design-lite@1.0.6",
+		"jquery-ui": "github:components/jqueryui@1.11.4",
 		"lodash": "npm:lodash@3.10.1",
 		"normalize.css": "github:necolas/normalize.css@3.0.3",
 		"reflect-metadata": "npm:reflect-metadata@0.1.2",
@@ -20,6 +21,9 @@ System.config({
 		"traceur": "github:jmcriffey/bower-traceur@0.0.92",
 		"traceur-runtime": "github:jmcriffey/bower-traceur-runtime@0.0.92",
 		"zone.js": "npm:zone.js@0.5.8",
+		"github:components/jqueryui@1.11.4": {
+			"jquery": "github:components/jquery@2.1.4"
+		},
 		"github:jspm/nodelibs-assert@0.1.0": {
 			"assert": "npm:assert@1.3.0"
 		},
