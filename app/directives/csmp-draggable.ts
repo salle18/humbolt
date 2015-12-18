@@ -7,6 +7,7 @@ import {PlumbService} from "../core/services/PlumbService";
 export class CsmpDraggable {
 
 	constructor(elementRef:ElementRef, plumbService:PlumbService) {
+
 		plumbService.draggable(elementRef.nativeElement);
 	}
 }

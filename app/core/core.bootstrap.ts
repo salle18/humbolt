@@ -13,10 +13,6 @@ import {Http, HTTP_PROVIDERS} from "angular2/http";
 import {RouteConfig, Route, RouterOutlet, RouterLink, Router, LocationStrategy, PathLocationStrategy, ROUTER_PROVIDERS} from "angular2/router";
 // todo add HTML5LocationStrategy (whatever the new name) & remove path location strategy
 
-// Material design lite global
-import "google/material-design-lite";
-import "sporritt/jsPlumb";
-
 // app components
 import {Home} from "../pages/home/home";
 
