@@ -1,13 +1,21 @@
+/// <reference path="../typings/jquery/jquery.d.ts"/>
+/// <reference path="../typings/jqueryui/jqueryui.d.ts"/>
+
 import {Directive, ElementRef} from "angular2/angular2";
-import {PlumbService} from "../core/services/PlumbService";
+import "jqueryui/ui/draggable";
+
 
 @Directive({
 	selector: "[csmp-draggable]"
 })
 export class CsmpDraggable {
 
-	constructor(elementRef:ElementRef, plumbService:PlumbService) {
+	constructor(elementRef:ElementRef) {
 
-		plumbService.draggable(elementRef.nativeElement);
+		jQuery(elementRef.nativeElement).draggable({
+			revert: "invalid",
+			helper: "clone",
+			zIndex: 999
+		});
 	}
 }
