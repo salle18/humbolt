@@ -1,4 +1,5 @@
-<div csmp-clone-element class="mdl-button mdl-button--primary mdl-button--raised">
+<div csmp-clone-element [attr.className]="element.getClassName()"
+	 class="mdl-button mdl-button--primary mdl-button--raised">
 	{{element.getSign()}}
 </div>
 <small>{{element.getDescription()}}</small>
