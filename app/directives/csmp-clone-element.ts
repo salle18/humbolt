@@ -8,7 +8,7 @@ import "jquery-ui/ui/draggable";
 export class CsmpCloneElement {
 
 	constructor(elementRef:ElementRef) {
-		
+
 		jQuery(elementRef.nativeElement).draggable({
 			revert: "invalid",
 			helper: "clone",
