@@ -1,13 +1,12 @@
-import {Component, Input, ElementRef} from "angular2/angular2";
+import {Component, Input} from "angular2/angular2";
 import {Element} from "../../csmp/Element";
 import {CsmpUpgradeElement} from "../../directives/csmp-upgrade-element";
-import {CsmpDraggable} from "../../directives/csmp-draggable";
-
+import {CsmpCloneElement} from "../../directives/csmp-clone-element";
 
 @Component({
 	selector: "csmp-element",
 	templateUrl: "components/csmp-element/csmp-element.template.html",
-	directives: [CsmpUpgradeElement, CsmpDraggable]
+	directives: [CsmpUpgradeElement, CsmpCloneElement]
 })
 export class CsmpElement {
 
