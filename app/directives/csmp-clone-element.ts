@@ -8,14 +8,12 @@ import "jquery-ui/ui/draggable";
 export class CsmpCloneElement {
 
 	constructor(elementRef:ElementRef) {
-
-		console.log(elementRef.nativeElement);
 		
 		jQuery(elementRef.nativeElement).draggable({
 			revert: "invalid",
 			helper: "clone",
 			appendTo: "csmp-canvas",
-			containment: "csmp-canvas"
+			containment: "app"
 		});
 	}
 }
