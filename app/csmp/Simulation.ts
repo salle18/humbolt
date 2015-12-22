@@ -3,7 +3,20 @@ import * as Exception from "./helpers/Exception";
 import {IntegrationMethod} from "./IntegrationMethod";
 import * as IntegrationMethodDefinitions from "./IntegrationMethodDefinitions";
 import {Dictionary} from "./helpers/Dictionary";
-import {Integrator, Constant} from "./ElementDefinitions";
+import * as ElementDefinitions from "./ElementDefinitions";
+
+/**
+ * JSON format u kome se čuvaju elementi simulacije i koji se šalje serveru.
+ */
+interface IJSONElement {
+	className: string;
+	position: {
+		top: number;
+		left: number;
+	};
+	params: number[];
+	inputs: number[];
+}
 
 export class Simulation {
 	/**
@@ -33,7 +46,7 @@ export class Simulation {
 	/**
 	 * Niz integratora.
 	 */
-	public integrators:Integrator[] = [];
+	public integrators:ElementDefinitions.Integrator[] = [];
 
 	constructor() {
 		this.elements = new Dictionary<Element>();
@@ -47,7 +60,7 @@ export class Simulation {
 	 */
 	addElement(element:Element):string {
 		element.setSimulation(this);
-		if (element instanceof Integrator) {
+		if (element instanceof ElementDefinitions.Integrator) {
 			this.integrators.push(element);
 		}
 		return this.elements.add(element);
@@ -65,7 +78,7 @@ export class Simulation {
 		for (let i = 0; i < elements.length; i++) {
 			elements[i].removeReference(element);
 		}
-		if (element instanceof Integrator) {
+		if (element instanceof ElementDefinitions.Integrator) {
 			let index = this.integrators.indexOf(element);
 			this.integrators.splice(index, 1);
 		}
@@ -293,7 +306,7 @@ export class Simulation {
 			finished = true;
 			for (let i = numberOfSorted; i < this.sorted.length; i++) {
 				let element = this.sorted[i];
-				if (element instanceof Integrator || element instanceof Constant || element.hasSortedInputs()) {
+				if (element instanceof ElementDefinitions.Integrator || element instanceof ElementDefinitions.Constant || element.hasSortedInputs()) {
 					let temp = this.sorted[numberOfSorted];
 					this.sorted[numberOfSorted] = element;
 					element.sorted = true;
@@ -317,6 +330,68 @@ export class Simulation {
 			}
 		}
 		return hasRemote;
+	}
+
+	/**
+	 * Čuvamo nazive klasa elemenata, poziciju, parametre i ulaze kao indekse niza.
+	 * Nema potrebe da čuvamo izlaze jer ćemo ih rekonstruisati iz ulaza.
+	 *
+	 * @return Niz json objekata simulacije.
+	 */
+	saveJSON():string {
+		let result = this.elements.getValues().map((element:Element) => {
+			return {
+				className: element.getClassName(),
+				params: element.params,
+				position: {
+					top: element.top,
+					left: element.left
+				},
+				inputs: element.inputs.map((input:Element) => {
+					return input.getIndex();
+				})
+			};
+		});
+		return JSON.stringify(result);
+	}
+
+	/**
+	 * @param JSONElements Niz JSON elemenata koji učitavamo u simulaciju.
+	 */
+	loadJSON(JSONElements:IJSONElement[]):void {
+		/**
+		 * Pre učitavanja elemenata resetujemo simulaciju.
+		 */
+		this.reset();
+		/**
+		 * Samo dodajemo elemente u simulaciju.
+		 */
+		for (let i = 0; i < JSONElements.length; i++) {
+			let JSONElement = JSONElements[i];
+			let className = JSONElement.className;
+			let element = new ElementDefinitions[className];
+			this.addElement(element);
+			element.top = JSONElement.position.top;
+			element.left = JSONElement.position.left;
+		}
+
+		let elements = this.elements.getValues();
+
+		/**
+		 * Ponovo prolazimo kroz sve elemente i dodajemo veze.
+		 */
+		for (let i = 0; i < JSONElements.length; i++) {
+			let JSONElement = JSONElements[i];
+			let element = elements[i];
+			/**
+			 * Rekonstruišemo sve ulaze na elementu i obrnuto na izlaznom elementu rekonstruišemo izlaz.
+			 */
+			for (let j = 0; j < JSONElement.inputs.length; j++) {
+				let outputElement = elements[JSONElement.inputs[j]];
+				element.inputs[j] = outputElement;
+				outputElement.addOutput(j, element);
+			}
+		}
 	}
 
 	/**

@@ -83,6 +83,12 @@ export abstract class Element {
 	 */
 	protected className:string = "Element";
 
+	/**
+	 * Top i left koordinate elementa.
+	 */
+	public top:number = 0;
+	public left:number = 0;
+
 
 	/**
 	 * @param numberOfParams Broj parametara elementa.
