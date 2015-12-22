@@ -36,7 +36,7 @@ export abstract class Element {
 	/**
 	 * Niz elemenata koji su izlazi iz trenutnog elementa.
 	 */
-	private outputs:IOutput[] = [];
+	public outputs:IOutput[] = [];
 	/**
 	 * Broj parametara elementa.
 	 */
@@ -170,13 +170,6 @@ export abstract class Element {
 				return;
 			}
 		}
-	}
-
-	/**
-	 * @return Niz izlaznih elemenata.
-	 */
-	getOutputs():IOutput[] {
-		return this.outputs;
 	}
 
 	/**
