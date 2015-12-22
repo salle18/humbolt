@@ -16,6 +16,11 @@ export interface IOutput {
 	targetIndex: number;
 }
 
+export interface IPosition {
+	top: number;
+	left: number;
+}
+
 /**
  * Apstraktna klasa Element. Svi csmp elementi moraju biti izvedeni iz ove klase.
  */
@@ -86,8 +91,10 @@ export abstract class Element {
 	/**
 	 * Top i left koordinate elementa.
 	 */
-	public top:number = 0;
-	public left:number = 0;
+	public position:IPosition = {
+		top: 0,
+		left: 0
+	};
 
 
 	/**
