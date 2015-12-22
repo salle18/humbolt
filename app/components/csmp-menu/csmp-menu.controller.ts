@@ -8,4 +8,20 @@ import {CsmpUpgradeElement} from "../../directives/csmp-upgrade-element";
 })
 export class CsmpMenu {
 
+	newSimulation() {
+		console.log("NEW");
+	}
+
+	openSimulation() {
+		console.log("OPEN");
+	}
+
+	saveSimulation() {
+		console.log("SAVE");
+	}
+
+	startSimulation() {
+		console.log("START");
+	}
+
 }
