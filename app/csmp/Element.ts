@@ -274,7 +274,7 @@ export abstract class Element {
 		}
 		return sortedInputs;
 	}
-	
+
 }
 
 /**
