@@ -73,7 +73,7 @@ export abstract class Element {
 	/**
 	 * Tekstualni parametri, svi elementi prihvataju samo numeričke parametre a IoT element prihvata i tekstualne za unos adrese web servisa.
 	 */
-	protected stringParams:string[] = [];
+	public stringParams:string[] = [];
 	/**
 	 * Da li element izračunava rezulat na serveru.
 	 */
@@ -274,14 +274,7 @@ export abstract class Element {
 		}
 		return sortedInputs;
 	}
-
-	/**
-	 * @return Tekstualni parametri.
-	 */
-	getStringParams():string[] {
-		return this.stringParams;
-	}
-
+	
 }
 
 /**
