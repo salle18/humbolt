@@ -15,6 +15,7 @@ interface IJSONElement {
 		left: number;
 	};
 	params: number[];
+	stringParams: string[];
 	inputs: number[];
 }
 
@@ -343,6 +344,7 @@ export class Simulation {
 			return {
 				className: element.getClassName(),
 				params: element.params,
+				stringParams: element.stringParams,
 				position: {
 					top: element.top,
 					left: element.left
@@ -370,9 +372,11 @@ export class Simulation {
 			let JSONElement = JSONElements[i];
 			let className = JSONElement.className;
 			let element = new ElementDefinitions[className];
-			this.addElement(element);
+			element.params = JSONElement.params;
+			element.stringParams = JSONElement.stringParams;
 			element.top = JSONElement.position.top;
 			element.left = JSONElement.position.left;
+			this.addElement(element);
 		}
 
 		let elements = this.elements.getValues();
