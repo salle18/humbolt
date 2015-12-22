@@ -1,4 +1,4 @@
-import {Component, Input} from "../../../node_modules/angular2/angular2.d";
+import {Component, Input} from "angular2/angular2";
 import {Element} from "../../csmp/Element";
 import {CsmpElement} from "../../components/csmp-element/csmp-element.controller";
 import {CsmpCloneElement} from "../../directives/csmp-clone-element";
