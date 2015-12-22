@@ -376,7 +376,8 @@ export class Simulation {
 			element.stringParams = JSONElement.stringParams;
 			element.top = JSONElement.position.top;
 			element.left = JSONElement.position.left;
-			this.addElement(element);
+			let id = this.addElement(element);
+			//todo jsplumb canvas append element
 		}
 
 		let elements = this.elements.getValues();
@@ -394,6 +395,7 @@ export class Simulation {
 				let outputElement = elements[JSONElement.inputs[j]];
 				element.inputs[j] = outputElement;
 				outputElement.addOutput(j, element);
+				//todo jsplumb connect elements
 			}
 		}
 	}
