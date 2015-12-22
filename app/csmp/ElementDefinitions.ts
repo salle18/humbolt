@@ -589,7 +589,7 @@ export class IoT extends Element {
 	protected sign:string = "IoT";
 	protected description:string = "Internet of Things";
 	protected className:string = "IoT";
-	protected stringParams:string[] = [""];
+	public stringParams:string[] = [""];
 	public remote = true;
 
 	constructor() {
