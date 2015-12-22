@@ -1,4 +1,4 @@
-import {Element} from "./Element";
+import {Element, IPosition} from "./Element";
 import * as Exception from "./helpers/Exception";
 import {IntegrationMethod} from "./IntegrationMethod";
 import * as IntegrationMethodDefinitions from "./IntegrationMethodDefinitions";
@@ -10,10 +10,7 @@ import * as ElementDefinitions from "./ElementDefinitions";
  */
 interface IJSONElement {
 	className: string;
-	position: {
-		top: number;
-		left: number;
-	};
+	position: IPosition;
 	params: number[];
 	stringParams: string[];
 	inputs: number[];
@@ -345,10 +342,7 @@ export class Simulation {
 				className: element.getClassName(),
 				params: element.params,
 				stringParams: element.stringParams,
-				position: {
-					top: element.top,
-					left: element.left
-				},
+				position: element.position,
 				inputs: element.inputs.map((input:Element) => {
 					return input.getIndex();
 				})
@@ -374,8 +368,7 @@ export class Simulation {
 			let element = new ElementDefinitions[className];
 			element.params = JSONElement.params;
 			element.stringParams = JSONElement.stringParams;
-			element.top = JSONElement.position.top;
-			element.left = JSONElement.position.left;
+			element.position = JSONElement.position;
 			let id = this.addElement(element);
 			//todo jsplumb canvas append element
 		}
