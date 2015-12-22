@@ -4,9 +4,12 @@
 				class="material-icons">more_vert</span> Fajl
 		</button>
 		<ul csmp-upgrade-element class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="csmp-menu-file">
-			<li class="mdl-menu__item"><span class="material-icons">add</span> Nova simulacija</a></li>
-			<li class="mdl-menu__item"><span class="material-icons">cloud_download</span> Otvori...</a></li>
-			<li class="mdl-menu__item"><span class="material-icons">cloud_upload</span> Sačuvaj...</a></li>
+			<li class="mdl-menu__item" (click)="newSimulation()"><span class="material-icons">add</span> Nova
+				simulacija</a></li>
+			<li class="mdl-menu__item" (click)="openSimulation()"><span class="material-icons">cloud_download</span>
+				Otvori...</a></li>
+			<li class="mdl-menu__item" (click)="saveSimulation()"><span class="material-icons">cloud_upload</span>
+				Sačuvaj...</a></li>
 		</ul>
 
 		<button type="button" class="mdl-button"><span class="material-icons">delete</span>
@@ -24,7 +27,7 @@
 			<label>Trajanje:</label>
 			<input type="number" class="mdl-textfield__input" step="any">
 		</div>
-		<button type="submit" class="mdl-button mdl-button--accent">
+		<button type="button" class="mdl-button mdl-button--accent" (click)="startSimulation()">
 			Simuliraj <span class="material-icons">play_arrow</span>
 		</button>
 		<div class="mdl-layout-spacer"></div>
