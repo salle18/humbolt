@@ -3,6 +3,7 @@ import {CsmpUpgradeElement} from "../../directives/csmp-upgrade-element";
 import {SimulationService, ISimulationConfig} from "../../core/services/SimulationService";
 import {IntegrationMethod} from "../../csmp/IntegrationMethod";
 import {Element} from "../../csmp/Element";
+import {PlumbService, PlumbServiceUtilities} from "../../core/services/PlumbService";
 
 @Component({
 	selector: "csmp-menu",
@@ -37,4 +38,11 @@ export class CsmpMenu {
 		this.simulationService.run();
 	}
 
+	rotateElement() {
+		this.simulationService.rotateActiveElement();
+	}
+
+	removeElement() {
+		this.simulationService.removeActiveElement();
+	}
 }
