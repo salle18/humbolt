@@ -7,4 +7,7 @@ csmp-canvas {
   height: 2000px;
   width: 3000px;
   position: relative;
+  .jsplumb-endpoint {
+	z-index: 999;
+  }
 }
