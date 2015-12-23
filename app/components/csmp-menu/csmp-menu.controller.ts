@@ -14,7 +14,6 @@ export class CsmpMenu {
 	private simulationService:SimulationService = null;
 	public simulationConfig:ISimulationConfig = null;
 	public methods:IntegrationMethod[];
-	public activeElement:Element = null;
 
 	constructor(simulationService:SimulationService) {
 		this.simulationService = simulationService;
@@ -23,15 +22,15 @@ export class CsmpMenu {
 	}
 
 	newSimulation() {
-		console.log("NEW");
+		this.simulationService.reset();
 	}
 
 	openSimulation() {
-		console.log("OPEN");
+		this.simulationService.open();
 	}
 
 	saveSimulation() {
-		console.log("SAVE");
+		this.simulationService.save();
 	}
 
 	startSimulation() {
