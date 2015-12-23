@@ -56,12 +56,13 @@ export class Simulation {
 	 *
 	 * @param element Element koji se dodaje.
 	 */
-	addElement(element:Element):string {
+	addElement(element:Element):void {
 		element.setSimulation(this);
 		if (element instanceof ElementDefinitions.Integrator) {
 			this.integrators.push(element);
 		}
-		return this.elements.add(element);
+		let key = this.elements.add(element);
+		element.key = key;
 	}
 
 	/**
