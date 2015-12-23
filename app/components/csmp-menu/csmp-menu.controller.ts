@@ -1,5 +1,8 @@
-import {Component} from "angular2/angular2";
+import {Component, NgFor, NgModel} from "angular2/angular2";
 import {CsmpUpgradeElement} from "../../directives/csmp-upgrade-element";
+import {SimulationService, ISimulationConfig} from "../../core/services/SimulationService";
+import {IntegrationMethod} from "../../csmp/IntegrationMethod";
+import {Element} from "../../csmp/Element";
 
 @Component({
 	selector: "csmp-menu",
@@ -7,6 +10,17 @@ import {CsmpUpgradeElement} from "../../directives/csmp-upgrade-element";
 	directives: [CsmpUpgradeElement]
 })
 export class CsmpMenu {
+
+	private simulationService:SimulationService = null;
+	public simulationConfig:ISimulationConfig = null;
+	public methods:IntegrationMethod[];
+	public activeElement:Element = null;
+
+	constructor(simulationService:SimulationService) {
+		this.simulationService = simulationService;
+		this.simulationConfig = simulationService.simulationConfig;
+		this.methods = simulationService.getIntegrationMethods();
+	}
 
 	newSimulation() {
 		console.log("NEW");
@@ -21,7 +35,8 @@ export class CsmpMenu {
 	}
 
 	startSimulation() {
-		console.log("START");
+		console.log("RUN");
+		this.simulationService.run();
 	}
 
 }

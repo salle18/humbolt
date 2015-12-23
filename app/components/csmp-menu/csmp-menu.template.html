@@ -21,14 +21,17 @@
 		<div class="mdl-layout-spacer"></div>
 		<div class="mdl-textfield">
 			<label>Interval:</label>
-			<input type="number" class="mdl-textfield__input" step="any">
+			<input type="number" class="mdl-textfield__input" step="any" [(value)]="simulationConfig.interval">
 		</div>
 		<div class="mdl-textfield">
 			<label>Trajanje:</label>
-			<input type="number" class="mdl-textfield__input" step="any">
+			<input type="number" class="mdl-textfield__input" step="any" [(value)]="simulationConfig.duration">
 		</div>
+		<select [(ng-model)]="simulationConfig.method">
+			<option *ng-for="#method of methods" [value]="method.getClassName()">{{method.getDescription()}}</option>
+		</select>
 		<button type="button" class="mdl-button mdl-button--accent" (click)="startSimulation()">
-			Simuliraj <span class="material-icons">play_arrow</span>
+			<span class="material-icons">play_arrow</span>
 		</button>
 		<div class="mdl-layout-spacer"></div>
 		<button type="button" class="mdl-button"><span class="material-icons">help</span>
