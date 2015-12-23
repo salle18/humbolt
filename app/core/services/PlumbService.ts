@@ -12,7 +12,7 @@ export class PlumbService {
 			this.instance = jsPlumb.getInstance();
 		});
 	}
-	
+
 	draggable(id:string) {
 		this.instance.draggable(id, {
 			containment: "parent"
