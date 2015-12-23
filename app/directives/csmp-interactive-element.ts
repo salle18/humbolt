@@ -6,7 +6,7 @@ import {KeyEvent} from "../core/commons/KeyEvent";
 @Directive({
 	selector: "[csmp-interactive-element]",
 	host: {
-		"(mousedown)": "onMouseDown()",
+		"(click)": "onClick()",
 		"(keydown)": "onKeyDown($event)"
 	}
 })
@@ -19,7 +19,7 @@ export class CsmpInteractiveElement {
 		this.simulationService = simulationService;
 	}
 
-	onMouseDown() {
+	onClick() {
 		this.simulationService.setActiveElement(this.element);
 	}
 
