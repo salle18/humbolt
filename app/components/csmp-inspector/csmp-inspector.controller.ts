@@ -22,7 +22,7 @@ export class CsmpInspector {
 
 	getActiveElementDescription() {
 		if (this.simulationService.activeElement) {
-			return this.simulationService.activeElement.getDescription();
+			return this.simulationService.activeElement.getIndexDescription();
 		}
 		return "CSMP Inspektor";
 	}
