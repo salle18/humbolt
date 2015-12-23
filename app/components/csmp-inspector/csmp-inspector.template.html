@@ -3,13 +3,13 @@
 	<table>
 		<tr *ng-for="#element of elements">
 			<td>
-				{{ element.getDescription()}}
+				{{element.getIndexDescription()}}
 			</td>
 		</tr>
 	</table>
 </div>
 <div>
-	<h3>Aktivni element</h3>
+	<h3>{{getActiveElementDescription()}}</h3>
 
 	<div *ng-if="params.length">
 		<h3>Parametri</h3>
