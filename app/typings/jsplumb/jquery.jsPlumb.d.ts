@@ -27,7 +27,7 @@ interface JsPlumbInstance {
 	makeSource(el:string, options:SourceOptions): void;
 	makeTarget(el:string, options:TargetOptions): void;
 	repaintEverything(): void;
-	detach(el:JQuery): void;
+	detach(el:JQuery|string): void;
 	detachEveryConnection(): void;
 	detachAllConnections(el:string | JQuery, params?:{ fireEvent?: boolean }): void;
 	removeAllEndpoints(el:string | JQuery, recurse?:boolean): JsPlumbInstance;
