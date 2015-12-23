@@ -80,12 +80,14 @@ export class SimulationService {
 
 	removeActiveElement() {
 		if (this.activeElement) {
-			this.plumbService.getInstance().detachAllConnections(this.activeElement.key, {
+			let plumbServiceInstance = this.plumbService.getInstance();
+			let key = this.activeElement.key;
+			plumbServiceInstance.detachAllConnections(key, {
 				fireEvent: false
 			});
-			this.plumbService.getInstance().removeAllEndpoints(this.activeElement.key);
-			this.plumbService.getInstance().detach(this.activeElement.key);
-			this.simulation.removeElement(this.activeElement.key);
+			plumbServiceInstance.removeAllEndpoints(key);
+			plumbServiceInstance.detach(key);
+			this.simulation.removeElement(key);
 			this.activeElement = null;
 		}
 	}
