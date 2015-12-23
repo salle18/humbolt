@@ -49,10 +49,12 @@ export class CsmpEndpoints implements OnInit {
 			this.plumbService.getInstance().addEndpoint(this.element.key, this.outputAnchor, this.outputEndpoint);
 		}
 		let numOfInputs = this.element.inputs.length;
-		for (let i = 0; i < numOfInputs; i++) {
-			let endpoint = JSON.parse(JSON.stringify(this.inputEndpoint));
-			endpoint.parameters.index = i;
-			this.plumbService.getInstance().addEndpoint(this.element.key, this.inputAnchors[numOfInputs][i], endpoint);
+		if (numOfInputs > 0) {
+			for (let i = 0; i < numOfInputs; i++) {
+				let endpoint = JSON.parse(JSON.stringify(this.inputEndpoint));
+				endpoint.parameters.index = i;
+				this.plumbService.getInstance().addEndpoint(this.element.key, this.inputAnchors[numOfInputs - 1][i], endpoint);
+			}
 		}
 	}
 
