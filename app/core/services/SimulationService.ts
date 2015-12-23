@@ -1,9 +1,10 @@
+import {Injectable} from "angular2/angular2";
 import {Simulation} from "../../csmp/Simulation";
 import {Element} from "../../csmp/Element";
 import * as IntegrationMethodDefinitions from "../../csmp/IntegrationMethodDefinitions";
 import {IntegrationMethod} from "../../csmp/IntegrationMethod";
-import {PlumbServiceUtilities} from "./PlumbService";
 import {PlumbService} from "./PlumbService";
+import {PlumbServiceUtilities} from "./PlumbServiceUtilities";
 
 export interface ISimulationConfig {
 	method: string;
@@ -11,6 +12,7 @@ export interface ISimulationConfig {
 	duration: number;
 }
 
+@Injectable()
 export class SimulationService {
 
 	private simulation:Simulation = null;
@@ -60,7 +62,7 @@ export class SimulationService {
 	}
 
 	open() {
-
+		console.log("OPEN");
 	}
 
 	save() {
@@ -68,6 +70,7 @@ export class SimulationService {
 	}
 
 	reset():void {
+		this.plumbService.getInstance().reset();
 		this.activeElement = null;
 		this.simulation.reset();
 	}

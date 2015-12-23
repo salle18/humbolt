@@ -1,7 +1,7 @@
-import {PlumbService} from "./PlumbService";
 import {SimulationService} from "./SimulationService";
-
+import {PlumbService} from "./PlumbService";
+import {PlumbServiceUtilities} from "./PlumbServiceUtilities";
 
 export let appServicesInjectables:Array<any> = [
-	PlumbService, SimulationService
+	SimulationService, PlumbService, PlumbServiceUtilities
 ];
