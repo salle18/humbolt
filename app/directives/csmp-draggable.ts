@@ -15,7 +15,9 @@ export class CsmpDraggable implements OnInit {
 	}
 
 	onInit() {
-		this.plumbService.draggable(this.element.key);
+		this.plumbService.getInstance().draggable(this.element.key, {
+			containment: "parent"
+		});
 	}
 
 }
