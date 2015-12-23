@@ -18,9 +18,9 @@ export class CsmpCanvas {
 	private elements:Element[];
 	private zone:NgZone;
 
-	constructor(elementRef:ElementRef, zone:NgZone, SimulationService:SimulationService) {
+	constructor(elementRef:ElementRef, zone:NgZone, simulationService:SimulationService) {
 
-		this.elements = SimulationService.getElements();
+		this.elements = simulationService.getElements();
 		this.zone = zone;
 
 		jQuery(elementRef.nativeElement).droppable({
@@ -30,7 +30,7 @@ export class CsmpCanvas {
 				let element:Element = new ElementDefinitions[className];
 				element.position = ui.helper.position();
 				zone.run(() => {
-					SimulationService.addElement(element);
+					simulationService.addElement(element);
 				});
 			}
 		});
