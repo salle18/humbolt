@@ -1,9 +1,7 @@
-import {Component, NgFor, NgModel} from "angular2/angular2";
+import {Component} from "angular2/angular2";
 import {CsmpUpgradeElement} from "../../directives/csmp-upgrade-element";
 import {SimulationService, ISimulationConfig} from "../../core/services/SimulationService";
 import {IntegrationMethod} from "../../csmp/IntegrationMethod";
-import {Element} from "../../csmp/Element";
-import {PlumbService, PlumbServiceUtilities} from "../../core/services/PlumbService";
 
 @Component({
 	selector: "csmp-menu",
