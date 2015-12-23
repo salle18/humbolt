@@ -8,15 +8,23 @@ import {SimulationService} from "../../core/services/SimulationService";
 })
 export class CsmpInspector {
 
-	private simulationService: SimulationService = null;
-	public elements: Element[] = [];
-	public params: number[] = [];
-	public stringParams: string[] = [];
-	public inputs: Element[] = [];
-	public outputs: Element[] = [];
-	
-	constructor(simulationService: SimulationService) {
+	private simulationService:SimulationService = null;
+	public elements:Element[] = [];
+	public params:number[] = [];
+	public stringParams:string[] = [];
+	public inputs:Element[] = [];
+	public outputs:Element[] = [];
+
+	constructor(simulationService:SimulationService) {
+		this.simulationService = simulationService;
 		this.elements = simulationService.getElements();
+	}
+
+	getActiveElementDescription() {
+		if (this.simulationService.activeElement) {
+			return this.simulationService.activeElement.getDescription();
+		}
+		return "CSMP Inspektor";
 	}
 
 }
