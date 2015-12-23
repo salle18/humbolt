@@ -96,6 +96,11 @@ export abstract class Element {
 		left: 0
 	};
 
+	/**
+	 * Jedinstveni ključ elementa u simulaciji. Koristi se kao id DOM elementa.
+	 */
+	public key:string = "";
+
 
 	/**
 	 * @param numberOfParams Broj parametara elementa.
