@@ -35,7 +35,6 @@ export class CsmpMenu {
 	}
 
 	startSimulation() {
-		console.log("RUN");
 		this.simulationService.run();
 	}
 

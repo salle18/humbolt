@@ -21,11 +21,11 @@
 		<div class="mdl-layout-spacer"></div>
 		<div class="mdl-textfield">
 			<label>Interval:</label>
-			<input type="number" class="mdl-textfield__input" step="any" [(value)]="simulationConfig.interval">
+			<input type="number" class="mdl-textfield__input" step="any" [(ng-model)]="simulationConfig.interval">
 		</div>
 		<div class="mdl-textfield">
 			<label>Trajanje:</label>
-			<input type="number" class="mdl-textfield__input" step="any" [(value)]="simulationConfig.duration">
+			<input type="number" class="mdl-textfield__input" step="any" [(ng-model)]="simulationConfig.duration">
 		</div>
 		<select [(ng-model)]="simulationConfig.method">
 			<option *ng-for="#method of methods" [value]="method.getClassName()">{{method.getDescription()}}</option>
