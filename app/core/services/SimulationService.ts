@@ -13,12 +13,14 @@ export class SimulationService {
 
 	private simulation:Simulation;
 
+	public activeElement:Element = null;
+
 	public simulationConfig:ISimulationConfig = {
 		method: "RungeKuttaIV",
 		interval: 0.01,
 		duration: 10
 	};
-
+	
 	constructor() {
 		this.simulation = new Simulation;
 	}
@@ -45,6 +47,19 @@ export class SimulationService {
 
 	run() {
 		this.simulation.run(this.simulationConfig.method, this.simulationConfig.interval, this.simulationConfig.duration);
+	}
+
+	open() {
+
+	}
+
+	save() {
+		console.log(this.simulation.saveJSON());
+	}
+
+	reset():void {
+		this.activeElement = null;
+		this.simulation.reset();
 	}
 
 }
