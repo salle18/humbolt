@@ -44,15 +44,7 @@ export class SimulationService {
 	removeElement(key:string):void {
 		this.simulation.removeElement(key);
 	}
-
-	getActiveElement():Element {
-		return this.activeElement;
-	}
-
-	setActiveElement(element:Element):void {
-		this.activeElement = element;
-	}
-
+	
 	getIntegrationMethods():IntegrationMethod[] {
 		let methods:IntegrationMethod[] = [];
 		for (let key in IntegrationMethodDefinitions) {
