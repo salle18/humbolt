@@ -1,55 +1,36 @@
-import {Component, ElementRef} from "angular2/angular2";
-import {KeyEvent} from "../../core/commons/KeyEvent";
-import {Element, IPosition} from "../../csmp/Element";
+import {Component, ElementRef, NgFor, NgZone} from "angular2/angular2";
+import {Element} from "../../csmp/Element";
 import * as ElementDefinitions from "../../csmp/ElementDefinitions";
+import {SimulationService} from "../../core/services/SimulationService";
 import {CsmpElement} from "../../components/csmp-element/csmp-element.controller";
 import "jquery-ui/ui/droppable";
+import {CsmpDraggable} from "../../directives/csmp-draggable";
 
 
 @Component({
 	selector: "csmp-canvas",
-	templateUrl: "components/csmp-canvas/csmp-canvas.template.html"
+	templateUrl: "components/csmp-canvas/csmp-canvas.template.html",
+	directives: [NgFor, CsmpElement, CsmpDraggable]
 })
 export class CsmpCanvas {
 
-	private nativeElement:HTMLElement;
+	private elements:Element[];
+	private zone:NgZone;
 
-	constructor(elementRef:ElementRef) {
+	constructor(elementRef:ElementRef, zone:NgZone, SimulationService:SimulationService) {
 
-		this.nativeElement = elementRef.nativeElement;
+		this.elements = SimulationService.getElements();
+		this.zone = zone;
 
-		jQuery(this.nativeElement).droppable({
+		jQuery(elementRef.nativeElement).droppable({
 			accept: ":not(.csmp-canvas-element)",
 			drop: (event, ui) => {
-				//todo uzimanje naziva klase iz elementa
-				let className = ui.helper.find("div").attr("classname");
+				let className = ui.helper.attr("classname");
 				let element:Element = new ElementDefinitions[className];
 				element.position = ui.helper.position();
-				this.addCanvasElement(element);
-			}
-		});
-	}
-
-	addCanvasElement(element:Element):void {
-		//todo kreiranje novog elementa iz direktive csmp-element a ne na silu ovako
-		let node = jQuery("<div>").addClass("csmp-canvas-element mdl-button mdl-button--primary mdl-button--raised");
-		node.text(element.getSign());
-		node.css('position', 'absolute').css(element.position);
-		jQuery(this.nativeElement).append(node);
-
-		node.draggable({
-			containment: "parent"
-		});
-
-		node.on("mousedown", () => {
-			//set active element
-
-		});
-
-		node.on("keydown", (e) => {
-			if (e.keyCode === KeyEvent.DOM_VK_DELETE) {
-				//remove element
-
+				zone.run(() => {
+					SimulationService.addElement(element);
+				});
 			}
 		});
 	}
