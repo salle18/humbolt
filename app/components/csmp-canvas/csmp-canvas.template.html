@@ -1,4 +1,4 @@
-<csmp-element csmp-draggable csmp-endpoints *ng-for="#element of elements" [id]="element.key"
+<csmp-element csmp-draggable csmp-endpoints csmp-interactive-element *ng-for="#element of elements" [id]="element.key"
 			  [style.top]="element.position.top + 'px'"
 			  [style.left]="element.position.left + 'px'" class="csmp-canvas-element"
-			  [element]="element"></csmp-element>
+			  [element]="element" tabindex="1"></csmp-element>

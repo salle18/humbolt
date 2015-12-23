@@ -8,8 +8,8 @@ interface IPosition {
 @Directive({
 	selector: "[csmp-pannable]",
 	host: {
-		"(mousedown)": "start($event)",
-		"(mouseup)": "stop($event)"
+		"(mousedown)": "onMouseDown($event)",
+		"(mouseup)": "onMouseUp($event)"
 	}
 })
 export class CsmpPannable {
@@ -23,7 +23,7 @@ export class CsmpPannable {
 		this.element = jQuery(elementRef.nativeElement);
 	}
 
-	start(e) {
+	onMouseDown(e) {
 		this.offset = this.element.offset();
 		this.mousePosition = {
 			top: e.pageY,
@@ -31,7 +31,7 @@ export class CsmpPannable {
 		};
 	}
 
-	stop(e) {
+	onMouseUp(e) {
 		let newOffset = {
 			top: this.offset.top + e.pageY - this.mousePosition.top,
 			left: this.offset.left + e.pageX - this.mousePosition.left

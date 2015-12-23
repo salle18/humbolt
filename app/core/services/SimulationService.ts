@@ -49,6 +49,10 @@ export class SimulationService {
 		return this.activeElement;
 	}
 
+	setActiveElement(element:Element):void {
+		this.activeElement = element;
+	}
+
 	getIntegrationMethods():IntegrationMethod[] {
 		let methods:IntegrationMethod[] = [];
 		for (let key in IntegrationMethodDefinitions) {
