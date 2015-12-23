@@ -1,6 +1,5 @@
 import "sporritt/jsPlumb";
 
-
 declare let jsPlumb:any;
 
 export class PlumbService {
@@ -13,9 +12,8 @@ export class PlumbService {
 		});
 	}
 
-	draggable(id:string) {
-		this.instance.draggable(id, {
-			containment: "parent"
-		});
+	getInstance():JsPlumbInstance {
+		return this.instance;
 	}
+
 }
