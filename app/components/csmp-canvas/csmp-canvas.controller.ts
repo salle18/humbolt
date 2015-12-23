@@ -32,7 +32,7 @@ export class CsmpCanvas {
 				element.position = ui.helper.position();
 				zone.run(() => {
 					simulationService.addElement(element);
-					simulationService.setActiveElement(element);
+					simulationService.activeElement = element;
 				});
 			}
 		});
