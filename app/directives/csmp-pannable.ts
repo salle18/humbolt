@@ -28,7 +28,7 @@ export class CsmpPannable {
 		this.mousePosition = {
 			top: e.pageY,
 			left: e.pageX
-		}
+		};
 	}
 
 	stop(e) {
