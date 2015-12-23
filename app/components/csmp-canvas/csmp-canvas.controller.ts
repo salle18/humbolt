@@ -1,4 +1,4 @@
-import {Component, ElementRef, NgFor, NgZone} from "angular2/angular2";
+import {Component, ElementRef, NgZone} from "angular2/angular2";
 import {Element} from "../../csmp/Element";
 import * as ElementDefinitions from "../../csmp/ElementDefinitions";
 import {SimulationService} from "../../core/services/SimulationService";
@@ -12,7 +12,7 @@ import {CsmpInteractiveElement} from "../../directives/csmp-interactive-element"
 @Component({
 	selector: "csmp-canvas",
 	templateUrl: "components/csmp-canvas/csmp-canvas.template.html",
-	directives: [NgFor, CsmpElement, CsmpDraggable, CsmpEndpoints, CsmpInteractiveElement]
+	directives: [CsmpElement, CsmpDraggable, CsmpEndpoints, CsmpInteractiveElement]
 })
 export class CsmpCanvas {
 
