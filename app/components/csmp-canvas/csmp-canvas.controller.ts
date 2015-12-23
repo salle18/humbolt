@@ -5,12 +5,13 @@ import {SimulationService} from "../../core/services/SimulationService";
 import {CsmpElement} from "../../components/csmp-element/csmp-element.controller";
 import "jquery-ui/ui/droppable";
 import {CsmpDraggable} from "../../directives/csmp-draggable";
+import {CsmpEndpoints} from "../../directives/csmp-endpoints";
 
 
 @Component({
 	selector: "csmp-canvas",
 	templateUrl: "components/csmp-canvas/csmp-canvas.template.html",
-	directives: [NgFor, CsmpElement, CsmpDraggable]
+	directives: [NgFor, CsmpElement, CsmpDraggable, CsmpEndpoints]
 })
 export class CsmpCanvas {
 
