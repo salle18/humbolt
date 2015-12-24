@@ -11,11 +11,11 @@ export class CsmpInspector implements DoCheck {
 
 	private appService:AppService = null;
 	private simulationService:SimulationService = null;
-
 	public elements:Element[] = [];
 	public activeElement:Element = null;
 
 	constructor(appService:AppService, simulationService:SimulationService) {
+		this.appService = appService;
 		this.simulationService = simulationService;
 		this.elements = simulationService.getElements();
 	}
