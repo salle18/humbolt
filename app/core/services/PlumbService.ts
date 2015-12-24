@@ -14,9 +14,13 @@ export class PlumbService {
 	constructor(simulationService:SimulationService) {
 		this.simulationService = simulationService;
 		jsPlumb.ready(() => {
-			this.instance = jsPlumb.getInstance();
+			this.createInstance();
 			this.bindEvents();
 		});
+	}
+
+	createInstance():void {
+		this.instance = jsPlumb.getInstance();
 	}
 
 	getInstance():JsPlumbInstance {
@@ -31,9 +35,10 @@ export class PlumbService {
 		this.instance.detach(key);
 	}
 
-	reset() {
-		this.instance.reset();
-		this.bindEvents();
+	removeAllElements() {
+		this.simulationService.getElements().forEach((element:Element) => {
+			this.removeElement(element.key);
+		});
 	}
 
 	bindEvents():void {
