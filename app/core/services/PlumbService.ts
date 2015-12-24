@@ -41,39 +41,39 @@ export class PlumbService {
 		/**
 		 * Sprečavamo da se element veže za samog sebe.
 		 */
-		this.instance.bind('beforeDrop', (info) => {
-			return info.sourceId != info.targetId;
+		this.instance.bind("beforeDrop", (info) => {
+			return info.sourceId !== info.targetId;
 		});
 
-		this.instance.bind('connection', (info) => {
+		this.instance.bind("connection", (info) => {
 			let connection = info.connection;
 			let sourceKey = info.sourceId;
 			let targetKey = info.targetId;
 			let sourceElement:Element = this.simulationService.getElement(sourceKey);
 			let targetElement:Element = this.simulationService.getElement(targetKey);
-			let targetIndex = connection.getParameter('inputIndex');
+			let targetIndex = connection.getParameter("inputIndex");
 			targetElement.inputs[targetIndex] = sourceElement;
 			sourceElement.addOutput(targetIndex, targetElement);
 		});
 
-		this.instance.bind('connectionDetached', (info) => {
+		this.instance.bind("connectionDetached", (info) => {
 			let connection = info.connection;
 			let sourceKey = info.sourceId;
 			let targetKey = info.targetId;
 			let sourceElement:Element = this.simulationService.getElement(sourceKey);
 			let targetElement:Element = this.simulationService.getElement(targetKey);
-			let targetIndex = connection.getParameter('inputIndex');
+			let targetIndex = connection.getParameter("inputIndex");
 			targetElement.inputs[targetIndex] = new EmptyElement();
 			sourceElement.removeOutput(targetIndex, targetElement);
 		});
 
-		this.instance.bind('connectionMoved', (info) => {
+		this.instance.bind("connectionMoved", (info) => {
 			let connection = info.connection;
 			let sourceKey = info.originalSourceId;
 			let targetKey = info.originalTargetId;
 			let sourceElement:Element = this.simulationService.getElement(sourceKey);
 			let targetElement:Element = this.simulationService.getElement(targetKey);
-			let targetIndex = connection.getParameter('inputIndex');
+			let targetIndex = connection.getParameter("inputIndex");
 			targetElement.inputs[targetIndex] = new EmptyElement();
 			sourceElement.removeOutput(targetIndex, targetElement);
 		});
