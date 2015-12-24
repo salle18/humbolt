@@ -1,10 +1,7 @@
-import {Injectable} from "angular2/angular2";
 import {Simulation} from "../../csmp/Simulation";
 import {Element} from "../../csmp/Element";
 import * as IntegrationMethodDefinitions from "../../csmp/IntegrationMethodDefinitions";
 import {IntegrationMethod} from "../../csmp/IntegrationMethod";
-import {PlumbService} from "./PlumbService";
-import {PlumbServiceUtilities} from "./PlumbServiceUtilities";
 
 export interface ISimulationConfig {
 	method: string;
@@ -12,14 +9,9 @@ export interface ISimulationConfig {
 	duration: number;
 }
 
-@Injectable()
 export class SimulationService {
 
 	private simulation:Simulation = null;
-	private plumbService:PlumbService;
-	private plumbServiceUtilities:PlumbServiceUtilities = null;
-
-	public activeElement:Element = null;
 
 	public simulationConfig:ISimulationConfig = {
 		method: "RungeKuttaIV",
@@ -27,10 +19,8 @@ export class SimulationService {
 		duration: 10
 	};
 
-	constructor(plumbService:PlumbService, plumbServiceUtilities:PlumbServiceUtilities) {
+	constructor() {
 		this.simulation = new Simulation;
-		this.plumbService = plumbService;
-		this.plumbServiceUtilities = plumbServiceUtilities;
 	}
 
 	getElements():Element[] {
@@ -66,37 +56,13 @@ export class SimulationService {
 	}
 
 	reset():void {
-		this.plumbService.getInstance().reset();
-		this.activeElement = null;
 		this.simulation.reset();
 	}
 
-	rotateActiveElement() {
-		if (this.activeElement) {
-			this.plumbServiceUtilities.rotate(this.activeElement);
-		}
-	}
-
-	removeActiveElement() {
-		if (this.activeElement) {
-			let plumbServiceInstance = this.plumbService.getInstance();
-			let key = this.activeElement.key;
-			plumbServiceInstance.detachAllConnections(key, {
-				fireEvent: false
-			});
-			plumbServiceInstance.removeAllEndpoints(key);
-			plumbServiceInstance.detach(key);
-			this.simulation.removeElement(key);
-			this.activeElement = null;
-		}
-	}
-
-	setActiveElement(element:Element):void {
-		this.activeElement = element;
+	deactivateElements() {
 		this.getElements().forEach((element:Element) => {
 			element.active = false;
 		});
-		element.active = true;
 	}
 
 }
