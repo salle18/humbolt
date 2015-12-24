@@ -1,7 +1,7 @@
 import {Injectable} from "angular2/angular2";
 import "sporritt/jsPlumb";
 import {SimulationService} from "./SimulationService";
-import {Element, EmptyElement} from "../../csmp/Element";
+import {Block, EmptyBlock} from "../../csmp/Block";
 
 declare let jsPlumb:any;
 
@@ -27,7 +27,7 @@ export class PlumbService {
 		return this.instance;
 	}
 
-	removeElement(key:string):void {
+	removeBlock(key:string):void {
 		this.instance.detachAllConnections(key, {
 			fireEvent: false
 		});
@@ -35,43 +35,43 @@ export class PlumbService {
 		this.instance.detach(key);
 	}
 
-	removeAllElements() {
-		this.simulationService.getElements().forEach((element:Element) => {
-			this.removeElement(element.key);
+	removeAllBlocks() {
+		this.simulationService.getBlocks().forEach((block:Block) => {
+			this.removeBlock(block.key);
 		});
 	}
 
 	bindEvents():void {
 
 		/**
-		 * Sprečavamo da se element veže za samog sebe.
+		 * Sprečavamo da se block veže za samog sebe.
 		 */
 		this.instance.bind("beforeDrop", (info) => {
 			return info.sourceId !== info.targetId;
 		});
 
 		this.instance.bind("connection", (info) => {
-			let sourceElement:Element = this.simulationService.getElement(info.sourceId);
-			let targetElement:Element = this.simulationService.getElement(info.targetId);
+			let sourceBlock:Block = this.simulationService.getBlock(info.sourceId);
+			let targetBlock:Block = this.simulationService.getBlock(info.targetId);
 			let targetIndex = info.connection.getParameter("inputIndex");
-			targetElement.inputs[targetIndex] = sourceElement;
-			sourceElement.addOutput(targetIndex, targetElement);
+			targetBlock.inputs[targetIndex] = sourceBlock;
+			sourceBlock.addOutput(targetIndex, targetBlock);
 		});
 
 		this.instance.bind("connectionDetached", (info) => {
-			let sourceElement:Element = this.simulationService.getElement(info.sourceId);
-			let targetElement:Element = this.simulationService.getElement(info.targetId);
+			let sourceBlock:Block = this.simulationService.getBlock(info.sourceId);
+			let targetBlock:Block = this.simulationService.getBlock(info.targetId);
 			let targetIndex = info.connection.getParameter("inputIndex");
-			targetElement.inputs[targetIndex] = new EmptyElement();
-			sourceElement.removeOutput(targetIndex, targetElement);
+			targetBlock.inputs[targetIndex] = new EmptyBlock();
+			sourceBlock.removeOutput(targetIndex, targetBlock);
 		});
 
 		this.instance.bind("connectionMoved", (info) => {
-			let sourceElement:Element = this.simulationService.getElement(info.originalSourceId);
-			let targetElement:Element = this.simulationService.getElement(info.originalTargetId);
+			let sourceBlock:Block = this.simulationService.getBlock(info.originalSourceId);
+			let targetBlock:Block = this.simulationService.getBlock(info.originalTargetId);
 			let targetIndex = info.connection.getParameter("inputIndex");
-			targetElement.inputs[targetIndex] = new EmptyElement();
-			sourceElement.removeOutput(targetIndex, targetElement);
+			targetBlock.inputs[targetIndex] = new EmptyBlock();
+			sourceBlock.removeOutput(targetIndex, targetBlock);
 		});
 	}
 

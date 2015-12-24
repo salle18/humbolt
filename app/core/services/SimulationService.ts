@@ -1,5 +1,5 @@
 import {Simulation} from "../../csmp/Simulation";
-import {Element} from "../../csmp/Element";
+import {Block} from "../../csmp/Block";
 import * as IntegrationMethodDefinitions from "../../csmp/IntegrationMethodDefinitions";
 import {IntegrationMethod} from "../../csmp/IntegrationMethod";
 
@@ -23,20 +23,20 @@ export class SimulationService {
 		this.simulation = new Simulation;
 	}
 
-	getElements():Element[] {
-		return this.simulation.getElements();
+	getBlocks():Block[] {
+		return this.simulation.getBlocks();
 	}
 
-	getElement(key:string):Element {
-		return this.simulation.getElement(key);
+	getBlock(key:string):Block {
+		return this.simulation.getBlock(key);
 	}
 
-	addElement(element:Element):void {
-		this.simulation.addElement(element);
+	addBlock(block:Block):void {
+		this.simulation.addBlock(block);
 	}
 
-	removeElement(key:string):void {
-		this.simulation.removeElement(key);
+	removeBlock(key:string):void {
+		this.simulation.removeBlock(key);
 	}
 
 	getIntegrationMethods():IntegrationMethod[] {
@@ -63,9 +63,9 @@ export class SimulationService {
 		this.simulation.reset();
 	}
 
-	deactivateElements() {
-		this.getElements().forEach((element:Element) => {
-			element.active = false;
+	deactivateBlocks() {
+		this.getBlocks().forEach((block:Block) => {
+			block.active = false;
 		});
 	}
 

@@ -1,6 +1,6 @@
 import {Injectable} from "angular2/angular2";
 import {PlumbService} from "./PlumbService";
-import {Element} from "../../csmp/Element";
+import {Block} from "../../csmp/Block";
 
 @Injectable()
 export class PlumbServiceUtilities {
@@ -11,7 +11,7 @@ export class PlumbServiceUtilities {
 		this.plumbService = plumbService;
 	}
 
-	rotate(element:Element, direction:string) {
+	rotate(block:Block, direction:string) {
 		let rotations = {
 			Right: {
 				Right: "Bottom",
@@ -35,12 +35,12 @@ export class PlumbServiceUtilities {
 			}
 		};
 
-		let endpoints = this.plumbService.getInstance().selectEndpoints({element: element.key});
+		let endpoints = this.plumbService.getInstance().selectEndpoints({block: block.key});
 		endpoints.each(function (endpoint:any) {
 			let type = endpoint.anchor.type;
 			endpoint.setAnchor(rotations[direction][type], true);
 		});
-		this.plumbService.getInstance().repaint(element.key);
+		this.plumbService.getInstance().repaint(block.key);
 	}
 
 }
