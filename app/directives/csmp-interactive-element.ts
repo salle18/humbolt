@@ -20,7 +20,7 @@ export class CsmpInteractiveElement {
 	}
 
 	onClick() {
-		this.simulationService.activeElement = this.element;
+		this.simulationService.setActiveElement(this.element);
 	}
 
 	onKeyDown(e) {
