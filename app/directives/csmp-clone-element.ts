@@ -9,7 +9,7 @@ export class CsmpCloneBlock {
 
 	constructor(elementRef:ElementRef) {
 
-		jQuery(elementRef.nativeBlock).draggable({
+		jQuery(elementRef.nativeElement).draggable({
 			revert: "invalid",
 			helper: "clone",
 			appendTo: "csmp-canvas",
