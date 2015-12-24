@@ -32,8 +32,6 @@ export class ArcTan extends Block {
  */
 export class Sign extends Block {
 	protected sign:string = "B";
-	protected numberOfParams:number = 0;
-	protected maxNumberOfInputs:number = 1;
 	protected description:string = "Sign";
 	protected className:string = "Sign";
 	protected numberOfParams:number = 0;
@@ -571,8 +569,6 @@ export class CircuitDelay extends Block {
  */
 export class Time extends Block {
 	protected sign:string = "t";
-	protected numberOfParams:number = 0;
-	protected maxNumberOfInputs:number = 0;
 	protected description:string = "Vreme";
 	protected className:string = "Time";
 	protected numberOfParams:number = 0;
