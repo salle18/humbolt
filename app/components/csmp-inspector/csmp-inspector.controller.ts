@@ -1,6 +1,7 @@
 import {Component, DoCheck} from "angular2/angular2";
 import {Element} from "../../csmp/Element";
 import {SimulationService} from "../../core/services/SimulationService";
+import {AppService} from "../../core/services/AppService";
 
 @Component({
 	selector: "csmp-inspector",
@@ -8,21 +9,23 @@ import {SimulationService} from "../../core/services/SimulationService";
 })
 export class CsmpInspector implements DoCheck {
 
+	private appService:AppService = null;
 	private simulationService:SimulationService = null;
+
 	public elements:Element[] = [];
 	public activeElement:Element = null;
 
-	constructor(simulationService:SimulationService) {
+	constructor(appService:AppService, simulationService:SimulationService) {
 		this.simulationService = simulationService;
 		this.elements = simulationService.getElements();
 	}
 
 	setActiveElement(element:Element):void {
-		this.simulationService.setActiveElement(element);
+		this.appService.setActiveElement(element);
 	}
 
 	doCheck() {
-		this.activeElement = this.simulationService.activeElement;
+		this.activeElement = this.appService.activeElement;
 	}
 
 }
