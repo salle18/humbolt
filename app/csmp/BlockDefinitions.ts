@@ -13,6 +13,7 @@ export class ArcTan extends Block {
 	protected maxNumberOfInputs:number = 1;
 
 	constructor() {
+		super();
 		this.initialize();
 	}
 
@@ -65,6 +66,7 @@ export class Cos extends Block {
 	protected maxNumberOfInputs:number = 1;
 
 	constructor() {
+		super();
 		this.initialize();
 	}
 
@@ -85,6 +87,7 @@ export class DeadZone extends Block {
 
 
 	constructor() {
+		super();
 		this.initialize();
 	}
 
@@ -108,6 +111,7 @@ export class Exp extends Block {
 	protected maxNumberOfInputs:number = 1;
 
 	constructor() {
+		super();
 		this.initialize();
 	}
 
@@ -124,6 +128,7 @@ export class FunctionGenerator extends Block {
 	protected maxNumberOfInputs:number = 1;
 
 	constructor() {
+		super();
 		this.initialize();
 	}
 
@@ -144,6 +149,7 @@ export class Amplify extends Block {
 	protected maxNumberOfInputs:number = 1;
 
 	constructor() {
+		super();
 		this.initialize();
 	}
 
@@ -163,6 +169,7 @@ export class Sqrt extends Block {
 	protected maxNumberOfInputs:number = 1;
 
 	constructor() {
+		super();
 		this.initialize();
 	}
 
@@ -188,6 +195,7 @@ export class Integrator extends Block {
 	protected maxNumberOfInputs:number = 3;
 
 	constructor() {
+		super();
 		this.initialize();
 	}
 
@@ -220,6 +228,7 @@ export class Randomizer extends Block {
 	protected maxNumberOfInputs:number = 0;
 
 	constructor() {
+		super();
 		this.initialize();
 	}
 
@@ -239,6 +248,7 @@ export class Constant extends Block {
 	protected maxNumberOfInputs:number = 0;
 
 	constructor() {
+		super();
 		this.initialize();
 	}
 
@@ -258,6 +268,7 @@ export class Limiter extends Block {
 	protected maxNumberOfInputs:number = 1;
 
 	constructor() {
+		super();
 		this.initialize();
 	}
 
@@ -283,6 +294,7 @@ export class Abs extends Block {
 	protected maxNumberOfInputs:number = 1;
 
 	constructor() {
+		super();
 		this.initialize();
 	}
 
@@ -302,6 +314,7 @@ export class NegativeLimiter extends Block {
 	protected maxNumberOfInputs:number = 1;
 
 	constructor() {
+		super();
 		this.initialize();
 	}
 
@@ -325,6 +338,7 @@ export class Offset extends Block {
 	protected maxNumberOfInputs:number = 1;
 
 	constructor() {
+		super();
 		this.initialize();
 	}
 
@@ -344,6 +358,7 @@ export class PositiveLimiter extends Block {
 	protected maxNumberOfInputs:number = 1;
 
 	constructor() {
+		super();
 		this.initialize();
 	}
 
@@ -368,6 +383,7 @@ export class Quit extends Block {
 	protected maxNumberOfInputs:number = 2;
 
 	constructor() {
+		super();
 		this.initialize();
 	}
 
@@ -389,6 +405,7 @@ export class Relay extends Block {
 	protected maxNumberOfInputs:number = 3;
 
 	constructor() {
+		super();
 		this.initialize();
 	}
 
@@ -412,6 +429,7 @@ export class Sin extends Block {
 	protected maxNumberOfInputs:number = 1;
 
 	constructor() {
+		super();
 		this.initialize();
 	}
 
@@ -434,6 +452,7 @@ export class ImpulseGenerator extends Block {
 	protected maxNumberOfInputs:number = 1;
 
 	constructor() {
+		super();
 		this.initialize();
 	}
 
@@ -472,6 +491,7 @@ export class UnitDelay extends Block {
 	protected maxNumberOfInputs:number = 1;
 
 	constructor() {
+		super();
 		this.initialize();
 	}
 
@@ -493,6 +513,7 @@ export class Vacuous extends Block {
 	protected maxNumberOfInputs:number = 0;
 
 	constructor() {
+		super();
 		this.initialize();
 	}
 
@@ -509,6 +530,7 @@ export class Wye extends Block {
 	protected maxNumberOfInputs:number = 2;
 
 	constructor() {
+		super();
 		this.initialize();
 	}
 
@@ -529,6 +551,7 @@ export class CircuitDelay extends Block {
 	protected maxNumberOfInputs:number = 2;
 
 	constructor() {
+		super();
 		this.initialize();
 	}
 
@@ -556,6 +579,7 @@ export class Time extends Block {
 	protected maxNumberOfInputs:number = 0;
 
 	constructor() {
+		super();
 		this.initialize();
 	}
 
@@ -575,6 +599,7 @@ export class Add extends Block {
 	protected maxNumberOfInputs:number = 3;
 
 	constructor() {
+		super();
 		this.initialize();
 	}
 
@@ -594,6 +619,7 @@ export class Invert extends Block {
 	protected maxNumberOfInputs:number = 1;
 
 	constructor() {
+		super();
 		this.initialize();
 	}
 
@@ -613,6 +639,7 @@ export class Multiply extends Block {
 	protected maxNumberOfInputs:number = 2;
 
 	constructor() {
+		super();
 		this.initialize();
 	}
 
@@ -632,6 +659,7 @@ export class Divide extends Block {
 	protected maxNumberOfInputs:number = 2;
 
 	constructor() {
+		super();
 		this.initialize();
 	}
 
@@ -656,6 +684,7 @@ export class IoT extends Block {
 	protected maxNumberOfInputs:number = 3;
 
 	constructor() {
+		super();
 		this.initialize();
 	}
 
