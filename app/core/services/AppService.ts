@@ -10,7 +10,7 @@ export class AppService {
 	private simulationService:SimulationService = null;
 	private plumbService:PlumbService = null;
 	private plumbServiceUtilities:PlumbServiceUtilities = null;
-	private activeElement:Element = null;
+	public activeElement:Element = null;
 
 
 	constructor(simulationService:SimulationService, plumbService:PlumbService, plumbServiceUtilities:PlumbServiceUtilities) {
