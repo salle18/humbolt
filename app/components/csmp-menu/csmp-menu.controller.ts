@@ -2,6 +2,7 @@ import {Component} from "angular2/angular2";
 import {CsmpUpgradeElement} from "../../directives/csmp-upgrade-element";
 import {SimulationService, ISimulationConfig} from "../../core/services/SimulationService";
 import {IntegrationMethod} from "../../csmp/IntegrationMethod";
+import {AppService} from "../../core/services/AppService";
 
 @Component({
 	selector: "csmp-menu",
@@ -10,11 +11,12 @@ import {IntegrationMethod} from "../../csmp/IntegrationMethod";
 })
 export class CsmpMenu {
 
+	private appService:AppService = null;
 	private simulationService:SimulationService = null;
 	public simulationConfig:ISimulationConfig = null;
 	public methods:IntegrationMethod[];
 
-	constructor(simulationService:SimulationService) {
+	constructor(appService:AppService, simulationService:SimulationService) {
 		this.simulationService = simulationService;
 		this.simulationConfig = simulationService.simulationConfig;
 		this.methods = simulationService.getIntegrationMethods();
@@ -36,11 +38,11 @@ export class CsmpMenu {
 		this.simulationService.run();
 	}
 
-	rotateElement() {
-		this.simulationService.rotateActiveElement();
+	rotateElement(direction:string) {
+		this.appService.rotateActiveElement(direction);
 	}
 
 	removeElement() {
-		this.simulationService.removeActiveElement();
+		this.appService.removeActiveElement();
 	}
 }
