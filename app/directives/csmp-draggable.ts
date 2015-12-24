@@ -1,6 +1,6 @@
 import {Directive, Input, OnInit} from "angular2/angular2";
 import {PlumbService} from "../core/services/PlumbService";
-import {Element} from "../csmp/Element";
+import {Block} from "../csmp/Block";
 
 @Directive({
 	selector: "[csmp-draggable]"
@@ -8,14 +8,14 @@ import {Element} from "../csmp/Element";
 export class CsmpDraggable implements OnInit {
 
 	private plumbService:PlumbService;
-	@Input() element:Element;
+	@Input() block:Block;
 
 	constructor(plumbService:PlumbService) {
 		this.plumbService = plumbService;
 	}
 
 	onInit() {
-		this.plumbService.getInstance().draggable(this.element.key, {
+		this.plumbService.getInstance().draggable(this.block.key, {
 			containment: "parent"
 		});
 	}

@@ -5,11 +5,11 @@ import {Directive, ElementRef} from "angular2/angular2";
 declare var componentHandler:any;
 
 @Directive({
-	selector: "[csmp-upgrade-element]"
+	selector: "[csmp-upgrade-block]"
 })
-export class CsmpUpgradeElement {
+export class CsmpUpgradeBlock {
 
 	constructor(elementRef:ElementRef) {
-		componentHandler.upgradeElement(elementRef.nativeElement);
+		componentHandler.upgradeBlock(elementRef.nativeBlock);
 	}
 }

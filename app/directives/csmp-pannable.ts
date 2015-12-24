@@ -17,14 +17,14 @@ export class CsmpPannable {
 	private offset:IPosition;
 	private mousePosition:IPosition;
 
-	private element:JQuery;
+	private block:JQuery;
 
 	constructor(elementRef:ElementRef) {
-		this.element = jQuery(elementRef.nativeElement);
+		this.block = jQuery(elementRef.nativeBlock);
 	}
 
 	onMouseDown(e) {
-		this.offset = this.element.offset();
+		this.offset = this.block.offset();
 		this.mousePosition = {
 			top: e.pageY,
 			left: e.pageX
@@ -36,6 +36,6 @@ export class CsmpPannable {
 			top: this.offset.top + e.pageY - this.mousePosition.top,
 			left: this.offset.left + e.pageX - this.mousePosition.left
 		};
-		this.element.offset(newOffset);
+		this.block.offset(newOffset);
 	}
 }

@@ -1,6 +1,6 @@
 import {Directive, Input, OnInit} from "angular2/angular2";
 import {PlumbService} from "../core/services/PlumbService";
-import {Element} from "../csmp/Element";
+import {Block} from "../csmp/Block";
 
 interface IAnchor {
 	anchor: string;
@@ -11,7 +11,7 @@ interface IAnchor {
 })
 export class CsmpEndpoints implements OnInit {
 
-	@Input() element:Element;
+	@Input() block:Block;
 
 	private plumbService:PlumbService;
 
@@ -45,15 +45,15 @@ export class CsmpEndpoints implements OnInit {
 	}
 
 	onInit() {
-		if (this.element.getHasOutput()) {
-			this.plumbService.getInstance().addEndpoint(this.element.key, this.outputAnchor, this.outputEndpoint);
+		if (this.block.getHasOutput()) {
+			this.plumbService.getInstance().addEndpoint(this.block.key, this.outputAnchor, this.outputEndpoint);
 		}
-		let numOfInputs = this.element.inputs.length;
+		let numOfInputs = this.block.inputs.length;
 		if (numOfInputs > 0) {
 			for (let i = 0; i < numOfInputs; i++) {
 				let endpoint = JSON.parse(JSON.stringify(this.inputEndpoint));
 				endpoint.parameters.index = i;
-				this.plumbService.getInstance().addEndpoint(this.element.key, this.inputAnchors[numOfInputs - 1][i], endpoint);
+				this.plumbService.getInstance().addEndpoint(this.block.key, this.inputAnchors[numOfInputs - 1][i], endpoint);
 			}
 		}
 	}

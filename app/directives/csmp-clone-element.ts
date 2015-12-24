@@ -3,13 +3,13 @@ import "jquery-ui/ui/draggable";
 
 
 @Directive({
-	selector: "[csmp-clone-element]"
+	selector: "[csmp-clone-block]"
 })
-export class CsmpCloneElement {
+export class CsmpCloneBlock {
 
 	constructor(elementRef:ElementRef) {
 
-		jQuery(elementRef.nativeElement).draggable({
+		jQuery(elementRef.nativeBlock).draggable({
 			revert: "invalid",
 			helper: "clone",
 			appendTo: "csmp-canvas",

@@ -20,12 +20,12 @@ export class CsmpCanvas {
 	private blocks:Block[];
 	private zone:NgZone;
 
-	constructor(blockRef:ElementRef, zone:NgZone, appService:AppService, simulationService:SimulationService) {
+	constructor(elementRef:ElementRef, zone:NgZone, appService:AppService, simulationService:SimulationService) {
 
 		this.blocks = simulationService.getBlocks();
 		this.zone = zone;
 
-		jQuery(blockRef.nativeBlock).droppable({
+		jQuery(elementRef.nativeBlock).droppable({
 			accept: ":not(.csmp-canvas-block)",
 			drop: (event, ui) => {
 				let className = ui.helper.attr("classname");
