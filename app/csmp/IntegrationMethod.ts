@@ -1,5 +1,5 @@
 import {Simulation} from "./Simulation";
-import {Integrator} from "./ElementDefinitions";
+import {Integrator} from "./BlockDefinitions";
 
 /**
  * Klasa metode integracije. Sve metoda integracije moraju biti izvedene iz ove klase.
@@ -40,10 +40,10 @@ export abstract class IntegrationMethod {
 }
 
 /**
- * Interfejs koji sadrži element integrator, k koeficijente integracije, previous početnu vrednost integratora.
+ * Interfejs koji sadrži block integrator, k koeficijente integracije, previous početnu vrednost integratora.
  */
 interface IRungeKuttaIntegrator {
-	element: Integrator;
+	block: Integrator;
 	k: number[];
 	previous: number;
 }
@@ -72,7 +72,7 @@ export abstract class RungeKutta extends IntegrationMethod {
 		let integrators = this.simulation.integrators;
 		for (let i = 0; i < integrators.length; i++) {
 			this.integrators.push({
-				element: integrators[i],
+				block: integrators[i],
 				k: [0],
 				previous: 0
 			});
@@ -101,7 +101,7 @@ export abstract class RungeKutta extends IntegrationMethod {
 			 */
 			for (let i = 0; i < this.integrators.length; i++) {
 				let integrator = this.integrators[i];
-				integrator.previous = integrator.element.result;
+				integrator.previous = integrator.block.result;
 			}
 
 			/**
@@ -114,7 +114,7 @@ export abstract class RungeKutta extends IntegrationMethod {
 					/**
 					 * Za svaki korak se računa novi koeficijent.
 					 */
-					integrator.k[step] = interval * integrator.element.getIntermediate();
+					integrator.k[step] = interval * integrator.block.getIntermediate();
 					let result = integrator.previous;
 					/**
 					 * Novi rezultat se dobija kao suma proizvoda iz tekućeg reda Butcherove tabele i koeficijenata k.
@@ -122,7 +122,7 @@ export abstract class RungeKutta extends IntegrationMethod {
 					for (let j = 1; j < step + 1; j++) {
 						result += this.table[step][j] * integrator.k[j];
 					}
-					integrator.element.result = result;
+					integrator.block.result = result;
 				}
 				/**
 				 * Povećava se vreme izvršavanja simulacije na osnovu prve kolone Butcherove tabele.

@@ -1,14 +1,14 @@
-import {Element, IPosition} from "./Element";
+import {Block, IPosition} from "./Block";
 import * as Exception from "./helpers/Exception";
 import {IntegrationMethod} from "./IntegrationMethod";
 import * as IntegrationMethodDefinitions from "./IntegrationMethodDefinitions";
 import {Dictionary} from "./helpers/Dictionary";
-import * as ElementDefinitions from "./ElementDefinitions";
+import * as BlockDefinitions from "./BlockDefinitions";
 
 /**
- * JSON format u kome se čuvaju elementi simulacije i koji se šalje serveru.
+ * JSON format u kome se čuvaju blocki simulacije i koji se šalje serveru.
  */
-interface IJSONElement {
+interface IJSONBlock {
 	className: string;
 	position: IPosition;
 	params: number[];
@@ -20,7 +20,7 @@ export class Simulation {
 	/**
 	 * Niz elemenata u simulaciji.
 	 */
-	private elements:Dictionary<Element>;
+	private blocks:Dictionary<Block>;
 	/**
 	 * Trenutno vreme izvršavanja simulacije.
 	 */
@@ -36,7 +36,7 @@ export class Simulation {
 	/**
 	 * Niz sortiranih elemenata simulacije.
 	 */
-	private sorted:Element[] = [];
+	private sorted:Block[] = [];
 	/**
 	 * Svi rezultati simulacije.
 	 */
@@ -44,74 +44,74 @@ export class Simulation {
 	/**
 	 * Niz integratora.
 	 */
-	public integrators:ElementDefinitions.Integrator[] = [];
+	public integrators:BlockDefinitions.Integrator[] = [];
 
 	constructor() {
-		this.elements = new Dictionary<Element>();
+		this.blocks = new Dictionary<Block>();
 	}
 
 	/**
-	 * Dodaje element simulaciji.
+	 * Dodaje block simulaciji.
 	 * Ako je integrator dodaje ga i u niz integratora.
 	 *
-	 * @param element Element koji se dodaje.
+	 * @param block Block koji se dodaje.
 	 */
-	addElement(element:Element):void {
-		element.setSimulation(this);
-		if (element instanceof ElementDefinitions.Integrator) {
-			this.integrators.push(element);
+	addBlock(block:Block):void {
+		block.setSimulation(this);
+		if (block instanceof BlockDefinitions.Integrator) {
+			this.integrators.push(block);
 		}
-		let key = this.elements.add(element);
-		element.key = key;
+		let key = this.blocks.add(block);
+		block.key = key;
 	}
 
 	/**
-	 * Uklanja element iz simulacije. Za svaki element u simulaciji uklanja referencu na ovaj element.
+	 * Uklanja block iz simulacije. Za svaki block u simulaciji uklanja referencu na ovaj block.
 	 * Ako je integrator uklanja se i iz niza integratora.
 	 *
-	 * @param key Ključ elementa koji se uklanja.
+	 * @param key Ključ blocka koji se uklanja.
 	 */
-	removeElement(key:string):void {
-		let element = this.elements.get(key);
-		let elements = this.elements.getValues();
-		for (let i = 0; i < elements.length; i++) {
-			elements[i].removeReference(element);
+	removeBlock(key:string):void {
+		let block = this.blocks.get(key);
+		let blocks = this.blocks.getValues();
+		for (let i = 0; i < blocks.length; i++) {
+			blocks[i].removeReference(block);
 		}
-		if (element instanceof ElementDefinitions.Integrator) {
-			let index = this.integrators.indexOf(element);
+		if (block instanceof BlockDefinitions.Integrator) {
+			let index = this.integrators.indexOf(block);
 			this.integrators.splice(index, 1);
 		}
-		this.elements.remove(key);
+		this.blocks.remove(key);
 	}
 
 	/**
-	 * @param key Ključ elementa.
-	 * @return Element sa zadatim ključem.
+	 * @param key Ključ blocka.
+	 * @return Block sa zadatim ključem.
 	 */
-	getElement(key:string):Element {
-		return this.elements.get(key);
+	getBlock(key:string):Block {
+		return this.blocks.get(key);
 	}
 
 	/**
 	 * @return Niz elemenata simulacije.
 	 *
 	 */
-	getElements():Element[] {
-		return this.elements.getValues();
+	getBlocks():Block[] {
+		return this.blocks.getValues();
 	}
 
 	/**
-	 * @return Ključ zadatog elementa.
+	 * @return Ključ zadatog blocka.
 	 */
-	getKey(element:Element):string {
-		return this.elements.getKey(element);
+	getKey(block:Block):string {
+		return this.blocks.getKey(block);
 	}
 
 	/**
 	 * @return Niz ključeva elemenata simulacije.
 	 */
 	getKeys():string[] {
-		return this.elements.getKeys();
+		return this.blocks.getKeys();
 	}
 
 	/**
@@ -141,11 +141,11 @@ export class Simulation {
 			/**
 			 * Resetujemo rezultate elemenata i inicijalizujemo ih.
 			 */
-			this.initElements();
+			this.initBlocks();
 			/**
-			 * Sortiramo elemente po njihovim ulazima.
+			 * Sortiramo blocke po njihovim ulazima.
 			 */
-			this.sortElements();
+			this.sortBlocks();
 			/**
 			 * Pokrećemo metodu integracije.
 			 */
@@ -161,12 +161,12 @@ export class Simulation {
 	}
 
 	/**
-	 * Izračunava rezulatate za sve elemente.
+	 * Izračunava rezulatate za sve blocke.
 	 */
 	setResults():void {
-		let elements = this.sorted;
-		for (let i = 0; i < elements.length; i++) {
-			elements[i].calculateResult();
+		let blocks = this.sorted;
+		for (let i = 0; i < blocks.length; i++) {
+			blocks[i].calculateResult();
 		}
 		/**
 		 * Za sve integratore ponovo pozivamo calculateResult kako bi se izračunao novi rezultat.
@@ -181,9 +181,9 @@ export class Simulation {
 	 */
 	getResults():number[] {
 		let results:number[] = [this.getTimer()];
-		let elements = this.sorted;
-		for (let i = 0; i < elements.length; i++) {
-			results.push(elements[i].result);
+		let blocks = this.sorted;
+		for (let i = 0; i < blocks.length; i++) {
+			results.push(blocks[i].result);
 		}
 		return results;
 	}
@@ -215,8 +215,8 @@ export class Simulation {
 		if (this.duration < this.integrationInterval) {
 			throw new Exception.Simulation("Dužina simulacije mora biti veća od intervala integracije.");
 		}
-		if (this.elements.getValues().length === 0) {
-			throw new Exception.Simulation("Simulacija mora da ima najmanje jedan element.");
+		if (this.blocks.getValues().length === 0) {
+			throw new Exception.Simulation("Simulacija mora da ima najmanje jedan block.");
 		}
 	}
 
@@ -269,46 +269,46 @@ export class Simulation {
 	}
 
 	/**
-	 * Indeks zadatog elementa u simulaciji.
+	 * Indeks zadatog blocka u simulaciji.
 	 *
-	 * @param element Element simulacije.
+	 * @param block Block simulacije.
 	 */
-	getIndex(element:Element) {
-		return this.elements.getIndex(element);
+	getIndex(block:Block) {
+		return this.blocks.getIndex(block);
 	}
 
 	/**
-	 * Inicijalizacija elemenata. Rezultati se postavljaju na 0 a zatim se poziva init svakog elementa.
+	 * Inicijalizacija elemenata. Rezultati se postavljaju na 0 a zatim se poziva init svakog blocka.
 	 */
-	initElements():void {
-		let elements = this.elements.getValues();
-		for (let i = 0; i < elements.length; i++) {
-			elements[i].result = 0;
-			elements[i].init();
+	initBlocks():void {
+		let blocks = this.blocks.getValues();
+		for (let i = 0; i < blocks.length; i++) {
+			blocks[i].result = 0;
+			blocks[i].init();
 		}
 	}
 
 	/**
-	 * Sortira elemente iz niza elemenata.
-	 * Konstante, integratori i unitDelay se odmah sortiraju jer je rezulat izračunavanja poznat iz prethodnog intervala(previousValue). Ostali elementi moraju da imaju sve sortirane ulaze da bi se sortirali.
+	 * Sortira blocke iz niza elemenata.
+	 * Konstante, integratori i unitDelay se odmah sortiraju jer je rezulat izračunavanja poznat iz prethodnog intervala(previousValue). Ostali blocki moraju da imaju sve sortirane ulaze da bi se sortirali.
 	 */
-	sortElements() {
+	sortBlocks() {
 		this.sorted.length = 0;
 		let numberOfSorted = 0;
-		let elements = this.elements.getValues();
-		for (let i = 0; i < elements.length; i++) {
-			elements[i].sorted = false;
-			this.sorted.push(elements[i]);
+		let blocks = this.blocks.getValues();
+		for (let i = 0; i < blocks.length; i++) {
+			blocks[i].sorted = false;
+			this.sorted.push(blocks[i]);
 		}
 		let finished = false;
 		while (numberOfSorted < this.sorted.length && !finished) {
 			finished = true;
 			for (let i = numberOfSorted; i < this.sorted.length; i++) {
-				let element = this.sorted[i];
-				if (element instanceof ElementDefinitions.Integrator || element instanceof ElementDefinitions.Constant || element.hasSortedInputs()) {
+				let block = this.sorted[i];
+				if (block instanceof BlockDefinitions.Integrator || block instanceof BlockDefinitions.Constant || block.hasSortedInputs()) {
 					let temp = this.sorted[numberOfSorted];
-					this.sorted[numberOfSorted] = element;
-					element.sorted = true;
+					this.sorted[numberOfSorted] = block;
+					block.sorted = true;
 					this.sorted[i] = temp;
 					numberOfSorted++;
 					finished = false;
@@ -320,11 +320,11 @@ export class Simulation {
 	/**
 	 * @return Da li u simulaciji ima elemenata koji se izračunavaju na serverskoj strani.
 	 */
-	hasRemoteElements():boolean {
+	hasRemoteBlocks():boolean {
 		let hasRemote = false;
-		let elements = this.elements.getValues();
-		for (let i = 0; i < elements.length; i++) {
-			if (elements[i].remote) {
+		let blocks = this.blocks.getValues();
+		for (let i = 0; i < blocks.length; i++) {
+			if (blocks[i].remote) {
 				hasRemote = true;
 			}
 		}
@@ -338,13 +338,13 @@ export class Simulation {
 	 * @return Niz json objekata simulacije.
 	 */
 	saveJSON():string {
-		let result = this.elements.getValues().map((element:Element) => {
+		let result = this.blocks.getValues().map((block:Block) => {
 			return {
-				className: element.getClassName(),
-				params: element.params,
-				stringParams: element.stringParams,
-				position: element.position,
-				inputs: element.inputs.map((input:Element) => {
+				className: block.getClassName(),
+				params: block.params,
+				stringParams: block.stringParams,
+				position: block.position,
+				inputs: block.inputs.map((input:Block) => {
 					return input.getIndex();
 				})
 			};
@@ -353,43 +353,43 @@ export class Simulation {
 	}
 
 	/**
-	 * @param JSONElements Niz JSON elemenata koji učitavamo u simulaciju.
+	 * @param JSONBlocks Niz JSON elemenata koji učitavamo u simulaciju.
 	 */
-	loadJSON(JSONElements:IJSONElement[]):void {
+	loadJSON(JSONBlocks:IJSONBlock[]):void {
 		/**
 		 * Pre učitavanja elemenata resetujemo simulaciju.
 		 */
 		this.reset();
 		/**
-		 * Samo dodajemo elemente u simulaciju.
+		 * Samo dodajemo blocke u simulaciju.
 		 */
-		for (let i = 0; i < JSONElements.length; i++) {
-			let JSONElement = JSONElements[i];
-			let className = JSONElement.className;
-			let element = new ElementDefinitions[className];
-			element.params = JSONElement.params;
-			element.stringParams = JSONElement.stringParams;
-			element.position = JSONElement.position;
-			let id = this.addElement(element);
-			//todo jsplumb canvas append element
+		for (let i = 0; i < JSONBlocks.length; i++) {
+			let JSONBlock = JSONBlocks[i];
+			let className = JSONBlock.className;
+			let block = new BlockDefinitions[className];
+			block.params = JSONBlock.params;
+			block.stringParams = JSONBlock.stringParams;
+			block.position = JSONBlock.position;
+			let id = this.addBlock(block);
+			//todo jsplumb canvas append block
 		}
 
-		let elements = this.elements.getValues();
+		let blocks = this.blocks.getValues();
 
 		/**
-		 * Ponovo prolazimo kroz sve elemente i dodajemo veze.
+		 * Ponovo prolazimo kroz sve blocke i dodajemo veze.
 		 */
-		for (let i = 0; i < JSONElements.length; i++) {
-			let JSONElement = JSONElements[i];
-			let element = elements[i];
+		for (let i = 0; i < JSONBlocks.length; i++) {
+			let JSONBlock = JSONBlocks[i];
+			let block = blocks[i];
 			/**
-			 * Rekonstruišemo sve ulaze na elementu i obrnuto na izlaznom elementu rekonstruišemo izlaz.
+			 * Rekonstruišemo sve ulaze na blocku i obrnuto na izlaznom blocku rekonstruišemo izlaz.
 			 */
-			for (let j = 0; j < JSONElement.inputs.length; j++) {
-				let outputElement = elements[JSONElement.inputs[j]];
-				element.inputs[j] = outputElement;
-				outputElement.addOutput(j, element);
-				//todo jsplumb connect elements
+			for (let j = 0; j < JSONBlock.inputs.length; j++) {
+				let outputBlock = blocks[JSONBlock.inputs[j]];
+				block.inputs[j] = outputBlock;
+				outputBlock.addOutput(j, block);
+				//todo jsplumb connect blocks
 			}
 		}
 	}
@@ -398,7 +398,7 @@ export class Simulation {
 	 * Resetuje sve nizove i brojače.
 	 */
 	reset():void {
-		this.elements.reset();
+		this.blocks.reset();
 		this.sorted.length = 0;
 		this.results.length = 0;
 		this.integrators.length = 0;

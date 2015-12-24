@@ -4,15 +4,15 @@ import {Simulation} from "./Simulation";
 /**
  * Enum za tipove grupisanje tipova elemenata.
  */
-export enum ElementType {
+export enum BlockType {
 	Generator, Trigonometry, Mathematical, Limiter, External, Other
 }
 
 /**
- * Interfejs za izlazni element. Sadrži element i indeks ulaza na izlaznom elementu.
+ * Interfejs za izlazni block. Sadrži block i indeks ulaza na izlaznom blocku.
  */
 export interface IOutput {
-	element: Element;
+	block: Block;
 	targetIndex: number;
 }
 
@@ -22,74 +22,74 @@ export interface IPosition {
 }
 
 /**
- * Apstraktna klasa Element. Svi csmp elementi moraju biti izvedeni iz ove klase.
+ * Apstraktna klasa Block. Svi csmp blocki moraju biti izvedeni iz ove klase.
  */
-export abstract class Element {
+export abstract class Block {
 
 	/**
-	 * Niz parametara elementa.
+	 * Niz parametara blocka.
 	 */
 	public params:number[] = [];
 	/**
-	 * Niz elemenata koji su ulazi u trenutni element.
+	 * Niz elemenata koji su ulazi u trenutni block.
 	 */
-	public inputs:Element[] = [];
+	public inputs:Block[] = [];
 	/**
-	 * Trenutni rezultat izračunavanja elementa.
+	 * Trenutni rezultat izračunavanja blocka.
 	 */
 	public result:number = 0;
 	/**
-	 * Niz elemenata koji su izlazi iz trenutnog elementa.
+	 * Niz elemenata koji su izlazi iz trenutnog blocka.
 	 */
 	public outputs:IOutput[] = [];
 	/**
-	 * Broj parametara elementa.
+	 * Broj parametara blocka.
 	 */
 	protected numberOfParams:number = 0;
 	/**
-	 * Maksimalni broj ulaza u element.
+	 * Maksimalni broj ulaza u block.
 	 */
 	protected maxNumberOfInputs:number = 0;
 	/**
-	 * Pokazuje da li element ima izlaz, samo Quit element nema izlaz.
+	 * Pokazuje da li block ima izlaz, samo Quit block nema izlaz.
 	 */
 	protected hasOutput:boolean = true;
 	/**
-	 * Svaki element ima referencu na simulaciju u kojoj se nalazi. Neki elementi zahtevaju pristup spoljnoj simulaciji kako bi se izračunali.
+	 * Svaki block ima referencu na simulaciju u kojoj se nalazi. Neki blocki zahtevaju pristup spoljnoj simulaciji kako bi se izračunali.
 	 */
 	protected simulation:Simulation = null;
 	/**
-	 * Memorija elementa.
+	 * Memorija blocka.
 	 */
 	protected memory:number = 0;
 	/**
-	 * Oznaka elementa.
+	 * Oznaka blocka.
 	 */
 	protected sign:string = "";
 	/**
-	 * Opis elementa.
+	 * Opis blocka.
 	 */
 	protected description:string = "";
 
 	/**
-	 * Da li je element sortiran u nizu sortiranih elemenata u simulaciji.
+	 * Da li je block sortiran u nizu sortiranih elemenata u simulaciji.
 	 */
 	public sorted:boolean = false;
 	/**
-	 * Tekstualni parametri, svi elementi prihvataju samo numeričke parametre a IoT element prihvata i tekstualne za unos adrese web servisa.
+	 * Tekstualni parametri, svi blocki prihvataju samo numeričke parametre a IoT block prihvata i tekstualne za unos adrese web servisa.
 	 */
 	public stringParams:string[] = [];
 	/**
-	 * Da li element izračunava rezulat na serveru.
+	 * Da li block izračunava rezulat na serveru.
 	 */
 	public remote = false;
 	/**
 	 * Naziv klase. Pošto će se kod minifikovati naziv klase mora da bude string.
 	 */
-	protected className:string = "Element";
+	protected className:string = "Block";
 
 	/**
-	 * Top i left koordinate elementa.
+	 * Top i left koordinate blocka.
 	 */
 	public position:IPosition = {
 		top: 0,
@@ -97,12 +97,12 @@ export abstract class Element {
 	};
 
 	/**
-	 * Da li je element trenutno aktivan.
+	 * Da li je block trenutno aktivan.
 	 */
 	public active:boolean = false;
 
 	/**
-	 * Jedinstveni ključ elementa u simulaciji. Koristi se kao id DOM elementa.
+	 * Jedinstveni ključ blocka u simulaciji. Koristi se kao id DOM blocka.
 	 */
 	public key:string = "";
 
@@ -118,10 +118,10 @@ export abstract class Element {
 			this.params[i] = 0;
 		}
 		/**
-		 * Svi ulazni elementi su na početku prazni elementi sa rezulatom 0.
+		 * Svi ulazni blocki su na početku prazni blocki sa rezulatom 0.
 		 */
 		for (let i = 0; i < this.maxNumberOfInputs; i++) {
-			this.inputs[i] = new EmptyElement();
+			this.inputs[i] = new EmptyBlock();
 		}
 	}
 
@@ -133,7 +133,7 @@ export abstract class Element {
 	}
 
 	/**
-	 * Svaki element može da se inicijalizuje. Ova metoda se poziva prilikom pokretanja simulacije.
+	 * Svaki block može da se inicijalizuje. Ova metoda se poziva prilikom pokretanja simulacije.
 	 */
 	init():void {
 		return;
@@ -147,7 +147,7 @@ export abstract class Element {
 	}
 
 	/**
-	 * Izračunavanje rezulata elementa.
+	 * Izračunavanje rezulata blocka.
 	 */
 	calculateResult():void {
 		return;
@@ -156,30 +156,30 @@ export abstract class Element {
 	/**
 	 * @return Niz ulaznih elemenata.
 	 */
-	getInputs():Element[] {
+	getInputs():Block[] {
 		return this.inputs;
 	}
 
 	/**
-	 * Dodaje element u niz izlaznih elemenata. Pošto jedan element može da bude vezan na više ulaza izlaznog elementa pamtimo i indeks ulaza na izlaznom elementu.
-	 * @param targetIndex Indeks ulaza na izlaznom elementu.
-	 * @param element Izlazni element.
+	 * Dodaje block u niz izlaznih elemenata. Pošto jedan block može da bude vezan na više ulaza izlaznog blocka pamtimo i indeks ulaza na izlaznom blocku.
+	 * @param targetIndex Indeks ulaza na izlaznom blocku.
+	 * @param block Izlazni block.
 	 */
-	addOutput(targetIndex:number, element:Element):void {
+	addOutput(targetIndex:number, block:Block):void {
 		this.outputs.push({
-			element: element,
+			block: block,
 			targetIndex: targetIndex
 		});
 	}
 
 	/**
-	 * Uklanja element iz niza izlaznih elemenata. Pošto jedan element može da bude vezan na više ulaza izlaznog elementa proveravamo i indeks ulaza na izlaznom elementu.
-	 * @param targetIndex Indeks ulaza na izlaznom elementu.
-	 * @param element Izlazni element.
+	 * Uklanja block iz niza izlaznih elemenata. Pošto jedan block može da bude vezan na više ulaza izlaznog blocka proveravamo i indeks ulaza na izlaznom blocku.
+	 * @param targetIndex Indeks ulaza na izlaznom blocku.
+	 * @param block Izlazni block.
 	 */
-	removeOutput(targetIndex:number, element:Element):void {
+	removeOutput(targetIndex:number, block:Block):void {
 		for (let i = 0; i < this.outputs.length; i++) {
-			if (this.outputs[i].element === element && this.outputs[i].targetIndex === targetIndex) {
+			if (this.outputs[i].block === block && this.outputs[i].targetIndex === targetIndex) {
 				this.outputs.splice(i, 1);
 				return;
 			}
@@ -188,35 +188,35 @@ export abstract class Element {
 
 	/**
 	 * Postavlja referencu simulacije.
-	 * @param simulation Simulacija u kojoj se element nalazi.
+	 * @param simulation Simulacija u kojoj se block nalazi.
 	 */
 	setSimulation(simulation:Simulation) {
 		this.simulation = simulation;
 	}
 
 	/**
-	 * @return Simulacija u kojoj se element nalazi.
+	 * @return Simulacija u kojoj se block nalazi.
 	 */
 	getSimulation():Simulation {
 		return this.simulation;
 	}
 
 	/**
-	 * @return Oznaka elementa.
+	 * @return Oznaka blocka.
 	 */
 	getSign():string {
 		return this.sign;
 	}
 
 	/**
-	 * @return Opis elementa.
+	 * @return Opis blocka.
 	 */
 	getDescription():string {
 		return this.description;
 	}
 
 	/**
-	 * @return Opis elementa sa rednim brojem elementa u simulaciji.
+	 * @return Opis blocka sa rednim brojem blocka u simulaciji.
 	 */
 	getIndexDescription():string {
 		return (this.simulation.getIndex(this) + 1) + ". " + this.description;
@@ -237,40 +237,40 @@ export abstract class Element {
 	}
 
 	/**
-	 * @return Da li element ima izlaz.
+	 * @return Da li block ima izlaz.
 	 */
 	getHasOutput():boolean {
 		return this.hasOutput;
 	}
 
 	/**
-	 * @return Redni broj elementa u simulaciji.
+	 * @return Redni broj blocka u simulaciji.
 	 */
 	getIndex() {
 		return this.simulation.getIndex(this);
 	}
 
 	/**
-	 * Uklanja sve reference za element iz niza ulaznih i niza izlaznih elemenata.
+	 * Uklanja sve reference za block iz niza ulaznih i niza izlaznih elemenata.
 	 *
-	 * @param element Element za koji uklanjamo reference.
+	 * @param block Block za koji uklanjamo reference.
 	 */
-	removeReference(element:Element):void {
+	removeReference(block:Block):void {
 		for (let i = 0; i < this.inputs.length; i++) {
-			if (this.inputs[i] === element) {
-				this.inputs[i] = new EmptyElement();
+			if (this.inputs[i] === block) {
+				this.inputs[i] = new EmptyBlock();
 			}
 		}
 		let i = this.outputs.length;
 		while (i--) {
-			if (this.outputs[i].element === element) {
+			if (this.outputs[i].block === block) {
 				this.outputs.splice(i, 1);
 			}
 		}
 	}
 
 	/**
-	 * @return Da li su svi ulazni elementi prazni ili sortirani u nizu sortiranih elemenata u simulaciji.
+	 * @return Da li su svi ulazni blocki prazni ili sortirani u nizu sortiranih elemenata u simulaciji.
 	 */
 	hasSortedInputs():boolean {
 		let sortedInputs = true;
@@ -285,10 +285,10 @@ export abstract class Element {
 }
 
 /**
- * Klasa za prazan element bez parametara i ulaza.
- * Koristi se kao prazan ulaz na elementu.
+ * Klasa za prazan block bez parametara i ulaza.
+ * Koristi se kao prazan ulaz na blocku.
  */
-export class EmptyElement extends Element {
+export class EmptyBlock extends Block {
 
 	public sorted:boolean = true;
 

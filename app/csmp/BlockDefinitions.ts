@@ -1,11 +1,11 @@
-import {Element} from "./Element";
+import {Block} from "./Block";
 import * as Exception from "./helpers/Exception";
 import {Numbers} from "./helpers/Numbers";
 
 /**
  * Arkus tangens ulaza.
  */
-export class ArcTan extends Element {
+export class ArcTan extends Block {
 	protected sign:string = "A";
 	protected description:string = "ArcTan";
 	protected className:string = "ArcTan";
@@ -29,7 +29,7 @@ export class ArcTan extends Element {
 /**
  * Znak ulaza.
  */
-export class Sign extends Element {
+export class Sign extends Block {
 	protected sign:string = "B";
 	protected numberOfParams:number = 0;
 	protected maxNumberOfInputs:number = 1;
@@ -57,7 +57,7 @@ export class Sign extends Element {
 /**
  * Kosinus ulaza.
  */
-export class Cos extends Element {
+export class Cos extends Block {
 	protected sign:string = "C";
 	protected description:string = "Cos";
 	protected className:string = "Cos";
@@ -76,7 +76,7 @@ export class Cos extends Element {
 /**
  * Mrtva zona. Ako se ulaz ne nalazi između parametara vraća 0.
  */
-export class DeadZone extends Element {
+export class DeadZone extends Block {
 	protected sign:string = "D";
 	protected description:string = "Mrtva zona";
 	protected className:string = "DeadZone";
@@ -100,7 +100,7 @@ export class DeadZone extends Element {
 /**
  * Eksponent ulaza.
  */
-export class Exp extends Element {
+export class Exp extends Block {
 	protected sign:string = "E";
 	protected description:string = "Exp";
 	protected className:string = "Exp";
@@ -116,7 +116,7 @@ export class Exp extends Element {
 	}
 }
 
-export class FunctionGenerator extends Element {
+export class FunctionGenerator extends Block {
 	protected sign:string = "F";
 	protected description:string = "Generator funkcija";
 	protected className:string = "FunctionGenerator";
@@ -136,7 +136,7 @@ export class FunctionGenerator extends Element {
 /**
  * Pojačanje ulaza zadatim parametrom.
  */
-export class Amplify extends Element {
+export class Amplify extends Block {
 	protected sign:string = "G";
 	protected description:string = "Pojačanje";
 	protected className:string = "Amplify";
@@ -155,7 +155,7 @@ export class Amplify extends Element {
 /**
  * Kvadratni koren ulaza.
  */
-export class Sqrt extends Element {
+export class Sqrt extends Block {
 	protected sign:string = "H";
 	protected description:string = "Kvadratni koren";
 	protected className:string = "Sqrt";
@@ -179,7 +179,7 @@ export class Sqrt extends Element {
  * svako sledeće izračunavanje se vrši za narednu vrednost integratora.
  * Intermediate vrednost predstavlja prelazni rezulata integratora prilikom računanja sledećeg rezultata integratora.
  */
-export class Integrator extends Element {
+export class Integrator extends Block {
 	protected sign:string = "I";
 	protected description:string = "Integrator";
 	protected className:string = "Integrator";
@@ -212,7 +212,7 @@ export class Integrator extends Element {
 /**
  * Generator slučajnih brojeva na intervalu [0, 1).
  */
-export class Randomizer extends Element {
+export class Randomizer extends Block {
 	protected sign:string = "J";
 	protected description:string = "Random generator";
 	protected className:string = "Randomizer";
@@ -231,7 +231,7 @@ export class Randomizer extends Element {
 /**
  * Konstanta, uvek vraća vrednost prvog parametra.
  */
-export class Constant extends Element {
+export class Constant extends Block {
 	protected sign:string = "K";
 	protected description:string = "Konstanta";
 	protected className:string = "Constant";
@@ -250,7 +250,7 @@ export class Constant extends Element {
 /**
  * Ograničavač vraća ulaz ukoliko je ulaz između donjeg i gornjeg parametra, a donji i gornji parametar inače.
  */
-export class Limiter extends Element {
+export class Limiter extends Block {
 	protected sign:string = "L";
 	protected description:string = "Ograničavač";
 	protected className:string = "Limiter";
@@ -275,7 +275,7 @@ export class Limiter extends Element {
 /**
  * Apsolutna vrednost ulaza.
  */
-export class Abs extends Element {
+export class Abs extends Block {
 	protected sign:string = "M";
 	protected description:string = "Apsolutna vrednost";
 	protected className:string = "Abs";
@@ -294,7 +294,7 @@ export class Abs extends Element {
 /**
  * Negativni ograničavač vraća ulaz ukoliko je veći od nule, a nulu inače.
  */
-export class NegativeLimiter extends Element {
+export class NegativeLimiter extends Block {
 	protected sign:string = "N";
 	protected description:string = "Negativni ograničavač";
 	protected className:string = "NegativeLimiter";
@@ -317,7 +317,7 @@ export class NegativeLimiter extends Element {
 /**
  * Offset dodaje parametar na ulaz.
  */
-export class Offset extends Element {
+export class Offset extends Block {
 	protected sign:string = "O";
 	protected description:string = "Offset";
 	protected className:string = "Offset";
@@ -336,7 +336,7 @@ export class Offset extends Element {
 /**
  * Pozitivni ograničavač vraća ulaz ukoliko je manji od nule, a nulu inače.
  */
-export class PositiveLimiter extends Element {
+export class PositiveLimiter extends Block {
 	protected sign:string = "P";
 	protected description:string = "Pozitivni ograničavač";
 	protected className:string = "PositiveLimiter";
@@ -359,7 +359,7 @@ export class PositiveLimiter extends Element {
 /**
  * Prekida izvršavanje simulacije.
  */
-export class Quit extends Element {
+export class Quit extends Block {
 	protected sign:string = "Q";
 	protected description:string = "Quit";
 	protected className:string = "Quit";
@@ -381,7 +381,7 @@ export class Quit extends Element {
 /**
  * Vraća drugi ili treći ulaz zavisno da li je prvi ulaz veći od nule.
  */
-export class Relay extends Element {
+export class Relay extends Block {
 	protected sign:string = "R";
 	protected description:string = "Relej";
 	protected className:string = "Relay";
@@ -404,7 +404,7 @@ export class Relay extends Element {
 /**
  * Sinus ulaza.
  */
-export class Sin extends Element {
+export class Sin extends Block {
 	protected sign:string = "S";
 	protected description:string = "Sin";
 	protected className:string = "Sin";
@@ -423,7 +423,7 @@ export class Sin extends Element {
 /**
  * Generator impulsa. Generiše povorku impulsa od trenutka kada je ulaz veći od nule.
  */
-export class ImpulseGenerator extends Element {
+export class ImpulseGenerator extends Block {
 	protected sign:string = "T";
 	protected description:string = "Generator impulsa";
 	protected className:string = "ImpulseGenerator";
@@ -464,7 +464,7 @@ export class ImpulseGenerator extends Element {
 /**
  * Jedinično kašnjenje vraća rezulata iz prethodnog ciklusa izračunavanja.
  */
-export class UnitDelay extends Element {
+export class UnitDelay extends Block {
 	protected sign:string = "U";
 	protected description:string = "Jedinično kašnjenje";
 	protected className:string = "UnitDelay";
@@ -485,7 +485,7 @@ export class UnitDelay extends Element {
 	}
 }
 
-export class Vacuous extends Element {
+export class Vacuous extends Block {
 	protected sign:string = "V";
 	protected description:string = "Vacuous";
 	protected className:string = "Vacuous";
@@ -501,7 +501,7 @@ export class Vacuous extends Element {
 	}
 }
 
-export class Wye extends Element {
+export class Wye extends Block {
 	protected sign:string = "W";
 	protected description:string = "Wye";
 	protected className:string = "Wye";
@@ -513,7 +513,7 @@ export class Wye extends Element {
 	}
 
 	calculateResult():void {
-		throw new Exception.NotImplemented("Wye element nije implementiran.");
+		throw new Exception.NotImplemented("Wye block nije implementiran.");
 	}
 }
 
@@ -521,7 +521,7 @@ export class Wye extends Element {
  * Ukoliko je ulaz manji od nule vraća 0, ukoliko je veći od 0 vraća ulaz i pamti vrednost,
  * a ukoliko je nula vraća zapamćenu vrednost.
  */
-export class CircuitDelay extends Element {
+export class CircuitDelay extends Block {
 	protected sign:string = "Z";
 	protected description:string = "Kolo zadrške";
 	protected className:string = "CircuitDelay";
@@ -546,7 +546,7 @@ export class CircuitDelay extends Element {
 /**
  * Vraća tekuće vreme simulacije.
  */
-export class Time extends Element {
+export class Time extends Block {
 	protected sign:string = "t";
 	protected numberOfParams:number = 0;
 	protected maxNumberOfInputs:number = 0;
@@ -565,9 +565,9 @@ export class Time extends Element {
 }
 
 /**
- * Sabira ulazne elemente i množi ih sa respektivinim parametrima.
+ * Sabira ulazne blocke i množi ih sa respektivinim parametrima.
  */
-export class Add extends Element {
+export class Add extends Block {
 	protected sign:string = "+";
 	protected description:string = "Sabirač";
 	protected className:string = "Add";
@@ -586,7 +586,7 @@ export class Add extends Element {
 /**
  * Invertuje znak ulaza.
  */
-export class Invert extends Element {
+export class Invert extends Block {
 	protected sign:string = "-";
 	protected description:string = "Invertor";
 	protected className:string = "Invert";
@@ -605,7 +605,7 @@ export class Invert extends Element {
 /**
  * Množi ulaze.
  */
-export class Multiply extends Element {
+export class Multiply extends Block {
 	protected sign:string = "*";
 	protected description:string = "Množač";
 	protected className:string = "Multiply";
@@ -624,7 +624,7 @@ export class Multiply extends Element {
 /**
  * Deli ulaze.
  */
-export class Divide extends Element {
+export class Divide extends Block {
 	protected sign:string = "/";
 	protected description:string = "Delitelj";
 	protected className:string = "Divide";
@@ -646,7 +646,7 @@ export class Divide extends Element {
 /**
  * Internet of things računa rezultat na serveru i vraća odgovor nakon toga.
  */
-export class IoT extends Element {
+export class IoT extends Block {
 	protected sign:string = "IoT";
 	protected description:string = "Internet of Things";
 	protected className:string = "IoT";

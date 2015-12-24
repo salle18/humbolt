@@ -25,7 +25,7 @@ export class Dictionary<T> {
 	}
 
 	/**
-	 * @return Element sa zadatim ključem.
+	 * @return Block sa zadatim ključem.
 	 */
 	get(key:string):T {
 		let index = this.keys.indexOf(key);
@@ -33,7 +33,7 @@ export class Dictionary<T> {
 	}
 
 	/**
-	 * Dodaje element i generiše jedinstveni ključ.
+	 * Dodaje block i generiše jedinstveni ključ.
 	 *
 	 * @return Jedinstveni ključ.
 	 */
@@ -45,7 +45,7 @@ export class Dictionary<T> {
 	}
 
 	/**
-	 * Uklanja element sa zadatim ključem.
+	 * Uklanja block sa zadatim ključem.
 	 */
 	remove(key:string):void {
 		let index = this.keys.indexOf(key);
@@ -54,7 +54,7 @@ export class Dictionary<T> {
 	}
 
 	/**
-	 * @return Ključ zadatog elementa.
+	 * @return Ključ zadatog blocka.
 	 */
 	getKey(value:T):string {
 		let index = this.getIndex(value);
@@ -76,7 +76,7 @@ export class Dictionary<T> {
 	}
 
 	/**
-	 * @return Indeks elementa u nizu.
+	 * @return Indeks blocka u nizu.
 	 */
 	getIndex(value:T):number {
 		return this.values.indexOf(value);
