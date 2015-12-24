@@ -20,6 +20,7 @@ export class AppService {
 	}
 
 	setActiveElement(element:Element):void {
+		this.activeElement = element;
 		this.simulationService.deactivateElements();
 		element.active = true;
 	}
