@@ -1,6 +1,6 @@
 import {Directive, Input} from "angular2/angular2";
 import {Element} from "../csmp/Element";
-import {SimulationService} from "../core/services/SimulationService";
+import {AppService} from "../core/services/AppService";
 import {KeyEvent} from "../core/commons/KeyEvent";
 
 @Directive({
@@ -12,20 +12,20 @@ import {KeyEvent} from "../core/commons/KeyEvent";
 })
 export class CsmpInteractiveElement {
 
-	private simulationService:SimulationService;
+	private appService:AppService;
 	@Input() element:Element;
 
-	constructor(simulationService:SimulationService) {
-		this.simulationService = simulationService;
+	constructor(appService:AppService) {
+		this.appService = appService;
 	}
 
 	onClick() {
-		this.simulationService.setActiveElement(this.element);
+		this.appService.setActiveElement(this.element);
 	}
 
 	onKeyDown(e) {
 		if (e.keyCode === KeyEvent.DOM_VK_DELETE) {
-			this.simulationService.removeActiveElement();
+			this.appService.removeActiveElement();
 		}
 	}
 
