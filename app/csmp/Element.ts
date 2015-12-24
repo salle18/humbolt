@@ -108,12 +108,9 @@ export abstract class Element {
 
 
 	/**
-	 * @param numberOfParams Broj parametara elementa.
-	 * @param maxNumberOfInputs Maksimalni broj ulaznih elemenata.
+	 * Inicijalizuje parametre i ulaze.
 	 */
-	constructor(numberOfParams:number, maxNumberOfInputs:number) {
-		this.numberOfParams = numberOfParams;
-		this.maxNumberOfInputs = maxNumberOfInputs;
+	initialize() {
 		/**
 		 * Svi parametri se na početku postavljaju na 0.
 		 */
@@ -295,7 +292,4 @@ export class EmptyElement extends Element {
 
 	public sorted:boolean = true;
 
-	constructor() {
-		super(0, 0);
-	}
 }

@@ -9,9 +9,11 @@ export class ArcTan extends Element {
 	protected sign:string = "A";
 	protected description:string = "ArcTan";
 	protected className:string = "ArcTan";
+	protected numberOfParams:number = 3;
+	protected maxNumberOfInputs:number = 1;
 
 	constructor() {
-		super(3, 1);
+		this.initialize();
 	}
 
 	calculateResult():void {
@@ -33,9 +35,11 @@ export class Sign extends Element {
 	protected maxNumberOfInputs:number = 1;
 	protected description:string = "Sign";
 	protected className:string = "Sign";
+	protected numberOfParams:number = 0;
+	protected maxNumberOfInputs:number = 1;
 
 	constructor() {
-		super(0, 1);
+		this.initialize();
 	}
 
 	calculateResult():void {
@@ -56,9 +60,11 @@ export class Cos extends Element {
 	protected sign:string = "C";
 	protected description:string = "Cos";
 	protected className:string = "Cos";
+	protected numberOfParams:number = 3;
+	protected maxNumberOfInputs:number = 1;
 
 	constructor() {
-		super(3, 1);
+		this.initialize();
 	}
 
 	calculateResult():void {
@@ -73,10 +79,12 @@ export class DeadZone extends Element {
 	protected sign:string = "D";
 	protected description:string = "Mrtva zona";
 	protected className:string = "DeadZone";
+	protected numberOfParams:number = 2;
+	protected maxNumberOfInputs:number = 1;
 
 
 	constructor() {
-		super(2, 1);
+		this.initialize();
 	}
 
 	calculateResult():void {
@@ -95,9 +103,11 @@ export class Exp extends Element {
 	protected sign:string = "E";
 	protected description:string = "Exp";
 	protected className:string = "Exp";
+	protected numberOfParams:number = 3;
+	protected maxNumberOfInputs:number = 1;
 
 	constructor() {
-		super(3, 1);
+		this.initialize();
 	}
 
 	calculateResult():void {
@@ -109,9 +119,11 @@ export class FunctionGenerator extends Element {
 	protected sign:string = "F";
 	protected description:string = "Generator funkcija";
 	protected className:string = "FunctionGenerator";
+	protected numberOfParams:number = 2;
+	protected maxNumberOfInputs:number = 1;
 
 	constructor() {
-		super(2, 1);
+		this.initialize();
 	}
 
 	calculateResult():void {
@@ -127,9 +139,11 @@ export class Amplify extends Element {
 	protected sign:string = "G";
 	protected description:string = "Pojačanje";
 	protected className:string = "Amplify";
+	protected numberOfParams:number = 1;
+	protected maxNumberOfInputs:number = 1;
 
 	constructor() {
-		super(1, 1);
+		this.initialize();
 	}
 
 	calculateResult():void {
@@ -144,9 +158,11 @@ export class Sqrt extends Element {
 	protected sign:string = "H";
 	protected description:string = "Kvadratni koren";
 	protected className:string = "Sqrt";
+	protected numberOfParams:number = 0;
+	protected maxNumberOfInputs:number = 1;
 
 	constructor() {
-		super(0, 1);
+		this.initialize();
 	}
 
 	calculateResult():void {
@@ -167,9 +183,11 @@ export class Integrator extends Element {
 	protected description:string = "Integrator";
 	protected className:string = "Integrator";
 	protected intermediate:number = 0;
+	protected numberOfParams:number = 3;
+	protected maxNumberOfInputs:number = 3;
 
 	constructor() {
-		super(3, 3);
+		this.initialize();
 	}
 
 	init():void {
@@ -197,9 +215,11 @@ export class Randomizer extends Element {
 	protected sign:string = "J";
 	protected description:string = "Random generator";
 	protected className:string = "Randomizer";
+	protected numberOfParams:number = 0;
+	protected maxNumberOfInputs:number = 0;
 
 	constructor() {
-		super(0, 0);
+		this.initialize();
 	}
 
 	calculateResult():void {
@@ -214,9 +234,11 @@ export class Constant extends Element {
 	protected sign:string = "K";
 	protected description:string = "Konstanta";
 	protected className:string = "Constant";
+	protected numberOfParams:number = 1;
+	protected maxNumberOfInputs:number = 0;
 
 	constructor() {
-		super(1, 0);
+		this.initialize();
 	}
 
 	init():void {
@@ -231,9 +253,11 @@ export class Limiter extends Element {
 	protected sign:string = "L";
 	protected description:string = "Ograničavač";
 	protected className:string = "Limiter";
+	protected numberOfParams:number = 2;
+	protected maxNumberOfInputs:number = 1;
 
 	constructor() {
-		super(2, 1);
+		this.initialize();
 	}
 
 	calculateResult():void {
@@ -254,9 +278,11 @@ export class Abs extends Element {
 	protected sign:string = "M";
 	protected description:string = "Apsolutna vrednost";
 	protected className:string = "Abs";
+	protected numberOfParams:number = 0;
+	protected maxNumberOfInputs:number = 1;
 
 	constructor() {
-		super(0, 1);
+		this.initialize();
 	}
 
 	calculateResult():void {
@@ -271,9 +297,11 @@ export class NegativeLimiter extends Element {
 	protected sign:string = "N";
 	protected description:string = "Negativni ograničavač";
 	protected className:string = "NegativeLimiter";
+	protected numberOfParams:number = 0;
+	protected maxNumberOfInputs:number = 1;
 
 	constructor() {
-		super(0, 1);
+		this.initialize();
 	}
 
 	calculateResult():void {
@@ -292,9 +320,11 @@ export class Offset extends Element {
 	protected sign:string = "O";
 	protected description:string = "Offset";
 	protected className:string = "Offset";
+	protected numberOfParams:number = 1;
+	protected maxNumberOfInputs:number = 1;
 
 	constructor() {
-		super(1, 1);
+		this.initialize();
 	}
 
 	calculateResult():void {
@@ -309,9 +339,11 @@ export class PositiveLimiter extends Element {
 	protected sign:string = "P";
 	protected description:string = "Pozitivni ograničavač";
 	protected className:string = "PositiveLimiter";
+	protected numberOfParams:number = 0;
+	protected maxNumberOfInputs:number = 1;
 
 	constructor() {
-		super(0, 1);
+		this.initialize();
 	}
 
 	calculateResult():void {
@@ -331,9 +363,11 @@ export class Quit extends Element {
 	protected description:string = "Quit";
 	protected className:string = "Quit";
 	protected hasOutput:boolean = false;
+	protected numberOfParams:number = 0;
+	protected maxNumberOfInputs:number = 2;
 
 	constructor() {
-		super(0, 2);
+		this.initialize();
 	}
 
 	calculateResult():void {
@@ -350,9 +384,11 @@ export class Relay extends Element {
 	protected sign:string = "R";
 	protected description:string = "Relej";
 	protected className:string = "Relay";
+	protected numberOfParams:number = 0;
+	protected maxNumberOfInputs:number = 3;
 
 	constructor() {
-		super(0, 3);
+		this.initialize();
 	}
 
 	calculateResult():void {
@@ -371,9 +407,11 @@ export class Sin extends Element {
 	protected sign:string = "S";
 	protected description:string = "Sin";
 	protected className:string = "Sin";
+	protected numberOfParams:number = 3;
+	protected maxNumberOfInputs:number = 1;
 
 	constructor() {
-		super(3, 1);
+		this.initialize();
 	}
 
 	calculateResult():void {
@@ -391,9 +429,11 @@ export class ImpulseGenerator extends Element {
 	private generate:boolean = false;
 	private interval:number = 0;
 	private startInterval:number = 0;
+	protected numberOfParams:number = 1;
+	protected maxNumberOfInputs:number = 1;
 
 	constructor() {
-		super(1, 1);
+		this.initialize();
 	}
 
 	init() {
@@ -427,9 +467,11 @@ export class UnitDelay extends Element {
 	protected sign:string = "U";
 	protected description:string = "Jedinično kašnjenje";
 	protected className:string = "UnitDelay";
+	protected numberOfParams:number = 1;
+	protected maxNumberOfInputs:number = 1;
 
 	constructor() {
-		super(1, 1);
+		this.initialize();
 	}
 
 	init():void {
@@ -446,9 +488,11 @@ export class Vacuous extends Element {
 	protected sign:string = "V";
 	protected description:string = "Vacuous";
 	protected className:string = "Vacuous";
+	protected numberOfParams:number = 1;
+	protected maxNumberOfInputs:number = 0;
 
 	constructor() {
-		super(1, 0);
+		this.initialize();
 	}
 
 	calculateResult():void {
@@ -460,9 +504,11 @@ export class Wye extends Element {
 	protected sign:string = "W";
 	protected description:string = "Wye";
 	protected className:string = "Wye";
+	protected numberOfParams:number = 2;
+	protected maxNumberOfInputs:number = 2;
 
 	constructor() {
-		super(2, 2);
+		this.initialize();
 	}
 
 	calculateResult():void {
@@ -478,9 +524,11 @@ export class CircuitDelay extends Element {
 	protected sign:string = "Z";
 	protected description:string = "Kolo zadrške";
 	protected className:string = "CircuitDelay";
+	protected numberOfParams:number = 0;
+	protected maxNumberOfInputs:number = 2;
 
 	constructor() {
-		super(0, 2);
+		this.initialize();
 	}
 
 	calculateResult():void {
@@ -503,9 +551,11 @@ export class Time extends Element {
 	protected maxNumberOfInputs:number = 0;
 	protected description:string = "Vreme";
 	protected className:string = "Time";
+	protected numberOfParams:number = 0;
+	protected maxNumberOfInputs:number = 0;
 
 	constructor() {
-		super(0, 0);
+		this.initialize();
 	}
 
 	calculateResult():void {
@@ -520,9 +570,11 @@ export class Add extends Element {
 	protected sign:string = "+";
 	protected description:string = "Sabirač";
 	protected className:string = "Add";
+	protected numberOfParams:number = 3;
+	protected maxNumberOfInputs:number = 3;
 
 	constructor() {
-		super(3, 3);
+		this.initialize();
 	}
 
 	calculateResult():void {
@@ -537,9 +589,11 @@ export class Invert extends Element {
 	protected sign:string = "-";
 	protected description:string = "Invertor";
 	protected className:string = "Invert";
+	protected numberOfParams:number = 0;
+	protected maxNumberOfInputs:number = 1;
 
 	constructor() {
-		super(0, 1);
+		this.initialize();
 	}
 
 	calculateResult():void {
@@ -554,9 +608,11 @@ export class Multiply extends Element {
 	protected sign:string = "*";
 	protected description:string = "Množač";
 	protected className:string = "Multiply";
+	protected numberOfParams:number = 0;
+	protected maxNumberOfInputs:number = 2;
 
 	constructor() {
-		super(0, 2);
+		this.initialize();
 	}
 
 	calculateResult():void {
@@ -571,9 +627,11 @@ export class Divide extends Element {
 	protected sign:string = "/";
 	protected description:string = "Delitelj";
 	protected className:string = "Divide";
+	protected numberOfParams:number = 0;
+	protected maxNumberOfInputs:number = 2;
 
 	constructor() {
-		super(0, 2);
+		this.initialize();
 	}
 
 	calculateResult():void {
@@ -593,9 +651,11 @@ export class IoT extends Element {
 	protected className:string = "IoT";
 	public stringParams:string[] = [""];
 	public remote = true;
+	protected numberOfParams:number = 0;
+	protected maxNumberOfInputs:number = 3;
 
 	constructor() {
-		super(0, 3);
+		this.initialize();
 	}
 
 	init():void {
