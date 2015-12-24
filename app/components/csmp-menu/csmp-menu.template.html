@@ -14,11 +14,12 @@
 
 		<button type="button" class="mdl-button" (click)="removeElement()">
 			<span class="material-icons">delete</span>
-			Obriši
 		</button>
-		<button type="button" class="mdl-button" (click)="rotateElement()"><span
+		<button type="button" class="mdl-button" (click)="rotateElement('Right')"><span
 				class="material-icons">rotate_right</span>
-			Rotiraj
+		</button>
+		<button type="button" class="mdl-button" (click)="rotateElement('Left')"><span
+				class="material-icons">rotate_left</span>
 		</button>
 		<div class="mdl-layout-spacer"></div>
 		<div class="mdl-textfield">
