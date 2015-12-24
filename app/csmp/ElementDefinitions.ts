@@ -39,6 +39,7 @@ export class Sign extends Element {
 	protected maxNumberOfInputs:number = 1;
 
 	constructor() {
+		super();
 		this.initialize();
 	}
 
