@@ -25,7 +25,7 @@ export class CsmpCanvas {
 		this.blocks = simulationService.getBlocks();
 		this.zone = zone;
 
-		jQuery(elementRef.nativeBlock).droppable({
+		jQuery(elementRef.nativeElement).droppable({
 			accept: ":not(.csmp-canvas-block)",
 			drop: (event, ui) => {
 				let className = ui.helper.attr("classname");
