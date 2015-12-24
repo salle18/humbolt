@@ -35,10 +35,9 @@ export class PlumbService {
 		this.instance.detach(key);
 	}
 
-	removeAllBlocks() {
-		this.simulationService.getBlocks().forEach((block:Block) => {
-			this.removeBlock(block.key);
-		});
+	reset() {
+		this.instance.reset();
+		this.bindEvents();
 	}
 
 	bindEvents():void {
