@@ -333,11 +333,13 @@ export class Quit extends Element {
 	protected hasOutput:boolean = false;
 
 	constructor() {
-		super(0, 1);
+		super(0, 2);
 	}
 
 	calculateResult():void {
-		throw new Exception.QuitSimulation("Simulacija završena.");
+		if (this.inputs[1] < this.inputs[0]) {
+			throw new Exception.QuitSimulation("Simulacija završena.");
+		}
 	}
 }
 
