@@ -40,7 +40,8 @@ export class AppService {
 	}
 
 	reest():void {
-		this.plumbService.reset();
+		this.activeElement = null;
+		this.plumbService.removeAllElements();
 		this.simulationService.reset();
 	}
 
