@@ -46,34 +46,25 @@ export class PlumbService {
 		});
 
 		this.instance.bind("connection", (info) => {
-			let connection = info.connection;
-			let sourceKey = info.sourceId;
-			let targetKey = info.targetId;
-			let sourceElement:Element = this.simulationService.getElement(sourceKey);
-			let targetElement:Element = this.simulationService.getElement(targetKey);
-			let targetIndex = connection.getParameter("inputIndex");
+			let sourceElement:Element = this.simulationService.getElement(info.sourceId);
+			let targetElement:Element = this.simulationService.getElement(info.targetId);
+			let targetIndex = info.connection.getParameter("inputIndex");
 			targetElement.inputs[targetIndex] = sourceElement;
 			sourceElement.addOutput(targetIndex, targetElement);
 		});
 
 		this.instance.bind("connectionDetached", (info) => {
-			let connection = info.connection;
-			let sourceKey = info.sourceId;
-			let targetKey = info.targetId;
-			let sourceElement:Element = this.simulationService.getElement(sourceKey);
-			let targetElement:Element = this.simulationService.getElement(targetKey);
-			let targetIndex = connection.getParameter("inputIndex");
+			let sourceElement:Element = this.simulationService.getElement(info.sourceId);
+			let targetElement:Element = this.simulationService.getElement(info.targetId);
+			let targetIndex = info.connection.getParameter("inputIndex");
 			targetElement.inputs[targetIndex] = new EmptyElement();
 			sourceElement.removeOutput(targetIndex, targetElement);
 		});
 
 		this.instance.bind("connectionMoved", (info) => {
-			let connection = info.connection;
-			let sourceKey = info.originalSourceId;
-			let targetKey = info.originalTargetId;
-			let sourceElement:Element = this.simulationService.getElement(sourceKey);
-			let targetElement:Element = this.simulationService.getElement(targetKey);
-			let targetIndex = connection.getParameter("inputIndex");
+			let sourceElement:Element = this.simulationService.getElement(info.originalSourceId);
+			let targetElement:Element = this.simulationService.getElement(info.originalTargetId);
+			let targetIndex = info.connection.getParameter("inputIndex");
 			targetElement.inputs[targetIndex] = new EmptyElement();
 			sourceElement.removeOutput(targetIndex, targetElement);
 		});
