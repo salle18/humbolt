@@ -50,7 +50,7 @@ export class SimulationService {
 	run() {
 		this.simulation.run(this.simulationConfig.method, this.simulationConfig.interval, this.simulationConfig.duration);
 	}
-	
+
 	reset():void {
 		this.simulation.reset();
 	}
