@@ -27,6 +27,10 @@ export class SimulationService {
 		return this.simulation.getElements();
 	}
 
+	getElement(key:string):Element {
+		return this.simulation.getElement(key);
+	}
+
 	addElement(element:Element):void {
 		this.simulation.addElement(element);
 	}
