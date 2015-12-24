@@ -50,15 +50,7 @@ export class SimulationService {
 	run() {
 		this.simulation.run(this.simulationConfig.method, this.simulationConfig.interval, this.simulationConfig.duration);
 	}
-
-	open() {
-		console.log("OPEN");
-	}
-
-	save() {
-		console.log(this.simulation.saveJSON());
-	}
-
+	
 	reset():void {
 		this.simulation.reset();
 	}

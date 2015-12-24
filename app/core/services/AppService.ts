@@ -41,8 +41,20 @@ export class AppService {
 
 	reset():void {
 		this.activeBlock = null;
-		this.plumbService.removeAllBlocks();
+		this.plumbService.reset();
 		this.simulationService.reset();
+	}
+
+	open():void {
+
+	}
+
+	save():void {
+
+	}
+
+	run():void {
+		this.simulationService.run();
 	}
 
 }
