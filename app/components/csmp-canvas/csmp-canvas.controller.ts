@@ -7,6 +7,7 @@ import "jquery-ui/ui/droppable";
 import {CsmpDraggable} from "../../directives/csmp-draggable";
 import {CsmpEndpoints} from "../../directives/csmp-endpoints";
 import {CsmpInteractiveElement} from "../../directives/csmp-interactive-element";
+import {AppService} from "../../core/services/AppService";
 
 
 @Component({
@@ -19,7 +20,7 @@ export class CsmpCanvas {
 	private elements:Element[];
 	private zone:NgZone;
 
-	constructor(elementRef:ElementRef, zone:NgZone, simulationService:SimulationService) {
+	constructor(elementRef:ElementRef, zone:NgZone, appService:AppService, simulationService:SimulationService) {
 
 		this.elements = simulationService.getElements();
 		this.zone = zone;
@@ -32,7 +33,7 @@ export class CsmpCanvas {
 				element.position = ui.helper.position();
 				zone.run(() => {
 					simulationService.addElement(element);
-					simulationService.setActiveElement(element);
+					appService.setActiveElement(element);
 				});
 			}
 		});
