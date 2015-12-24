@@ -1,5 +1,5 @@
 import {Component} from "angular2/angular2";
-import {CsmpUpgradeBlock} from "../../directives/csmp-upgrade-block";
+import {CsmpUpgradeElement} from "../../directives/csmp-upgrade-element";
 import {SimulationService, ISimulationConfig} from "../../core/services/SimulationService";
 import {IntegrationMethod} from "../../csmp/IntegrationMethod";
 import {AppService} from "../../core/services/AppService";
@@ -7,36 +7,34 @@ import {AppService} from "../../core/services/AppService";
 @Component({
 	selector: "csmp-menu",
 	templateUrl: "components/csmp-menu/csmp-menu.template.html",
-	directives: [CsmpUpgradeBlock]
+	directives: [CsmpUpgradeElement]
 })
 export class CsmpMenu {
 
 	private appService:AppService = null;
-	private simulationService:SimulationService = null;
 	public simulationConfig:ISimulationConfig = null;
 	public methods:IntegrationMethod[];
 
 	constructor(appService:AppService, simulationService:SimulationService) {
 		this.appService = appService;
-		this.simulationService = simulationService;
 		this.simulationConfig = simulationService.simulationConfig;
 		this.methods = simulationService.getIntegrationMethods();
 	}
 
 	newSimulation() {
-		this.simulationService.reset();
+		this.appService.reset();
 	}
 
 	openSimulation() {
-		this.simulationService.open();
+		this.appService.open();
 	}
 
 	saveSimulation() {
-		this.simulationService.save();
+		this.appService.save();
 	}
 
 	startSimulation() {
-		this.simulationService.run();
+		this.appService.run();
 	}
 
 	rotateBlock(direction:string) {
