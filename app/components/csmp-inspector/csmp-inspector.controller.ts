@@ -1,4 +1,4 @@
-import {Component} from "angular2/angular2";
+import {Component, DoCheck} from "angular2/angular2";
 import {Element} from "../../csmp/Element";
 import {SimulationService} from "../../core/services/SimulationService";
 
@@ -6,22 +6,23 @@ import {SimulationService} from "../../core/services/SimulationService";
 	selector: "csmp-inspector",
 	templateUrl: "components/csmp-inspector/csmp-inspector.template.html"
 })
-export class CsmpInspector {
+export class CsmpInspector implements DoCheck {
 
 	private simulationService:SimulationService = null;
 	public elements:Element[] = [];
+	public activeElement:Element = null;
 
 	constructor(simulationService:SimulationService) {
 		this.simulationService = simulationService;
 		this.elements = simulationService.getElements();
 	}
-	
-	getActiveElement(): Element {
-		return this.simulationService.activeElement;
+
+	setActiveElement(element:Element):void {
+		this.simulationService.setActiveElement(element);
 	}
-	
-	setActiveElement(element: Element): void {
-		this.simulationService.activeElement = element;
+
+	doCheck() {
+		this.activeElement = this.simulationService.activeElement;
 	}
 
 }
