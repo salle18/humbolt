@@ -97,6 +97,11 @@ export abstract class Element {
 	};
 
 	/**
+	 * Da li je element trenutno aktivan.
+	 */
+	public active:boolean = false;
+
+	/**
 	 * Jedinstveni ključ elementa u simulaciji. Koristi se kao id DOM elementa.
 	 */
 	public key:string = "";
