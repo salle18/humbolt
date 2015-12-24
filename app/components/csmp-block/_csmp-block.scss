@@ -1,10 +1,10 @@
-csmp-element {
+csmp-block {
   display: block;
   position: absolute;
   &.active {
 	outline: double 4px $primary-dark;
   }
-  .csmp-element-content {
+  .csmp-block-content {
 	font-size: 2em;
 	height: 64px;
 	line-height: 64px;

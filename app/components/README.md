@@ -12,7 +12,7 @@ This folder should contain components including everything they're made of; for 
 
 # Design approach
 The idea being to isolate components as much as possible so that removing one can be done in a clean manner without worrying (too much) about side-effects.
-Think of components as custom elements that enclose specific semantics, styling, and behaviour.
+Think of components as custom blocks that enclose specific semantics, styling, and behaviour.
 
 A component should solve one problem and solve it well.
 

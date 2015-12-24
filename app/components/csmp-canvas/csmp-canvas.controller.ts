@@ -1,39 +1,39 @@
 import {Component, ElementRef, NgZone} from "angular2/angular2";
-import {Element} from "../../csmp/Element";
-import * as ElementDefinitions from "../../csmp/ElementDefinitions";
+import {Block} from "../../csmp/Block";
+import * as BlockDefinitions from "../../csmp/BlockDefinitions";
 import {SimulationService} from "../../core/services/SimulationService";
-import {CsmpElement} from "../../components/csmp-element/csmp-element.controller";
+import {CsmpBlock} from "../../components/csmp-block/csmp-block.controller";
 import "jquery-ui/ui/droppable";
 import {CsmpDraggable} from "../../directives/csmp-draggable";
 import {CsmpEndpoints} from "../../directives/csmp-endpoints";
-import {CsmpInteractiveElement} from "../../directives/csmp-interactive-element";
+import {CsmpInteractiveBlock} from "../../directives/csmp-interactive-block";
 import {AppService} from "../../core/services/AppService";
 
 
 @Component({
 	selector: "csmp-canvas",
 	templateUrl: "components/csmp-canvas/csmp-canvas.template.html",
-	directives: [CsmpElement, CsmpDraggable, CsmpEndpoints, CsmpInteractiveElement]
+	directives: [CsmpBlock, CsmpDraggable, CsmpEndpoints, CsmpInteractiveBlock]
 })
 export class CsmpCanvas {
 
-	private elements:Element[];
+	private blocks:Block[];
 	private zone:NgZone;
 
-	constructor(elementRef:ElementRef, zone:NgZone, appService:AppService, simulationService:SimulationService) {
+	constructor(blockRef:ElementRef, zone:NgZone, appService:AppService, simulationService:SimulationService) {
 
-		this.elements = simulationService.getElements();
+		this.blocks = simulationService.getBlocks();
 		this.zone = zone;
 
-		jQuery(elementRef.nativeElement).droppable({
-			accept: ":not(.csmp-canvas-element)",
+		jQuery(blockRef.nativeBlock).droppable({
+			accept: ":not(.csmp-canvas-block)",
 			drop: (event, ui) => {
 				let className = ui.helper.attr("classname");
-				let element:Element = new ElementDefinitions[className];
-				element.position = ui.helper.position();
+				let block:Block = new BlockDefinitions[className];
+				block.position = ui.helper.position();
 				zone.run(() => {
-					simulationService.addElement(element);
-					appService.setActiveElement(element);
+					simulationService.addBlock(block);
+					appService.setActiveBlock(block);
 				});
 			}
 		});

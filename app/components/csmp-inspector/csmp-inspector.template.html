@@ -1,47 +1,47 @@
-<div *ng-if="elements.length">
+<div *ng-if="blocks.length">
 	<h3 class="title">Blokovi</h3>
 	<table class=" mdl-data-table csmp-inspector-table">
-		<tr *ng-for="#element of elements" [class.active]="element===activeElement" (click)="setActiveElement(element)">
+		<tr *ng-for="#block of blocks" [class.active]="block===activeBlock" (click)="setActiveBlock(block)">
 			<td class="mdl-data-table__cell--non-numeric">
-				{{element.getIndexDescription()}}
+				{{block.getIndexDescription()}}
 			</td>
 		</tr>
 	</table>
 </div>
-<div *ng-if="activeElement">
-	<h3 class="title">{{activeElement?.getIndexDescription()}}</h3>
+<div *ng-if="activeBlock">
+	<h3 class="title">{{activeBlock?.getIndexDescription()}}</h3>
 
-	<div *ng-if="activeElement?.params.length">
+	<div *ng-if="activeBlock?.params.length">
 		<h3>Parametri</h3>
 		<table>
-			<tr *ng-for="#param of activeElement.params">
+			<tr *ng-for="#param of activeBlock.params">
 				<td>Param</td>
 				<td><input type="number" step="any"></td>
 			</tr>
 		</table>
 	</div>
-	<div *ng-if="activeElement?.stringParams.length">
+	<div *ng-if="activeBlock?.stringParams.length">
 		<h3>Tekstualni parametri</h3>
 		<table>
-			<tr *ng-for="#stringParam of activeElement.stringParams">
+			<tr *ng-for="#stringParam of activeBlock.stringParams">
 				<td>Param</td>
 				<td><input type="number" step="any"></td>
 			</tr>
 		</table>
 	</div>
-	<div *ng-if="activeElement?.inputs.length">
+	<div *ng-if="activeBlock?.inputs.length">
 		<h3>Ulazi</h3>
 		<table>
-			<tr *ng-for="#input of activeElement.inputs">
+			<tr *ng-for="#input of activeBlock.inputs">
 				<td>Ulaz</td>
 				<td></td>
 			</tr>
 		</table>
 	</div>
-	<div *ng-if="activeElement?.outputs.length">
+	<div *ng-if="activeBlock?.outputs.length">
 		<h3>Izlazi</h3>
 		<table>
-			<tr *ng-for="#output of activeElement.outputs">
+			<tr *ng-for="#output of activeBlock.outputs">
 				<td>Izlaz</td>
 				<td></td>
 			</tr>

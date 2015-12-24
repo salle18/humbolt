@@ -1,5 +1,5 @@
 import {Component} from "angular2/angular2";
-import {CsmpUpgradeElement} from "../../directives/csmp-upgrade-element";
+import {CsmpUpgradeBlock} from "../../directives/csmp-upgrade-block";
 import {SimulationService, ISimulationConfig} from "../../core/services/SimulationService";
 import {IntegrationMethod} from "../../csmp/IntegrationMethod";
 import {AppService} from "../../core/services/AppService";
@@ -7,7 +7,7 @@ import {AppService} from "../../core/services/AppService";
 @Component({
 	selector: "csmp-menu",
 	templateUrl: "components/csmp-menu/csmp-menu.template.html",
-	directives: [CsmpUpgradeElement]
+	directives: [CsmpUpgradeBlock]
 })
 export class CsmpMenu {
 
@@ -39,11 +39,11 @@ export class CsmpMenu {
 		this.simulationService.run();
 	}
 
-	rotateElement(direction:string) {
-		this.appService.rotateActiveElement(direction);
+	rotateBlock(direction:string) {
+		this.appService.rotateActiveBlock(direction);
 	}
 
-	removeElement() {
-		this.appService.removeActiveElement();
+	removeBlock() {
+		this.appService.removeActiveBlock();
 	}
 }
