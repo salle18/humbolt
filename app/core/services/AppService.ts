@@ -46,11 +46,11 @@ export class AppService {
 	}
 
 	open():void {
-
+		console.log("OPEN");
 	}
 
 	save():void {
-
+		console.log("SAVE");
 	}
 
 	run():void {
