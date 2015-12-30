@@ -1,4 +1,4 @@
-import {Directive, ElementRef} from "angular2/angular2";
+import {Directive, ElementRef, NgZone} from "angular2/angular2";
 import "jquery-ui/ui/draggable";
 
 
@@ -7,13 +7,14 @@ import "jquery-ui/ui/draggable";
 })
 export class CsmpCloneBlock {
 
-	constructor(elementRef:ElementRef) {
-
-		jQuery(elementRef.nativeElement).draggable({
-			revert: "invalid",
-			helper: "clone",
-			appendTo: "csmp-canvas",
-			containment: "app"
+	constructor(elementRef:ElementRef, zone:NgZone) {
+		zone.runOutsideAngular(() => {
+			jQuery(elementRef.nativeElement).draggable({
+				revert: "invalid",
+				helper: "clone",
+				appendTo: "csmp-canvas",
+				containment: "app"
+			});
 		});
 	}
 }
