@@ -45,15 +45,18 @@ export class PlumbService {
 	bindEvents():void {
 
 		/**
-		 * connectionMoved ne obezbeđuje parametre stare konekcije zato ovde pamtimo stari indeks.
+		 * connectionMoved ne obezbeđuje parametre stare konekcije zato ovde pamtimo stari index.
 		 */
 		let oldIndex = 0;
 
-		/**
-		 * Sprečavamo da se block veže za samog sebe.
-		 */
 		this.instance.bind("beforeDrop", (info) => {
+			/**
+			 * Pamtimo stari parametar index.
+			 */
 			oldIndex = info.connection.getParameter("index");
+			/**
+			 * Sprečavamo da se block veže za samog sebe.
+			 */
 			return info.sourceId !== info.targetId;
 		});
 
