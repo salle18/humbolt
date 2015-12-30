@@ -1,6 +1,6 @@
 <div *ng-if="blocks.length">
 	<h3 class="title">Blokovi</h3>
-	<table class=" mdl-data-table csmp-inspector-table">
+	<table class="mdl-data-table csmp-inspector-table">
 		<tr *ng-for="#block of blocks" [class.active]="block===activeBlock" (click)="setActiveBlock(block)">
 			<td class="mdl-data-table__cell--non-numeric">
 				{{block.getIndexDescription()}}
@@ -13,16 +13,16 @@
 
 	<div *ng-if="activeBlock?.params.length">
 		<h3>Parametri</h3>
-		<table>
+		<table class="mdl-data-table csmp-inspector-table">
 			<tr *ng-for="#param of activeBlock.params; #i=index">
-				<td>Param {{i}}</td>
+				<td>Param {{i + 1}}</td>
 				<td><input type="number" step="any" [(ng-model)]="activeBlock.params[i]"></td>
 			</tr>
 		</table>
 	</div>
 	<div *ng-if="activeBlock?.stringParams.length">
 		<h3>Tekstualni parametri</h3>
-		<table>
+		<table class="mdl-data-table csmp-inspector-table">
 			<tr *ng-for="#stringParam of activeBlock.stringParams; #i=index">
 				<td>Param {{i + 1}}</td>
 				<td><input type="number" step="any" [(ng-model)]="activeBlock.stringParams[i]"></td>
@@ -31,19 +31,19 @@
 	</div>
 	<div *ng-if="activeBlock?.inputs.length">
 		<h3>Ulazi</h3>
-		<table>
+		<table class="mdl-data-table csmp-inspector-table">
 			<tr *ng-for="#input of activeBlock.inputs; #i=index">
 				<td>Ulaz {{i + 1}}</td>
-				<td></td>
+				<td>{{input.getIndexDescription('nema ulaz')}}</td>
 			</tr>
 		</table>
 	</div>
 	<div *ng-if="activeBlock?.outputs.length">
 		<h3>Izlazi</h3>
-		<table>
+		<table class="mdl-data-table csmp-inspector-table">
 			<tr *ng-for="#output of activeBlock.outputs; #i=index">
 				<td>Izlaz {{i + 1}}</td>
-				<td></td>
+				<td>{{output.block.getIndexDescription()}}</td>
 			</tr>
 		</table>
 	</div>

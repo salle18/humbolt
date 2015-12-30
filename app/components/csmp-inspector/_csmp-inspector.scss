@@ -10,7 +10,7 @@ csmp-inspector {
   }
   table.csmp-inspector-table {
 	width: 100%;
-  	tr {
+	tr {
 	  cursor: pointer;
 	  height: 16px;
 	  &.active {
@@ -20,6 +20,13 @@ csmp-inspector {
 	  td {
 		padding-top: 0;
 		height: 16px;
+		text-align: left;
+		&:first-of-type {
+		  padding-left: 8px;
+		}
+		input {
+		  width: 100%;
+		}
 	  }
 	}
   }
