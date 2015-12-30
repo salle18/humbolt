@@ -15,6 +15,7 @@ import {RouteConfig, Route, RouterOutlet, RouterLink, Router, LocationStrategy, 
 
 // app components
 import {Home} from "../pages/home/home";
+import {Graph} from "../pages/graph/graph";
 
 // app services
 import {appServicesInjectables} from "./services/services";
@@ -25,7 +26,8 @@ import {appServicesInjectables} from "./services/services";
 	directives: [CORE_DIRECTIVES, RouterOutlet, RouterLink]
 })
 @RouteConfig([
-	{path: "/", component: Home, as: "Home", data: undefined} // the as serves as alias for links, etc
+	{path: "/", component: Home, as: "Home", data: undefined}, // the as serves as alias for links, etc
+	{path: "/graph", component: Graph, as: "Graph", data: undefined}
 	//new Route({path: "/Home", component: Home, as: "Home", data: undefined}) // same but written differently
 ])
 class App {
