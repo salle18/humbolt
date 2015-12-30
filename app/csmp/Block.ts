@@ -216,10 +216,14 @@ export abstract class Block {
 	}
 
 	/**
+	 * @param descrption Opis ukoliko ne postoji simulacija ili ne postoji opis bloka.
 	 * @return Opis blocka sa rednim brojem blocka u simulaciji.
 	 */
-	getIndexDescription():string {
-		return (this.simulation.getIndex(this) + 1) + ". " + this.description;
+	getIndexDescription(description:string = ""):string {
+		if (this.simulation && this.description) {
+			return (this.simulation.getIndex(this) + 1) + ". " + this.description;
+		}
+		return description;
 	}
 
 	/**
