@@ -48,8 +48,7 @@ export class CsmpEndpoints implements OnInit {
 
 	/**
 	 * Poziva se prilikom inicijalizacije direktive.
-	 * Dodavanje endpointa mora da se izvrši izvan angular konteksta inače se angular prikači na sve događaje,
-	 * mousemove, mousedown itd. koje dodaje jsPlumb i svaki put poziva detect change.
+	 * Obavezno izvan angular konteksta jer nema izmene interfejsa.
 	 */
 	onInit() {
 		this.zone.runOutsideAngular(() => {
