@@ -14,18 +14,20 @@
 	<div *ng-if="activeBlock?.params.length">
 		<h3>Parametri</h3>
 		<table class="mdl-data-table csmp-inspector-table">
-			<tr *ng-for="#param of activeBlock.params; #i=index">
+			<tr *ng-for="#param of params; #i=index">
 				<td>Param {{i + 1}}</td>
-				<td><input type="number" step="any" [(ng-model)]="activeBlock.params[i]"></td>
+				<td><input type="number" step="any" [value]="param.value"
+						   (change)="setActiveBlockParam(i, $event.target.value)"></td>
 			</tr>
 		</table>
 	</div>
 	<div *ng-if="activeBlock?.stringParams.length">
 		<h3>Tekstualni parametri</h3>
 		<table class="mdl-data-table csmp-inspector-table">
-			<tr *ng-for="#stringParam of activeBlock.stringParams; #i=index">
+			<tr *ng-for="#stringParam of stringParams; #i=index">
 				<td>Param {{i + 1}}</td>
-				<td><input type="number" step="any" [(ng-model)]="activeBlock.stringParams[i]"></td>
+				<td><input type="number" step="any" [value]="stringParam.value"
+						   (change)="setActiveBlockStringParam(i, $event.target.value)"></td>
 			</tr>
 		</table>
 	</div>
