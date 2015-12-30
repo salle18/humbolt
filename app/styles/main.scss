@@ -24,8 +24,10 @@
 @import "../components/csmp-canvas/csmp-canvas";
 @import "../components/csmp-menu/csmp-menu";
 @import "../components/csmp-inspector/csmp-inspector";
+@import "../components/csmp-graph/csmp-graph";
 
 // Pages
 @import "../pages/home/_home";
+@import "../pages/graph/graph";
 // Tests
 @import "tests/tests";
