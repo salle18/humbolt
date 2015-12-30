@@ -1,4 +1,4 @@
-import {Injectable} from "angular2/angular2";
+import {Injectable, NgZone} from "angular2/angular2";
 import "sporritt/jsPlumb";
 import {SimulationService} from "./SimulationService";
 import {Block, EmptyBlock} from "../../csmp/Block";
@@ -10,9 +10,11 @@ export class PlumbService {
 
 	private instance:JsPlumbInstance = null;
 	private simulationService:SimulationService = null;
+	private zone:NgZone;
 
-	constructor(simulationService:SimulationService) {
+	constructor(simulationService:SimulationService, zone:NgZone) {
 		this.simulationService = simulationService;
+		this.zone = zone;
 		jsPlumb.ready(() => {
 			this.createInstance();
 			this.bindEvents();
@@ -43,34 +45,45 @@ export class PlumbService {
 	bindEvents():void {
 
 		/**
+		 * connectionMoved ne obezbeđuje parametre stare konekcije zato ovde pamtimo stari indeks.
+		 */
+		let oldIndex = 0;
+
+		/**
 		 * Sprečavamo da se block veže za samog sebe.
 		 */
 		this.instance.bind("beforeDrop", (info) => {
+			oldIndex = info.connection.getParameter("index");
 			return info.sourceId !== info.targetId;
 		});
 
 		this.instance.bind("connection", (info) => {
 			let sourceBlock:Block = this.simulationService.getBlock(info.sourceId);
 			let targetBlock:Block = this.simulationService.getBlock(info.targetId);
-			let targetIndex = info.connection.getParameter("inputIndex");
-			targetBlock.inputs[targetIndex] = sourceBlock;
-			sourceBlock.addOutput(targetIndex, targetBlock);
+			let index = info.connection.getParameter("index");
+			this.zone.run(() => {
+				targetBlock.inputs[index] = sourceBlock;
+				sourceBlock.addOutput(index, targetBlock);
+			});
 		});
 
 		this.instance.bind("connectionDetached", (info) => {
 			let sourceBlock:Block = this.simulationService.getBlock(info.sourceId);
 			let targetBlock:Block = this.simulationService.getBlock(info.targetId);
-			let targetIndex = info.connection.getParameter("inputIndex");
-			targetBlock.inputs[targetIndex] = new EmptyBlock();
-			sourceBlock.removeOutput(targetIndex, targetBlock);
+			let index = info.connection.getParameter("index");
+			this.zone.run(() => {
+				targetBlock.inputs[index] = new EmptyBlock();
+				sourceBlock.removeOutput(index, targetBlock);
+			});
 		});
 
 		this.instance.bind("connectionMoved", (info) => {
 			let sourceBlock:Block = this.simulationService.getBlock(info.originalSourceId);
 			let targetBlock:Block = this.simulationService.getBlock(info.originalTargetId);
-			let targetIndex = info.connection.getParameter("inputIndex");
-			targetBlock.inputs[targetIndex] = new EmptyBlock();
-			sourceBlock.removeOutput(targetIndex, targetBlock);
+			this.zone.run(() => {
+				targetBlock.inputs[oldIndex] = new EmptyBlock();
+				sourceBlock.removeOutput(oldIndex, targetBlock);
+			});
 		});
 	}
 
