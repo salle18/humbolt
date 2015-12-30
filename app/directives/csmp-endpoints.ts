@@ -1,4 +1,4 @@
-import {Directive, Input, OnInit} from "angular2/angular2";
+import {Directive, Input, OnInit, NgZone} from "angular2/angular2";
 import {PlumbService} from "../core/services/PlumbService";
 import {Block} from "../csmp/Block";
 
@@ -14,6 +14,7 @@ export class CsmpEndpoints implements OnInit {
 	@Input() block:Block;
 
 	private plumbService:PlumbService;
+	private zone:NgZone;
 
 	private inputAnchors:IAnchor[][] = [[{anchor: "Left"}], [{anchor: "TopLeft"}, {anchor: "BottomLeft"}], [{anchor: "TopLeft"}, {anchor: "Left"}, {anchor: "BottomLeft"}]];
 	private outputAnchor:IAnchor = {anchor: "Right"};
@@ -40,22 +41,30 @@ export class CsmpEndpoints implements OnInit {
 		}
 	};
 
-	constructor(plumbService:PlumbService) {
+	constructor(plumbService:PlumbService, zone:NgZone) {
 		this.plumbService = plumbService;
+		this.zone = zone;
 	}
 
+	/**
+	 * Poziva se prilikom inicijalizacije direktive.
+	 * Dodavanje endpointa mora da se izvrši izvan angular konteksta inače se angular prikači na sve događaje,
+	 * mousemove, mousedown itd. koje dodaje jsPlumb i svaki put poziva detect change.
+	 */
 	onInit() {
-		if (this.block.getHasOutput()) {
-			this.plumbService.getInstance().addEndpoint(this.block.key, this.outputAnchor, this.outputEndpoint);
-		}
-		let numOfInputs = this.block.inputs.length;
-		if (numOfInputs > 0) {
-			for (let i = 0; i < numOfInputs; i++) {
-				let endpoint = JSON.parse(JSON.stringify(this.inputEndpoint));
-				endpoint.parameters.index = i;
-				this.plumbService.getInstance().addEndpoint(this.block.key, this.inputAnchors[numOfInputs - 1][i], endpoint);
+		this.zone.runOutsideAngular(() => {
+			if (this.block.getHasOutput()) {
+				this.plumbService.getInstance().addEndpoint(this.block.key, this.outputAnchor, this.outputEndpoint);
 			}
-		}
+			let numOfInputs = this.block.inputs.length;
+			if (numOfInputs > 0) {
+				for (let i = 0; i < numOfInputs; i++) {
+					let endpoint = JSON.parse(JSON.stringify(this.inputEndpoint));
+					endpoint.parameters.index = i;
+					this.plumbService.getInstance().addEndpoint(this.block.key, this.inputAnchors[numOfInputs - 1][i], endpoint);
+				}
+			}
+		});
 	}
 
 }
