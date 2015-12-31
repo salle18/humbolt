@@ -180,7 +180,7 @@ export class Simulation {
 	 * @return Trenutni rezultati svih elemenata.
 	 */
 	getResults():number[] {
-		let results:number[] = [this.getTimer()];
+		let results:number[] = [this.timer];
 		let blocks = this.blocks.getValues();
 		for (let i = 0; i < blocks.length; i++) {
 			results.push(blocks[i].result);
