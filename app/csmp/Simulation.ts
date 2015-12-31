@@ -181,7 +181,7 @@ export class Simulation {
 	 */
 	getResults():number[] {
 		let results:number[] = [this.getTimer()];
-		let blocks = this.sorted;
+		let blocks = this.blocks.getValues();
 		for (let i = 0; i < blocks.length; i++) {
 			results.push(blocks[i].result);
 		}
