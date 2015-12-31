@@ -55,6 +55,10 @@ export class SimulationService {
 		this.simulation.reset();
 	}
 
+	getSimulationResults() {
+		return this.simulation.getSimulationResults();
+	}
+
 	deactivateBlocks() {
 		this.getBlocks().forEach((block:Block) => {
 			block.active = false;
