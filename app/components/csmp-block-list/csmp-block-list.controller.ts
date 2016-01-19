@@ -15,6 +15,6 @@ export class CsmpBlockList {
 	constructor(serverService:ServerService) {
 
 		this.blocks = serverService.getBlocks();
-		
+
 	}
 }
