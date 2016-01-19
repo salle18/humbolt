@@ -33,6 +33,18 @@ export interface IJSONBlock {
 }
 
 /**
+ * JSON format u kome se čuvaju meta podaci o bloku.
+ */
+export interface IMetaJSONBlock {
+	className: string;
+	numberOfParams: number;
+	maxNumberOfInputs: number;
+	hasOutput:boolean;
+	sign: string;
+	description: string;
+}
+
+/**
  * Apstraktna klasa Block. Svi csmp blocki moraju biti izvedeni iz ove klase.
  */
 export class Block {
@@ -267,6 +279,16 @@ export class Block {
 			if (this.outputs[i].block === block) {
 				this.outputs.splice(i, 1);
 			}
+		}
+	}
+
+	/**
+	 * Učitavamo sve podatke iz meta JSON objekta u blok.
+	 *
+	 */
+	loadMetaJSON(MetaJSONBlock:IMetaJSONBlock):void {
+		for (let key in MetaJSONBlock) {
+			this[key] = MetaJSONBlock[key];
 		}
 	}
 
