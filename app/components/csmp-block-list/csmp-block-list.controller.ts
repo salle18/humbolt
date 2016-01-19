@@ -1,8 +1,7 @@
 import {Component} from "angular2/angular2";
 import {Block} from "../../csmp/Block";
-import * as BlockDefinitions from "../../csmp/BlockDefinitions";
 import {CsmpCloneBlock} from "../../directives/csmp-clone-block";
-
+import {ServerService} from "../../core/services/ServerService";
 
 @Component({
 	selector: "csmp-block-list",
@@ -13,9 +12,9 @@ export class CsmpBlockList {
 
 	public blocks:Block[] = [];
 
-	constructor() {
-		for (let key in BlockDefinitions) {
-			this.blocks.push(new BlockDefinitions[key]);
-		}
+	constructor(serverService:ServerService) {
+
+		this.blocks = serverService.getBlocks();
+		
 	}
 }
