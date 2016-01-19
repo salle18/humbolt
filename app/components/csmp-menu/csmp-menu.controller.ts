@@ -1,7 +1,6 @@
 import {Component} from "angular2/angular2";
 import {CsmpUpgradeElement} from "../../directives/csmp-upgrade-element";
 import {SimulationService, ISimulationConfig} from "../../core/services/SimulationService";
-import {IntegrationMethod} from "../../csmp/IntegrationMethod";
 import {AppService} from "../../core/services/AppService";
 
 @Component({
@@ -13,7 +12,7 @@ export class CsmpMenu {
 
 	private appService:AppService = null;
 	public simulationConfig:ISimulationConfig = null;
-	public methods:IntegrationMethod[];
+	public methods:string[];
 
 	constructor(appService:AppService, simulationService:SimulationService) {
 		this.appService = appService;
