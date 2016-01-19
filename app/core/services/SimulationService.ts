@@ -44,16 +44,16 @@ export class SimulationService {
 		return methods;
 	}
 
-	run() {
-
+	run():void {
+		return;
 	}
 
 	reset():void {
 		this.simulation.reset();
 	}
 
-	getSimulationResults() {
-
+	getSimulationResults():number[][] {
+		return [];
 	}
 
 	deactivateBlocks() {
