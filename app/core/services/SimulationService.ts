@@ -1,3 +1,4 @@
+import {Injectable} from "angular2/angular2";
 import {Simulation} from "../../csmp/Simulation";
 import {Block} from "../../csmp/Block";
 
@@ -7,6 +8,7 @@ export interface ISimulationConfig {
 	duration: number;
 }
 
+@Injectable()
 export class SimulationService {
 
 	private simulation:Simulation = null;
