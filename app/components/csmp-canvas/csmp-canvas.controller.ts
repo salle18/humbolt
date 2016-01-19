@@ -1,6 +1,5 @@
 import {Component, ElementRef, NgZone} from "angular2/angular2";
 import {Block} from "../../csmp/Block";
-import * as BlockDefinitions from "../../csmp/BlockDefinitions";
 import {SimulationService} from "../../core/services/SimulationService";
 import {CsmpBlock} from "../../components/csmp-block/csmp-block.controller";
 import "jquery-ui/ui/droppable";
@@ -29,7 +28,7 @@ export class CsmpCanvas {
 			accept: ":not(.csmp-canvas-block)",
 			drop: (event, ui) => {
 				let className = ui.helper.attr("classname");
-				let block:Block = new BlockDefinitions[className];
+				let block:Block = new Block();
 				block.position = ui.helper.position();
 				zone.run(() => {
 					simulationService.addBlock(block);
