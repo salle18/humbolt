@@ -22,67 +22,71 @@ export interface IPosition {
 }
 
 /**
+ * JSON format u kome se čuvaju blocki simulacije i koji se šalje serveru.
+ */
+export interface IJSONBlock {
+	className: string;
+	position: IPosition;
+	params: number[];
+	stringParams: string[];
+	inputs: number[];
+}
+
+/**
  * Apstraktna klasa Block. Svi csmp blocki moraju biti izvedeni iz ove klase.
  */
-export abstract class Block {
+export class Block {
 
 	/**
 	 * Niz parametara blocka.
 	 */
 	public params:number[] = [];
+
 	/**
 	 * Niz elemenata koji su ulazi u trenutni block.
 	 */
 	public inputs:Block[] = [];
-	/**
-	 * Trenutni rezultat izračunavanja blocka.
-	 */
-	public result:number = 0;
+
 	/**
 	 * Niz elemenata koji su izlazi iz trenutnog blocka.
 	 */
 	public outputs:IOutput[] = [];
+
 	/**
 	 * Broj parametara blocka.
 	 */
 	protected numberOfParams:number = 0;
+
 	/**
 	 * Maksimalni broj ulaza u block.
 	 */
 	protected maxNumberOfInputs:number = 0;
+
 	/**
 	 * Pokazuje da li block ima izlaz, samo Quit block nema izlaz.
 	 */
 	protected hasOutput:boolean = true;
+
 	/**
 	 * Svaki block ima referencu na simulaciju u kojoj se nalazi. Neki blocki zahtevaju pristup spoljnoj simulaciji kako bi se izračunali.
 	 */
 	protected simulation:Simulation = null;
-	/**
-	 * Memorija blocka.
-	 */
-	protected memory:number = 0;
+
 	/**
 	 * Oznaka blocka.
 	 */
 	protected sign:string = "";
+
 	/**
 	 * Opis blocka.
 	 */
 	protected description:string = "";
 
 	/**
-	 * Da li je block sortiran u nizu sortiranih elemenata u simulaciji.
-	 */
-	public sorted:boolean = false;
-	/**
 	 * Tekstualni parametri, svi blocki prihvataju samo numeričke parametre a IoT block prihvata i tekstualne za unos adrese web servisa.
 	 */
 	public stringParams:string[] = [];
-	/**
-	 * Da li block izračunava rezulat na serveru.
-	 */
-	public remote = false;
+
 	/**
 	 * Naziv klase. Pošto će se kod minifikovati naziv klase mora da bude string.
 	 */
@@ -144,13 +148,6 @@ export abstract class Block {
 	 */
 	getParams():number[] {
 		return this.params;
-	}
-
-	/**
-	 * Izračunavanje rezulata blocka.
-	 */
-	calculateResult():void {
-		return;
 	}
 
 	/**
@@ -271,19 +268,6 @@ export abstract class Block {
 				this.outputs.splice(i, 1);
 			}
 		}
-	}
-
-	/**
-	 * @return Da li su svi ulazni blocki prazni ili sortirani u nizu sortiranih elemenata u simulaciji.
-	 */
-	hasSortedInputs():boolean {
-		let sortedInputs = true;
-		for (let i = 0; i < this.inputs.length; i++) {
-			if (!this.inputs[i].sorted) {
-				sortedInputs = false;
-			}
-		}
-		return sortedInputs;
 	}
 
 }
