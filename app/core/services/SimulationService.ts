@@ -1,7 +1,5 @@
 import {Simulation} from "../../csmp/Simulation";
 import {Block} from "../../csmp/Block";
-import * as IntegrationMethodDefinitions from "../../csmp/IntegrationMethodDefinitions";
-import {IntegrationMethod} from "../../csmp/IntegrationMethod";
 
 export interface ISimulationConfig {
 	method: string;
@@ -39,16 +37,13 @@ export class SimulationService {
 		this.simulation.removeBlock(key);
 	}
 
-	getIntegrationMethods():IntegrationMethod[] {
-		let methods:IntegrationMethod[] = [];
-		for (let key in IntegrationMethodDefinitions) {
-			methods.push(new IntegrationMethodDefinitions[key]);
-		}
+	getIntegrationMethods():string[] {
+		let methods:string[] = [];
 		return methods;
 	}
 
 	run() {
-		this.simulation.run(this.simulationConfig.method, this.simulationConfig.interval, this.simulationConfig.duration);
+
 	}
 
 	reset():void {
@@ -56,7 +51,7 @@ export class SimulationService {
 	}
 
 	getSimulationResults() {
-		return this.simulation.getSimulationResults();
+
 	}
 
 	deactivateBlocks() {
