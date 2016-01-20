@@ -81,11 +81,13 @@ export class AppService {
 	}
 
 	createBlock(className:string):Block {
-		this.metaBlocks.forEach(metaBlock => {
-			if (metaBlock.className === className) {
-				return new Block().loadMetaJSON(metaBlock);
+		for (let i = 0; i < this.metaBlocks.length; i++) {
+			if (this.metaBlocks[i].className === className) {
+				let block = new Block();
+				block.loadMetaJSON(this.metaBlocks[i]);
+				return block;
 			}
-		});
+		}
 		return null;
 	}
 
