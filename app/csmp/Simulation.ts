@@ -5,7 +5,12 @@ export interface IJSONSimulation {
 	method: string;
 	duration: number;
 	integrationInterval: number;
-	blocks: IJSONBlock[]
+	blocks: IJSONBlock[];
+}
+
+export interface IMetaJSONMethod {
+	className: string;
+	description: string;
 }
 
 export class Simulation {
