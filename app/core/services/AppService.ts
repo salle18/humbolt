@@ -85,6 +85,7 @@ export class AppService {
 			if (this.metaBlocks[i].className === className) {
 				let block = new Block();
 				block.loadMetaJSON(this.metaBlocks[i]);
+				block.initialize();
 				return block;
 			}
 		}
