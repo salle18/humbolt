@@ -11,7 +11,7 @@ export class ServerService {
 		this.http = http;
 	}
 
-	getBlocks():Observable<Response> {
+	getMetaBlocks():Observable<Response> {
 		return this.http.get("http://localhost:9000/csmp/blocks")
 			.map(res => (res as Response).json());
 	}

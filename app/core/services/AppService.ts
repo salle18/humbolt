@@ -1,8 +1,10 @@
-import {Injectable} from "angular2/angular2";
+import {Injectable, Observable} from "angular2/angular2";
 import {SimulationService} from "./SimulationService";
 import {PlumbService} from "./PlumbService";
 import {PlumbServiceUtilities} from "./PlumbServiceUtilities";
-import {Block} from "../../csmp/Block";
+import {ServerService} from "./ServerService";
+import {Block, IMetaJSONBlock} from "../../csmp/Block";
+import {Response} from "angular2/http";
 
 @Injectable()
 export class AppService {
@@ -10,13 +12,18 @@ export class AppService {
 	private simulationService:SimulationService = null;
 	private plumbService:PlumbService = null;
 	private plumbServiceUtilities:PlumbServiceUtilities = null;
+	private serverService:ServerService = null;
 	public activeBlock:Block = null;
+	private blocks:Observable<Block[]>;
+	private metaBlocks:IMetaJSONBlock[] = [];
 
 
-	constructor(simulationService:SimulationService, plumbService:PlumbService, plumbServiceUtilities:PlumbServiceUtilities) {
+	constructor(simulationService:SimulationService, plumbService:PlumbService, plumbServiceUtilities:PlumbServiceUtilities, serverService:ServerService) {
 		this.simulationService = simulationService;
 		this.plumbService = plumbService;
 		this.plumbServiceUtilities = plumbServiceUtilities;
+		this.serverService = serverService;
+		this.loadMetaBlocks();
 	}
 
 	setActiveBlock(block:Block):void {
@@ -55,6 +62,31 @@ export class AppService {
 
 	run():void {
 		this.simulationService.run();
+	}
+
+	loadMetaBlocks():void {
+		this.blocks = this.serverService.getMetaBlocks().map(metaBlocks => {
+			this.metaBlocks = (metaBlocks as IMetaJSONBlock[]);
+			let blocks = [];
+			for (let i = 0; i < (metaBlocks as IMetaJSONBlock[]).length; i++) {
+				blocks[i] = new Block();
+				blocks[i].loadMetaJSON(metaBlocks[i]);
+			}
+			return blocks;
+		});
+	}
+
+	getMetaBlocks():Observable<Block[]> {
+		return this.blocks;
+	}
+
+	createBlock(className:string):Block {
+		this.metaBlocks.forEach(metaBlock => {
+			if (metaBlock.className === className) {
+				return new Block().loadMetaJSON(metaBlock);
+			}
+		});
+		return null;
 	}
 
 }
