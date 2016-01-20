@@ -1,5 +1,5 @@
 import {Injectable} from "angular2/angular2";
-import {Simulation} from "../../csmp/Simulation";
+import {Simulation, IJSONSimulation} from "../../csmp/Simulation";
 import {Block} from "../../csmp/Block";
 
 export interface ISimulationConfig {
@@ -44,8 +44,8 @@ export class SimulationService {
 		return methods;
 	}
 
-	run():void {
-		return;
+	saveJSON():IJSONSimulation {
+		return this.simulation.saveJSON();
 	}
 
 	reset():void {
