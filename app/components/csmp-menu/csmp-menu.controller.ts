@@ -2,6 +2,7 @@ import {Component} from "angular2/angular2";
 import {CsmpUpgradeElement} from "../../directives/csmp-upgrade-element";
 import {SimulationService, ISimulationConfig} from "../../core/services/SimulationService";
 import {AppService} from "../../core/services/AppService";
+import {IMetaJSONMethod} from "../../csmp/Simulation";
 
 @Component({
 	selector: "csmp-menu",
@@ -12,12 +13,12 @@ export class CsmpMenu {
 
 	private appService:AppService = null;
 	public simulationConfig:ISimulationConfig = null;
-	public methods:string[];
+	public methods:IMetaJSONMethod[];
 
 	constructor(appService:AppService, simulationService:SimulationService) {
 		this.appService = appService;
 		this.simulationConfig = simulationService.simulationConfig;
-		this.methods = simulationService.getIntegrationMethods();
+		appService.getIntegrationMethods().subscribe(methods => this.methods = methods);
 	}
 
 	newSimulation() {
