@@ -28,7 +28,7 @@ export class CsmpCanvas {
 			accept: ":not(.csmp-canvas-block)",
 			drop: (event, ui) => {
 				let className = ui.helper.attr("classname");
-				let block:Block = new Block();
+				let block:Block = appService.createBlock(className);
 				block.position = ui.helper.position();
 				zone.run(() => {
 					simulationService.addBlock(block);
