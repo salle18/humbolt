@@ -61,7 +61,7 @@ export class AppService {
 	}
 
 	run():void {
-		this.simulationService.run();
+		this.serverService.postSimulate(JSON.stringify(this.simulationService.saveJSON()));
 	}
 
 	loadMetaBlocks():void {
