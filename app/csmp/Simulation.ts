@@ -1,12 +1,23 @@
 import {Block, IJSONBlock, IPosition} from "./Block";
 import {Dictionary} from "./helpers/Dictionary";
 
+export interface IJSONSimulation {
+	method: string;
+	duration: number;
+	integrationInterval: number;
+	blocks: IJSONBlock[]
+}
 
 export class Simulation {
 	/**
 	 * Niz elemenata u simulaciji.
 	 */
 	private blocks:Dictionary<Block>;
+
+	/**
+	 * Metoda simulacije.
+	 */
+	private method:string = "";
 
 	/**
 	 * Trajanje simulacije.
@@ -80,6 +91,22 @@ export class Simulation {
 	}
 
 	/**
+	 * @return Metoda simulacije.
+	 */
+	getMethod():string {
+		return this.method;
+	}
+
+	/**
+	 * Postavlja metodu simulacije.
+	 *
+	 * @param method Metoda simulacije.
+	 */
+	setMethod(method:string):void {
+		this.method = method;
+	}
+
+	/**
 	 * @return Trajanje simulacije.
 	 */
 	getDuration():number {
@@ -126,8 +153,8 @@ export class Simulation {
 	 *
 	 * @return Niz json objekata simulacije.
 	 */
-	saveJSON():string {
-		let result = this.blocks.getValues().map((block:Block) => {
+	saveJSON():IJSONSimulation {
+		let blocks = this.blocks.getValues().map((block:Block) => {
 			return {
 				className: block.getClassName(),
 				params: block.params,
@@ -138,7 +165,12 @@ export class Simulation {
 				})
 			};
 		});
-		return JSON.stringify(result);
+		return {
+			method: this.method,
+			integrationInterval: this.integrationInterval,
+			duration: this.duration,
+			blocks: blocks
+		};
 	}
 
 	/**
