@@ -1,5 +1,5 @@
 import {Component} from "angular2/angular2";
-import {Block, IMetaJSONBlock} from "../../csmp/Block";
+import {IMetaJSONBlock} from "../../csmp/Block";
 import {CsmpCloneBlock} from "../../directives/csmp-clone-block";
 import {AppService} from "../../core/services/AppService";
 
@@ -12,7 +12,7 @@ export class CsmpBlockList {
 
 	private appService:AppService;
 
-	public blocks:Block[] = [];
+	public blocks:IMetaJSONBlock[] = [];
 
 	constructor(appService:AppService) {
 		this.appService = appService;
@@ -20,7 +20,7 @@ export class CsmpBlockList {
 	}
 
 	getBlocks() {
-		this.appService.getBlocks().subscribe(
+		this.appService.getMetaBlocks().subscribe(
 			blocks => this.blocks = blocks
 		);
 	}

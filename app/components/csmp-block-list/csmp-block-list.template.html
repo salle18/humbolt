@@ -1,7 +1,7 @@
 <div class="mdl-cell mdl-cell--6-col list-item" *ng-for="#block of blocks">
-	<div csmp-clone-block [attr.className]="block.getClassName()"
+	<div csmp-clone-block [attr.className]="block.className"
 		 class="mdl-button mdl-button--primary mdl-button--raised">
-		{{block.getSign()}}
+		{{block.sign}}
 	</div>
-	<small>{{block.getDescription()}}</small>
+	<small>{{block.description}}</small>
 </div>
