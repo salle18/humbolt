@@ -4,6 +4,7 @@ import {PlumbService} from "./PlumbService";
 import {PlumbServiceUtilities} from "./PlumbServiceUtilities";
 import {ServerService} from "./ServerService";
 import {Block, IMetaJSONBlock} from "../../csmp/Block";
+import {IMetaJSONMethod} from "../../csmp/Simulation";
 import {Response} from "angular2/http";
 
 @Injectable()
@@ -14,8 +15,9 @@ export class AppService {
 	private plumbServiceUtilities:PlumbServiceUtilities = null;
 	private serverService:ServerService = null;
 	public activeBlock:Block = null;
-	private blocks:Observable<Block[]>;
-	private metaBlocks:IMetaJSONBlock[] = [];
+	private metaBlocks:Observable<IMetaJSONBlock[]>;
+	private resolvedMetaBlocks:IMetaJSONBlock[] = [];
+	private integrationMethods:Observable<IMetaJSONMethod[]>;
 
 
 	constructor(simulationService:SimulationService, plumbService:PlumbService, plumbServiceUtilities:PlumbServiceUtilities, serverService:ServerService) {
@@ -24,6 +26,7 @@ export class AppService {
 		this.plumbServiceUtilities = plumbServiceUtilities;
 		this.serverService = serverService;
 		this.loadMetaBlocks();
+		this.loadIntegrationMethods();
 	}
 
 	setActiveBlock(block:Block):void {
@@ -65,26 +68,29 @@ export class AppService {
 	}
 
 	loadMetaBlocks():void {
-		this.blocks = this.serverService.getMetaBlocks().map(metaBlocks => {
-			this.metaBlocks = (metaBlocks as IMetaJSONBlock[]);
-			let blocks = [];
-			for (let i = 0; i < (metaBlocks as IMetaJSONBlock[]).length; i++) {
-				blocks[i] = new Block();
-				blocks[i].loadMetaJSON(metaBlocks[i]);
-			}
-			return blocks;
-		});
+		this.metaBlocks = this.serverService.getMetaBlocks().map(res =>
+			this.resolvedMetaBlocks = (res as IMetaJSONBlock[])
+		);
 	}
 
-	getBlocks():Observable<Block[]> {
-		return this.blocks;
+	loadIntegrationMethods():void {
+		this.integrationMethods = this.serverService.getIntegrationMethods().map(res => (res as IMetaJSONMethod[]));
+	}
+
+	getMetaBlocks():Observable<IMetaJSONBlock[]> {
+		return this.metaBlocks;
+	}
+
+	getIntegrationMethods():Observable<IMetaJSONMethod[]> {
+		return this.integrationMethods;
 	}
 
 	createBlock(className:string):Block {
-		for (let i = 0; i < this.metaBlocks.length; i++) {
-			if (this.metaBlocks[i].className === className) {
+		let metaBlocks = this.resolvedMetaBlocks;
+		for (let i = 0; i < metaBlocks.length; i++) {
+			if (metaBlocks[i].className === className) {
 				let block = new Block();
-				block.loadMetaJSON(this.metaBlocks[i]);
+				block.loadMetaJSON(metaBlocks[i]);
 				block.initialize();
 				return block;
 			}

@@ -17,6 +17,11 @@ export class ServerService {
 			.map(res => (res as Response).json());
 	}
 
+	getIntegrationMethods():Observable<Response> {
+		return this.http.get("http://localhost:9000/csmp/integrationmethods")
+			.map(res => (res as Response).json());
+	}
+
 	postSimulate(data:string):Observable<Response> {
 		return this.http.post("http://localhost:9000/csmp/simulate", data)
 			.map(res => (res as Response).json());
