@@ -76,7 +76,7 @@ export class AppService {
 		});
 	}
 
-	getMetaBlocks():Observable<Block[]> {
+	getBlocks():Observable<Block[]> {
 		return this.blocks;
 	}
 
