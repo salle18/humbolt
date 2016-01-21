@@ -131,7 +131,7 @@ export class Block {
 	 */
 	public key:string = "";
 
-	protected paramDescription:string[] = ["Param 1", "Param 2", "Param3"];
+	protected paramDescription:string[] = ["Param 1", "Param 2", "Param 3"];
 
 
 	/**
