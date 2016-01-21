@@ -1,8 +1,8 @@
 import {Component} from "angular2/angular2";
 import {CsmpUpgradeElement} from "../../directives/csmp-upgrade-element";
-import {SimulationService, ISimulationConfig} from "../../core/services/SimulationService";
+import {SimulationService} from "../../core/services/SimulationService";
 import {AppService} from "../../core/services/AppService";
-import {IMetaJSONMethod} from "../../csmp/Simulation";
+import {IMetaJSONMethod, ISimulationConfig} from "../../csmp/Simulation";
 
 @Component({
 	selector: "csmp-menu",
@@ -17,7 +17,7 @@ export class CsmpMenu {
 
 	constructor(appService:AppService, simulationService:SimulationService) {
 		this.appService = appService;
-		this.simulationConfig = simulationService.simulationConfig;
+		this.simulationConfig = simulationService.getSimulationConfig();
 		appService.getIntegrationMethods().subscribe(methods => this.methods = methods);
 	}
 
@@ -34,7 +34,7 @@ export class CsmpMenu {
 	}
 
 	runSimulation() {
-		this.appService.run();
+		this.appService.run(this.simulationConfig);
 	}
 
 	rotateBlock(direction:string) {
