@@ -42,6 +42,7 @@ export interface IMetaJSONBlock {
 	hasOutput:boolean;
 	sign: string;
 	description: string;
+	info: string;
 }
 
 /**
