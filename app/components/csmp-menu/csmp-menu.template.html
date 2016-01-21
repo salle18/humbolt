@@ -33,7 +33,7 @@
 		<select [(ng-model)]="simulationConfig.method">
 			<option *ng-for="#method of methods" [value]="method.className">{{method.description}}</option>
 		</select>
-		<button type="button" class="mdl-button mdl-button--accent" (click)="startSimulation()">
+		<button type="button" class="mdl-button mdl-button--accent" (click)="runSimulation()">
 			<span class="material-icons">play_arrow</span>
 		</button>
 		<div class="mdl-layout-spacer"></div>

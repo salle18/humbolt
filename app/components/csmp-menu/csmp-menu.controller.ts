@@ -33,7 +33,7 @@ export class CsmpMenu {
 		this.appService.save();
 	}
 
-	startSimulation() {
+	runSimulation() {
 		this.appService.run();
 	}
 
