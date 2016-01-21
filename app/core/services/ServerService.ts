@@ -1,5 +1,5 @@
 import {Injectable, Observable} from "angular2/angular2";
-import {Http, Response} from "angular2/http";
+import {Http, Response, Headers} from "angular2/http";
 import {IJSONSimulation} from "../../csmp/Simulation";
 
 @Injectable()
@@ -23,7 +23,12 @@ export class ServerService {
 	}
 
 	postSimulate(JSONSimulation:IJSONSimulation):Observable<Response> {
-		return this.http.post("http://localhost:9000/csmp/simulate", JSON.stringify(JSONSimulation))
+		let headers = new Headers({
+			"Content-Type": "application/json"
+		});
+		return this.http.post("http://localhost:9000/csmp/simulate", JSON.stringify(JSONSimulation), {
+				headers: headers
+			})
 			.map(res => (res as Response).json());
 	}
 }
