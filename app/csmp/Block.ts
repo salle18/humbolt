@@ -9,6 +9,14 @@ export enum BlockType {
 }
 
 /**
+ * Interfejs za parametre i string parametre.
+ */
+export interface IParam<T> {
+	description: string;
+	value: T;
+}
+
+/**
  * Interfejs za izlazni block. Sadrži block i indeks ulaza na izlaznom blocku.
  */
 export interface IOutput {
@@ -27,8 +35,8 @@ export interface IPosition {
 export interface IJSONBlock {
 	className: string;
 	position: IPosition;
-	params: number[];
-	stringParams: string[];
+	params: IParam<number>[];
+	stringParams: IParam<string>[];
 	inputs: number[];
 }
 
@@ -53,7 +61,7 @@ export class Block {
 	/**
 	 * Niz parametara blocka.
 	 */
-	public params:number[] = [];
+	public params:IParam<number>[] = [];
 
 	/**
 	 * Niz elemenata koji su ulazi u trenutni block.
@@ -98,7 +106,7 @@ export class Block {
 	/**
 	 * Tekstualni parametri, svi blocki prihvataju samo numeričke parametre a IoT block prihvata i tekstualne za unos adrese web servisa.
 	 */
-	public stringParams:string[] = [];
+	public stringParams:IParam<string>[] = [];
 
 	/**
 	 * Naziv klase. Pošto će se kod minifikovati naziv klase mora da bude string.
@@ -123,6 +131,8 @@ export class Block {
 	 */
 	public key:string = "";
 
+	protected paramDescription:string[] = ["Param 1", "Param 2", "Param3"];
+
 
 	/**
 	 * Inicijalizuje parametre i ulaze.
@@ -132,7 +142,10 @@ export class Block {
 		 * Svi parametri se na početku postavljaju na 0.
 		 */
 		for (let i = 0; i < this.numberOfParams; i++) {
-			this.params[i] = 0;
+			this.params[i] = {
+				description: this.paramDescription[i],
+				value: 0
+			};
 		}
 		/**
 		 * Svi ulazni blocki su na početku prazni blocki sa rezulatom 0.
@@ -159,7 +172,7 @@ export class Block {
 	/**
 	 * @return Niz parametara
 	 */
-	getParams():number[] {
+	getParams():IParam<number>[] {
 		return this.params;
 	}
 
