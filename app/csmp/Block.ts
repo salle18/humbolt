@@ -35,8 +35,8 @@ export interface IPosition {
 export interface IJSONBlock {
 	className: string;
 	position: IPosition;
-	params: IParam<number>[];
-	stringParams: IParam<string>[];
+	params: number[];
+	stringParams: string[];
 	inputs: number[];
 }
 
@@ -316,5 +316,9 @@ export class Block {
 export class EmptyBlock extends Block {
 
 	public sorted:boolean = true;
+
+	getIndex():number {
+		return -1;
+	}
 
 }
