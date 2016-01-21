@@ -51,6 +51,7 @@ export interface IMetaJSONBlock {
 	sign: string;
 	description: string;
 	info: string;
+	paramDescription: string[];
 }
 
 /**
@@ -131,7 +132,7 @@ export class Block {
 	 */
 	public key:string = "";
 
-	protected paramDescription:string[] = ["Param 1", "Param 2", "Param 3"];
+	protected paramDescription:string[] = [];
 
 
 	/**
