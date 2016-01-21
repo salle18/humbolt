@@ -1,6 +1,12 @@
 import {Block, IJSONBlock, IPosition} from "./Block";
 import {Dictionary} from "./helpers/Dictionary";
 
+export interface ISimulationConfig {
+	method: string;
+	integrationInterval: number;
+	duration: number;
+}
+
 export interface IJSONSimulation {
 	method: string;
 	duration: number;
@@ -22,17 +28,17 @@ export class Simulation {
 	/**
 	 * Metoda simulacije.
 	 */
-	private method:string = "";
+	private method:string = "RungeKuttaIV";
 
 	/**
 	 * Trajanje simulacije.
 	 */
-	private duration:number = 0;
+	private duration:number = 10;
 
 	/**
 	 * Interval integracije.
 	 */
-	private integrationInterval:number = 0;
+	private integrationInterval:number = 0.01;
 
 	constructor() {
 		this.blocks = new Dictionary<Block>();
@@ -162,8 +168,8 @@ export class Simulation {
 		let blocks = this.blocks.getValues().map((block:Block) => {
 			return {
 				className: block.getClassName(),
-				params: block.params,
-				stringParams: block.stringParams,
+				params: block.params.map(param => param.value),
+				stringParams: block.stringParams.map(stringParam => stringParam.value),
 				position: block.position,
 				inputs: block.inputs.map((input:Block) => {
 					return input.getIndex();
@@ -193,8 +199,8 @@ export class Simulation {
 			let JSONBlock = JSONBlocks[i];
 			let className = JSONBlock.className;
 			let block = new Block();
-			block.params = JSONBlock.params;
-			block.stringParams = JSONBlock.stringParams;
+			JSONBlock.params.forEach((param, i) => block.params[i].value = param);
+			JSONBlock.stringParams.forEach((param, i) => block.stringParams[i].value = param);
 			block.position = JSONBlock.position;
 			let id = this.addBlock(block);
 			//todo jsplumb canvas append block
@@ -217,6 +223,20 @@ export class Simulation {
 				outputBlock.addOutput(j, block);
 				//todo jsplumb connect blocks
 			}
+		}
+	}
+
+	getSimulationConfig():ISimulationConfig {
+		return {
+			method: this.method,
+			integrationInterval: this.integrationInterval,
+			duration: this.duration
+		};
+	}
+
+	setSimulationConfig(config:ISimulationConfig):void {
+		for (let key in config) {
+			this[key] = config[key];
 		}
 	}
 
