@@ -4,7 +4,7 @@ import {PlumbService} from "./PlumbService";
 import {PlumbServiceUtilities} from "./PlumbServiceUtilities";
 import {ServerService} from "./ServerService";
 import {Block, IMetaJSONBlock} from "../../csmp/Block";
-import {IMetaJSONMethod} from "../../csmp/Simulation";
+import {IMetaJSONMethod, ISimulationConfig} from "../../csmp/Simulation";
 import {Response} from "angular2/http";
 
 @Injectable()
@@ -63,8 +63,10 @@ export class AppService {
 		console.log("SAVE");
 	}
 
-	run():void {
-		this.serverService.postSimulate(JSON.stringify(this.simulationService.saveJSON()));
+	run(config:ISimulationConfig):void {
+		this.simulationService.setSimulationConfig(config);
+		this.serverService.postSimulate(JSON.stringify(this.simulationService.saveJSON()))
+			.subscribe((results) => console.log(results));
 	}
 
 	loadMetaBlocks():void {
