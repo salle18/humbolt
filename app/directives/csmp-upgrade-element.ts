@@ -1,6 +1,6 @@
 // Material design lite global
 import "google/material-design-lite";
-import {Directive, ElementRef} from "angular2/angular2";
+import {Directive, ElementRef} from "angular2/core";
 
 declare var componentHandler:any;
 

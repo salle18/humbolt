@@ -1,4 +1,4 @@
-import {Component, ElementRef, NgZone} from "angular2/angular2";
+import {Component, ElementRef, NgZone} from "angular2/core";
 import {Block} from "../../csmp/Block";
 import {SimulationService} from "../../core/services/SimulationService";
 import {CsmpBlock} from "../../components/csmp-block/csmp-block.controller";

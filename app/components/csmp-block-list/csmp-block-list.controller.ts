@@ -1,4 +1,4 @@
-import {Component} from "angular2/angular2";
+import {Component} from "angular2/core";
 import {IMetaJSONBlock} from "../../csmp/Block";
 import {CsmpCloneBlock} from "../../directives/csmp-clone-block";
 import {AppService} from "../../core/services/AppService";

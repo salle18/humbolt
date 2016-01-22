@@ -1,4 +1,4 @@
-import {Directive, Input, OnInit, NgZone} from "angular2/angular2";
+import {Directive, Input, OnInit, NgZone} from "angular2/core";
 import {PlumbService} from "../core/services/PlumbService";
 import {Block} from "../csmp/Block";
 
@@ -50,7 +50,7 @@ export class CsmpEndpoints implements OnInit {
 	 * Poziva se prilikom inicijalizacije direktive.
 	 * Obavezno izvan angular konteksta jer nema izmene interfejsa.
 	 */
-	onInit() {
+	ngOnInit() {
 		this.zone.runOutsideAngular(() => {
 			if (this.block.getHasOutput()) {
 				this.plumbService.getInstance().addEndpoint(this.block.key, this.outputAnchor, this.outputEndpoint);

@@ -1,4 +1,4 @@
-import {Injectable, Observable} from "angular2/angular2";
+import {Injectable} from "angular2/core";
 import {SimulationService} from "./SimulationService";
 import {PlumbService} from "./PlumbService";
 import {PlumbServiceUtilities} from "./PlumbServiceUtilities";
@@ -6,6 +6,7 @@ import {ServerService} from "./ServerService";
 import {Block, IMetaJSONBlock} from "../../csmp/Block";
 import {IMetaJSONMethod, ISimulationConfig} from "../../csmp/Simulation";
 import {Response} from "angular2/http";
+import { Observable } from "rxjs/Observable";
 
 @Injectable()
 export class AppService {
@@ -66,18 +67,18 @@ export class AppService {
 	run(config:ISimulationConfig):void {
 		this.simulationService.setSimulationConfig(config);
 		let JSONSimulation = this.simulationService.saveJSON();
-		this.serverService.postSimulate(JSONSimulation)
-			.subscribe((results) => console.log(results));
+		//this.serverService.postSimulate(JSONSimulation)
+		//	.subscribe((results) => console.log(results));
 	}
 
 	loadMetaBlocks():void {
-		this.metaBlocks = this.serverService.getMetaBlocks().map(res =>
-			this.resolvedMetaBlocks = (res as IMetaJSONBlock[])
-		);
+		//this.metaBlocks = this.serverService.getMetaBlocks().map((res: IMetaJSONBlock[]) =>
+		//	this.resolvedMetaBlocks = res
+		//);
 	}
 
 	loadIntegrationMethods():void {
-		this.integrationMethods = this.serverService.getIntegrationMethods().map(res => (res as IMetaJSONMethod[]));
+		//this.integrationMethods = this.serverService.getIntegrationMethods().map((res: IMetaJSONMethod[]) => res);
 	}
 
 	getMetaBlocks():Observable<IMetaJSONBlock[]> {

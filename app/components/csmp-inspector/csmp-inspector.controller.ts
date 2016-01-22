@@ -1,4 +1,4 @@
-import {Component, DoCheck} from "angular2/angular2";
+import {Component, DoCheck} from "angular2/core";
 import {Block, IParam} from "../../csmp/Block";
 import {SimulationService} from "../../core/services/SimulationService";
 import {AppService} from "../../core/services/AppService";
@@ -26,7 +26,7 @@ export class CsmpInspector implements DoCheck {
 		this.appService.setActiveBlock(block);
 	}
 
-	doCheck() {
+	ngDoCheck() {
 		this.activeBlock = this.appService.activeBlock;
 	}
 

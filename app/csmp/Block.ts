@@ -297,6 +297,14 @@ export class Block {
 		}
 	}
 
+	loadParams(params:number[]):void {
+		params.forEach((param, i) => this.params[i].value = param);
+	}
+
+	loadStringParams(params:string[]):void {
+		params.forEach((param, i) => this.stringParams[i].value = param);
+	}
+
 	/**
 	 * Učitavamo sve podatke iz meta JSON objekta u blok.
 	 *

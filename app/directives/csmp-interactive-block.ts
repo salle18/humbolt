@@ -1,4 +1,4 @@
-import {Directive, Input} from "angular2/angular2";
+import {Directive, Input} from "angular2/core";
 import {Block} from "../csmp/Block";
 import {AppService} from "../core/services/AppService";
 import {KeyEvent} from "../core/commons/KeyEvent";

@@ -1,4 +1,4 @@
-import {Component} from "angular2/angular2";
+import {Component} from "angular2/core";
 import {CsmpUpgradeElement} from "../../directives/csmp-upgrade-element";
 import {SimulationService} from "../../core/services/SimulationService";
 import {AppService} from "../../core/services/AppService";

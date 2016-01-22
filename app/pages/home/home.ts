@@ -1,4 +1,4 @@
-import { Component } from "angular2/angular2";
+import { Component } from "angular2/core";
 import { CsmpMenu } from "../../components/csmp-menu/csmp-menu.controller";
 import { CsmpPanel } from "../../components/csmp-panel/csmp-panel.controller";
 import { CsmpBlockList } from "../../components/csmp-block-list/csmp-block-list.controller";

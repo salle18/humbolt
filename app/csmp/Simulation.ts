@@ -199,8 +199,8 @@ export class Simulation {
 			let JSONBlock = JSONBlocks[i];
 			let className = JSONBlock.className;
 			let block = new Block();
-			JSONBlock.params.forEach((param, i) => block.params[i].value = param);
-			JSONBlock.stringParams.forEach((param, i) => block.stringParams[i].value = param);
+			block.loadParams(JSONBlock.params);
+			block.loadStringParams(JSONBlock.stringParams);
 			block.position = JSONBlock.position;
 			let id = this.addBlock(block);
 			//todo jsplumb canvas append block

@@ -1,4 +1,4 @@
-import {Directive, Input, OnInit, NgZone} from "angular2/angular2";
+import {Directive, Input, OnInit, NgZone} from "angular2/core";
 import {PlumbService} from "../core/services/PlumbService";
 import {Block} from "../csmp/Block";
 
@@ -20,7 +20,7 @@ export class CsmpDraggable implements OnInit {
 	 * Poziva se prilikom inicijalizacije direktive.
 	 * Obavezno izvan angular konteksta jer nema izmene interfejsa.
 	 */
-	onInit() {
+	ngOnInit() {
 		this.zone.runOutsideAngular(() => {
 			this.plumbService.getInstance().draggable(this.block.key, {
 				containment: "parent"
