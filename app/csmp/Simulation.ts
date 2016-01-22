@@ -236,7 +236,9 @@ export class Simulation {
 
 	setSimulationConfig(config:ISimulationConfig):void {
 		for (let key in config) {
-			this[key] = config[key];
+			if (this.hasOwnProperty(key)) {
+				this[key] = config[key];
+			}
 		}
 	}
 

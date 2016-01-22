@@ -311,7 +311,9 @@ export class Block {
 	 */
 	loadMetaJSON(MetaJSONBlock:IMetaJSONBlock):void {
 		for (let key in MetaJSONBlock) {
-			this[key] = MetaJSONBlock[key];
+			if (this.hasOwnProperty(key)) {
+				this[key] = MetaJSONBlock[key];
+			}
 		}
 	}
 
