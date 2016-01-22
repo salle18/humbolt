@@ -2,12 +2,12 @@
   "version": "0.0.1",
   "name": "csmp_angular2",
   "launch_path": "/index.html",
-  "description": "Continuos Sistem Modeling Program",
+  "description": "Humbolt client.",
   "icons": {
     "128": "/images/touch/icon-128x128.png"
   },
   "developer": {
-    "name": "FON ELAB",
+    "name": "salle18",
     "url": "http://elab.rs"
   },
   "installs_allowed_from": [
@@ -19,7 +19,7 @@
   "locales": {
     "en": {
       "name": "csmp_angular2",
-      "description": "Continuos Sistem Modeling Program"
+      "description": "Humbolt client."
     }
   }
 }
