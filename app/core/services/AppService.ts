@@ -67,18 +67,17 @@ export class AppService {
 	run(config:ISimulationConfig):void {
 		this.simulationService.setSimulationConfig(config);
 		let JSONSimulation = this.simulationService.saveJSON();
-		//this.serverService.postSimulate(JSONSimulation)
-		//	.subscribe((results) => console.log(results));
+		this.serverService.postSimulate(JSONSimulation)
+			.subscribe((results) => console.log(results));
 	}
 
 	loadMetaBlocks():void {
-		//this.metaBlocks = this.serverService.getMetaBlocks().map((res: IMetaJSONBlock[]) =>
-		//	this.resolvedMetaBlocks = res
-		//);
+		this.metaBlocks = this.serverService.getMetaBlocks();
+		this.metaBlocks.subscribe(res => this.resolvedMetaBlocks = res);
 	}
 
 	loadIntegrationMethods():void {
-		//this.integrationMethods = this.serverService.getIntegrationMethods().map((res: IMetaJSONMethod[]) => res);
+		this.integrationMethods = this.serverService.getIntegrationMethods();
 	}
 
 	getMetaBlocks():Observable<IMetaJSONBlock[]> {
