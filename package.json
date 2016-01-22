@@ -18,20 +18,25 @@
     "dependencies": {
       "angular2": "npm:angular2@^2.0.0-beta.1",
       "babel-runtime": "npm:babel-runtime@^6.3.13",
+      "google/material-design-lite": "github:google/material-design-lite@^1.0.6",
+      "jquery-ui": "github:components/jqueryui@^1.11.4",
       "normalize.css": "github:necolas/normalize.css@^3.0.3",
       "rxjs": "npm:rxjs@^5.0.0-beta.0",
-      "sporritt/jsPlumb": "github:sporritt/jsPlumb@^2.0.5",
-      "jquery-ui": "github:components/jqueryui@^1.11.4",
-      "google/material-design-lite": "github:google/material-design-lite@^1.0.6"
+      "sporritt/jsPlumb": "github:sporritt/jsPlumb@^2.0.5"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^6.4.0"
+    },
+    "overrides": {
+      "github:google/material-design-lite@1.0.6": {
+        "main": "material.js"
+      }
     }
   },
-	"overrides": {
-	  "github:google/material-design-lite@1.0.6": {
-		"main": "material.js"
-	  }
+  "overrides": {
+    "github:google/material-design-lite@1.0.6": {
+      "main": "material.js"
+    }
   },
   "dependencies": {
     "babel-runtime": "6.3.x",

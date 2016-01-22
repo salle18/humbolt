@@ -11,8 +11,14 @@ System.config({
 		"babel": "npm:babel-core@6.4.0",
 		"babel-runtime": "npm:babel-runtime@6.3.19",
 		"core-js": "npm:core-js@1.2.6",
+		"google/material-design-lite": "github:google/material-design-lite@1.0.6",
+		"jquery-ui": "github:components/jqueryui@1.11.4",
 		"normalize.css": "github:necolas/normalize.css@3.0.3",
 		"rxjs": "npm:rxjs@5.0.0-beta.0",
+		"sporritt/jsPlumb": "github:sporritt/jsPlumb@2.0.5",
+		"github:components/jqueryui@1.11.4": {
+			"jquery": "npm:jquery@2.2.0"
+		},
 		"github:jspm/nodelibs-assert@0.1.0": {
 			"assert": "npm:assert@1.3.0"
 		},
