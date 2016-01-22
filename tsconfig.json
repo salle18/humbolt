@@ -1,10 +1,10 @@
 {
-  "version": "1.7.0",
+  "version": "1.7.3",
   "compilerOptions": {
 	"target": "es5",
 	"module": "commonjs",
 	"declaration": false,
-	"noImplicitAny": false,
+	"noImplicitAny": true,
 	"suppressImplicitAnyIndexErrors": true,
 	"removeComments": false,
 	"emitDecoratorMetadata": true,
@@ -14,7 +14,7 @@
 	"inlineSources": false,
 	"sourceMap": false,
 	"outDir": "./.tmp",
-	"project": "./app",
+	"rootDir": "./app",
 	"moduleResolution": "node",
 	"listFiles": false
   },
@@ -32,11 +32,10 @@
 	"placeOpenBraceOnNewLineForFunctions": false,
 	"placeOpenBraceOnNewLineForControlBlocks": false
   },
-  "filesGlob": [
-	"./app/**/*.ts"
-  ],
   "exclude": [
 	"node_modules",
-	"jspm_packages"
+	"jspm_packages",
+	"typings/browser",
+	"typings/browser.d.ts"
   ]
 }

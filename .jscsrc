@@ -1,12 +1,12 @@
 {
   "esnext": true,
   "validateAlignedFunctionParameters": {
-	"lineBreakAfterOpeningBraces": true,
-	"lineBreakBeforeClosingBraces": true
+	"lineBreakAfterOpeningBraces": false,
+	"lineBreakBeforeClosingBraces": false
   },
   "validateIndentation": {
 	"value": "\t",
-	"includeEmptyLines": true
+	"includeEmptyLines": false
   },
   "validateLineBreaks": "LF",
   "validateNewlineAfterArrayElements": {

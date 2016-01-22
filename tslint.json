@@ -1,9 +1,10 @@
 {
   "rules": {
 	"class-name": true,
+	"jsdoc-format": true,
 	"curly": true,
 	"eofline": true,
-	"forin": false,
+	"forin": true,
 	"indent": [
 	  false,
 	  "tabs"
