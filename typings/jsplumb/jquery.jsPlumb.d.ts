@@ -26,7 +26,8 @@ interface JsPlumbInstance {
 	makeTarget(el:string, options:TargetOptions): void;
 	repaintEverything(): void;
 	detachEveryConnection(): void;
-	detachAllConnections(el:string): void;
+	detach(el:string);
+	detachAllConnections(el:string, options:any): void;
 	removeAllEndpoints(el:string, recurse?:boolean): JsPlumbInstance;
 	removeAllEndpoints(el:Element, recurse?:boolean): JsPlumbInstance;
 	select(params:SelectParams): Connections;
@@ -38,6 +39,7 @@ interface JsPlumbInstance {
 	getInstance(): JsPlumbInstance;
 	getInstance(defaults:Defaults): JsPlumbInstance;
 	getInstanceIndex(): number;
+	reset():void;
 
 	SVG: string;
 	CANVAS: string;
