@@ -4,6 +4,6 @@ import {PlumbService} from "./PlumbService";
 import {PlumbServiceUtilities} from "./PlumbServiceUtilities";
 import {ServerService} from "./ServerService";
 
-export let appServicesInjectables:Array<any> = [
+export let APP_SERVICES:Array<any> = [
 	AppService, SimulationService, PlumbService, PlumbServiceUtilities, ServerService
 ];
