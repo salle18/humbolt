@@ -3,9 +3,11 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="description" content="Continuos Sistem Modeling Program">
+	<meta name="description" content="Humbolt client.">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>csmp_angular2</title>
+	<!-- Disable tap highlight on IE -->
+	<meta name="msapplication-tap-highlight" content="no">
+	<title>Humbolt client</title>
 	<!-- Add to homescreen -->
 	<link rel="manifest" href="manifest.json">
 	<!-- Fallback to homescreen for Chrome <39 on Android -->
@@ -25,7 +27,7 @@
 	<!-- Define the toolbar color (Android): http://updates.html5rocks.com/2014/11/Support-for-theme-color-in-Chrome-39-for-Android -->
 	<!-- You can customize the default -->
 	<meta name="theme-color" content="#656970">
-	<link rel="canonical" href="http://elab.rs">
+	<link rel="canonical" href="https://bitbucket.org/salle18/humbolt_client">
 
 	<!-- Stylesheets -->
 	<!-- build:css-vendor -->
@@ -45,12 +47,21 @@
 	Loading ...
 </app>
 
+
+<!-- Polyfills: must all be loaded before SystemJS -->
+
+<!-- ES6 Shim (ES2015 support) -->
+<!-- inline node_modules/es6-shim/es6-shim.js -->
+<script inline src="node_modules/es6-shim/es6-shim.js"></script>
+<!-- inline node_modules/angular2/bundles/angular2-polyfills.js -->
+<script inline src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
+
 <!-- build:js-app -->
 <!-- for production, this is all replaced by a minified bundle -->
 <script src="jspm_packages/system.src.js"></script>
 <script src="jspm.conf.js"></script>
 <script>
-	System.import('core/core.bootstrap').catch(console.error.bind(console));
+	System.import('core/boot').catch(console.error.bind(console));
 </script>
 <!-- endbuild -->
 </body>
