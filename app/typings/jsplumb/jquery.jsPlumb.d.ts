@@ -5,55 +5,43 @@
 
 /// <reference path="../jquery/jquery.d.ts"/>
 
-declare var jsPlumb:JsPlumbInstance;
+declare var jsPlumb:jsPlumbInstance;
 
-interface JsPlumbInstance {
+interface jsPlumbInstance {
 	setRenderMode(renderMode:string): string;
-	bind(event:string, callback:(info, e) => void): void;
+	bind(event:string, callback:(e) => void): void;
 	unbind(event?:string): void;
 	ready(callback:() => void): void;
 	importDefaults(defaults:Defaults): void;
 	Defaults: Defaults;
 	restoreDefaults(): void;
 	addClass(el:any, clazz:string): void;
-	addEndpoint(element:string | JQuery, anchor:any, ep:any): any;
+	addEndpoint(ep:string): any;
 	removeClass(el:any, clazz:string): void;
 	hasClass(el:any, clazz:string): void;
-	draggable(el:string, options?:DragOptions): JsPlumbInstance;
-	draggable(ids:string[], options?:DragOptions): JsPlumbInstance;
-	draggable(element:JQuery, options?:DragOptions): JsPlumbInstance;
-	draggable(elements:JQuery[], options?:DragOptions): JsPlumbInstance;
+	draggable(el:string, options?:DragOptions): jsPlumbInstance;
+	draggable(ids:string[], options?:DragOptions): jsPlumbInstance;
 	connect(connection:ConnectParams, referenceParams?:ConnectParams): Connection;
 	makeSource(el:string, options:SourceOptions): void;
 	makeTarget(el:string, options:TargetOptions): void;
 	repaintEverything(): void;
-	detach(el:JQuery|string): void;
 	detachEveryConnection(): void;
-	detachAllConnections(el:string | JQuery, params?:{ fireEvent?: boolean }): void;
-	removeAllEndpoints(el:string | JQuery, recurse?:boolean): JsPlumbInstance;
-	removeAllEndpoints(el:Element, recurse?:boolean): JsPlumbInstance;
+	detachAllConnections(el:string): void;
+	removeAllEndpoints(el:string, recurse?:boolean): jsPlumbInstance;
+	removeAllEndpoints(el:Element, recurse?:boolean): jsPlumbInstance;
 	select(params:SelectParams): Connections;
 	getConnections(options?:any, flat?:any): any[];
-	deleteEndpoint(uuid:string, doNotRepaintAfterwards?:boolean): JsPlumbInstance;
-	deleteEndpoint(endpoint:Endpoint, doNotRepaintAfterwards?:boolean): JsPlumbInstance;
-	repaint(el:string | JQuery): JsPlumbInstance;
-	reset(): void;
-	getInstance(): JsPlumbInstance;
-	getInstance(defaults:Defaults): JsPlumbInstance;
+	deleteEndpoint(uuid:string, doNotRepaintAfterwards?:boolean): jsPlumbInstance;
+	deleteEndpoint(endpoint:Endpoint, doNotRepaintAfterwards?:boolean): jsPlumbInstance;
+	repaint(el:string): jsPlumbInstance;
+	repaint(el:Element): jsPlumbInstance;
+	getInstance(): jsPlumbInstance;
+	getInstance(defaults:Defaults): jsPlumbInstance;
 	getInstanceIndex(): number;
-	setContainer(element:string | JQuery): void;
-	selectEndpoints(el:ISelectEndpoints): any;
 
 	SVG: string;
 	CANVAS: string;
 	VML: string;
-}
-
-interface ISelectEndpoints {
-	element?: string | JQuery;
-	source?: string | JQuery;
-	target?: string | JQuery;
-	scope?: string;
 }
 
 interface Defaults {
