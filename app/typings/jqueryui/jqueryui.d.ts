@@ -363,7 +363,7 @@ declare module JQueryUI {
 		title?: string;
 		width?: any; // number or string
 		zIndex?: number;
-		
+
 		open?: DialogEvent;
 		close?: DialogEvent;
 	}
@@ -1636,7 +1636,7 @@ interface JQuery {
 		(optionLiteral:string, options:JQueryUI.MenuOptions): any;
 		(optionLiteral:string, optionName:string, optionValue:any): JQuery;
 		active: boolean;
-	}
+	};
 
 	progressbar(): JQuery;
 	progressbar(methodName:"destroy"): void;

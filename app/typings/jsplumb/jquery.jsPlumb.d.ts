@@ -5,9 +5,9 @@
 
 /// <reference path="../jquery/jquery.d.ts"/>
 
-declare var jsPlumb:jsPlumbInstance;
+declare var jsPlumb:JsPlumbInstance;
 
-interface jsPlumbInstance {
+interface JsPlumbInstance {
 	setRenderMode(renderMode:string): string;
 	bind(event:string, callback:(e) => void): void;
 	unbind(event?:string): void;
@@ -19,24 +19,24 @@ interface jsPlumbInstance {
 	addEndpoint(ep:string): any;
 	removeClass(el:any, clazz:string): void;
 	hasClass(el:any, clazz:string): void;
-	draggable(el:string, options?:DragOptions): jsPlumbInstance;
-	draggable(ids:string[], options?:DragOptions): jsPlumbInstance;
+	draggable(el:string, options?:DragOptions): JsPlumbInstance;
+	draggable(ids:string[], options?:DragOptions): JsPlumbInstance;
 	connect(connection:ConnectParams, referenceParams?:ConnectParams): Connection;
 	makeSource(el:string, options:SourceOptions): void;
 	makeTarget(el:string, options:TargetOptions): void;
 	repaintEverything(): void;
 	detachEveryConnection(): void;
 	detachAllConnections(el:string): void;
-	removeAllEndpoints(el:string, recurse?:boolean): jsPlumbInstance;
-	removeAllEndpoints(el:Element, recurse?:boolean): jsPlumbInstance;
+	removeAllEndpoints(el:string, recurse?:boolean): JsPlumbInstance;
+	removeAllEndpoints(el:Element, recurse?:boolean): JsPlumbInstance;
 	select(params:SelectParams): Connections;
 	getConnections(options?:any, flat?:any): any[];
-	deleteEndpoint(uuid:string, doNotRepaintAfterwards?:boolean): jsPlumbInstance;
-	deleteEndpoint(endpoint:Endpoint, doNotRepaintAfterwards?:boolean): jsPlumbInstance;
-	repaint(el:string): jsPlumbInstance;
-	repaint(el:Element): jsPlumbInstance;
-	getInstance(): jsPlumbInstance;
-	getInstance(defaults:Defaults): jsPlumbInstance;
+	deleteEndpoint(uuid:string, doNotRepaintAfterwards?:boolean): JsPlumbInstance;
+	deleteEndpoint(endpoint:Endpoint, doNotRepaintAfterwards?:boolean): JsPlumbInstance;
+	repaint(el:string): JsPlumbInstance;
+	repaint(el:Element): JsPlumbInstance;
+	getInstance(): JsPlumbInstance;
+	getInstance(defaults:Defaults): JsPlumbInstance;
 	getInstanceIndex(): number;
 
 	SVG: string;
