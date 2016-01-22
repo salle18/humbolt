@@ -1,3 +1,5 @@
+"use strict";
+
 import { Component } from "angular2/core";
 import { CsmpMenu } from "../../components/csmp-menu/csmp-menu.controller";
 import { CsmpPanel } from "../../components/csmp-panel/csmp-panel.controller";
