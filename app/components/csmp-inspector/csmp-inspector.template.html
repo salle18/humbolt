@@ -1,47 +1,47 @@
-<div *ng-if="blocks.length">
+<div *ngIf="blocks.length">
 	<h3 class="title">Blokovi</h3>
 	<table class="mdl-data-table csmp-inspector-table">
-		<tr *ng-for="#block of blocks" [class.active]="block===activeBlock" (click)="setActiveBlock(block)">
+		<tr *ngFor="#block of blocks" [class.active]="block===activeBlock" (click)="setActiveBlock(block)">
 			<td class="mdl-data-table__cell--non-numeric">
 				{{block.getIndexDescription()}}
 			</td>
 		</tr>
 	</table>
 </div>
-<div *ng-if="activeBlock">
+<div *ngIf="activeBlock">
 	<h3 class="title">{{activeBlock?.getIndexDescription()}}</h3>
 
-	<div *ng-if="activeBlock?.params.length">
+	<div *ngIf="activeBlock?.params.length">
 		<h3>Parametri</h3>
 		<table class="mdl-data-table csmp-inspector-table">
-			<tr *ng-for="#param of activeBlock.params; #i=index">
+			<tr *ngFor="#param of activeBlock.params; #i=index">
 				<td>{{param.description}}</td>
-				<td><input type="number" step="any" [(ng-model)]="param.value"></td>
+				<td><input type="number" step="any" [(ngModel)]="param.value"></td>
 			</tr>
 		</table>
 	</div>
-	<div *ng-if="activeBlock?.stringParams.length">
+	<div *ngIf="activeBlock?.stringParams.length">
 		<h3>Tekstualni parametri</h3>
 		<table class="mdl-data-table csmp-inspector-table">
-			<tr *ng-for="#stringParam of activeBlock.stringParams; #i=index">
+			<tr *ngFor="#stringParam of activeBlock.stringParams; #i=index">
 				<td>Param {{i + 1}}</td>
-				<td><input type="number" step="any" [(ng-model)]="param.value"></td>
+				<td><input type="number" step="any" [(ngModel)]="param.value"></td>
 			</tr>
 		</table>
 	</div>
-	<div *ng-if="activeBlock?.inputs.length">
+	<div *ngIf="activeBlock?.inputs.length">
 		<h3>Ulazi</h3>
 		<table class="mdl-data-table csmp-inspector-table">
-			<tr *ng-for="#input of activeBlock.inputs; #i=index">
+			<tr *ngFor="#input of activeBlock.inputs; #i=index">
 				<td>Ulaz {{i + 1}}</td>
 				<td>{{input.getIndexDescription('nema ulaz')}}</td>
 			</tr>
 		</table>
 	</div>
-	<div *ng-if="activeBlock?.outputs.length">
+	<div *ngIf="activeBlock?.outputs.length">
 		<h3>Izlazi</h3>
 		<table class="mdl-data-table csmp-inspector-table">
-			<tr *ng-for="#output of activeBlock.outputs; #i=index">
+			<tr *ngFor="#output of activeBlock.outputs; #i=index">
 				<td>Izlaz {{i + 1}}</td>
 				<td>{{output.block.getIndexDescription()}}</td>
 			</tr>

@@ -5,11 +5,14 @@
 		</button>
 		<ul csmp-upgrade-element class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="csmp-menu-file">
 			<li class="mdl-menu__item" (click)="newSimulation()"><span class="material-icons">add</span> Nova
-				simulacija</a></li>
+				simulacija
+			</li>
 			<li class="mdl-menu__item" (click)="openSimulation()"><span class="material-icons">cloud_download</span>
-				Otvori...</a></li>
+				Otvori...
+			</li>
 			<li class="mdl-menu__item" (click)="saveSimulation()"><span class="material-icons">cloud_upload</span>
-				Sačuvaj...</a></li>
+				Sačuvaj...
+			</li>
 		</ul>
 
 		<button type="button" class="mdl-button" (click)="removeBlock()">
@@ -25,14 +28,14 @@
 		<div class="mdl-textfield">
 			<label>Interval:</label>
 			<input type="number" class="mdl-textfield__input" step="any"
-				   [(ng-model)]="simulationConfig.integrationInterval">
+				   [(ngModel)]="simulationConfig.integrationInterval">
 		</div>
 		<div class="mdl-textfield">
 			<label>Trajanje:</label>
-			<input type="number" class="mdl-textfield__input" step="any" [(ng-model)]="simulationConfig.duration">
+			<input type="number" class="mdl-textfield__input" step="any" [(ngModel)]="simulationConfig.duration">
 		</div>
-		<select [(ng-model)]="simulationConfig.method">
-			<option *ng-for="#method of methods" [value]="method.className">{{method.description}}</option>
+		<select [(ngModel)]="simulationConfig.method">
+			<option *ngFor="#method of methods" [value]="method.className">{{method.description}}</option>
 		</select>
 		<button type="button" class="mdl-button mdl-button--accent" (click)="runSimulation()">
 			<span class="material-icons">play_arrow</span>
