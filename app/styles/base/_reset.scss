@@ -91,7 +91,6 @@ button {
   color: inherit;
   transition: .3s;
 }
-
 a {
   text-decoration: none;
 }
@@ -172,12 +171,4 @@ ul {
 button:focus {
   outline: 1px dotted;
   outline: 5px auto -webkit-focus-ring-color;
-}
-
-input {
-  color: $fontColorDefault;
-}
-
-input[type="number"] {
-  text-align: right;
 }
