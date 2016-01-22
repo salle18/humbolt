@@ -23,7 +23,7 @@ export class CsmpPannable {
 		this.element = jQuery(elementRef.nativeElement);
 	}
 
-	onMouseDown(e) {
+	onMouseDown(e:MouseEvent) {
 		this.offset = this.element.offset();
 		this.mousePosition = {
 			top: e.pageY,
@@ -31,7 +31,7 @@ export class CsmpPannable {
 		};
 	}
 
-	onMouseUp(e) {
+	onMouseUp(e:MouseEvent) {
 		let newOffset = {
 			top: this.offset.top + e.pageY - this.mousePosition.top,
 			left: this.offset.left + e.pageX - this.mousePosition.left

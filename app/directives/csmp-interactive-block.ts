@@ -23,7 +23,7 @@ export class CsmpInteractiveBlock {
 		this.appService.setActiveBlock(this.block);
 	}
 
-	onKeyDown(e) {
+	onKeyDown(e:KeyboardEvent) {
 		if (e.keyCode === KeyEvent.DOM_VK_DELETE) {
 			this.appService.removeActiveBlock();
 		}
