@@ -9,7 +9,7 @@ declare var jsPlumb:JsPlumbInstance;
 
 interface JsPlumbInstance {
 	setRenderMode(renderMode:string): string;
-	bind(event:string, callback:(e) => void): void;
+	bind(event:string, callback:(e:any) => void): void;
 	unbind(event?:string): void;
 	ready(callback:() => void): void;
 	importDefaults(defaults:Defaults): void;
@@ -26,7 +26,7 @@ interface JsPlumbInstance {
 	makeTarget(el:string, options:TargetOptions): void;
 	repaintEverything(): void;
 	detachEveryConnection(): void;
-	detach(el:string);
+	detach(el:string): void;
 	detachAllConnections(el:string, options:any): void;
 	removeAllEndpoints(el:string, recurse?:boolean): JsPlumbInstance;
 	removeAllEndpoints(el:Element, recurse?:boolean): JsPlumbInstance;
@@ -40,6 +40,8 @@ interface JsPlumbInstance {
 	getInstance(defaults:Defaults): JsPlumbInstance;
 	getInstanceIndex(): number;
 	reset():void;
+	selectEndpoints(selector:any):Endpoint[];
+	addEndpoint(el:string, anchor:any, endpoint:any): void;
 
 	SVG: string;
 	CANVAS: string;
