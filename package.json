@@ -13,6 +13,12 @@
   ],
   "private": true,
   "version": "0.0.1",
+  "bugs": "https://bitbucket.org/salle18/humbolt_client/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://salle18@bitbucket.org/salle18/humbolt_client.git"
+  },
+  "license": "MIT",
   "jspm": {
     "configFile": "jspm.conf.js",
     "dependencies": {
