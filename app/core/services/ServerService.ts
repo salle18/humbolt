@@ -1,7 +1,8 @@
+import "rxjs/add/operator/map";
 import {Injectable} from "angular2/core";
 import {Http, Response, Headers} from "angular2/http";
 import {IJSONSimulation, IMetaJSONMethod} from "../../csmp/Simulation";
-import { Observable } from "rxjs/Observable";
+import {Observable} from "rxjs/Observable";
 import {IMetaJSONBlock} from "../../csmp/Block";
 
 @Injectable()
@@ -15,9 +16,8 @@ export class ServerService {
 	}
 
 	getMetaBlocks():Observable<IMetaJSONBlock[]> {
-		let t = this.http.get("http://localhost:9000/api/csmp/blocks");
-		console.log(t);
-		return t.map(res => res.json());
+		return this.http.get("http://localhost:9000/api/csmp/blocks")
+			.map(res => res.json());
 	}
 
 	getIntegrationMethods():Observable<IMetaJSONMethod[]> {
