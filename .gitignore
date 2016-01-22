@@ -7,7 +7,7 @@ dist/
 
 # Typings
 # Only project-specific typings should be included
-!typings/tsd.d.ts
+!typings/**/*.d.ts
 
 # NPM
 node_modules/
