@@ -2,7 +2,7 @@ csmp-block {
   display: block;
   position: absolute;
   &.active {
-	outline: double 4px $color-primary-dark;
+	outline: double 4px $primary-dark;
   }
   .csmp-block-content {
 	font-size: 2em;
