@@ -25,20 +25,11 @@ export class Simulation {
 	 */
 	private blocks:Dictionary<Block>;
 
-	/**
-	 * Metoda simulacije.
-	 */
-	private method:string = "RungeKuttaIV";
-
-	/**
-	 * Trajanje simulacije.
-	 */
-	private duration:number = 10;
-
-	/**
-	 * Interval integracije.
-	 */
-	private integrationInterval:number = 0.01;
+	private config:ISimulationConfig = {
+		method: "RungeKuttaIV",
+		duration: 10,
+		integrationInterval: 0.01
+	};
 
 	constructor() {
 		this.blocks = new Dictionary<Block>();
@@ -105,7 +96,7 @@ export class Simulation {
 	 * @return Metoda simulacije.
 	 */
 	getMethod():string {
-		return this.method;
+		return this.config.method;
 	}
 
 	/**
@@ -114,14 +105,14 @@ export class Simulation {
 	 * @param method Metoda simulacije.
 	 */
 	setMethod(method:string):void {
-		this.method = method;
+		this.config.method = method;
 	}
 
 	/**
 	 * @return Trajanje simulacije.
 	 */
 	getDuration():number {
-		return this.duration;
+		return this.config.duration;
 	}
 
 	/**
@@ -130,14 +121,14 @@ export class Simulation {
 	 * @param duration Trajanje simulacije.
 	 */
 	setDuration(duration:number):void {
-		this.duration = duration;
+		this.config.duration = duration;
 	}
 
 	/**
 	 * @return Interval integracije.
 	 */
 	getIntegrationInterval():number {
-		return this.integrationInterval;
+		return this.config.integrationInterval;
 	}
 
 	/**
@@ -146,7 +137,7 @@ export class Simulation {
 	 * @param integrationInterval Interval integracije.
 	 */
 	setIntegrationInterval(integrationInterval:number):void {
-		this.integrationInterval = integrationInterval;
+		this.config.integrationInterval = integrationInterval;
 	}
 
 	/**
@@ -177,9 +168,9 @@ export class Simulation {
 			};
 		});
 		return {
-			method: this.method,
-			integrationInterval: this.integrationInterval,
-			duration: this.duration,
+			method: this.config.method,
+			integrationInterval: this.config.integrationInterval,
+			duration: this.config.duration,
 			blocks: blocks
 		};
 	}
@@ -226,29 +217,28 @@ export class Simulation {
 		}
 	}
 
-	getSimulationConfig():ISimulationConfig {
-		return {
-			method: this.method,
-			integrationInterval: this.integrationInterval,
-			duration: this.duration
-		};
-	}
-
-	setSimulationConfig(config:ISimulationConfig):void {
-		for (let key in config) {
-			if (this.hasOwnProperty(key)) {
-				this[key] = config[key];
-			}
-		}
+	/**
+	 * @return Konfiguracija simulacije.
+	 */
+	getConfig():ISimulationConfig {
+		return this.config;
 	}
 
 	/**
-	 * Resetuje sve nizove i brojače.
+	 * Resetuje konfiguraciju.
+	 */
+	resetConfig():void {
+		this.config.method = "RungeKuttaIV";
+		this.config.duration = 10;
+		this.config.integrationInterval = 0.01;
+	}
+
+	/**
+	 * Resetuje blokove i konfiguraciju.
 	 */
 	reset():void {
 		this.blocks.reset();
-		this.duration = 0;
-		this.integrationInterval = 0;
+		this.resetConfig();
 	}
 
 }

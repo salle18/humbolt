@@ -45,13 +45,9 @@ export class SimulationService {
 	}
 
 	getSimulationConfig():ISimulationConfig {
-		return this.simulation.getSimulationConfig();
+		return this.simulation.getConfig();
 	}
-
-	setSimulationConfig(config:ISimulationConfig):void {
-		this.simulation.setSimulationConfig(config);
-	}
-
+	
 	deactivateBlocks() {
 		this.getBlocks().forEach((block:Block) => {
 			block.active = false;
