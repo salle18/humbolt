@@ -1,4 +1,4 @@
-import {Component, ElementRef, NgZone} from "angular2/core";
+import {Component, ElementRef, NgZone, OnInit} from "angular2/core";
 import {Block} from "../../csmp/Block";
 import {SimulationService} from "../../core/services/SimulationService";
 import {CsmpBlock} from "../../components/csmp-block/csmp-block.controller";
@@ -14,28 +14,36 @@ import {AppService} from "../../core/services/AppService";
 	templateUrl: "components/csmp-canvas/csmp-canvas.template.html",
 	directives: [CsmpBlock, CsmpDraggable, CsmpEndpoints, CsmpInteractiveBlock]
 })
-export class CsmpCanvas {
+export class CsmpCanvas implements OnInit {
 
 	private blocks:Block[];
 	private zone:NgZone;
+	private elementRef:ElementRef;
+	private appService:AppService;
+	private simulationService:SimulationService;
 
 	constructor(elementRef:ElementRef, zone:NgZone, appService:AppService, simulationService:SimulationService) {
-
+		this.appService = appService;
+		this.simulationService = simulationService;
+		this.elementRef = elementRef;
 		this.blocks = simulationService.getBlocks();
 		this.zone = zone;
+	}
 
-		jQuery(elementRef.nativeElement).droppable({
+	ngOnInit():void {
+		jQuery(this.elementRef.nativeElement).droppable({
 			accept: ":not(.csmp-canvas-block)",
 			drop: (event, ui) => {
 				let className = ui.helper.attr("classname");
-				let block:Block = appService.createBlock(className);
+				let block:Block = this.appService.createBlock(className);
 				block.position = ui.helper.position();
-				zone.run(() => {
-					simulationService.addBlock(block);
-					appService.setActiveBlock(block);
+				this.zone.run(() => {
+					this.simulationService.addBlock(block);
+					this.appService.setActiveBlock(block);
 				});
 			}
 		});
 	}
+
 
 }

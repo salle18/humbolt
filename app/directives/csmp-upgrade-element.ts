@@ -1,15 +1,21 @@
 // Material design lite global
 import "google/material-design-lite";
-import {Directive, ElementRef} from "angular2/core";
+import {Directive, ElementRef, OnInit} from "angular2/core";
 
 declare var componentHandler:any;
 
 @Directive({
 	selector: "[csmp-upgrade-element]"
 })
-export class CsmpUpgradeElement {
+export class CsmpUpgradeElement implements OnInit {
+
+	private elementRef:ElementRef;
 
 	constructor(elementRef:ElementRef) {
-		componentHandler.upgradeElement(elementRef.nativeElement);
+		this.elementRef = elementRef;
+	}
+	
+	ngOnInit():void {
+		componentHandler.upgradeElement(this.elementRef.nativeElement);
 	}
 }
