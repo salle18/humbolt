@@ -8,7 +8,7 @@ import {Component} from "angular2/core";
 import {RouteConfig, Route, RouterOutlet, RouterLink, Router} from "angular2/router";
 
 // app components
-import {Home} from "../pages/home/home";
+import {Csmp} from "../pages/csmp/csmp";
 
 // app services
 //import {appServicesInjectables} from "core/services/services";
@@ -19,7 +19,7 @@ import {Home} from "../pages/home/home";
 	directives: [RouterOutlet, RouterLink]
 })
 @RouteConfig([
-	{path: "/", component: Home, as: "Home", data: undefined} // the as serves as alias for links, etc
+	{path: "/", component: Csmp, as: "Csmp", data: undefined} // the as serves as alias for links, etc
 ])
 export class App {
 	constructor() {

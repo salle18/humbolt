@@ -13,7 +13,7 @@ import {CsmpPannable} from "../../directives/csmp-pannable";
 	templateUrl: "pages/csmp/csmp.template.html",
 	directives: [CsmpMenu, CsmpPanel, CsmpBlockList, CsmpCanvas, CsmpPannable, CsmpInspector]
 })
-export class Home {
+export class Csmp {
 
 	constructor() {
 		console.log("Home component loaded");
