@@ -1,4 +1,4 @@
-# csmp_angular2
+# Humbolt client
 
 ## About
 Humbolt client.
