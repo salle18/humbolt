@@ -10,7 +10,7 @@ import {CsmpPannable} from "../../directives/csmp-pannable";
 
 @Component({
 	selector: "page-home",
-	templateUrl: "pages/home/home.template.html",
+	templateUrl: "pages/csmp/csmp.template.html",
 	directives: [CsmpMenu, CsmpPanel, CsmpBlockList, CsmpCanvas, CsmpPannable, CsmpInspector]
 })
 export class Home {
