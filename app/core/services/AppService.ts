@@ -69,7 +69,8 @@ export class AppService {
 		let JSONSimulation = this.simulationService.saveJSON();
 		this.serverService.postSimulation(JSONSimulation)
 			.subscribe(
-				data=> console.log(data)
+				data => console.log(data),
+				error => this.messageService.error("Error loading simulation results...")
 			);
 	}
 
