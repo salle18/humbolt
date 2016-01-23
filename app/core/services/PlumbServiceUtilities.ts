@@ -36,7 +36,7 @@ export class PlumbServiceUtilities {
 		};
 
 		let endpoints = this.plumbService.getInstance().selectEndpoints({element: block.key});
-		endpoints.forEach((endpoint:any) => {
+		endpoints.each((endpoint:any) => {
 			let type = endpoint.anchor.type;
 			endpoint.setAnchor(rotations[direction][type], true);
 		});

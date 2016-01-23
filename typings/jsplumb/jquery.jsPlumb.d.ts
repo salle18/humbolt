@@ -40,7 +40,7 @@ interface JsPlumbInstance {
 	getInstance(defaults:Defaults): JsPlumbInstance;
 	getInstanceIndex(): number;
 	reset():void;
-	selectEndpoints(selector:any):Endpoint[];
+	selectEndpoints(selector:any):any;
 	addEndpoint(el:string, anchor:any, endpoint:any): void;
 
 	SVG: string;
