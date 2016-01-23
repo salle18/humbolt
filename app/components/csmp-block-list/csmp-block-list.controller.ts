@@ -1,4 +1,4 @@
-import {Component} from "angular2/core";
+import {Component, DoCheck} from "angular2/core";
 import {IMetaJSONBlock} from "../../csmp/Block";
 import {CsmpCloneBlock} from "../../directives/csmp-clone-block";
 import {AppService} from "../../core/services/AppService";
@@ -8,7 +8,7 @@ import {AppService} from "../../core/services/AppService";
 	templateUrl: "components/csmp-block-list/csmp-block-list.template.html",
 	directives: [CsmpCloneBlock]
 })
-export class CsmpBlockList {
+export class CsmpBlockList implements DoCheck {
 
 	private appService:AppService;
 
@@ -16,7 +16,12 @@ export class CsmpBlockList {
 
 	constructor(appService:AppService) {
 		this.appService = appService;
-		this.blocks = appService.getMetaBlocks();
+	}
+	
+	ngDoCheck(): void {
+		if (!this.blocks.length) {
+			this.blocks = this.appService.getMetaBlocks();
+		}
 	}
 	
 }
