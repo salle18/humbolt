@@ -47,7 +47,7 @@ export class SimulationService {
 	getSimulationConfig():ISimulationConfig {
 		return this.simulation.getConfig();
 	}
-	
+
 	deactivateBlocks() {
 		this.getBlocks().forEach((block:Block) => {
 			block.active = false;

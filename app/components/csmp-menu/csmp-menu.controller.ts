@@ -9,7 +9,7 @@ import {IMetaJSONMethod, ISimulationConfig} from "../../csmp/Simulation";
 	templateUrl: "components/csmp-menu/csmp-menu.template.html",
 	directives: [CsmpUpgradeElement]
 })
-export class CsmpMenu implements DoCheck{
+export class CsmpMenu implements DoCheck {
 
 	private appService:AppService = null;
 	public simulationConfig:ISimulationConfig = null;
@@ -43,7 +43,7 @@ export class CsmpMenu implements DoCheck{
 	removeBlock() {
 		this.appService.removeActiveBlock();
 	}
-	
+
 	ngDoCheck() {
 		if (!this.methods.length) {
 			this.methods = this.appService.getIntegrationMethods();

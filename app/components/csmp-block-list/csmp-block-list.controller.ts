@@ -17,11 +17,11 @@ export class CsmpBlockList implements DoCheck {
 	constructor(appService:AppService) {
 		this.appService = appService;
 	}
-	
-	ngDoCheck(): void {
+
+	ngDoCheck():void {
 		if (!this.blocks.length) {
 			this.blocks = this.appService.getMetaBlocks();
 		}
 	}
-	
+
 }

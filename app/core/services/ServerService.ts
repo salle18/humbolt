@@ -22,7 +22,7 @@ export class ServerService {
 	getRequestOptions():RequestOptionsArgs {
 		return {
 			headers: this.headers
-		}
+		};
 	}
 
 	getMetaBlocks():Observable<IMetaJSONBlock[]> {

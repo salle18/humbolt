@@ -14,7 +14,7 @@ export class CsmpUpgradeElement implements OnInit {
 	constructor(elementRef:ElementRef) {
 		this.elementRef = elementRef;
 	}
-	
+
 	ngOnInit():void {
 		componentHandler.upgradeElement(this.elementRef.nativeElement);
 	}
