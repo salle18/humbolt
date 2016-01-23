@@ -3,10 +3,9 @@ import {SimulationService} from "./SimulationService";
 import {PlumbService} from "./PlumbService";
 import {PlumbServiceUtilities} from "./PlumbServiceUtilities";
 import {ServerService} from "./ServerService";
+import {MessageService} from "./MessageService";
 import {Block, IMetaJSONBlock} from "../../csmp/Block";
 import {IMetaJSONMethod, ISimulationConfig} from "../../csmp/Simulation";
-import {Response} from "angular2/http";
-import { Observable } from "rxjs/Observable";
 
 @Injectable()
 export class AppService {
@@ -15,17 +14,18 @@ export class AppService {
 	private plumbService:PlumbService = null;
 	private plumbServiceUtilities:PlumbServiceUtilities = null;
 	private serverService:ServerService = null;
+	private messageService:MessageService = null;
 	public activeBlock:Block = null;
-	private metaBlocks:Observable<IMetaJSONBlock[]>;
-	private resolvedMetaBlocks:IMetaJSONBlock[] = [];
-	private integrationMethods:Observable<IMetaJSONMethod[]>;
+	private metaBlocks:IMetaJSONBlock[] = [];
+	private integrationMethods:IMetaJSONMethod[] = [];
 
 
-	constructor(simulationService:SimulationService, plumbService:PlumbService, plumbServiceUtilities:PlumbServiceUtilities, serverService:ServerService) {
+	constructor(simulationService:SimulationService, plumbService:PlumbService, plumbServiceUtilities:PlumbServiceUtilities, serverService:ServerService, messageService:MessageService) {
 		this.simulationService = simulationService;
 		this.plumbService = plumbService;
 		this.plumbServiceUtilities = plumbServiceUtilities;
 		this.serverService = serverService;
+		this.messageService = messageService;
 		this.loadMetaBlocks();
 		this.loadIntegrationMethods();
 	}
@@ -67,33 +67,39 @@ export class AppService {
 	run(config:ISimulationConfig):void {
 		this.simulationService.setSimulationConfig(config);
 		let JSONSimulation = this.simulationService.saveJSON();
-		this.serverService.postSimulate(JSONSimulation)
-			.subscribe((results) => console.log(results));
+		this.serverService.postSimulation(JSONSimulation)
+			.subscribe(
+				data=> console.log(data)
+			);
 	}
 
 	loadMetaBlocks():void {
-		this.metaBlocks = this.serverService.getMetaBlocks();
-		this.metaBlocks.subscribe(res => this.resolvedMetaBlocks = res);
+		this.serverService.getMetaBlocks().subscribe(
+			metaBlocks => this.metaBlocks.concat(metaBlocks),
+			error => this.messageService.error("Error loading simulation blocks...")
+		);
 	}
 
 	loadIntegrationMethods():void {
-		this.integrationMethods = this.serverService.getIntegrationMethods();
+		this.serverService.getIntegrationMethods().subscribe(
+			integrationMethods => this.integrationMethods.concat(integrationMethods),
+			error => this.messageService.error("Error loading integration methods...")
+		);
 	}
 
-	getMetaBlocks():Observable<IMetaJSONBlock[]> {
+	getMetaBlocks():IMetaJSONBlock[] {
 		return this.metaBlocks;
 	}
 
-	getIntegrationMethods():Observable<IMetaJSONMethod[]> {
+	getIntegrationMethods():IMetaJSONMethod[] {
 		return this.integrationMethods;
 	}
 
 	createBlock(className:string):Block {
-		let metaBlocks = this.resolvedMetaBlocks;
-		for (let i = 0; i < metaBlocks.length; i++) {
-			if (metaBlocks[i].className === className) {
+		for (let i = 0; i < this.metaBlocks.length; i++) {
+			if (this.metaBlocks[i].className === className) {
 				let block = new Block();
-				block.loadMetaJSON(metaBlocks[i]);
+				block.loadMetaJSON(this.metaBlocks[i]);
 				block.initialize();
 				return block;
 			}
