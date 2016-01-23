@@ -76,14 +76,14 @@ export class AppService {
 
 	loadMetaBlocks():void {
 		this.serverService.getMetaBlocks().subscribe(
-			metaBlocks => this.metaBlocks.concat(metaBlocks),
+			metaBlocks => this.metaBlocks = metaBlocks,
 			error => this.messageService.error("Error loading simulation blocks...")
 		);
 	}
 
 	loadIntegrationMethods():void {
 		this.serverService.getIntegrationMethods().subscribe(
-			integrationMethods => this.integrationMethods.concat(integrationMethods),
+			integrationMethods => this.integrationMethods = integrationMethods,
 			error => this.messageService.error("Error loading integration methods...")
 		);
 	}
