@@ -16,12 +16,7 @@ export class CsmpBlockList {
 
 	constructor(appService:AppService) {
 		this.appService = appService;
-		this.getBlocks();
+		this.blocks = appService.getMetaBlocks();
 	}
-
-	getBlocks() {
-		this.appService.getMetaBlocks().subscribe(
-			blocks => this.blocks = blocks
-		);
-	}
+	
 }

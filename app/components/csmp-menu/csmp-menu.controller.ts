@@ -18,7 +18,7 @@ export class CsmpMenu {
 	constructor(appService:AppService, simulationService:SimulationService) {
 		this.appService = appService;
 		this.simulationConfig = simulationService.getSimulationConfig();
-		appService.getIntegrationMethods().subscribe(methods => this.methods = methods);
+		this.methods = appService.getIntegrationMethods();
 	}
 
 	newSimulation() {
