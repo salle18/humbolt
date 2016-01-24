@@ -107,4 +107,8 @@ export class AppService {
 		return null;
 	}
 
+	logout():void {
+		console.log("Lougout user, remove token, send logout request, redirect to login page.");
+	}
+
 }
