@@ -26,7 +26,7 @@ import {Gpss} from "../pages/gpss/gpss";
 	{path: "/login", component: Login, as: "Login", data: undefined},
 	{path: "/csmp", component: Csmp, as: "Csmp", data: undefined},
 	{path: "/gpss", component: Gpss, as: "Gpss", data: undefined}
-	
+
 ])
 export class App {
 	constructor() {
