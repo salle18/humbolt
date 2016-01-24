@@ -3,7 +3,7 @@ import {Observable} from "rxjs/Observable";
 
 
 export class TokenService {
-	
+
 	private token_identfier:string = "token";
 
 	getToken():string {
