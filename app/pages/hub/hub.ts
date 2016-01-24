@@ -11,18 +11,18 @@ import {AppService} from "../../core/services/AppService";
 	directives: [CsmpUpgradeElement, RouterLink]
 })
 export class Hub {
-	
-	private appService: AppService;
-	
+
+	private appService:AppService;
+
 	public user = {
-		name: "Korisnik"	
+		name: "Korisnik"
 	};
-	
-	constructor(appService: AppService) {
+
+	constructor(appService:AppService) {
 		this.appService = appService;
 	}
-	
-	logout(): void {
+
+	logout():void {
 		this.appService.logout();
 	}
 }
