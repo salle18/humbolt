@@ -4,7 +4,7 @@ import {AuthService} from "../core/services/AuthService";
 
 
 @Directive({
-	selector: 'router-outlet'
+	selector: "logged-in-router-outlet"
 })
 export class LoggedInRouterOutlet extends RouterOutlet {
 	publicRoutes:any;
@@ -17,13 +17,13 @@ export class LoggedInRouterOutlet extends RouterOutlet {
 
 		this.authService = authService;
 		this.parentRouter = _parentRouter;
-		this.publicRoutes = ['/login'];
+		this.publicRoutes = ["/login"];
 	}
 
 	activate(instruction:ComponentInstruction) {
 		var url = this.parentRouter.lastNavigationAttempt;
 		if (!this.publicRoutes.indexOf(url) > -1 && !this.authService.isLoggedIn()) {
-			this.parentRouter.navigate(['Login']);
+			this.parentRouter.navigate(["Login"]);
 		}
 		return super.activate(instruction);
 	}
