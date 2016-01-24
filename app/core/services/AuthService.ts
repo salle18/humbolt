@@ -53,7 +53,6 @@ export class AuthService {
 
 	logout():void {
 		this.tokenService.removeToken();
-		this.http.get(this.url + "/logout", this.getRequestOptions());
 		this.router.navigate(["Login"]);
 	}
 
