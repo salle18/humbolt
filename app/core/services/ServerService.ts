@@ -9,7 +9,7 @@ import {IMetaJSONBlock} from "../../csmp/Block";
 export class ServerService {
 
 	private http:Http;
-	private url = "http://localhost:9000";
+
 	private api = "http://localhost:9000/api";
 	private headers:Headers;
 
