@@ -16,6 +16,6 @@ import {CsmpPannable} from "../../directives/csmp-pannable";
 export class Csmp {
 
 	constructor() {
-		console.log("Home component loaded");
+		console.log("Csmp component loaded");
 	}
 }

@@ -8,8 +8,10 @@ import {Component} from "angular2/core";
 import {RouteConfig, Route, RouterOutlet, RouterLink, Router} from "angular2/router";
 
 // app components
-import {Csmp} from "../pages/csmp/csmp";
+import {Hub} from "../pages/hub/hub";
 import {Login} from "../pages/login/login";
+import {Csmp} from "../pages/csmp/csmp";
+import {Gpss} from "../pages/gpss/gpss";
 
 // app services
 //import {appServicesInjectables} from "core/services/services";
@@ -20,8 +22,11 @@ import {Login} from "../pages/login/login";
 	directives: [RouterOutlet, RouterLink]
 })
 @RouteConfig([
-	{path: "/", component: Csmp, as: "Csmp", data: undefined}, // the as serves as alias for links, etc
-	{path: "/login", component: Login, as: "Login", data: undefined} // the as serves as alias for links, etc
+	{path: "/", component: Hub, as: "Hub", data: undefined},
+	{path: "/login", component: Login, as: "Login", data: undefined},
+	{path: "/csmp", component: Csmp, as: "Csmp", data: undefined},
+	{path: "/gpss", component: Gpss, as: "Gpss", data: undefined}
+	
 ])
 export class App {
 	constructor() {
