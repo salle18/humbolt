@@ -3,6 +3,7 @@ import {SimulationService} from "./SimulationService";
 import {PlumbService} from "./PlumbService";
 import {PlumbServiceUtilities} from "./PlumbServiceUtilities";
 import {ServerService} from "./ServerService";
+import {AuthService} from "./AuthService";
 import {MessageService} from "./MessageService";
 import {Block, IMetaJSONBlock} from "../../csmp/Block";
 import {IMetaJSONMethod, ISimulationConfig} from "../../csmp/Simulation";
@@ -14,17 +15,19 @@ export class AppService {
 	private plumbService:PlumbService = null;
 	private plumbServiceUtilities:PlumbServiceUtilities = null;
 	private serverService:ServerService = null;
+	private authService:AuthService = null;
 	private messageService:MessageService = null;
 	public activeBlock:Block = null;
 	private metaBlocks:IMetaJSONBlock[] = [];
 	private integrationMethods:IMetaJSONMethod[] = [];
 
 
-	constructor(simulationService:SimulationService, plumbService:PlumbService, plumbServiceUtilities:PlumbServiceUtilities, serverService:ServerService, messageService:MessageService) {
+	constructor(simulationService:SimulationService, plumbService:PlumbService, plumbServiceUtilities:PlumbServiceUtilities, serverService:ServerService, authService:AuthService, messageService:MessageService) {
 		this.simulationService = simulationService;
 		this.plumbService = plumbService;
 		this.plumbServiceUtilities = plumbServiceUtilities;
 		this.serverService = serverService;
+		this.authService = authService;
 		this.messageService = messageService;
 		this.loadMetaBlocks();
 		this.loadIntegrationMethods();
@@ -107,8 +110,15 @@ export class AppService {
 		return null;
 	}
 
+	login(name:string, password:string):void {
+		this.authService.login({
+			name: name,
+			password: password
+		});
+	}
+
 	logout():void {
-		console.log("Lougout user, remove token, send logout request, redirect to login page.");
+		this.authService.logout();
 	}
 
 }
