@@ -5,7 +5,8 @@ import {Component} from "angular2/core";
 
 // import Angular 2 Component Router
 // reference: http://blog.thoughtram.io/angular/2015/06/16/routing-in-angular-2.html
-import {RouteConfig, Route, RouterOutlet, RouterLink, Router} from "angular2/router";
+import {RouteConfig, Route, RouterLink, Router} from "angular2/router";
+import {LoggedInRouterOutlet} from "../directives/LoggedInRouterOutlet";
 
 // app components
 import {Hub} from "../pages/hub/hub";
@@ -19,7 +20,7 @@ import {Gpss} from "../pages/gpss/gpss";
 @Component({
 	selector: "app",
 	templateUrl: "core/app.template.html", //template: "<router-outlet></router-outlet>",
-	directives: [RouterOutlet, RouterLink]
+	directives: [LoggedInRouterOutlet, RouterLink]
 })
 @RouteConfig([
 	{path: "/", component: Hub, as: "Hub", data: undefined},
