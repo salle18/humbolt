@@ -1,4 +1,5 @@
 import {Component, DoCheck} from "angular2/core";
+import {RouterLink} from "angular2/router";
 import {CsmpUpgradeElement} from "../../directives/csmp-upgrade-element";
 import {SimulationService} from "../../core/services/SimulationService";
 import {AppService} from "../../core/services/AppService";
@@ -7,7 +8,7 @@ import {IMetaJSONMethod, ISimulationConfig} from "../../csmp/Simulation";
 @Component({
 	selector: "csmp-menu",
 	templateUrl: "components/csmp-menu/csmp-menu.template.html",
-	directives: [CsmpUpgradeElement]
+	directives: [CsmpUpgradeElement, RouterLink]
 })
 export class CsmpMenu implements DoCheck {
 
