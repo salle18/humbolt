@@ -1,5 +1,6 @@
 import "rxjs/add/operator/map";
 import {Injectable} from "angular2/core";
+import {Router} from "angular2/router";
 import {Http, Response, Headers, RequestOptionsArgs} from "angular2/http";
 import {Observable} from "rxjs/Observable";
 import {TokenService} from "./TokenService";
@@ -16,13 +17,15 @@ export class AuthService {
 	private http:Http;
 	private tokenService:TokenService;
 	private messageService:MessageService;
+	private router: Router;
 	private headers:Headers;
 	private url = "http://localhost:9000";
 
-	constructor(http:Http, tokenService:TokenService, messageService:MessageService) {
+	constructor(http:Http, tokenService:TokenService, messageService:MessageService, router: Router) {
 		this.http = http;
 		this.tokenService = tokenService;
 		this.messageService = messageService;
+		this.router = router;
 		this.headers = new Headers();
 		this.headers.set("Content-Type", "application/json");
 	}
@@ -39,6 +42,7 @@ export class AuthService {
 			res => {
 				if (res.success) {
 					this.tokenService.setToken(res.token);
+					this.router.navigate(["Hub"]);
 				} else {
 					this.messageService.error(res.message);
 				}
@@ -50,6 +54,7 @@ export class AuthService {
 	logout():void {
 		this.tokenService.removeToken();
 		this.http.get(this.url + "/logout", this.getRequestOptions());
+		this.router.navigate(["Login"]);
 	}
 
 
