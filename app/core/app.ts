@@ -9,6 +9,7 @@ import {RouteConfig, Route, RouterOutlet, RouterLink, Router} from "angular2/rou
 
 // app components
 import {Csmp} from "../pages/csmp/csmp";
+import {Login} from "../pages/login/login";
 
 // app services
 //import {appServicesInjectables} from "core/services/services";
@@ -19,7 +20,8 @@ import {Csmp} from "../pages/csmp/csmp";
 	directives: [RouterOutlet, RouterLink]
 })
 @RouteConfig([
-	{path: "/", component: Csmp, as: "Csmp", data: undefined} // the as serves as alias for links, etc
+	{path: "/", component: Csmp, as: "Csmp", data: undefined}, // the as serves as alias for links, etc
+	{path: "/login", component: Login, as: "Login", data: undefined} // the as serves as alias for links, etc
 ])
 export class App {
 	constructor() {
