@@ -7,6 +7,7 @@ import {AuthService} from "./AuthService";
 import {MessageService} from "./MessageService";
 import {Block, IMetaJSONBlock} from "../../csmp/Block";
 import {IMetaJSONMethod, ISimulationConfig} from "../../csmp/Simulation";
+import {ILoginData} from "./AuthService";
 
 @Injectable()
 export class AppService {
@@ -110,11 +111,8 @@ export class AppService {
 		return null;
 	}
 
-	login(name:string, password:string):void {
-		this.authService.login({
-			name: name,
-			password: password
-		});
+	login(loginData:ILoginData):void {
+		this.authService.login(loginData);
 	}
 
 	logout():void {

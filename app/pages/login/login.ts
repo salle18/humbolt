@@ -1,9 +1,9 @@
-
 "use strict";
 
 import {Component} from "angular2/core";
 import {CsmpUpgradeElement} from "../../directives/csmp-upgrade-element";
-
+import {AppService} from "../../core/services/AppService";
+import {ILoginData} from "../../core/services/AuthService";
 
 
 @Component({
@@ -13,7 +13,17 @@ import {CsmpUpgradeElement} from "../../directives/csmp-upgrade-element";
 })
 export class Login {
 
-	constructor() {
-		console.log("Login component loaded");
+	private appService:AppService;
+	private user:ILoginData = {
+		name: "",
+		password: ""
+	};
+
+	constructor(appService:AppService) {
+		this.appService = appService;
+	}
+
+	login():void {
+		this.appService.login(this.user);
 	}
 }
