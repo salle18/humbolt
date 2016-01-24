@@ -17,11 +17,11 @@ export class AuthService {
 	private http:Http;
 	private tokenService:TokenService;
 	private messageService:MessageService;
-	private router: Router;
+	private router:Router;
 	private headers:Headers;
 	private url = "http://localhost:9000";
 
-	constructor(http:Http, tokenService:TokenService, messageService:MessageService, router: Router) {
+	constructor(http:Http, tokenService:TokenService, messageService:MessageService, router:Router) {
 		this.http = http;
 		this.tokenService = tokenService;
 		this.messageService = messageService;
@@ -55,8 +55,8 @@ export class AuthService {
 		this.tokenService.removeToken();
 		this.router.navigate(["Login"]);
 	}
-	
-	isLoggedIn(): boolean {
+
+	isLoggedIn():boolean {
 		return this.tokenService.hasToken();
 	}
 

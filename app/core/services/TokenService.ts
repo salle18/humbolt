@@ -13,12 +13,12 @@ export class TokenService {
 	setToken(token:string):void {
 		localStorage.setItem(this.token_identfier, token);
 	}
-	
+
 	removeToken():void {
 		localStorage.removeItem(this.token_identfier);
 	}
-	
-	hasToken(): boolean {
+
+	hasToken():boolean {
 		return !!this.getToken();
 	}
 
