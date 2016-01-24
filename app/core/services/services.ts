@@ -5,7 +5,8 @@ import {PlumbServiceUtilities} from "./PlumbServiceUtilities";
 import {ServerService} from "./ServerService";
 import {MessageService} from "./MessageService";
 import {TokenService} from "./TokenService";
+import {AuthService} from "./AuthService";
 
 export let APP_SERVICES:Array<any> = [
-	AppService, SimulationService, PlumbService, PlumbServiceUtilities, ServerService, MessageService, TokenService
+	AppService, SimulationService, PlumbService, PlumbServiceUtilities, ServerService, MessageService, TokenService, AuthService
 ];
