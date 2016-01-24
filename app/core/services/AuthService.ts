@@ -55,6 +55,10 @@ export class AuthService {
 		this.tokenService.removeToken();
 		this.router.navigate(["Login"]);
 	}
+	
+	isLoggedIn(): boolean {
+		return this.tokenService.hasToken();
+	}
 
 
 }
