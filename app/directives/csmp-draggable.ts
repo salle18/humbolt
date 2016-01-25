@@ -22,7 +22,6 @@ export class CsmpDraggable implements OnInit {
 			jQuery(this.elementRef.nativeElement).draggable({
 				containment: "parent",
 				grid: [10, 10],
-				snap: true,
 				drag: (event:Event, ui:DraggableEventUIParams) => {
 					this.plumbService.getInstance().repaint(this.block.key, ui.position);
 				},
