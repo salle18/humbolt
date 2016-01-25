@@ -7,6 +7,7 @@ import {CsmpDraggable} from "../../directives/csmp-draggable";
 import {CsmpEndpoints} from "../../directives/csmp-endpoints";
 import {CsmpInteractiveBlock} from "../../directives/csmp-interactive-block";
 import {AppService} from "../../core/services/AppService";
+import {PlumbService} from "../../core/services/PlumbService";
 
 
 @Component({
@@ -21,16 +22,20 @@ export class CsmpCanvas implements OnInit {
 	private elementRef:ElementRef;
 	private appService:AppService;
 	private simulationService:SimulationService;
+	private plumbService:PlumbService;
 
-	constructor(elementRef:ElementRef, zone:NgZone, appService:AppService, simulationService:SimulationService) {
+	constructor(elementRef:ElementRef, zone:NgZone, appService:AppService, simulationService:SimulationService, plumbService:PlumbService) {
 		this.appService = appService;
 		this.simulationService = simulationService;
+		this.plumbService = plumbService;
 		this.elementRef = elementRef;
 		this.blocks = simulationService.getBlocks();
 		this.zone = zone;
 	}
 
 	ngOnInit():void {
+		this.plumbService.reset();
+
 		jQuery(this.elementRef.nativeElement).droppable({
 			accept: ":not(.csmp-canvas-block)",
 			drop: (event, ui) => {
