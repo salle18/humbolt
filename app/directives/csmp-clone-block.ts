@@ -7,7 +7,7 @@ import "jquery-ui/ui/draggable";
 })
 export class CsmpCloneBlock {
 
-	constructor(elementRef:ElementRef, zone:NgZone) {
+	constructor(private elementRef:ElementRef, private zone:NgZone) {
 		zone.runOutsideAngular(() => {
 			jQuery(elementRef.nativeElement).draggable({
 				revert: "invalid",

@@ -12,10 +12,7 @@ interface IAnchor {
 export class CsmpEndpoints implements OnInit {
 
 	@Input() block:Block;
-
-	private plumbService:PlumbService;
-	private zone:NgZone;
-
+	
 	private inputAnchors:IAnchor[][] = [[{anchor: "Left"}], [{anchor: "TopLeft"}, {anchor: "BottomLeft"}], [{anchor: "TopLeft"}, {anchor: "Left"}, {anchor: "BottomLeft"}]];
 	private outputAnchor:IAnchor = {anchor: "Right"};
 
@@ -42,9 +39,7 @@ export class CsmpEndpoints implements OnInit {
 		}
 	};
 
-	constructor(plumbService:PlumbService, zone:NgZone) {
-		this.plumbService = plumbService;
-		this.zone = zone;
+	constructor(private plumbService:PlumbService, private zone:NgZone) {
 	}
 
 	/**
