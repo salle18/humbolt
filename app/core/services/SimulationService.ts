@@ -54,4 +54,11 @@ export class SimulationService {
 		});
 	}
 
+	emptyOutputs():void {
+		let blocks = this.getBlocks();
+		for (let i = 0; i < blocks.length; i++) {
+			blocks[i].outputs = [];
+		}
+	}
+
 }
