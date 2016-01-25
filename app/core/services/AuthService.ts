@@ -11,6 +11,12 @@ export interface ILoginData {
 	password: string;
 }
 
+interface IResponse {
+	success:boolean;
+	token?:string;
+	message?:string;
+}
+
 @Injectable()
 export class AuthService {
 
@@ -20,7 +26,7 @@ export class AuthService {
 	}
 
 	login(loginData:ILoginData):void {
-		this.httpService.post(this.url + "/login", loginData)
+		this.httpService.post<IResponse>(this.url + "/login", loginData)
 			.subscribe(
 				res => {
 					if (res.success) {
