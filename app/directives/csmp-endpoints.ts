@@ -12,7 +12,7 @@ interface IAnchor {
 export class CsmpEndpoints implements OnInit {
 
 	@Input() block:Block;
-	
+
 	private inputAnchors:IAnchor[][] = [[{anchor: "Left"}], [{anchor: "TopLeft"}, {anchor: "BottomLeft"}], [{anchor: "TopLeft"}, {anchor: "Left"}, {anchor: "BottomLeft"}]];
 	private outputAnchor:IAnchor = {anchor: "Right"};
 

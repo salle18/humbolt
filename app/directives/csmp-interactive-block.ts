@@ -11,7 +11,7 @@ import {KeyEvent} from "../core/commons/KeyEvent";
 	}
 })
 export class CsmpInteractiveBlock {
-	
+
 	@Input() block:Block;
 
 	constructor(private appService:AppService) {
