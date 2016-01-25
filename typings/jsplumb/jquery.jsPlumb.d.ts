@@ -35,8 +35,7 @@ interface JsPlumbInstance {
 	getEndpoints(el:string): any[];
 	deleteEndpoint(uuid:string, doNotRepaintAfterwards?:boolean): JsPlumbInstance;
 	deleteEndpoint(endpoint:Endpoint, doNotRepaintAfterwards?:boolean): JsPlumbInstance;
-	repaint(el:string): JsPlumbInstance;
-	repaint(el:Element): JsPlumbInstance;
+	repaint(el:string|Element, ui:any): JsPlumbInstance;
 	getInstance(): JsPlumbInstance;
 	getInstance(defaults:Defaults): JsPlumbInstance;
 	getInstanceIndex(): number;

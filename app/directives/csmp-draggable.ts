@@ -1,19 +1,16 @@
-import {Directive, Input, OnInit, NgZone} from "angular2/core";
+import {Directive, Input, OnInit, NgZone, ElementRef} from "angular2/core";
 import {PlumbService} from "../core/services/PlumbService";
 import {Block} from "../csmp/Block";
+import DraggableEventUIParams = JQueryUI.DraggableEventUIParams;
 
 @Directive({
 	selector: "[csmp-draggable]"
 })
 export class CsmpDraggable implements OnInit {
 
-	private plumbService:PlumbService;
-	private zone:NgZone;
 	@Input() block:Block;
 
-	constructor(plumbService:PlumbService, zone:NgZone) {
-		this.plumbService = plumbService;
-		this.zone = zone;
+	constructor(private plumbService:PlumbService, private zone:NgZone, private elementRef:ElementRef) {
 	}
 
 	/**
@@ -22,8 +19,17 @@ export class CsmpDraggable implements OnInit {
 	 */
 	ngOnInit() {
 		this.zone.runOutsideAngular(() => {
-			this.plumbService.getInstance().draggable(this.block.key, {
-				containment: "parent"
+			jQuery(this.elementRef.nativeElement).draggable({
+				containment: "parent",
+				grid: [10, 10],
+				drag: (event:Event, ui:DraggableEventUIParams) => {
+					this.plumbService.getInstance().repaint(this.block.key, ui.position);
+				},
+				stop: (event:Event, ui:DraggableEventUIParams) => {
+					console.log(this.block.position);
+					this.block.position.top = ui.position.top;
+					this.block.position.left = ui.position.left;
+				}
 			});
 		});
 	}
