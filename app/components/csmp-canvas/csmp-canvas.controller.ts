@@ -19,21 +19,10 @@ import {PlumbServiceUtilities} from "../../core/services/PlumbServiceUtilities";
 export class CsmpCanvas implements OnInit, AfterViewInit {
 
 	private blocks:Block[];
-	private zone:NgZone;
-	private elementRef:ElementRef;
-	private appService:AppService;
-	private simulationService:SimulationService;
-	private plumbService:PlumbService;
-	private plumbServiceUtilities:PlumbServiceUtilities;
 
-	constructor(elementRef:ElementRef, zone:NgZone, appService:AppService, simulationService:SimulationService, plumbService:PlumbService, plumbServiceUtilities:PlumbServiceUtilities) {
-		this.appService = appService;
-		this.simulationService = simulationService;
-		this.plumbService = plumbService;
-		this.plumbServiceUtilities = plumbServiceUtilities;
-		this.elementRef = elementRef;
+	constructor(private elementRef:ElementRef, private zone:NgZone, private appService:AppService, private simulationService:SimulationService,
+				private plumbService:PlumbService, private plumbServiceUtilities:PlumbServiceUtilities) {
 		this.blocks = simulationService.getBlocks();
-		this.zone = zone;
 	}
 
 	ngOnInit():void {

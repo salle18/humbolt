@@ -12,12 +12,10 @@ import {IMetaJSONMethod, ISimulationConfig} from "../../csmp/Simulation";
 })
 export class CsmpMenu implements DoCheck {
 
-	private appService:AppService = null;
-	public simulationConfig:ISimulationConfig = null;
+	public simulationConfig:ISimulationConfig;
 	public methods:IMetaJSONMethod[] = [];
 
-	constructor(appService:AppService, simulationService:SimulationService) {
-		this.appService = appService;
+	constructor(private appService:AppService, private simulationService:SimulationService) {
 		this.simulationConfig = simulationService.getSimulationConfig();
 	}
 

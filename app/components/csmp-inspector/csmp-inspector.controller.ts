@@ -8,17 +8,13 @@ import {AppService} from "../../core/services/AppService";
 	templateUrl: "components/csmp-inspector/csmp-inspector.template.html"
 })
 export class CsmpInspector implements DoCheck {
-
-	private appService:AppService = null;
-	private simulationService:SimulationService = null;
+	
 	public blocks:Block[] = [];
 	public activeBlock:Block = null;
 	public params:IParam<number>[] = [];
 	public stringParams:IParam<string>[] = [];
 
-	constructor(appService:AppService, simulationService:SimulationService) {
-		this.appService = appService;
-		this.simulationService = simulationService;
+	constructor(private appService:AppService, private simulationService:SimulationService) {
 		this.blocks = simulationService.getBlocks();
 	}
 

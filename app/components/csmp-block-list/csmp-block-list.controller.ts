@@ -10,12 +10,9 @@ import {AppService} from "../../core/services/AppService";
 })
 export class CsmpBlockList implements DoCheck {
 
-	private appService:AppService;
-
 	public blocks:IMetaJSONBlock[] = [];
 
-	constructor(appService:AppService) {
-		this.appService = appService;
+	constructor(private appService:AppService) {
 	}
 
 	ngDoCheck():void {
