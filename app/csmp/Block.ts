@@ -317,6 +317,13 @@ export class Block {
 		}
 	}
 
+	getEndpointUuid(index:number, output?:boolean):string {
+		if (output) {
+			return this.key + "_o" + index;
+		}
+		return this.key + "_i" + index;
+	}
+
 }
 
 /**
