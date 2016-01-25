@@ -16,7 +16,7 @@ export class HttpService {
 
 	getRequestOptionsArgs():RequestOptionsArgs {
 		this.headers.set("Content-Type", "application/json");
-		this.headers.set("Authentication", "Bearer " + this.tokenService.getToken());
+		this.headers.set("Authorization", "Bearer " + this.tokenService.getToken());
 		return {
 			headers: this.headers
 		};
