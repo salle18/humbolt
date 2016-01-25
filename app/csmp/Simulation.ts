@@ -164,7 +164,8 @@ export class Simulation {
 				position: block.position,
 				inputs: block.inputs.map((input:Block) => {
 					return input.getIndex();
-				})
+				}),
+				rotation: block.rotation
 			};
 		});
 		return {

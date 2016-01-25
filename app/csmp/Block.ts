@@ -40,6 +40,7 @@ export interface IJSONBlock {
 	params: number[];
 	stringParams: string[];
 	inputs: number[];
+	rotation: number;
 }
 
 /**
