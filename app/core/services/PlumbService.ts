@@ -46,10 +46,16 @@ export class PlumbService {
 	}
 
 	resetConnections() {
+		this.simulationService.emptyOutputs();
 		let blocks = this.simulationService.getBlocks();
 		for (let i = 0; i < blocks.length; i++) {
-			//NOT IMPLEMENTED RESET CONNECTIONS
-			//let endpoints = this.getInstance().getEndpoints(blocks[i].key);
+			let inputs = blocks[i].inputs;
+			for (let j = 0; j < inputs.length; j++) {
+				let inputBlock = inputs[j];
+				if (!(inputBlock instanceof EmptyBlock)) {
+					this.getInstance().connect({uuids: [inputBlock.key + "_o", blocks[i].key + "_i" + j]});
+				}
+			}
 		}
 		console.log("RESET BLOCKS");
 	}
