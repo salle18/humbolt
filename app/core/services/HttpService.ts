@@ -19,7 +19,7 @@ export class HttpService {
 		this.headers.set("Authorization", "Bearer " + this.tokenService.getToken());
 		return {
 			headers: this.headers
-		}
+		};
 	}
 
 	get<T>(url:string):Observable<T> {
