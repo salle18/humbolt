@@ -5,7 +5,7 @@ import {Block} from "../../csmp/Block";
 @Injectable()
 export class SimulationService {
 
-	private simulation:Simulation = null;
+	private simulation:Simulation;
 
 	constructor() {
 		this.simulation = new Simulation;
