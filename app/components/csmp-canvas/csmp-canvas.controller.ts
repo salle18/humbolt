@@ -33,7 +33,10 @@ export class CsmpCanvas implements OnInit, AfterViewInit {
 			drop: (event, ui) => {
 				let className = ui.helper.attr("classname");
 				let block:Block = this.appService.createBlock(className);
-				block.position = ui.helper.position();
+				let position = ui.helper.position();
+				position.left = Math.round(position.left / 10) * 10;
+				position.top = Math.round(position.top / 10) * 10;
+				block.position = position;
 				this.zone.run(() => {
 					this.simulationService.addBlock(block);
 					this.appService.setActiveBlock(block);
