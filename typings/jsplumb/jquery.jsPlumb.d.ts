@@ -32,6 +32,7 @@ interface JsPlumbInstance {
 	removeAllEndpoints(el:Element, recurse?:boolean): JsPlumbInstance;
 	select(params:SelectParams): Connections;
 	getConnections(options?:any, flat?:any): any[];
+	getEndpoints(el:string): any[];
 	deleteEndpoint(uuid:string, doNotRepaintAfterwards?:boolean): JsPlumbInstance;
 	deleteEndpoint(endpoint:Endpoint, doNotRepaintAfterwards?:boolean): JsPlumbInstance;
 	repaint(el:string): JsPlumbInstance;

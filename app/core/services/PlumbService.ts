@@ -45,6 +45,15 @@ export class PlumbService {
 		this.bindEvents();
 	}
 
+	resetConnections() {
+		let blocks = this.simulationService.getBlocks();
+		for (let i = 0; i < blocks.length; i++) {
+			//NOT IMPLEMENTED RESET CONNECTIONS
+			//let endpoints = this.getInstance().getEndpoints(blocks[i].key);
+		}
+		console.log("RESET BLOCKS");
+	}
+
 	bindEvents():void {
 
 		/**
