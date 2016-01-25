@@ -12,7 +12,7 @@ export class LoggedInRouterOutlet extends RouterOutlet {
 	private authService:AuthService;
 
 	constructor(_elementRef:ElementRef, _loader:DynamicComponentLoader,
-				_parentRouter:Router, @Attribute('name') nameAttr:string, authService:AuthService) {
+				_parentRouter:Router, @Attribute("name") nameAttr:string, authService:AuthService) {
 		super(_elementRef, _loader, _parentRouter, nameAttr);
 
 		this.authService = authService;
@@ -22,7 +22,7 @@ export class LoggedInRouterOutlet extends RouterOutlet {
 
 	activate(instruction:ComponentInstruction) {
 		var url = this.parentRouter.lastNavigationAttempt;
-		if (!this.publicRoutes.indexOf(url) > -1 && !this.authService.isLoggedIn()) {
+		if (!(this.publicRoutes.indexOf(url) > -1) && !this.authService.isLoggedIn()) {
 			this.parentRouter.navigate(["Login"]);
 		}
 		return super.activate(instruction);
