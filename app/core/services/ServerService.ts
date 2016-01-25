@@ -1,42 +1,26 @@
-import "rxjs/add/operator/map";
 import {Injectable} from "angular2/core";
-import {Http, Response, Headers, RequestOptionsArgs} from "angular2/http";
 import {IJSONSimulation, IMetaJSONMethod} from "../../csmp/Simulation";
 import {Observable} from "rxjs/Observable";
 import {IMetaJSONBlock} from "../../csmp/Block";
+import {HttpService} from "./HttpService";
 
 @Injectable()
 export class ServerService {
 
-	private http:Http;
-
 	private api = "http://localhost:9000/api";
-	private headers:Headers;
 
-	constructor(http:Http) {
-		this.http = http;
-		this.headers = new Headers();
-		this.headers.set("Content-Type", "application/json");
-	}
-
-	getRequestOptions():RequestOptionsArgs {
-		return {
-			headers: this.headers
-		};
+	constructor(private httpService:HttpService) {
 	}
 
 	getMetaBlocks():Observable<IMetaJSONBlock[]> {
-		return this.http.get(this.api + "/csmp/blocks", this.getRequestOptions())
-			.map(res => res.json());
+		return this.httpService.get<IMetaJSONBlock[]>(this.api + "/csmp/blocks");
 	}
 
 	getIntegrationMethods():Observable<IMetaJSONMethod[]> {
-		return this.http.get(this.api + "/csmp/integrationmethods", this.getRequestOptions())
-			.map(res => res.json());
+		return this.httpService.get<IMetaJSONMethod[]>(this.api + "/csmp/integrationmethods");
 	}
 
-	postSimulation(JSONSimulation:IJSONSimulation):Observable<any> {
-		return this.http.post(this.api + "/csmp/simulate", JSON.stringify(JSONSimulation), this.getRequestOptions())
-			.map(res => res.json());
+	postSimulation(JSONSimulation:IJSONSimulation):Observable<number[][]> {
+		return this.httpService.post<number[][]>(this.api + "/csmp/simulate", JSONSimulation);
 	}
 }
