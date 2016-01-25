@@ -8,6 +8,7 @@ import {CsmpEndpoints} from "../../directives/csmp-endpoints";
 import {CsmpInteractiveBlock} from "../../directives/csmp-interactive-block";
 import {AppService} from "../../core/services/AppService";
 import {PlumbService} from "../../core/services/PlumbService";
+import {PlumbServiceUtilities} from "../../core/services/PlumbServiceUtilities";
 
 
 @Component({
@@ -23,11 +24,13 @@ export class CsmpCanvas implements OnInit, AfterViewInit {
 	private appService:AppService;
 	private simulationService:SimulationService;
 	private plumbService:PlumbService;
+	private plumbServiceUtilities:PlumbServiceUtilities;
 
-	constructor(elementRef:ElementRef, zone:NgZone, appService:AppService, simulationService:SimulationService, plumbService:PlumbService) {
+	constructor(elementRef:ElementRef, zone:NgZone, appService:AppService, simulationService:SimulationService, plumbService:PlumbService, plumbServiceUtilities:PlumbServiceUtilities) {
 		this.appService = appService;
 		this.simulationService = simulationService;
 		this.plumbService = plumbService;
+		this.plumbServiceUtilities = plumbServiceUtilities;
 		this.elementRef = elementRef;
 		this.blocks = simulationService.getBlocks();
 		this.zone = zone;
@@ -51,7 +54,10 @@ export class CsmpCanvas implements OnInit, AfterViewInit {
 	}
 
 	ngAfterViewInit():void {
-		setTimeout(_ => this.plumbService.resetConnections());//bugfix https://github.com/angular/angular/issues/6005
+		setTimeout(_ => {
+			this.plumbService.resetConnections();
+			this.plumbServiceUtilities.resetRotations();
+		});//bugfix https://github.com/angular/angular/issues/6005
 	}
 
 }
