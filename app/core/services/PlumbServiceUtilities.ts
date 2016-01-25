@@ -5,7 +5,7 @@ import {SimulationService} from "./SimulationService";
 
 @Injectable()
 export class PlumbServiceUtilities {
-	
+
 	constructor(private plumbService:PlumbService, private simulationService:SimulationService) {
 	}
 
