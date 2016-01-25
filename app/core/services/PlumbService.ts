@@ -53,7 +53,7 @@ export class PlumbService {
 			for (let j = 0; j < inputs.length; j++) {
 				let inputBlock = inputs[j];
 				if (!(inputBlock instanceof EmptyBlock)) {
-					this.getInstance().connect({uuids: [inputBlock.key + "_o", blocks[i].key + "_i" + j]});
+					this.getInstance().connect({uuids: [inputBlock.getEndpointUuid(0, true), blocks[i].getEndpointUuid(j)]});
 				}
 			}
 		}
