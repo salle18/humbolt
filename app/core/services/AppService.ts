@@ -51,11 +51,15 @@ export class AppService {
 	}
 
 	open():void {
-		console.log("OPEN");
+		this.serverService.listSimulations().subscribe();//otvori novu stranicu sa svim simulacija i izaberi koja da se otvori
 	}
 
 	save():void {
-		console.log("SAVE");
+		this.serverService.saveSimulation(this.simulationService.saveJSON())
+			.subscribe(
+				data => console.log(data),
+				error => this.messageService.error("Error saving simulation...")
+			);
 	}
 
 	run(config:ISimulationConfig):void {
