@@ -5,13 +5,8 @@ import {SimulationService} from "./SimulationService";
 
 @Injectable()
 export class PlumbServiceUtilities {
-
-	private plumbService:PlumbService = null;
-	private simulationService:SimulationService = null;
-
-	constructor(plumbService:PlumbService, simulationService:SimulationService) {
-		this.plumbService = plumbService;
-		this.simulationService = simulationService;
+	
+	constructor(private plumbService:PlumbService, private simulationService:SimulationService) {
 	}
 
 	rotate(block:Block, direction:string, amount:number = 1) {
