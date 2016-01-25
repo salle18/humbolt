@@ -51,7 +51,7 @@ export class CsmpCanvas implements OnInit, AfterViewInit {
 	}
 
 	ngAfterViewInit():void {
-		this.plumbService.resetConnections();
+		setTimeout(_ => this.plumbService.resetConnections());//bugfix https://github.com/angular/angular/issues/6005
 	}
 
 }
