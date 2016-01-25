@@ -21,7 +21,7 @@ interface JsPlumbInstance {
 	hasClass(el:any, clazz:string): void;
 	draggable(el:string, options?:DragOptions): JsPlumbInstance;
 	draggable(ids:string[], options?:DragOptions): JsPlumbInstance;
-	connect(connection:ConnectParams, referenceParams?:ConnectParams): Connection;
+	connect(connection:any, referenceParams?:ConnectParams): Connection;
 	makeSource(el:string, options:SourceOptions): void;
 	makeTarget(el:string, options:TargetOptions): void;
 	repaintEverything(): void;
@@ -35,7 +35,7 @@ interface JsPlumbInstance {
 	getEndpoints(el:string): any[];
 	deleteEndpoint(uuid:string, doNotRepaintAfterwards?:boolean): JsPlumbInstance;
 	deleteEndpoint(endpoint:Endpoint, doNotRepaintAfterwards?:boolean): JsPlumbInstance;
-	repaint(el:string|Element, ui:any): JsPlumbInstance;
+	repaint(el:string|Element, ui?:any): JsPlumbInstance;
 	getInstance(): JsPlumbInstance;
 	getInstance(defaults:Defaults): JsPlumbInstance;
 	getInstanceIndex(): number;
