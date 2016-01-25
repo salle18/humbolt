@@ -194,8 +194,8 @@ export class Simulation {
 			block.loadParams(JSONBlock.params);
 			block.loadStringParams(JSONBlock.stringParams);
 			block.position = JSONBlock.position;
-			let id = this.addBlock(block);
-			//todo jsplumb canvas append block
+			block.rotation = JSONBlock.rotation;
+			this.addBlock(block);
 		}
 
 		let blocks = this.blocks.getValues();
@@ -213,7 +213,6 @@ export class Simulation {
 				let outputBlock = blocks[JSONBlock.inputs[j]];
 				block.inputs[j] = outputBlock;
 				outputBlock.addOutput(j, block);
-				//todo jsplumb connect blocks
 			}
 		}
 	}
