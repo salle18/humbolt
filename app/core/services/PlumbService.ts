@@ -22,7 +22,9 @@ export class PlumbService {
 	}
 
 	createInstance():void {
-		this.instance = jsPlumb.getInstance();
+		this.instance = jsPlumb.getInstance({
+			Container: "csmp-canvas"
+		});
 	}
 
 	getInstance():JsPlumbInstance {
@@ -39,6 +41,7 @@ export class PlumbService {
 
 	reset() {
 		this.instance.reset();
+		this.createInstance();
 		this.bindEvents();
 	}
 
