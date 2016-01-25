@@ -9,12 +9,8 @@ declare let jsPlumb:any;
 export class PlumbService {
 
 	private instance:JsPlumbInstance = null;
-	private simulationService:SimulationService = null;
-	private zone:NgZone;
 
-	constructor(simulationService:SimulationService, zone:NgZone) {
-		this.simulationService = simulationService;
-		this.zone = zone;
+	constructor(private simulationService:SimulationService, private zone:NgZone) {
 		jsPlumb.ready(() => {
 			this.createInstance();
 			this.bindEvents();
