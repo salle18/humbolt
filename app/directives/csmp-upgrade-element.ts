@@ -9,10 +9,7 @@ declare var componentHandler:any;
 })
 export class CsmpUpgradeElement implements OnInit {
 
-	private elementRef:ElementRef;
-
-	constructor(elementRef:ElementRef) {
-		this.elementRef = elementRef;
+	constructor(private elementRef:ElementRef) {
 	}
 
 	ngOnInit():void {
