@@ -1,4 +1,4 @@
-import {Component, ElementRef, NgZone, OnInit} from "angular2/core";
+import {Component, ElementRef, NgZone, OnInit, AfterViewInit} from "angular2/core";
 import {Block} from "../../csmp/Block";
 import {SimulationService} from "../../core/services/SimulationService";
 import {CsmpBlock} from "../../components/csmp-block/csmp-block.controller";
@@ -15,7 +15,7 @@ import {PlumbService} from "../../core/services/PlumbService";
 	templateUrl: "components/csmp-canvas/csmp-canvas.template.html",
 	directives: [CsmpBlock, CsmpDraggable, CsmpEndpoints, CsmpInteractiveBlock]
 })
-export class CsmpCanvas implements OnInit {
+export class CsmpCanvas implements OnInit, AfterViewInit {
 
 	private blocks:Block[];
 	private zone:NgZone;
@@ -50,5 +50,8 @@ export class CsmpCanvas implements OnInit {
 		});
 	}
 
+	ngAfterViewInit():void {
+		this.plumbService.resetConnections();
+	}
 
 }
