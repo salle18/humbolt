@@ -1,6 +1,8 @@
 import * as Exception from "./helpers/Exception";
 import {Simulation} from "./Simulation";
 
+export enum Rotation {Top, Right, Bottom, Left}
+
 /**
  * Enum za tipove grupisanje tipova elemenata.
  */
@@ -133,6 +135,8 @@ export class Block {
 	public key:string = "";
 
 	protected paramDescription:string[] = [];
+
+	public rotation:Rotation = Rotation.Top;
 
 
 	/**
@@ -322,6 +326,11 @@ export class Block {
 			return this.key + "_o" + index;
 		}
 		return this.key + "_i" + index;
+	}
+
+	rotate(direction:string):void {
+		let amount = direction === "Right" ? 1 : -1;
+		this.rotation = Rotation[Rotation[(this.rotation + amount + 4) % 4]];
 	}
 
 }
