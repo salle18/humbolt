@@ -50,6 +50,7 @@ export class AppService {
 
 	rotateActiveBlock(direction:string):void {
 		if (this.activeBlock) {
+			this.activeBlock.rotate(direction);
 			this.plumbServiceUtilities.rotate(this.activeBlock, direction);
 		}
 	}
