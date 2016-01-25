@@ -57,7 +57,6 @@ export class PlumbService {
 				}
 			}
 		}
-		console.log("RESET BLOCKS");
 	}
 
 	bindEvents():void {
