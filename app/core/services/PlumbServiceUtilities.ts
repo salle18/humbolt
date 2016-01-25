@@ -14,7 +14,7 @@ export class PlumbServiceUtilities {
 		this.simulationService = simulationService;
 	}
 
-	rotate(block:Block, direction:string, amount?:number = 1) {
+	rotate(block:Block, direction:string, amount:number = 1) {
 		let rotations = {
 			Right: {
 				Right: "Bottom",
