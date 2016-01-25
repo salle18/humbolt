@@ -26,7 +26,8 @@ export class CsmpEndpoints implements OnInit {
 		paintStyle: {
 			fillStyle: "#337ab7"
 		},
-		connectorOverlays: [["Arrow", {location: 0.5}]]
+		connectorOverlays: [["Arrow", {location: 0.5}]],
+		uuid: ""
 	};
 
 	private inputEndpoint = {
@@ -53,6 +54,7 @@ export class CsmpEndpoints implements OnInit {
 	ngOnInit() {
 		this.zone.runOutsideAngular(() => {
 			if (this.block.getHasOutput()) {
+				this.outputEndpoint.uuid = this.block.getEndpointUuid(0, true);
 				this.plumbService.getInstance().addEndpoint(this.block.key, this.outputAnchor, this.outputEndpoint);
 			}
 			let numOfInputs = this.block.inputs.length;
@@ -60,6 +62,7 @@ export class CsmpEndpoints implements OnInit {
 				for (let i = 0; i < numOfInputs; i++) {
 					let endpoint = JSON.parse(JSON.stringify(this.inputEndpoint));
 					endpoint.parameters.index = i;
+					endpoint.uuid = this.block.getEndpointUuid(i);
 					this.plumbService.getInstance().addEndpoint(this.block.key, this.inputAnchors[numOfInputs - 1][i], endpoint);
 				}
 			}
