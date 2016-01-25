@@ -12,7 +12,7 @@ import {ILoginData} from "../../core/services/AuthService";
 	directives: [CsmpUpgradeElement]
 })
 export class Login {
-	
+
 	private user:ILoginData = {
 		name: "",
 		password: ""
