@@ -106,6 +106,7 @@ export class AppService {
 	}
 
 	logout():void {
+		this.reset();
 		this.authService.logout();
 	}
 
