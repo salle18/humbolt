@@ -23,4 +23,12 @@ export class ServerService {
 	postSimulation(JSONSimulation:IJSONSimulation):Observable<number[][]> {
 		return this.httpService.post<number[][]>(this.api + "/csmp/simulate", JSONSimulation);
 	}
+
+	listSimulations():Observable<IJSONSimulation[]> {
+		return this.httpService.get<IJSONSimulation[]>(this.api + "/csmp/simulations");
+	}
+
+	saveSimulation(JSONSimulation:IJSONSimulation):Observable<IJSONSimulation> {
+		return this.httpService.post(this.api + "/csmp/save", JSONSimulation);
+	}
 }
