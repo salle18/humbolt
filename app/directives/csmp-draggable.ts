@@ -26,7 +26,6 @@ export class CsmpDraggable implements OnInit {
 					this.plumbService.getInstance().repaint(this.block.key, ui.position);
 				},
 				stop: (event:Event, ui:DraggableEventUIParams) => {
-					console.log(this.block.position);
 					this.block.position.top = ui.position.top;
 					this.block.position.left = ui.position.left;
 				}
