@@ -12,15 +12,13 @@ import {ILoginData} from "../../core/services/AuthService";
 	directives: [CsmpUpgradeElement]
 })
 export class Login {
-
-	private appService:AppService;
+	
 	private user:ILoginData = {
 		name: "",
 		password: ""
 	};
 
-	constructor(appService:AppService) {
-		this.appService = appService;
+	constructor(private appService:AppService) {
 	}
 
 	login():void {

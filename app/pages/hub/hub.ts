@@ -12,14 +12,11 @@ import {AppService} from "../../core/services/AppService";
 })
 export class Hub {
 
-	private appService:AppService;
-
 	public user = {
 		name: "Korisnik"
 	};
 
-	constructor(appService:AppService) {
-		this.appService = appService;
+	constructor(private appService:AppService) {
 	}
 
 	logout():void {
