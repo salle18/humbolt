@@ -12,24 +12,13 @@ import {ILoginData} from "./AuthService";
 @Injectable()
 export class AppService {
 
-	private simulationService:SimulationService = null;
-	private plumbService:PlumbService = null;
-	private plumbServiceUtilities:PlumbServiceUtilities = null;
-	private serverService:ServerService = null;
-	private authService:AuthService = null;
-	private messageService:MessageService = null;
 	public activeBlock:Block = null;
 	private metaBlocks:IMetaJSONBlock[] = [];
 	private integrationMethods:IMetaJSONMethod[] = [];
 
-
-	constructor(simulationService:SimulationService, plumbService:PlumbService, plumbServiceUtilities:PlumbServiceUtilities, serverService:ServerService, authService:AuthService, messageService:MessageService) {
-		this.simulationService = simulationService;
-		this.plumbService = plumbService;
-		this.plumbServiceUtilities = plumbServiceUtilities;
-		this.serverService = serverService;
-		this.authService = authService;
-		this.messageService = messageService;
+	constructor(private simulationService:SimulationService, private plumbService:PlumbService,
+				private plumbServiceUtilities:PlumbServiceUtilities, private serverService:ServerService,
+				private authService:AuthService, private messageService:MessageService) {
 		this.loadMetaBlocks();
 		this.loadIntegrationMethods();
 	}
