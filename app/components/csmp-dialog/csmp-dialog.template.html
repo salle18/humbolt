@@ -1,5 +1,8 @@
 <table>
-	<tr *ngFor="#simulation of simulations">
-		<td>{{simulation.description}}</td>
+	<tr *ngFor="#simulation of simulations; #i=index">
+		<td>{{simulation.name}}</td>
+		<td>{{simulation.date}}</td>
+		<td><span (click)="removeSimulation(simulation._id)" class="material-icons">delete</span></td>
 	</tr>
 </table>
+<p *ngIf="!simulations.length">Još uvek nemate nijednu simulaciju...</p>
