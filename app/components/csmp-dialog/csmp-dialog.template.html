@@ -1,3 +1,6 @@
+<button class="pull-right button-close" (click)="close()">
+	<span class="material-icons">close</span>
+</button>
 <table>
 	<tr *ngFor="#simulation of simulations; #i=index">
 		<td>{{simulation.name}}</td>
@@ -5,4 +8,4 @@
 		<td><span (click)="removeSimulation(simulation._id)" class="material-icons">delete</span></td>
 	</tr>
 </table>
-<p *ngIf="!simulations.length">Još uvek nemate nijednu simulaciju...</p>
+<p *ngIf="!simulations.length">Još uvek niste sačuvali nijednu simulaciju...</p>
