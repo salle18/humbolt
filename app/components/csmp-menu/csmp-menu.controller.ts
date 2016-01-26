@@ -16,7 +16,9 @@ export class CsmpMenu {
 
 	public simulationConfig:ISimulationConfig;
 	public methods:IMetaJSONMethod[] = [];
-	private showDialog:boolean = false;
+	private dialog = {
+		visible: false
+	};
 
 	constructor(private appService:AppService, private simulationService:SimulationService) {
 		this.simulationConfig = simulationService.getSimulationConfig();
@@ -29,7 +31,7 @@ export class CsmpMenu {
 
 	openDialog():void {
 		this.appService.listSimulations();
-		this.showDialog = true;
+		this.dialog.visible = true;
 	}
 
 	saveSimulation():void {
