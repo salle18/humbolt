@@ -8,13 +8,16 @@ import {MessageService} from "./MessageService";
 import {Block, IMetaJSONBlock} from "../../csmp/Block";
 import {IMetaJSONMethod, ISimulationConfig} from "../../csmp/Simulation";
 import {ILoginData} from "./AuthService";
+import {IJSONSimulation} from "../../csmp/Simulation";
+import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class AppService {
 
 	public activeBlock:Block = null;
-	private metaBlocks:IMetaJSONBlock[] = [];
-	private integrationMethods:IMetaJSONMethod[] = [];
+	public metaBlocks:IMetaJSONBlock[] = [];
+	public integrationMethods:IMetaJSONMethod[] = [];
+	private simulations:IJSONSimulation[] = [];
 
 	constructor(private simulationService:SimulationService, private plumbService:PlumbService,
 				private plumbServiceUtilities:PlumbServiceUtilities, private serverService:ServerService,
@@ -50,10 +53,6 @@ export class AppService {
 		this.simulationService.reset();
 	}
 
-	open():void {
-		this.serverService.listSimulations().subscribe();//otvori novu stranicu sa svim simulacija i izaberi koja da se otvori
-	}
-
 	save():void {
 		this.serverService.saveSimulation(this.simulationService.saveJSON())
 			.subscribe(
@@ -73,24 +72,26 @@ export class AppService {
 
 	loadMetaBlocks():void {
 		this.serverService.getMetaBlocks().subscribe(
-			metaBlocks => this.metaBlocks = metaBlocks,
+			metaBlocks => this.metaBlocks.push.apply(this.metaBlocks, metaBlocks),
 			error => this.messageService.error("Error loading simulation blocks...")
 		);
 	}
 
 	loadIntegrationMethods():void {
 		this.serverService.getIntegrationMethods().subscribe(
-			integrationMethods => this.integrationMethods = integrationMethods,
+			integrationMethods => this.integrationMethods.push.apply(this.integrationMethods, integrationMethods),
 			error => this.messageService.error("Error loading integration methods...")
 		);
 	}
 
-	getMetaBlocks():IMetaJSONBlock[] {
-		return this.metaBlocks;
-	}
-
-	getIntegrationMethods():IMetaJSONMethod[] {
-		return this.integrationMethods;
+	listSimulations():void {
+		this.serverService.listSimulations().subscribe(
+			simulations => {
+				this.simulations.length = 0;
+				this.simulations.push.apply(this.simulations, simulations);
+			},
+			error => this.messageService.error("Error loading simulation list...")
+		);
 	}
 
 	createBlock(className:string):Block {
