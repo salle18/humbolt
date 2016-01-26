@@ -10,6 +10,7 @@ export interface ISimulationConfig {
 
 export interface IJSONSimulation {
 	description: string;
+	date: string;
 	method: string;
 	duration: number;
 	integrationInterval: number;
@@ -28,11 +29,13 @@ export class Simulation {
 	private blocks:Dictionary<Block>;
 
 	private config:ISimulationConfig = {
-		description: "",
+		description: "Simulacija1",
 		method: "RungeKuttaIV",
 		duration: 10,
 		integrationInterval: 0.01
 	};
+
+	private date:string = new Date().toJSON();
 
 	constructor() {
 		this.blocks = new Dictionary<Block>();
@@ -176,7 +179,8 @@ export class Simulation {
 			method: this.config.method,
 			integrationInterval: this.config.integrationInterval,
 			duration: this.config.duration,
-			blocks: blocks
+			blocks: blocks,
+			date: new Date().toJSON()
 		};
 	}
 
