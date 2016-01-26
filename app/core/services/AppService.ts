@@ -56,7 +56,7 @@ export class AppService {
 	save():void {
 		this.serverService.saveSimulation(this.simulationService.saveJSON())
 			.subscribe(
-				data => console.log(data),
+				simulation => this.messageService.success("Simulation saved..."),
 				error => this.messageService.error("Error saving simulation...")
 			);
 	}
