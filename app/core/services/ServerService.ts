@@ -25,7 +25,7 @@ export class ServerService {
 	}
 
 	listSimulations():Observable<IJSONSimulation[]> {
-		return this.httpService.get<IJSONSimulation[]>(this.api + "/simulation");
+		return this.httpService.get<any>(this.api + "/simulation").map(res => res.csmpSimulations);
 	}
 
 	saveSimulation(JSONSimulation:IJSONSimulation):Observable<IJSONSimulation> {
