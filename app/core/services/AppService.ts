@@ -17,7 +17,7 @@ export class AppService {
 	public activeBlock:Block = null;
 	public metaBlocks:IMetaJSONBlock[] = [];
 	public integrationMethods:IMetaJSONMethod[] = [];
-	private simulations:IJSONSimulation[] = [];
+	public simulations:IJSONSimulation[] = [];
 
 	constructor(private simulationService:SimulationService, private plumbService:PlumbService,
 				private plumbServiceUtilities:PlumbServiceUtilities, private serverService:ServerService,
