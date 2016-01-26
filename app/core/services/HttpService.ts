@@ -29,4 +29,8 @@ export class HttpService {
 	post<T>(url:string, data:Object):Observable<T> {
 		return this.http.post(url, JSON.stringify(data), this.getRequestOptionsArgs()).map(res => res.json());
 	}
+
+	delete<T>(url:string):Observable<T> {
+		return this.http.delete(url, this.getRequestOptionsArgs()).map(res => res.json());
+	}
 }
