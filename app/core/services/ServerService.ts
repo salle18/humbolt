@@ -7,28 +7,36 @@ import {HttpService} from "./HttpService";
 @Injectable()
 export class ServerService {
 
-	private api = "http://localhost:9000/api";
+	private api = "http://localhost:9000/api/csmp";
 
 	constructor(private httpService:HttpService) {
 	}
 
 	getMetaBlocks():Observable<IMetaJSONBlock[]> {
-		return this.httpService.get<IMetaJSONBlock[]>(this.api + "/csmp/blocks");
+		return this.httpService.get<IMetaJSONBlock[]>(this.api + "/blocks");
 	}
 
 	getIntegrationMethods():Observable<IMetaJSONMethod[]> {
-		return this.httpService.get<IMetaJSONMethod[]>(this.api + "/csmp/integrationmethods");
+		return this.httpService.get<IMetaJSONMethod[]>(this.api + "/integrationmethods");
 	}
 
 	postSimulation(JSONSimulation:IJSONSimulation):Observable<number[][]> {
-		return this.httpService.post<number[][]>(this.api + "/csmp/simulate", JSONSimulation);
+		return this.httpService.post<number[][]>(this.api + "/simulate", JSONSimulation);
 	}
 
 	listSimulations():Observable<IJSONSimulation[]> {
-		return this.httpService.get<IJSONSimulation[]>(this.api + "/csmp/simulations");
+		return this.httpService.get<IJSONSimulation[]>(this.api + "/simulation");
 	}
 
 	saveSimulation(JSONSimulation:IJSONSimulation):Observable<IJSONSimulation> {
-		return this.httpService.post(this.api + "/csmp/save", JSONSimulation);
+		return this.httpService.post<IJSONSimulation>(this.api + "/simulation", JSONSimulation);
+	}
+
+	loadSimulation(id:string):Observable<IJSONSimulation> {
+		return this.httpService.get<IJSONSimulation>(this.api + "/simulation/" + id);
+	}
+
+	removeSimulation(id:string):Observable<IJSONSimulation> {
+		return this.httpService.delete(this.api + "/simulation/" + id);
 	}
 }
