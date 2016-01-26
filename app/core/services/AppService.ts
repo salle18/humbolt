@@ -94,6 +94,16 @@ export class AppService {
 		);
 	}
 
+	removeSimulation(id:string):void {
+		this.serverService.removeSimulation(id).subscribe(
+			simulation => {
+				this.messageService.success("Simulation deleted...");
+				this.listSimulations();
+			},
+			error => this.messageService.error("Error deleting simulation...")
+		);
+	}
+
 	createBlock(className:string):Block {
 		for (let i = 0; i < this.metaBlocks.length; i++) {
 			if (this.metaBlocks[i].className === className) {
