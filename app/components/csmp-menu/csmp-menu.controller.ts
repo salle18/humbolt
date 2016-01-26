@@ -4,16 +4,18 @@ import {CsmpUpgradeElement} from "../../directives/csmp-upgrade-element";
 import {SimulationService} from "../../core/services/SimulationService";
 import {AppService} from "../../core/services/AppService";
 import {IMetaJSONMethod, ISimulationConfig} from "../../csmp/Simulation";
+import {CsmpDialog} from "../csmp-dialog/csmp-dialog.controller";
 
 @Component({
 	selector: "csmp-menu",
 	templateUrl: "components/csmp-menu/csmp-menu.template.html",
-	directives: [CsmpUpgradeElement, RouterLink]
+	directives: [CsmpUpgradeElement, CsmpDialog, RouterLink]
 })
 export class CsmpMenu implements DoCheck {
 
 	public simulationConfig:ISimulationConfig;
 	public methods:IMetaJSONMethod[] = [];
+	private showDialog:boolean = false;
 
 	constructor(private appService:AppService, private simulationService:SimulationService) {
 		this.simulationConfig = simulationService.getSimulationConfig();
