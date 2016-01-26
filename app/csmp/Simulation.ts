@@ -2,12 +2,14 @@ import {Block, IJSONBlock, IPosition} from "./Block";
 import {Dictionary} from "./helpers/Dictionary";
 
 export interface ISimulationConfig {
+	description: string;
 	method: string;
 	integrationInterval: number;
 	duration: number;
 }
 
 export interface IJSONSimulation {
+	description: string;
 	method: string;
 	duration: number;
 	integrationInterval: number;
@@ -26,6 +28,7 @@ export class Simulation {
 	private blocks:Dictionary<Block>;
 
 	private config:ISimulationConfig = {
+		description: "",
 		method: "RungeKuttaIV",
 		duration: 10,
 		integrationInterval: 0.01
@@ -169,6 +172,7 @@ export class Simulation {
 			};
 		});
 		return {
+			description: this.config.description,
 			method: this.config.method,
 			integrationInterval: this.config.integrationInterval,
 			duration: this.config.duration,
