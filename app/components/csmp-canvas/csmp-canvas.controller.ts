@@ -29,7 +29,7 @@ export class CsmpCanvas implements OnInit, AfterViewInit {
 		this.plumbService.reset();
 
 		jQuery(this.elementRef.nativeElement).droppable({
-			accept: ":not(.csmp-canvas-block)",
+			accept: ".block-list-item",
 			drop: (event, ui) => {
 				let className = ui.helper.attr("classname");
 				let block:Block = this.appService.createBlock(className);
