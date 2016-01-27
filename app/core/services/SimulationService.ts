@@ -41,7 +41,11 @@ export class SimulationService {
 	}
 
 	getSimulationResults():number[][] {
-		return [];
+		return this.simulation.getResults();
+	}
+
+	setSimulationResults(results:number[][]):void {
+		this.simulation.setResults(results);
 	}
 
 	getSimulationConfig():ISimulationConfig {
