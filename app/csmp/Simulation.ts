@@ -28,7 +28,7 @@ export class Simulation {
 	 */
 	private blocks:Dictionary<Block>;
 
-	private results:number[][];
+	private results:number[][] = [];
 
 	private config:ISimulationConfig = {
 		description: "Simulacija1",
