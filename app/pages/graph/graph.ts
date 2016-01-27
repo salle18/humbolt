@@ -1,10 +1,11 @@
 import { Component } from "angular2/core";
+import {RouterLink} from "angular2/router";
 import {CsmpGraph} from "../../components/csmp-graph/csmp-graph.controller";
 
 @Component({
 	selector: "page-graph",
 	templateUrl: "pages/graph/graph.template.html",
-	directives: [CsmpGraph]
+	directives: [CsmpGraph, RouterLink]
 })
 export class Graph {
 
