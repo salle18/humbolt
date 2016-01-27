@@ -16,7 +16,7 @@ export class CsmpGraph implements OnInit {
 
 	ngOnInit():void {
 		let data = this.simulationService.getSimulationResults();
-		let labels = ["time"].concat(this.simulationService.getBlocks().map(block => block.getIndexDescription()));
+		let labels = this.simulationService.getLabels();
 		let graphOptions = {
 			labels: labels,
 			width: 1200,
