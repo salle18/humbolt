@@ -11,6 +11,7 @@ System.config({
     "babel": "npm:babel-core@6.4.0",
     "babel-runtime": "npm:babel-runtime@6.3.19",
     "core-js": "npm:core-js@1.2.6",
+	  "dygraphs": "npm:dygraphs@1.1.1",
     "google/material-design-lite": "github:google/material-design-lite@1.0.6",
     "jquery-ui": "github:components/jqueryui@1.11.4",
     "normalize.css": "github:necolas/normalize.css@3.0.3",
@@ -372,6 +373,10 @@ System.config({
       "miller-rabin": "npm:miller-rabin@4.0.0",
       "randombytes": "npm:randombytes@2.0.1",
       "systemjs-json": "github:systemjs/plugin-json@0.1.0"
+	},
+	  "npm:dygraphs@1.1.1": {
+		  "fs": "github:jspm/nodelibs-fs@0.1.2",
+		  "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:elliptic@6.0.2": {
       "bn.js": "npm:bn.js@4.6.2",
