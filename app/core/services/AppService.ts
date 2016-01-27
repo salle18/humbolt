@@ -68,7 +68,7 @@ export class AppService {
 			.subscribe(
 				results => {
 					this.simulationService.setSimulationResults(results);
-					this.router.navigate(["Graph"]);
+					this.router.navigate(["ResultsTable"]);
 				},
 				error => this.messageService.error("Error loading simulation results...")
 			);

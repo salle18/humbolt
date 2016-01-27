@@ -18,8 +18,11 @@ export class CsmpGraph implements OnInit {
 		let data = this.simulationService.getSimulationResults();
 		let labels = ["time"].concat(this.simulationService.getBlocks().map(block => block.getIndexDescription()));
 		let graphOptions = {
-			labels: labels
+			labels: labels,
+			width: 1200,
+			height: 1000,
 		};
+		console.log(data);
 		if (data.length > 0) {
 			let graph = new Dygraph(this.elementRef.nativeElement, data, graphOptions);
 		}
