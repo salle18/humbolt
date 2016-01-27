@@ -1,10 +1,12 @@
 import {Component, OnInit, ElementRef, Input, NgZone} from "angular2/core";
 import {IJSONSimulation} from "../../csmp/Simulation";
 import {AppService} from "../../core/services/AppService";
+import {JSONDatePipe} from "../../pipes/JSONDatePipe";
 
 @Component({
 	selector: "csmp-dialog",
 	templateUrl: "components/csmp-dialog/csmp-dialog.template.html",
+	pipes: [JSONDatePipe],
 	host: {
 		class: "mdl-card mdl-shadow--3dp"
 	}
