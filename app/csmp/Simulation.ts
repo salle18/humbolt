@@ -28,6 +28,8 @@ export class Simulation {
 	 */
 	private blocks:Dictionary<Block>;
 
+	private results:number[][];
+
 	private config:ISimulationConfig = {
 		description: "Simulacija1",
 		method: "RungeKuttaIV",
@@ -247,6 +249,14 @@ export class Simulation {
 	reset():void {
 		this.blocks.reset();
 		this.resetConfig();
+	}
+
+	getResults():number[][] {
+		return this.results;
+	}
+
+	setResults(results:number[][]):void {
+		this.results = results;
 	}
 
 }
