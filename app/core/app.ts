@@ -13,6 +13,7 @@ import {Hub} from "../pages/hub/hub";
 import {Login} from "../pages/login/login";
 import {Csmp} from "../pages/csmp/csmp";
 import {Gpss} from "../pages/gpss/gpss";
+import {Graph} from "../pages/graph/graph";
 
 // app services
 //import {appServicesInjectables} from "core/services/services";
@@ -26,8 +27,8 @@ import {Gpss} from "../pages/gpss/gpss";
 	{path: "/", component: Hub, as: "Hub", data: undefined},
 	{path: "/login", component: Login, as: "Login", data: undefined},
 	{path: "/csmp", component: Csmp, as: "Csmp", data: undefined},
-	{path: "/gpss", component: Gpss, as: "Gpss", data: undefined}
-
+	{path: "/gpss", component: Gpss, as: "Gpss", data: undefined},
+	{path: "/graph", component: Graph, as: "Graph", data: undefined}
 ])
 export class App {
 	constructor() {
