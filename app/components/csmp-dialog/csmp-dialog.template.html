@@ -3,8 +3,8 @@
 </button>
 <table>
 	<tr *ngFor="#simulation of simulations; #i=index">
-		<td>{{simulation.name}}</td>
-		<td>{{simulation.date}}</td>
+		<td>{{simulation.description}}</td>
+		<td>{{simulation.date | jsondate:"dd.MM.yy"}}</td>
 		<td><span (click)="removeSimulation(simulation._id)" class="material-icons">delete</span></td>
 	</tr>
 </table>
