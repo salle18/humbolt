@@ -11,10 +11,11 @@ csmp-block {
   }
   .index {
 	position: absolute;
-	bottom: 2px;
-	right: 2px;
+	top: 0;
+	left: 10px;
 	z-index: 100;
 	color: $white;
 	font-size: large;
+	font-weight: 700;
   }
 }
