@@ -1,4 +1,5 @@
 import {Injectable} from "angular2/core";
+import {Router} from "angular2/router";
 import {SimulationService} from "./SimulationService";
 import {PlumbService} from "./PlumbService";
 import {PlumbServiceUtilities} from "./PlumbServiceUtilities";
@@ -21,7 +22,7 @@ export class AppService {
 
 	constructor(private simulationService:SimulationService, private plumbService:PlumbService,
 				private plumbServiceUtilities:PlumbServiceUtilities, private serverService:ServerService,
-				private authService:AuthService, private messageService:MessageService) {
+				private authService:AuthService, private messageService:MessageService, private router:Router) {
 		this.loadMetaBlocks();
 		this.loadIntegrationMethods();
 	}
@@ -65,7 +66,10 @@ export class AppService {
 		let JSONSimulation = this.simulationService.saveJSON();
 		this.serverService.postSimulation(JSONSimulation)
 			.subscribe(
-				data => console.log(data),
+				results => {
+					this.simulationService.setSimulationResults(results);
+					this.router.navigate(["Graph"]);
+				},
 				error => this.messageService.error("Error loading simulation results...")
 			);
 	}
