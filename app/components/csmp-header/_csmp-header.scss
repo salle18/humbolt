@@ -14,4 +14,14 @@ csmp-header {
   .material-icons {
 	vertical-align: middle;
   }
+
+  .mdl-textfield {
+	width: auto;
+	color: $fontColorDefault;
+  }
+
+  select {
+	color: $fontColorDefault;
+  }
+  
 }
