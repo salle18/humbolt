@@ -15,7 +15,14 @@ export class CsmpGraph implements OnInit {
 	}
 
 	ngOnInit():void {
-		let graph = new Dygraph(this.elementRef.nativeElement, this.simulationService.getSimulationResults());
+		let data = this.simulationService.getSimulationResults();
+		let labels = ["time"].concat(this.simulationService.getBlocks().map(block => block.getIndexDescription()));
+		let graphOptions = {
+			labels: labels
+		};
+		if (data.length > 0) {
+			let graph = new Dygraph(this.elementRef.nativeElement, data, graphOptions);
+		}
 	}
 
 }
