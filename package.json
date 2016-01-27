@@ -7,16 +7,16 @@
     "url": "http://elab.rs"
   },
   "contributors": [],
-  "homepage": "https://bitbucket.org/salle18/humbolt_client",
+  "homepage": "https://bitbucket.org/humbolt/humbolt_client",
   "keywords": [
     "web"
   ],
   "private": true,
   "version": "0.0.1",
-  "bugs": "https://bitbucket.org/salle18/humbolt_client/issues",
+  "bugs": "https://bitbucket.org/humbolt/humbolt_client/issues",
   "repository": {
     "type": "git",
-    "url": "https://salle18@bitbucket.org/salle18/humbolt_client.git"
+    "url": "https://bitbucket.org/humbolt/humbolt_client.git"
   },
   "license": "MIT",
   "jspm": {
@@ -24,7 +24,7 @@
     "dependencies": {
       "angular2": "npm:angular2@^2.0.0-beta.1",
       "babel-runtime": "npm:babel-runtime@^6.3.13",
-      "dygraphs": "npm:dygraphs@^1.1.1",
+      "danvk/dygraphs": "github:danvk/dygraphs@^1.1.1",
       "google/material-design-lite": "github:google/material-design-lite@^1.0.6",
       "jquery-ui": "github:components/jqueryui@^1.11.4",
       "normalize.css": "github:necolas/normalize.css@^3.0.3",
