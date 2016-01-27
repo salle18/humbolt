@@ -9,4 +9,12 @@ csmp-block {
 	height: 64px;
 	line-height: 64px;
   }
+  .index {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	color: $white;
+	font-size: large;
+  }
 }
