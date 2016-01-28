@@ -49,12 +49,14 @@ export interface IJSONBlock {
 export interface IMetaJSONBlock {
 	className: string;
 	numberOfParams: number;
+	numberOfStringParams: number;
 	maxNumberOfInputs: number;
 	hasOutput:boolean;
 	sign: string;
 	description: string;
 	info: string;
 	paramDescription: string[];
+	stringParamDescription: string[];
 }
 
 /**
@@ -81,6 +83,10 @@ export class Block {
 	 * Broj parametara blocka.
 	 */
 	protected numberOfParams:number = 0;
+	/**
+	 * Broj tekstualnih parametara blocka.
+	 */
+	protected numberOfStringParams:number = 0;
 
 	/**
 	 * Maksimalni broj ulaza u block.
@@ -137,6 +143,8 @@ export class Block {
 
 	protected paramDescription:string[] = [];
 
+	protected stringParamDescription:string[] = [];
+
 	public rotation:Rotation = Rotation.Top;
 
 
@@ -151,6 +159,15 @@ export class Block {
 			this.params[i] = {
 				description: this.paramDescription[i],
 				value: 0
+			};
+		}
+		/**
+		 * Svi tekstualni parametri se na početku postavljaju na prazan string.
+		 */
+		for (let i = 0; i < this.numberOfStringParams; i++) {
+			this.stringParams[i] = {
+				description: this.stringParamDescription[i],
+				value: ""
 			};
 		}
 		/**
