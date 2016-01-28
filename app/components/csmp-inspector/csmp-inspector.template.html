@@ -24,8 +24,8 @@
 		<h3>Tekstualni parametri</h3>
 		<table class="mdl-data-table csmp-inspector-table">
 			<tr *ngFor="#stringParam of activeBlock.stringParams; #i=index">
-				<td>Param {{i + 1}}</td>
-				<td><input type="number" step="any" [(ngModel)]="param.value"></td>
+				<td>{{stringParam.description}}</td>
+				<td><input type="number" step="any" [(ngModel)]="stringParam.value"></td>
 			</tr>
 		</table>
 	</div>
