@@ -4,7 +4,7 @@
 <table>
 	<tr *ngFor="#simulation of simulations; #i=index">
 		<td>{{simulation.description}}</td>
-		<td>{{simulation.date | jsondate:"dd.MM.yy"}}</td>
+		<td>{{simulation.date | date:"dd.MM.yy"}}</td>
 		<td><span (click)="removeSimulation(simulation._id)" class="material-icons">delete</span></td>
 	</tr>
 </table>

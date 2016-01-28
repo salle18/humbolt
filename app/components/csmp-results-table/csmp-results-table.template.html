@@ -1,1 +1,8 @@
-<div> hey </div>
+<table>
+	<tr>
+		<td *ngFor="#label of labels">{{label}}</td>
+	</tr>
+	<tr *ngFor="#row of results">
+		<td *ngFor="#result of row">{{result}}</td>
+	</tr>
+</table>

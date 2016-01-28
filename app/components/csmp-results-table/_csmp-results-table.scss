@@ -1,4 +1,8 @@
 csmp-results-table {
   height: 100%;
   overflow: auto;
+  
+  table {
+	table-layout: fixed;
+  }
 }

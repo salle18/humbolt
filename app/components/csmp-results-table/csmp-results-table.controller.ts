@@ -6,8 +6,12 @@ import {SimulationService} from "../../core/services/SimulationService";
 	templateUrl: "components/csmp-results-table/csmp-results-table.template.html"
 })
 export class CsmpResultsTable {
+	
+	private results: number[][];
+	private labels: string[];
 
 	constructor(private simulationService:SimulationService) {
-		console.log(this.simulationService.getSimulationResults());
+		this.labels = this.simulationService.getLabels();
+		this.results = this.simulationService.getSimulationResults();
 	}
 }

@@ -20,7 +20,7 @@ export class CsmpGraph implements OnInit {
 		let graphOptions = {
 			labels: labels,
 			width: 1200,
-			height: 1000,
+			height: 800,
 		};
 		console.log(data);
 		if (data.length > 0) {
