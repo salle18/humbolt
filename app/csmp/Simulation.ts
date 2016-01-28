@@ -10,7 +10,7 @@ export interface ISimulationConfig {
 
 export interface IJSONSimulation {
 	description: string;
-	date: string;
+	date: number;
 	method: string;
 	duration: number;
 	integrationInterval: number;
@@ -37,7 +37,7 @@ export class Simulation {
 		integrationInterval: 0.01
 	};
 
-	private date:string = new Date().toJSON();
+	private date:number = 0;
 
 	constructor() {
 		this.blocks = new Dictionary<Block>();
@@ -182,7 +182,7 @@ export class Simulation {
 			integrationInterval: this.config.integrationInterval,
 			duration: this.config.duration,
 			blocks: blocks,
-			date: new Date().toJSON()
+			date: +new Date()
 		};
 	}
 
