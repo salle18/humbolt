@@ -6,6 +6,7 @@ export interface ISimulationConfig {
 	method: string;
 	integrationInterval: number;
 	duration: number;
+	optimizeAsync: boolean;
 }
 
 export interface IJSONSimulation {
@@ -15,6 +16,7 @@ export interface IJSONSimulation {
 	duration: number;
 	integrationInterval: number;
 	blocks: IJSONBlock[];
+	optimizeAsync: boolean;
 }
 
 export interface IMetaJSONMethod {
@@ -34,6 +36,7 @@ export class Simulation {
 		description: "Simulacija1",
 		method: "RungeKuttaIV",
 		duration: 10,
+		optimizeAsync: true,
 		integrationInterval: 0.01
 	};
 
@@ -181,6 +184,7 @@ export class Simulation {
 			method: this.config.method,
 			integrationInterval: this.config.integrationInterval,
 			duration: this.config.duration,
+			optimizeAsync: this.config.optimizeAsync,
 			blocks: blocks,
 			date: +new Date()
 		};
@@ -241,6 +245,7 @@ export class Simulation {
 		this.config.method = "RungeKuttaIV";
 		this.config.duration = 10;
 		this.config.integrationInterval = 0.01;
+		this.config.optimizeAsync = true;
 	}
 
 	/**
