@@ -2,4 +2,38 @@ csmp-menu {
   align-items: center;
   display: flex;
   width: 100%;
+  justify-content: space-between;
+
+	.menu-middleItems {
+		display: flex;
+		padding-right: 50px;
+	}
+
+	.menu-button {
+		height: 50px;
+
+		&:nth-child(2n) {
+			border-left: 1px solid #cccccc;
+		}
+
+		&:nth-child(3n) {
+			border-right: 1px solid #cccccc;
+		}
+	}
+
+	.button-title {
+		display: block;
+		line-height: 8px;
+	}
+
+	.icon-playIcon {
+		margin-bottom: 3px;
+	}
+
+	.button-simulation {
+		border-left: 1px solid #cccccc;
+		border-right: 1px solid #cccccc;
+	}
+
 }
+

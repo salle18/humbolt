@@ -1,13 +1,22 @@
 csmp-block-list {
+
   .list-item {
-	float: left;
-	text-align: center;
-	font-weight: 700;
-	small {
-	  display: block;
-	  height: 2.4em;
-	  font-size: .7em;
-	  line-height: 1.2em;
-	}
+		float: left;
+		font-weight: 700;
+		margin-bottom: 10px;
+		text-align: center;
   }
+
+  .block-description {
+  	display: block;
+  	line-height: 15px;
+  	padding-top: 5px;
+  }
+
+  .block-list {
+    padding-top: 20px;
+  }
+
 }
+
+
