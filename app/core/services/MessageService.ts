@@ -1,24 +1,35 @@
+import {Injectable} from "angular2/core";
+import {SnackbarService} from "../../modules/snackbar/SnackbarService";
+
+@Injectable()
 export class MessageService {
 
-	success(message:string):void {
-		alert(message);
+	private timeout:number = 2000;
 
+	constructor(private snackbarService:SnackbarService) {
+	}
+
+	success(message:string):void {
+		this.show(message);
 	}
 
 	info(message:string):void {
-		alert(message);
+		this.show(message);
 	}
 
 	error(message:string):void {
-		alert(message);
+		this.show(message);
 		console.error(message);
 	}
 
 	warning(message:string):void {
-		alert(message);
+		this.show(message);
 	}
 
-	confirm(message:string):boolean {
-		return true;
+	private show(message:string):void {
+		this.snackbarService.showMessage({
+			message: message,
+			timeout: this.timeout
+		});
 	}
 }

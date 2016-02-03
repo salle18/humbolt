@@ -6,8 +6,10 @@ import {ServerService} from "./ServerService";
 import {MessageService} from "./MessageService";
 import {AuthService} from "./AuthService";
 import {HttpService} from "./HttpService";
+import {SnackbarService} from "../../modules/snackbar/SnackbarService";
+
 
 export let APP_SERVICES:Array<any> = [
 	AppService, SimulationService, PlumbService, PlumbServiceUtilities, ServerService, MessageService,
-	AuthService, HttpService
+	AuthService, HttpService, SnackbarService
 ];
