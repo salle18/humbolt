@@ -191,13 +191,26 @@ export class Simulation {
 	}
 
 	/**
-	 * @param JSONBlocks Niz JSON elemenata koji učitavamo u simulaciju.
+	 * @param JSONSimulation JSON element iz koga učitavamo simulaciju.
 	 */
-	loadJSON(JSONBlocks:IJSONBlock[]):void {
+	loadSimulation(JSONSimulation:IJSONSimulation):void {
 		/**
-		 * Pre učitavanja elemenata resetujemo simulaciju.
+		 * Resetujemo simulaciju.
 		 */
 		this.reset();
+		this.config.description = JSONSimulation.description;
+		this.config.method = JSONSimulation.method;
+		this.config.integrationInterval = JSONSimulation.integrationInterval;
+		this.config.duration = JSONSimulation.duration;
+		this.config.optimizeAsync = JSONSimulation.optimizeAsync;
+		this.loadBlocks(JSONSimulation.blocks);
+	}
+
+	/**
+	 * @param JSONBlocks Niz JSON elemenata koji učitavamo u simulaciju.
+	 */
+	loadBlocks(JSONBlocks:IJSONBlock[]):void {
+
 		/**
 		 * Samo dodajemo blocke u simulaciju.
 		 */
