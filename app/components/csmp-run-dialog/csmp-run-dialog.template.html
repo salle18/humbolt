@@ -12,7 +12,7 @@
 		<label>Trajanje:</label>
 		<input type="number" class="mdl-textfield__input" step="any" [(ngModel)]="config.duration">
 	</div>
-	<label class="mdl-checkbox" for="optimizeAsync">
+	<label class="mdl-checkbox" for="optimizeAsync" *ngIf="isAsync">
 		<input type="checkbox" id="optimizeAsync" checked class="mdl-checkbox__input"
 			   [(ngModel)]="config.optimizeAsync">
 		<span class="mdl-checkbox__label">Optimizuj asinhrone pozive</span>
