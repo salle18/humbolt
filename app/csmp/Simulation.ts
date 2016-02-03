@@ -232,6 +232,15 @@ export class Simulation {
 	}
 
 	/**
+	 * @return Da li simulacija ima asinhrone blokove.
+	 */
+	isAsync():boolean {
+		return this.blocks.getValues().map(block => block.isAsync).reduce((previous, current) => {
+			return previous || current;
+		}, false);
+	}
+
+	/**
 	 * @return Konfiguracija simulacije.
 	 */
 	getConfig():ISimulationConfig {
