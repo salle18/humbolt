@@ -1,26 +1,18 @@
-import {Component, OnInit, ElementRef, Input, NgZone} from "angular2/core";
+import {Component} from "angular2/core";
 import {IJSONSimulation} from "../../csmp/Simulation";
 import {AppService} from "../../core/services/AppService";
+import {ModalInstance} from "../../modules/modal/ModalInstance";
 
 @Component({
 	selector: "csmp-dialog",
-	templateUrl: "components/csmp-dialog/csmp-dialog.template.html",
-	host: {
-		class: "mdl-card mdl-shadow--3dp"
-	}
+	templateUrl: "components/csmp-dialog/csmp-dialog.template.html"
 })
 export class CsmpDialog {
 
-	@Input() dialog:any;
-
 	private simulations:IJSONSimulation[];
 
-	constructor(private appService:AppService, private elementRef:ElementRef, private zone:NgZone) {
+	constructor(private appService:AppService, private modalInstance:ModalInstance) {
 		this.simulations = this.appService.simulations;
-	}
-
-	ngOnInit():void {
-		this.zone.runOutsideAngular(() => jQuery(this.elementRef.nativeElement).draggable());
 	}
 
 	removeSimulation(id:string):void {
@@ -28,6 +20,6 @@ export class CsmpDialog {
 	}
 
 	close():void {
-		this.dialog.visible = false;
+		this.modalInstance.close();
 	}
 }

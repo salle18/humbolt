@@ -1,11 +1,19 @@
-<button class="pull-right button-close" (click)="close()">
-	<span class="material-icons">close</span>
-</button>
-<table>
-	<tr *ngFor="#simulation of simulations; #i=index">
-		<td>{{simulation.description}}</td>
-		<td>{{simulation.date | date:"dd.MM.yy"}}</td>
-		<td><span (click)="removeSimulation(simulation._id)" class="material-icons">delete</span></td>
-	</tr>
-</table>
-<p *ngIf="!simulations.length">Još uvek niste sačuvali nijednu simulaciju...</p>
+<h4 class="mdl-dialog__title">Simulacije</h4>
+<div class="mdl-dialog__content">
+	<ul class="mdl-list">
+		<li class="mdl-list__item" *ngFor="#simulation of simulations; #i=index">
+				<span class="mdl-list__item-primary-content">
+					<span class=mdl-list__item-text>{{simulation.description}}</span>
+      				<span class="mdl-list__item-sub-title">{{simulation.date | date:"dd.MM.yy"}}</span>
+				</span>
+				<span class="mdl-list__item-secondary-content">
+					<span class="mdl-list__item-secondary-action" (click)="removeSimulation(simulation._id)">
+						<span class="material-icons">delete</span>
+					</span>
+    			</span>
+		</li>
+	</ul>
+</div>
+<div class="mdl-dialog__actions">
+	<button type="button" class="mdl-button" (click)="close()">Close</button>
+</div>
