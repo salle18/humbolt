@@ -58,7 +58,7 @@ export class AppService {
 		this.serverService.saveSimulation(this.simulationService.saveJSON())
 			.subscribe(
 				simulation => this.messageService.success("Simulation saved..."),
-				error => this.messageService.error("Error saving simulation...")
+				this.handleError
 			);
 	}
 
@@ -70,21 +70,21 @@ export class AppService {
 					this.simulationService.setSimulationResults(results);
 					this.router.navigate(["ResultsTable"]);
 				},
-				error => this.messageService.error("Error loading simulation results...")
+				this.handleError
 			);
 	}
 
 	loadMetaBlocks():void {
 		this.serverService.getMetaBlocks().subscribe(
 			metaBlocks => this.metaBlocks.push.apply(this.metaBlocks, metaBlocks),
-			error => this.messageService.error("Error loading simulation blocks...")
+			this.handleError
 		);
 	}
 
 	loadIntegrationMethods():void {
 		this.serverService.getIntegrationMethods().subscribe(
 			integrationMethods => this.integrationMethods.push.apply(this.integrationMethods, integrationMethods),
-			error => this.messageService.error("Error loading integration methods...")
+			this.handleError
 		);
 	}
 
@@ -94,14 +94,14 @@ export class AppService {
 				this.simulations.length = 0;
 				this.simulations.push.apply(this.simulations, simulations);
 			},
-			error => this.messageService.error("Error loading simulation list...")
+			this.handleError
 		);
 	}
 
 	loadSimulation(id:string):void {
 		this.serverService.loadSimulation(id).subscribe(
 			simulation => this.simulationService.loadSimulation(simulation),
-			error => this.messageService.error("Error loading simulation...")
+			this.handleError
 		);
 	}
 
@@ -110,8 +110,7 @@ export class AppService {
 			simulation => {
 				this.messageService.success("Simulation deleted...");
 				this.listSimulations();
-			},
-			error => this.messageService.error("Error deleting simulation...")
+			}, this.handleError
 		);
 	}
 
@@ -134,6 +133,15 @@ export class AppService {
 	logout():void {
 		this.reset();
 		this.authService.logout();
+	}
+
+	handleError(error:any) {
+		console.error(error);
+		if (error && error.message) {
+			this.messageService.error(error.message);
+		} else {
+			this.messageService.error("Unknown error, see console.");
+		}
 	}
 
 }
