@@ -26,7 +26,7 @@ export class MessageService {
 	}
 
 	private show(message:string):void {
-		this.snackbarService.showMessage({
+		this.snackbarService.showSnackbar({
 			message: message,
 			timeout: this.timeout
 		});
