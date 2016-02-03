@@ -14,10 +14,12 @@ export class CsmpRunDialog {
 
 	private config:ISimulationConfig;
 	private methods:IMetaJSONMethod[] = [];
+	private isAsync:boolean;
 
 	constructor(private appService:AppService, private simulationService:SimulationService, private modalInstance:ModalInstance) {
 		this.config = this.simulationService.getSimulationConfig();
 		this.methods = this.appService.integrationMethods;
+		this.isAsync = this.simulationService.isAsync();
 	}
 
 	run():void {

@@ -68,5 +68,9 @@ export class SimulationService {
 	getLabels():string[] {
 		return ["time"].concat(this.getBlocks().map(block => block.getIndexDescription()));
 	}
+	
+	isAsync():boolean {
+		return this.simulation.isAsync();
+	}
 
 }
