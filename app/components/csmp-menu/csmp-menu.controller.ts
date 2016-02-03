@@ -6,11 +6,13 @@ import {AppService} from "../../core/services/AppService";
 import {IMetaJSONMethod, ISimulationConfig} from "../../csmp/Simulation";
 import {CsmpDialog} from "../csmp-dialog/csmp-dialog.controller";
 import {IJSONSimulation} from "../../csmp/Simulation";
+import {ModalProvider} from "../../modules/modal/ModalProvider";
 
 @Component({
 	selector: "csmp-menu",
 	templateUrl: "components/csmp-menu/csmp-menu.template.html",
-	directives: [CsmpUpgradeElement, CsmpDialog, RouterLink]
+	directives: [CsmpUpgradeElement, CsmpDialog, RouterLink],
+	providers: [ModalProvider]
 })
 export class CsmpMenu {
 
@@ -20,7 +22,7 @@ export class CsmpMenu {
 		visible: false
 	};
 
-	constructor(private appService:AppService, private simulationService:SimulationService) {
+	constructor(private appService:AppService, private simulationService:SimulationService, private modal:ModalProvider) {
 		this.simulationConfig = simulationService.getSimulationConfig();
 		this.methods = this.appService.integrationMethods;
 	}
@@ -31,7 +33,7 @@ export class CsmpMenu {
 
 	openDialog():void {
 		this.appService.listSimulations();
-		this.dialog.visible = true;
+		this.modal.open(CsmpDialog, []);
 	}
 
 	saveSimulation():void {
