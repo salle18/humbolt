@@ -3,8 +3,12 @@ import {Injectable} from "angular2/core";
 import {Router} from "angular2/router";
 import {HttpService} from "./HttpService";
 import {Observable} from "rxjs/Observable";
-import {TokenService} from "./TokenService";
 import {MessageService} from "./MessageService";
+
+export interface IUser {
+	name: string;
+	token: string;
+}
 
 export interface ILoginData {
 	name: string;
@@ -20,9 +24,10 @@ interface IResponse {
 @Injectable()
 export class AuthService {
 
-	private url = "http://localhost:9000";
+	private url:string = "http://localhost:9000";
+	private identifier:string = "user_data";
 
-	constructor(private httpService:HttpService, private tokenService:TokenService, private messageService:MessageService, private router:Router) {
+	constructor(private httpService:HttpService, private messageService:MessageService, private router:Router) {
 	}
 
 	login(loginData:ILoginData):void {
@@ -30,7 +35,11 @@ export class AuthService {
 			.subscribe(
 				res => {
 					if (res.success) {
-						this.tokenService.setToken(res.token);
+						this.setUser({
+							name: loginData.name,
+							token: res.token
+						});
+						this.httpService.setToken(res.token);
 						this.router.navigate(["Hub"]);
 					} else {
 						this.messageService.error(res.message);
@@ -41,13 +50,33 @@ export class AuthService {
 	}
 
 	logout():void {
-		this.tokenService.removeToken();
+		this.clearUser();
+		this.httpService.clearToken();
 		this.router.navigate(["Login"]);
 	}
 
 	isLoggedIn():boolean {
-		return this.tokenService.hasToken();
+		return this.user() !== null;
 	}
 
+	user():IUser {
+		let user = localStorage.getItem(this.identifier);
+		return user ? JSON.parse(user) : null;
+	}
+
+	getToken():string {
+		let user = this.user();
+		if (user) {
+			return user.token;
+		}
+	}
+
+	setUser(user:IUser):void {
+		localStorage.setItem(this.identifier, JSON.stringify(user));
+	}
+
+	clearUser():void {
+		localStorage.removeItem(this.identifier);
+	}
 
 }
