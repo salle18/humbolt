@@ -9,23 +9,30 @@ export interface IMessageData {
 	actionText?: string;
 }
 
-
 @Injectable()
 export class SnackbarService {
 
-	private messageBox:any = null;
+	private snackBar:any = null;
 
 	constructor(private dcl:DynamicComponentLoader, private appRef:ApplicationRef) {
-		this.addMessageBox().then(messageBox => this.messageBox = messageBox);
 	}
 
-	showMessage(data: IMessageData) {
-		if (this.messageBox) {
-			this.messageBox.MaterialSnackbar.showSnackbar(data);
+	showMessage(data:IMessageData):void {
+		if (!this.snackBar) {
+			this.addSnackbarBox().then(snackBarBox => {
+				this.snackBar = snackBarBox.firstChild;
+				this.showSnackbar(data);
+			});
+		} else {
+			this.showSnackbar(data);
 		}
 	}
 
-	addMessageBox():Promise<any> {
+	private showSnackbar(data:IMessageData):void {
+		this.snackBar.MaterialSnackbar.showSnackbar(data);
+	}
+
+	private addSnackbarBox():Promise<any> {
 		let appRef = this.appRef["_rootComponents"][0].location;
 		return this.dcl.loadNextToLocation(Snackbar, appRef, [])
 			.then(componentRef => {
