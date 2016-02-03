@@ -98,6 +98,13 @@ export class AppService {
 		);
 	}
 
+	loadSimulation(id:string):void {
+		this.serverService.loadSimulation(id).subscribe(
+			simulation => this.simulationService.loadSimulation(simulation),
+			error => this.messageService.error("Error loading simulation...")
+		)
+	}
+
 	removeSimulation(id:string):void {
 		this.serverService.removeSimulation(id).subscribe(
 			simulation => {
