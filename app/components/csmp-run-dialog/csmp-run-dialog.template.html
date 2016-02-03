@@ -1,0 +1,19 @@
+<div class="mdl-textfield" csmp-upgrade-element>
+	<label>Interval:</label>
+	<input type="number" class="mdl-textfield__input" step="any"
+		   [(ngModel)]="simulationConfig.integrationInterval">
+</div>
+<div class="mdl-textfield" csmp-upgrade-element>
+	<label>Trajanje:</label>
+	<input type="number" class="mdl-textfield__input" step="any" [(ngModel)]="simulationConfig.duration">
+</div>
+<select [(ngModel)]="simulationConfig.method">
+	<option *ngFor="#method of methods" [value]="method.className">{{method.description}}</option>
+</select>
+<label csmp-upgrade-element class="mdl-checkbox" for="optimizeAsync">
+	<input type="checkbox" id="optimizeAsync" checked class="mdl-checkbox__input" [(ngModel)]="simulationConfig.optimizeAsync">
+	<span class="mdl-checkbox__label">Optimize async</span>
+</label>
+<button type="button" class="mdl-button mdl-button--accent" (click)="run()">
+	Simuliraj <span class="material-icons">play_arrow</span>
+</button>
