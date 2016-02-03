@@ -1,12 +1,10 @@
 import {Component} from "angular2/core";
 import {RouterLink} from "angular2/router";
 import {CsmpUpgradeElement} from "../../directives/csmp-upgrade-element";
-import {SimulationService} from "../../core/services/SimulationService";
 import {AppService} from "../../core/services/AppService";
-import {IMetaJSONMethod, ISimulationConfig} from "../../csmp/Simulation";
 import {CsmpOpenDialog} from "../csmp-open-dialog/csmp-open-dialog.controller";
 import {CsmpSaveDialog} from "../csmp-save-dialog/csmp-save-dialog.controller";
-import {IJSONSimulation} from "../../csmp/Simulation";
+import {CsmpRunDialog} from "../csmp-run-dialog/csmp-run-dialog.controller";
 import {ModalProvider} from "../../modules/modal/ModalProvider";
 
 @Component({
@@ -17,15 +15,7 @@ import {ModalProvider} from "../../modules/modal/ModalProvider";
 })
 export class CsmpMenu {
 
-	public simulationConfig:ISimulationConfig;
-	public methods:IMetaJSONMethod[] = [];
-	private dialog = {
-		visible: false
-	};
-
-	constructor(private appService:AppService, private simulationService:SimulationService, private modal:ModalProvider) {
-		this.simulationConfig = simulationService.getSimulationConfig();
-		this.methods = this.appService.integrationMethods;
+	constructor(private appService:AppService, private modal:ModalProvider) {
 	}
 
 	newSimulation():void {
@@ -36,12 +26,12 @@ export class CsmpMenu {
 		this.modal.open(CsmpOpenDialog, []);
 	}
 
-	saveSimulation():void {
+	saveDialog():void {
 		this.modal.open(CsmpSaveDialog, []);
 	}
 
-	runSimulation():void {
-		this.appService.run(this.simulationConfig);
+	runDialog():void {
+		this.modal.open(CsmpRunDialog, []);
 	}
 
 	rotateBlock(direction:string):void {
