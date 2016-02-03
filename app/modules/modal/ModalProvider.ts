@@ -32,7 +32,7 @@ export class ModalProvider {
 	}
 
 	addModal(bindings:ResolvedProvider[]):Promise<ComponentRef> {
-		let appRef = this.appRef['_rootComponents'][0].location;
+		let appRef = this.appRef["_rootComponents"][0].location;
 		return this.dcl.loadNextToLocation(Modal, appRef, bindings);
 	}
 

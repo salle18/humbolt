@@ -5,9 +5,9 @@ import {ModalInstance} from "../../modules/modal/ModalInstance";
 
 @Component({
 	selector: "csmp-dialog",
-	templateUrl: "components/csmp-dialog/csmp-dialog.template.html"
+	templateUrl: "components/csmp-open-dialog/csmp-open-dialog.template.html"
 })
-export class CsmpDialog {
+export class CsmpOpenDialog {
 
 	private simulations:IJSONSimulation[];
 
