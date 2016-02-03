@@ -58,7 +58,7 @@ export class AppService {
 		this.serverService.saveSimulation(this.simulationService.saveJSON())
 			.subscribe(
 				simulation => this.messageService.success("Simulation saved..."),
-				this.handleError
+				error => this.handleError(error)
 			);
 	}
 
@@ -70,21 +70,21 @@ export class AppService {
 					this.simulationService.setSimulationResults(results);
 					this.router.navigate(["ResultsTable"]);
 				},
-				this.handleError
+				error => this.handleError(error)
 			);
 	}
 
 	loadMetaBlocks():void {
 		this.serverService.getMetaBlocks().subscribe(
 			metaBlocks => this.metaBlocks.push.apply(this.metaBlocks, metaBlocks),
-			this.handleError
+			error => this.handleError(error)
 		);
 	}
 
 	loadIntegrationMethods():void {
 		this.serverService.getIntegrationMethods().subscribe(
 			integrationMethods => this.integrationMethods.push.apply(this.integrationMethods, integrationMethods),
-			this.handleError
+			error => this.handleError(error)
 		);
 	}
 
@@ -94,14 +94,14 @@ export class AppService {
 				this.simulations.length = 0;
 				this.simulations.push.apply(this.simulations, simulations);
 			},
-			this.handleError
+			error => this.handleError(error)
 		);
 	}
 
 	loadSimulation(id:string):void {
 		this.serverService.loadSimulation(id).subscribe(
 			simulation => this.simulationService.loadSimulation(simulation),
-			this.handleError
+			error => this.handleError(error)
 		);
 	}
 
@@ -110,7 +110,7 @@ export class AppService {
 			simulation => {
 				this.messageService.success("Simulation deleted...");
 				this.listSimulations();
-			}, this.handleError
+			}, error => this.handleError(error)
 		);
 	}
 
@@ -136,10 +136,10 @@ export class AppService {
 	}
 
 	handleError(error:any) {
-		console.error(error);
 		if (error && error.message) {
 			this.messageService.error(error.message);
 		} else {
+			console.error(error);
 			this.messageService.error("Unknown error, see console.");
 		}
 	}
