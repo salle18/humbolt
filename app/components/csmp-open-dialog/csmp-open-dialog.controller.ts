@@ -12,6 +12,7 @@ export class CsmpOpenDialog {
 	private simulations:IJSONSimulation[];
 
 	constructor(private appService:AppService, private modalInstance:ModalInstance) {
+		this.appService.listSimulations();
 		this.simulations = this.appService.simulations;
 	}
 

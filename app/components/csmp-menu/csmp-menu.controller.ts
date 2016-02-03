@@ -33,7 +33,6 @@ export class CsmpMenu {
 	}
 
 	openDialog():void {
-		this.appService.listSimulations();
 		this.modal.open(CsmpOpenDialog, []);
 	}
 
