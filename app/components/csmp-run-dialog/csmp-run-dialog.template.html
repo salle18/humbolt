@@ -1,18 +1,18 @@
 <h4 class="mdl-dialog__title">Simulacija</h4>
 <div class="mdl-dialog__content">
-	<div class="mdl-textfield" csmp-upgrade-element>
+	<select [(ngModel)]="config.method">
+		<option *ngFor="#method of methods" [value]="method.className">{{method.description}}</option>
+	</select>
+	<div class="mdl-textfield">
 		<label>Interval:</label>
 		<input type="number" class="mdl-textfield__input" step="any"
 			   [(ngModel)]="config.integrationInterval">
 	</div>
-	<div class="mdl-textfield" csmp-upgrade-element>
+	<div class="mdl-textfield">
 		<label>Trajanje:</label>
 		<input type="number" class="mdl-textfield__input" step="any" [(ngModel)]="config.duration">
 	</div>
-	<select [(ngModel)]="config.method">
-		<option *ngFor="#method of methods" [value]="method.className">{{method.description}}</option>
-	</select>
-	<label csmp-upgrade-element class="mdl-checkbox" for="optimizeAsync">
+	<label class="mdl-checkbox" for="optimizeAsync">
 		<input type="checkbox" id="optimizeAsync" checked class="mdl-checkbox__input"
 			   [(ngModel)]="config.optimizeAsync">
 		<span class="mdl-checkbox__label">Optimizuj asinhrone pozive</span>
