@@ -1,19 +1,24 @@
-<div class="mdl-textfield" csmp-upgrade-element>
-	<label>Interval:</label>
-	<input type="number" class="mdl-textfield__input" step="any"
-		   [(ngModel)]="config.integrationInterval">
+<h4 class="mdl-dialog__title">Simulacija</h4>
+<div class="mdl-dialog__content">
+	<div class="mdl-textfield" csmp-upgrade-element>
+		<label>Interval:</label>
+		<input type="number" class="mdl-textfield__input" step="any"
+			   [(ngModel)]="config.integrationInterval">
+	</div>
+	<div class="mdl-textfield" csmp-upgrade-element>
+		<label>Trajanje:</label>
+		<input type="number" class="mdl-textfield__input" step="any" [(ngModel)]="config.duration">
+	</div>
+	<select [(ngModel)]="config.method">
+		<option *ngFor="#method of methods" [value]="method.className">{{method.description}}</option>
+	</select>
+	<label csmp-upgrade-element class="mdl-checkbox" for="optimizeAsync">
+		<input type="checkbox" id="optimizeAsync" checked class="mdl-checkbox__input"
+			   [(ngModel)]="config.optimizeAsync">
+		<span class="mdl-checkbox__label">Optimizuj asinhrone pozive</span>
+	</label>
 </div>
-<div class="mdl-textfield" csmp-upgrade-element>
-	<label>Trajanje:</label>
-	<input type="number" class="mdl-textfield__input" step="any" [(ngModel)]="config.duration">
+<div class="mdl-dialog__actions">
+	<button type="button" class="mdl-button" (click)="close()">Zatvori</button>
+	<button type="button" class="mdl-button mdl-button--accent" (click)="run()">Pokreni</button>
 </div>
-<select [(ngModel)]="config.method">
-	<option *ngFor="#method of methods" [value]="method.className">{{method.description}}</option>
-</select>
-<label csmp-upgrade-element class="mdl-checkbox" for="optimizeAsync">
-	<input type="checkbox" id="optimizeAsync" checked class="mdl-checkbox__input" [(ngModel)]="config.optimizeAsync">
-	<span class="mdl-checkbox__label">Optimizuj asinhrone pozive</span>
-</label>
-<button type="button" class="mdl-button mdl-button--accent" (click)="run()">
-	Simuliraj <span class="material-icons">play_arrow</span>
-</button>
