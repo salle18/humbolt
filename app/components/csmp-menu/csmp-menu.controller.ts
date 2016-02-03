@@ -5,6 +5,7 @@ import {SimulationService} from "../../core/services/SimulationService";
 import {AppService} from "../../core/services/AppService";
 import {IMetaJSONMethod, ISimulationConfig} from "../../csmp/Simulation";
 import {CsmpOpenDialog} from "../csmp-open-dialog/csmp-open-dialog.controller";
+import {CsmpSaveDialog} from "../csmp-save-dialog/csmp-save-dialog.controller";
 import {IJSONSimulation} from "../../csmp/Simulation";
 import {ModalProvider} from "../../modules/modal/ModalProvider";
 
@@ -37,7 +38,7 @@ export class CsmpMenu {
 	}
 
 	saveSimulation():void {
-		this.appService.save();
+		this.modal.open(CsmpSaveDialog, []);
 	}
 
 	runSimulation():void {

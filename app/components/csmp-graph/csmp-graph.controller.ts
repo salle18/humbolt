@@ -1,8 +1,6 @@
 import {Component, ElementRef, OnInit} from "angular2/core";
-import * as Dygraph from "danvk/dygraphs";
 import {SimulationService} from "../../core/services/SimulationService";
-
-declare var Dygraph:any;
+var Dygraph = require("danvk/dygraphs");
 
 @Component({
 	selector: "csmp-graph",

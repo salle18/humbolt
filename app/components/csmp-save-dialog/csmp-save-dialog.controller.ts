@@ -4,20 +4,15 @@ import {AppService} from "../../core/services/AppService";
 import {ModalInstance} from "../../modules/modal/ModalInstance";
 
 @Component({
-	selector: "csmp-open-dialog",
-	templateUrl: "components/csmp-open-dialog/csmp-open-dialog.template.html"
+	selector: "csmp-save-dialog",
+	templateUrl: "components/csmp-save-dialog/csmp-save-dialog.template.html"
 })
-export class CsmpOpenDialog {
-
-	private simulations:IJSONSimulation[];
+export class CsmpSaveDialog {
 
 	constructor(private appService:AppService, private modalInstance:ModalInstance) {
-		this.simulations = this.appService.simulations;
+		
 	}
 
-	removeSimulation(id:string):void {
-		this.appService.removeSimulation(id);
-	}
 
 	close():void {
 		this.modalInstance.close();
