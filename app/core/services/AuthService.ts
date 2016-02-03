@@ -28,6 +28,10 @@ export class AuthService {
 	private identifier:string = "user_data";
 
 	constructor(private httpService:HttpService, private messageService:MessageService, private router:Router) {
+		let user = this.user();
+		if (user) {
+			this.httpService.setToken(user.token);
+		}
 	}
 
 	login(loginData:ILoginData):void {
