@@ -8,7 +8,7 @@ import {IJSONSimulation} from "../../csmp/Simulation";
 
 @Component({
 	selector: "csmp-save-dialog",
-	templateUrl: "components/csmp-save-dialog/csmp-save-dialog.template.html"
+	templateUrl: "components/csmp-run-dialog/csmp-run-dialog.template.html"
 })
 export class CsmpRunDialog {
 
