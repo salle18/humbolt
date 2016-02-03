@@ -19,7 +19,6 @@ export class MessageService {
 
 	error(message:string):void {
 		this.show(message);
-		console.error(message);
 	}
 
 	warning(message:string):void {
