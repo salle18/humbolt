@@ -57,7 +57,7 @@ export interface IMetaJSONBlock {
 	info: string;
 	paramDescription: string[];
 	stringParamDescription: string[];
-	async: boolean;
+	isAsync: boolean;
 }
 
 /**
@@ -140,7 +140,7 @@ export class Block {
 	/**
 	 * Da li je block asinhron.
 	 */
-	public async: boolean = false;
+	public isAsync: boolean = false;
 
 	/**
 	 * Jedinstveni ključ blocka u simulaciji. Koristi se kao id DOM blocka.
