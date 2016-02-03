@@ -22,6 +22,7 @@
   "jspm": {
     "configFile": "jspm.conf.js",
     "dependencies": {
+      "GoogleChrome/dialog-polyfill": "github:GoogleChrome/dialog-polyfill@^0.4.2",
       "angular2": "npm:angular2@^2.0.0-beta.2",
       "babel-runtime": "npm:babel-runtime@^6.3.13",
       "danvk/dygraphs": "github:danvk/dygraphs@^1.1.1",
