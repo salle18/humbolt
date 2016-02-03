@@ -22,14 +22,14 @@
   "jspm": {
     "configFile": "jspm.conf.js",
     "dependencies": {
-      "angular2": "npm:angular2@^2.0.0-beta.1",
+      "angular2": "npm:angular2@^2.0.0-beta.2",
       "babel-runtime": "npm:babel-runtime@^6.3.13",
       "danvk/dygraphs": "github:danvk/dygraphs@^1.1.1",
-      "google/material-design-lite": "github:google/material-design-lite@^1.0.6",
+      "google/material-design-lite": "github:google/material-design-lite@^1.1.0",
       "jquery-ui": "github:components/jqueryui@^1.11.4",
       "normalize.css": "github:necolas/normalize.css@^3.0.3",
-      "rxjs": "npm:rxjs@^5.0.0-beta.0",
-      "sporritt/jsPlumb": "github:sporritt/jsPlumb@^2.0.5"
+      "rxjs": "npm:rxjs@^5.0.0-beta.1",
+      "sporritt/jsPlumb": "github:sporritt/jsPlumb@^2.0.6"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^6.4.0"
@@ -46,12 +46,12 @@
     }
   },
   "dependencies": {
-    "angular2": "2.0.0-beta.1",
+    "angular2": "2.0.0-beta.2",
     "babel-runtime": "6.3.x",
-    "es6-shim": "0.33.3",
-    "reflect-metadata": "0.1.2",
-    "rxjs": "5.0.0-beta.0",
-    "zone.js": "0.5.10"
+    "es6-shim": "0.34.2",
+    "reflect-metadata": "0.1.3",
+    "rxjs": "5.0.0-beta.1",
+    "zone.js": "0.5.13"
   },
   "devDependencies": {
     "babel-core": "6.4.x",
@@ -60,11 +60,11 @@
     "gulp": "3.9.x",
     "jspm": "0.16.x",
     "nodemon": "1.8.x",
-    "typescript": "1.7.3",
+    "typescript": "1.7.5",
     "modern-web-dev-build": "0.3.x",
     "jasmine-core": "2.4.x",
     "karma-jasmine": "0.3.x",
-    "typings": "0.5.x"
+    "typings": "0.6.x"
   },
   "engines": {
     "node": ">=4.2.1",
