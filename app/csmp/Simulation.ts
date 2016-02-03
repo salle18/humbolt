@@ -33,7 +33,7 @@ export class Simulation {
 	private results:number[][] = [];
 
 	private config:ISimulationConfig = {
-		description: "Simulacija1",
+		description: "Simulacija 1",
 		method: "RungeKuttaIV",
 		duration: 10,
 		optimizeAsync: true,
