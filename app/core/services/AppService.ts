@@ -62,7 +62,7 @@ export class AppService {
 			);
 	}
 
-	run(config:ISimulationConfig):void {
+	run():void {
 		let JSONSimulation = this.simulationService.saveJSON();
 		this.serverService.postSimulation(JSONSimulation)
 			.subscribe(
