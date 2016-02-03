@@ -17,18 +17,20 @@ export class SnackbarService {
 	constructor(private dcl:DynamicComponentLoader, private appRef:ApplicationRef) {
 	}
 
-	showMessage(data:IMessageData):void {
+	showSnackbar(data:IMessageData):void {
 		if (!this.snackBar) {
 			this.addSnackbarBox().then(snackBarBox => {
 				this.snackBar = snackBarBox.firstChild;
-				this.showSnackbar(data);
+				setTimeout(() => {
+					this.displayData(data);
+				}, 0);
 			});
 		} else {
-			this.showSnackbar(data);
+			this.displayData(data);
 		}
 	}
 
-	private showSnackbar(data:IMessageData):void {
+	private displayData(data:IMessageData):void {
 		this.snackBar.MaterialSnackbar.showSnackbar(data);
 	}
 
