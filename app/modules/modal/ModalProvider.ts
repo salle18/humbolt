@@ -1,9 +1,8 @@
-import {DynamicComponentLoader, Injectable, ApplicationRef, ResolvedProvider, ComponentRef, ElementRef, Injector, provide} from "angular2/core";
+import {DynamicComponentLoader, Injectable, ApplicationRef, ResolvedProvider, ComponentRef, Injector, provide} from "angular2/core";
 import {Type} from "angular2/src/facade/lang";
-import {Modal} from "./components/modal.controller.ts";
+import {Modal} from "./components/modal.controller";
 import {ModalInstance} from "./ModalInstance";
 import "GoogleChrome/dialog-polyfill";
-import {App} from "../../core/app";
 
 declare var dialogPolyfill:any;
 
