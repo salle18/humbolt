@@ -11,8 +11,6 @@ export class CsmpInspector implements DoCheck {
 
 	public blocks:Block[] = [];
 	public activeBlock:Block = null;
-	public params:IParam<number>[] = [];
-	public stringParams:IParam<string>[] = [];
 
 	constructor(private appService:AppService, private simulationService:SimulationService) {
 		this.blocks = simulationService.getBlocks();
