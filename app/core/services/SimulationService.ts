@@ -57,7 +57,7 @@ export class SimulationService {
 	getFilteredSimulationResults():number[][] {
 		let results = this.getSimulationResults();
 		return results.filter((item, i) => {
-			return this.filters.indexOf(i) > -1;
+			return this.filters[i].value;
 		});
 	}
 
