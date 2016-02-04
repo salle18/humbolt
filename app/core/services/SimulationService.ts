@@ -73,8 +73,8 @@ export class SimulationService {
 		return this.simulation.isAsync();
 	}
 
-	loadSimulation(JSONSimulation:IJSONSimulation):void {
-		this.simulation.loadSimulation(JSONSimulation);
+	loadSimulation(JSONSimulation:IJSONSimulation, blocks:Block[]):void {
+		this.simulation.loadSimulation(JSONSimulation, blocks);
 	}
 
 }
