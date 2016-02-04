@@ -64,6 +64,7 @@ export class AppService {
 	}
 
 	run():void {
+		this.simulationService.initFilters();
 		let JSONSimulation = this.simulationService.saveJSON();
 		this.serverService.postSimulation(JSONSimulation)
 			.subscribe(
