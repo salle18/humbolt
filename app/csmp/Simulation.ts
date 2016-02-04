@@ -1,5 +1,6 @@
 import {Block, IJSONBlock, IPosition} from "./Block";
 import {Dictionary} from "./helpers/Dictionary";
+import {EmptyBlock} from "./Block";
 
 export interface ISimulationConfig {
 	description: string;
@@ -192,40 +193,34 @@ export class Simulation {
 
 	/**
 	 * @param JSONSimulation JSON element iz koga učitavamo simulaciju.
+	 * @param blocks Niz instanciranih blokova.
 	 */
-	loadSimulation(JSONSimulation:IJSONSimulation):void {
-		/**
-		 * Resetujemo simulaciju.
-		 */
-		this.reset();
+	loadSimulation(JSONSimulation:IJSONSimulation, blocks:Block[]):void {
 		this.config.description = JSONSimulation.description;
 		this.config.method = JSONSimulation.method;
 		this.config.integrationInterval = JSONSimulation.integrationInterval;
 		this.config.duration = JSONSimulation.duration;
 		this.config.optimizeAsync = JSONSimulation.optimizeAsync;
-		this.loadBlocks(JSONSimulation.blocks);
+		this.loadBlocks(JSONSimulation.blocks, blocks);
 	}
 
 	/**
 	 * @param JSONBlocks Niz JSON elemenata koji učitavamo u simulaciju.
 	 */
-	loadBlocks(JSONBlocks:IJSONBlock[]):void {
+	loadBlocks(JSONBlocks:IJSONBlock[], blocks:Block[]):void {
 
 		/**
 		 * Samo dodajemo blocke u simulaciju.
 		 */
 		for (let i = 0; i < JSONBlocks.length; i++) {
 			let JSONBlock = JSONBlocks[i];
-			let className = JSONBlock.className;
-			let block = new Block();
+			let block = blocks[i];
 			block.loadParams(JSONBlock.params);
 			block.loadStringParams(JSONBlock.stringParams);
 			block.position = JSONBlock.position;
 			block.rotation = JSONBlock.rotation;
 			this.addBlock(block);
 		}
-
-		let blocks = this.blocks.getValues();
 
 		/**
 		 * Ponovo prolazimo kroz sve blocke i dodajemo veze.
@@ -237,9 +232,14 @@ export class Simulation {
 			 * Rekonstruišemo sve ulaze na blocku i obrnuto na izlaznom blocku rekonstruišemo izlaz.
 			 */
 			for (let j = 0; j < JSONBlock.inputs.length; j++) {
-				let outputBlock = blocks[JSONBlock.inputs[j]];
-				block.inputs[j] = outputBlock;
-				outputBlock.addOutput(j, block);
+				let index = JSONBlock.inputs[j];
+				if (index > -1) {
+					let outputBlock = blocks[index];
+					block.inputs[j] = outputBlock;
+					outputBlock.addOutput(j, block);
+				} else {
+					block.inputs[j] = new EmptyBlock();
+				}
 			}
 		}
 	}

@@ -11,6 +11,7 @@ import {IMetaJSONMethod, ISimulationConfig} from "../../csmp/Simulation";
 import {ILoginData} from "./AuthService";
 import {IJSONSimulation} from "../../csmp/Simulation";
 import {Observable} from "rxjs/Observable";
+import {IJSONBlock} from "../../csmp/Block";
 
 @Injectable()
 export class AppService {
@@ -100,7 +101,15 @@ export class AppService {
 
 	loadSimulation(id:string):void {
 		this.serverService.loadSimulation(id).subscribe(
-			simulation => this.simulationService.loadSimulation(simulation),
+			simulation => {
+				this.reset();
+				let blocks = this.createSimulationBlocks(simulation.blocks);
+				this.simulationService.loadSimulation(simulation, blocks);
+				setTimeout(() => {
+					this.plumbService.resetConnections();
+					this.plumbServiceUtilities.resetRotations();
+				});//bugfix https://github.com/angular/angular/issues/6005
+			},
 			error => this.handleError(error)
 		);
 	}
@@ -112,6 +121,14 @@ export class AppService {
 				this.listSimulations();
 			}, error => this.handleError(error)
 		);
+	}
+
+	createSimulationBlocks(JSONBlocks:IJSONBlock[]):Block[] {
+		let blocks:Block[] = [];
+		for (let i = 0; i < JSONBlocks.length; i++) {
+			blocks.push(this.createBlock(JSONBlocks[i].className));
+		}
+		return blocks;
 	}
 
 	createBlock(className:string):Block {
