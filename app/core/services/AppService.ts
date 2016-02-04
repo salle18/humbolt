@@ -11,6 +11,7 @@ import {IMetaJSONMethod, ISimulationConfig} from "../../csmp/Simulation";
 import {ILoginData} from "./AuthService";
 import {IJSONSimulation} from "../../csmp/Simulation";
 import {Observable} from "rxjs/Observable";
+import {IJSONBlock} from "../../csmp/Block";
 
 @Injectable()
 export class AppService {
@@ -100,8 +101,15 @@ export class AppService {
 
 	loadSimulation(id:string):void {
 		this.serverService.loadSimulation(id).subscribe(
-			simulation => this.simulationService.loadSimulation(simulation),
-			error => this.messageService.error("Error loading simulation...")
+			simulation => {
+				this.reset();
+				let blocks = this.createSimulationBlocks(simulation.blocks);
+				this.simulationService.loadSimulation(simulation, blocks);
+			},
+			error => {
+				console.log(error);
+				this.messageService.error("Error loading simulation...");
+			}
 		);
 	}
 
@@ -113,6 +121,14 @@ export class AppService {
 			},
 			error => this.messageService.error("Error deleting simulation...")
 		);
+	}
+
+	createSimulationBlocks(JSONBlocks:IJSONBlock[]):Block[] {
+		let blocks:Block[] = [];
+		for (let i = 0; i < JSONBlocks.length; i++) {
+			blocks.push(this.createBlock(JSONBlocks[i].className));
+		}
+		return blocks;
 	}
 
 	createBlock(className:string):Block {
