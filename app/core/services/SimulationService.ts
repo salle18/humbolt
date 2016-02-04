@@ -6,6 +6,7 @@ import {Block} from "../../csmp/Block";
 export class SimulationService {
 
 	private simulation:Simulation;
+	private filter:number[] = [];
 
 	constructor() {
 		this.simulation = new Simulation;
@@ -46,6 +47,17 @@ export class SimulationService {
 
 	setSimulationResults(results:number[][]):void {
 		this.simulation.setResults(results);
+	}
+
+	getFilteredSimulationResults():number[][] {
+		let results = this.getSimulationResults();
+		return results.filter((item, i) => {
+			return this.filter.indexOf(i) > -1;
+		});
+	}
+
+	setSimulationFilter(filter:number[]):void {
+		this.filter = filter;
 	}
 
 	getSimulationConfig():ISimulationConfig {
