@@ -1,5 +1,5 @@
 import {Component} from "angular2/core";
-import {SimulationService} from "../../core/services/SimulationService";
+import {SimulationService, ISimulationFilter} from "../../core/services/SimulationService";
 
 @Component({
 	selector: "csmp-results-table",
@@ -7,11 +7,12 @@ import {SimulationService} from "../../core/services/SimulationService";
 })
 export class CsmpResultsTable {
 
+	private filters:ISimulationFilter[];
 	private results:number[][];
-	private labels:string[];
 
 	constructor(private simulationService:SimulationService) {
-		this.labels = this.simulationService.getLabels();
+		this.simulationService.initFilter();
+		this.filters = this.simulationService.getSimulationFilters();
 		this.results = this.simulationService.getSimulationResults();
 	}
 }
