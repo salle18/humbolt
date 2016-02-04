@@ -13,7 +13,7 @@ System.config({
     "babel-runtime": "npm:babel-runtime@6.3.19",
     "core-js": "npm:core-js@1.2.6",
     "danvk/dygraphs": "github:danvk/dygraphs@1.1.1",
-    "google/material-design-lite": "github:google/material-design-lite@1.1.0",
+    "google/material-design-lite": "github:google/material-design-lite@1.1.1",
     "jquery-ui": "github:components/jqueryui@1.11.4",
     "normalize.css": "github:necolas/normalize.css@3.0.3",
     "rxjs": "npm:rxjs@5.0.0-beta.0",
