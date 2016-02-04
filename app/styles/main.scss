@@ -18,6 +18,8 @@
 @import "layout/_layout";
 @import "layout/_theme";
 @import "layout/_print";
+// Modules
+@import "../modules/modal/components/modal";
 // Components
 @import "../components/csmp-block/csmp-block";
 @import "../components/csmp-panel/csmp-panel";
