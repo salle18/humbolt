@@ -1,3 +1,22 @@
 <table>
-
+	<tr>
+		<th>RB</th>
+		<th>TIP</th>
+		<th>U1</th>
+		<th>U2</th>
+		<th>U3</th>
+		<th>P1</th>
+		<th>P2</th>
+		<th>P3</th>
+	</tr>
+	<tr *ngFor="#block of blocks; #i=index">
+		<td>{{i + 1}}.</td>
+		<td>{{block.getSign()}}</td>
+		<td>{{block.inputs[0]?.getIndex() + 1}}</td>
+		<td>{{block.inputs[1]?.getIndex() + 1}}</td>
+		<td>{{block.inputs[2]?.getIndex() + 1}}</td>
+		<td>{{block.params[0]?.value}}</td>
+		<td>{{block.params[1]?.value}}</td>
+		<td>{{block.params[2]?.value}}</td>
+	</tr>
 </table>
