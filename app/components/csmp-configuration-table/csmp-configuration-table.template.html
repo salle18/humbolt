@@ -15,9 +15,9 @@
 	<tr *ngFor="#block of blocks; #i=index">
 		<td>{{i + 1}}.</td>
 		<td>{{block.getSign()}}</td>
-		<td>{{block.inputs[0]?.getIndex() + 1}}</td>
-		<td>{{block.inputs[1]?.getIndex() + 1}}</td>
-		<td>{{block.inputs[2]?.getIndex() + 1}}</td>
+		<td>{{(block.inputs[0]?.getIndex() || -1) + 1}}</td>
+		<td>{{(block.inputs[1]?.getIndex() || -1) + 1}}</td>
+		<td>{{(block.inputs[2]?.getIndex() || -1) + 1}}</td>
 		<td>{{block.params[0]?.value || 0}}</td>
 		<td>{{block.params[1]?.value || 0}}</td>
 		<td>{{block.params[2]?.value || 0}}</td>
