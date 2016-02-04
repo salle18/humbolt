@@ -95,6 +95,12 @@ export class SimulationService {
 		return this.getBlocks().map(block => block.getIndexDescription());
 	}
 
+	getFilteredLabels():string[] {
+		return this.getLabels().filter((label, index) => {
+			return this.filters[index].value;
+		});
+	}
+
 	isAsync():boolean {
 		return this.simulation.isAsync();
 	}
