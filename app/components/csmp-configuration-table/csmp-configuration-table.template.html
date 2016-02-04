@@ -12,12 +12,12 @@
 	</tr>
 	</thead>
 	<tbody>
-	<tr *ngFor="#block of blocks; #i=index">
-		<td>{{i + 1}}.</td>
+	<tr *ngFor="#block of blocks">
+		<td>{{block.getBasedIndex()}}.</td>
 		<td>{{block.getSign()}}</td>
-		<td>{{(block.inputs[0]?.getIndex() || -1) + 1}}</td>
-		<td>{{(block.inputs[1]?.getIndex() || -1) + 1}}</td>
-		<td>{{(block.inputs[2]?.getIndex() || -1) + 1}}</td>
+		<td>{{block.inputs[0]?.getBasedIndex() || 0}}</td>
+		<td>{{block.inputs[1]?.getBasedIndex() || 0}}</td>
+		<td>{{block.inputs[2]?.getBasedIndex() || 0}}</td>
 		<td>{{block.params[0]?.value || 0}}</td>
 		<td>{{block.params[1]?.value || 0}}</td>
 		<td>{{block.params[2]?.value || 0}}</td>
