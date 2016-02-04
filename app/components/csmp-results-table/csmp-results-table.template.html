@@ -1,8 +1,12 @@
-<table>
+<table class="mdl-data-table">
+	<thead>
 	<tr>
-		<td *ngFor="#label of labels">{{label}}</td>
+		<th *ngFor="#label of labels">{{label}}</th>
 	</tr>
+	</thead>
+	<tbody>
 	<tr *ngFor="#row of results">
 		<td *ngFor="#result of row">{{result}}</td>
 	</tr>
+	</tbody>
 </table>
