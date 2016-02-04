@@ -105,6 +105,10 @@ export class AppService {
 				this.reset();
 				let blocks = this.createSimulationBlocks(simulation.blocks);
 				this.simulationService.loadSimulation(simulation, blocks);
+				setTimeout(() => {
+					this.plumbService.resetConnections();
+					this.plumbServiceUtilities.resetRotations();
+				});//bugfix https://github.com/angular/angular/issues/6005
 			},
 			error => {
 				console.log(error);
