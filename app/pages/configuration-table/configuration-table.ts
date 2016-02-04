@@ -5,7 +5,7 @@ import {CsmpHeader} from "../../components/csmp-header/csmp-header.controller";
 
 @Component({
 	selector: "page-configuration-table",
-	templateUrl: "pages/results-table/results-table.template.html",
+	templateUrl: "pages/configuration-table/configuration-table.template.html",
 	directives: [CsmpConfigurationTable, RouterLink, CsmpHeader]
 })
 export class ConfigurationTable {
