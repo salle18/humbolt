@@ -11,6 +11,7 @@ export class CsmpResultsTable {
 	private results:number[][];
 
 	constructor(private simulationService:SimulationService) {
+		this.simulationService.initFilters();
 		this.filters = this.simulationService.getSimulationFilters();
 		this.results = this.simulationService.getSimulationResults();
 	}

@@ -65,7 +65,7 @@ export class SimulationService {
 		this.filters = this.getLabels().map(label => {
 			return {
 				label: label,
-				value: true
+				value: false
 			}
 		});
 	}
