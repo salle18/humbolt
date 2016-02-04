@@ -2,11 +2,16 @@ import {Injectable} from "angular2/core";
 import {Simulation, IJSONSimulation, ISimulationConfig} from "../../csmp/Simulation";
 import {Block} from "../../csmp/Block";
 
+export interface ISimulationFilter {
+	label: string;
+	value: boolean;
+}
+
 @Injectable()
 export class SimulationService {
 
 	private simulation:Simulation;
-	private filter:number[] = [];
+	private filters:ISimulationFilter[] = [];
 
 	constructor() {
 		this.simulation = new Simulation;
@@ -52,12 +57,21 @@ export class SimulationService {
 	getFilteredSimulationResults():number[][] {
 		let results = this.getSimulationResults();
 		return results.filter((item, i) => {
-			return this.filter.indexOf(i) > -1;
+			return this.filters.indexOf(i) > -1;
 		});
 	}
 
-	setSimulationFilter(filter:number[]):void {
-		this.filter = filter;
+	initFilters():void {
+		this.filters = this.getLabels().map(label => {
+			return {
+				label: label,
+				value: true
+			}
+		});
+	}
+
+	getSimulationFilters():ISimulationFilter[] {
+		return this.filters;
 	}
 
 	getSimulationConfig():ISimulationConfig {
