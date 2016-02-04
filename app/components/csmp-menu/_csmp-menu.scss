@@ -4,36 +4,24 @@ csmp-menu {
   width: 100%;
   justify-content: space-between;
 
-	.menu-middleItems {
-		display: flex;
-		padding-right: 50px;
-	}
+  .menu-button {
+	height: 64px;
+  }
 
-	.menu-button {
-		height: 50px;
+  .menu-button-group {
+	display: flex;
+	flex-direction: row;
+  }
 
-		&:nth-child(2n) {
-			border-left: 1px solid #cccccc;
-		}
+  .menu-button-title {
+	display: block;
+	line-height: 8px;
+  }
 
-		&:nth-child(3n) {
-			border-right: 1px solid #cccccc;
-		}
-	}
-
-	.button-title {
-		display: block;
-		line-height: 8px;
-	}
-
-	.icon-playIcon {
-		margin-bottom: 3px;
-	}
-
-	.button-simulation {
-		border-left: 1px solid #cccccc;
-		border-right: 1px solid #cccccc;
-	}
-
+  .menu-separator {
+	height: 64px;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #eee;
+  }
 }
 
