@@ -1,6 +1,7 @@
 <table class="mdl-data-table">
 	<thead>
 	<tr>
+		<th>Vreme</th>
 		<th *ngFor="#filter of filters"><input type="checkbox" ([ngModel])="filter.value"> {{filter.label}}</th>
 	</tr>
 	</thead>
