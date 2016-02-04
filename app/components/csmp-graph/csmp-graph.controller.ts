@@ -13,8 +13,8 @@ export class CsmpGraph implements OnInit {
 	}
 
 	ngOnInit():void {
-		let data = this.simulationService.getSimulationResults();
-		let labels = ["Vreme"].concat(this.simulationService.getLabels());
+		let data = this.simulationService.getFilteredSimulationResults();
+		let labels = ["Vreme"].concat(this.simulationService.getFilteredLabels());
 		let graphOptions = {
 			labels: labels,
 			width: 1200,
