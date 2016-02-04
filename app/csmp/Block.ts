@@ -140,7 +140,7 @@ export class Block {
 	/**
 	 * Da li je block asinhron.
 	 */
-	public isAsync: boolean = false;
+	public isAsync:boolean = false;
 
 	/**
 	 * Jedinstveni ključ blocka u simulaciji. Koristi se kao id DOM blocka.
@@ -355,6 +355,10 @@ export class Block {
 	rotate(direction:string):void {
 		let amount = direction === "Right" ? 1 : -1;
 		this.rotation = Rotation[Rotation[(this.rotation + amount + 4) % 4]];
+	}
+
+	getBasedIndex():number {
+		return this.getIndex() + 1;
 	}
 
 }
