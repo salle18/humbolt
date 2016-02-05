@@ -226,13 +226,6 @@ export class Block {
 	}
 
 	/**
-	 * @return Opis blocka.
-	 */
-	getDescription():string {
-		return this.description;
-	}
-
-	/**
 	 * @param descrption Opis ukoliko ne postoji simulacija ili ne postoji opis bloka.
 	 * @return Opis blocka sa rednim brojem blocka u simulaciji.
 	 */
@@ -241,20 +234,6 @@ export class Block {
 			return (this.simulation.getIndex(this) + 1) + ". " + this.description;
 		}
 		return description;
-	}
-
-	/**
-	 * @return Maksimalni broj ulaznih elemenata.
-	 */
-	getMaxNumberOfInputs():number {
-		return this.maxNumberOfInputs;
-	}
-
-	/**
-	 * @return Broj parametara.
-	 */
-	getNumberOfParams():number {
-		return this.numberOfParams;
 	}
 
 	/**
