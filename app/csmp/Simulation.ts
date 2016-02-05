@@ -1,5 +1,5 @@
 import {Block, IJSONBlock, IPosition} from "./Block";
-import {Dictionary} from "./helpers/Dictionary";
+import {Dictionary} from "./Dictionary";
 import {EmptyBlock} from "./Block";
 
 export interface ISimulationConfig {
