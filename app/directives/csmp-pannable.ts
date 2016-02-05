@@ -13,18 +13,12 @@ interface IPosition {
 	}
 })
 export class CsmpPannable {
-
-	private offset:IPosition;
 	private mousePosition:IPosition;
 
-	private element:JQuery;
-
-	constructor(elementRef:ElementRef) {
-		this.element = jQuery(elementRef.nativeElement);
+	constructor(private elementRef:ElementRef) {
 	}
 
 	onMouseDown(e:MouseEvent) {
-		this.offset = this.element.offset();
 		this.mousePosition = {
 			top: e.pageY,
 			left: e.pageX
@@ -32,10 +26,11 @@ export class CsmpPannable {
 	}
 
 	onMouseUp(e:MouseEvent) {
-		let newOffset = {
-			top: this.offset.top + e.pageY - this.mousePosition.top,
-			left: this.offset.left + e.pageX - this.mousePosition.left
+		let offset = {
+			top: this.mousePosition.top - e.pageY,
+			left: this.mousePosition.left - e.pageX
 		};
-		this.element.offset(newOffset);
+		this.elementRef.nativeElement.scrollTop = offset.top;
+		this.elementRef.nativeElement.scrollLeft = offset.left;
 	}
 }
