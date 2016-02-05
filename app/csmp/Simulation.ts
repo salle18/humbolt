@@ -1,3 +1,5 @@
+"use strict";
+
 import {Block, IJSONBlock, IPosition} from "./Block";
 import {Dictionary} from "./Dictionary";
 import {EmptyBlock} from "./Block";
