@@ -24,6 +24,7 @@ export class CsmpRunDialog {
 
 	run():void {
 		this.appService.run();
+		this.modalInstance.close();
 	}
 
 	close():void {
