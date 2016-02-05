@@ -13,7 +13,7 @@ export class HumboltAceEditor implements OnInit {
 
 	ngOnInit():void {
 		let editor = ace.edit(this.elementRef.nativeElement);
-		editor.resize();
 		editor.setTheme("ace/theme/monokai");
+		editor.focus();
 	}
 }
