@@ -8,6 +8,7 @@ System.config({
 
   map: {
     "GoogleChrome/dialog-polyfill": "github:GoogleChrome/dialog-polyfill@0.4.2",
+    "ace": "github:ajaxorg/ace-builds@1.2.3",
     "angular2": "npm:angular2@2.0.0-beta.1",
     "babel": "npm:babel-core@6.4.0",
     "babel-runtime": "npm:babel-runtime@6.3.19",
