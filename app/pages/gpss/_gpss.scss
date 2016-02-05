@@ -1,3 +1,17 @@
 page-gpss {
-  
+  height: 100%;
+  .mdl-grid {
+	height: calc(100% - 68px); //68px visina headera
+	padding: 0;
+	.mdl-cell {
+	  position: relative;
+	  div.gpss-editor {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+	  }
+	}
+  }
 }
