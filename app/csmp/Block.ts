@@ -122,7 +122,7 @@ export class Block {
 	/**
 	 * Naziv klase. Pošto će se kod minifikovati naziv klase mora da bude string.
 	 */
-	protected className:string = "Block";
+	public className:string = "Block";
 
 	/**
 	 * Top i left koordinate blocka.
@@ -182,13 +182,6 @@ export class Block {
 		for (let i = 0; i < this.maxNumberOfInputs; i++) {
 			this.inputs[i] = new EmptyBlock();
 		}
-	}
-
-	/**
-	 * @return Naziv klase
-	 */
-	getClassName():string {
-		return this.className;
 	}
 
 	/**

@@ -104,7 +104,7 @@ export class Simulation {
 	saveJSON():IJSONSimulation {
 		let blocks = this.blocks.getValues().map((block:Block) => {
 			return {
-				className: block.getClassName(),
+				className: block.className,
 				params: block.params.map(param => param.value),
 				stringParams: block.stringParams.map(stringParam => stringParam.value),
 				position: block.position,
