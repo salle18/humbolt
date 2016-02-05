@@ -22,6 +22,7 @@ export class CsmpResultsTable {
 	}
 
 	filterResults(index:number):void {
+		index = +index;
 		let maxIndex = this.TOTAL_ROWS - this.NUMBER_OF_VISIBLE_ROWS;
 		if (index > maxIndex) {
 			index = maxIndex;
