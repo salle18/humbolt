@@ -7,12 +7,23 @@ import {SimulationService, ISimulationFilter} from "../../core/services/Simulati
 })
 export class CsmpResultsTable {
 
-	private filters:ISimulationFilter[];
-	private results:number[][];
+	private filters:ISimulationFilter[] = [];
+	private simulationResults:number[][] = [];
+	private results:number[][] = [];
+	private NUMBER_OF_ROWS:number = 100;
 
 	constructor(private simulationService:SimulationService) {
 		this.simulationService.initFilters();
 		this.filters = this.simulationService.getSimulationFilters();
-		this.results = this.simulationService.getSimulationResults();
+		this.simulationResults = this.simulationService.getSimulationResults();
+		this.filterResults(0);
+	}
+
+	filterResults(index:number) {
+		let maxIndex = this.simulationResults.length - this.NUMBER_OF_ROWS;
+		if (index > maxIndex) {
+			index = maxIndex;
+		}
+		this.results = this.simulationResults.slice(index, index + this.NUMBER_OF_ROWS);
 	}
 }
