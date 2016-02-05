@@ -14,7 +14,7 @@
 	<tbody>
 	<tr *ngFor="#block of blocks">
 		<td>{{block.getBasedIndex()}}.</td>
-		<td>{{block.getSign()}}</td>
+		<td>{{block.sign}}</td>
 		<td>{{block.inputs[0]?.getBasedIndex() || 0}}</td>
 		<td>{{block.inputs[1]?.getBasedIndex() || 0}}</td>
 		<td>{{block.inputs[2]?.getBasedIndex() || 0}}</td>
