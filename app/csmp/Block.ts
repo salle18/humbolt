@@ -107,7 +107,7 @@ export class Block {
 	/**
 	 * Oznaka blocka.
 	 */
-	protected sign:string = "";
+	public sign:string = "";
 
 	/**
 	 * Opis blocka.
@@ -192,20 +192,6 @@ export class Block {
 	}
 
 	/**
-	 * @return Niz parametara
-	 */
-	getParams():IParam<number>[] {
-		return this.params;
-	}
-
-	/**
-	 * @return Niz ulaznih elemenata.
-	 */
-	getInputs():Block[] {
-		return this.inputs;
-	}
-
-	/**
 	 * Dodaje block u niz izlaznih elemenata. Pošto jedan block može da bude vezan na više ulaza izlaznog blocka pamtimo i indeks ulaza na izlaznom blocku.
 	 * @param targetIndex Indeks ulaza na izlaznom blocku.
 	 * @param block Izlazni block.
@@ -237,20 +223,6 @@ export class Block {
 	 */
 	setSimulation(simulation:Simulation) {
 		this.simulation = simulation;
-	}
-
-	/**
-	 * @return Simulacija u kojoj se block nalazi.
-	 */
-	getSimulation():Simulation {
-		return this.simulation;
-	}
-
-	/**
-	 * @return Oznaka blocka.
-	 */
-	getSign():string {
-		return this.sign;
 	}
 
 	/**
