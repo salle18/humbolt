@@ -12,6 +12,7 @@ import {ILoginData} from "./AuthService";
 import {IJSONSimulation} from "../../csmp/Simulation";
 import {Observable} from "rxjs/Observable";
 import {IJSONBlock} from "../../csmp/Block";
+import {IUser} from "./AuthService";
 
 @Injectable()
 export class AppService {
@@ -141,6 +142,10 @@ export class AppService {
 			}
 		}
 		return null;
+	}
+
+	user():IUser {
+		return this.authService.user();
 	}
 
 	login(loginData:ILoginData):void {
