@@ -30,9 +30,9 @@ import {ConfigurationTable} from "../pages/configuration-table/configuration-tab
 	{path: "/login", component: Login, as: "Login", data: undefined},
 	{path: "/csmp", component: Csmp, as: "Csmp", data: undefined},
 	{path: "/gpss", component: Gpss, as: "Gpss", data: undefined},
-	{path: "/graph", component: Graph, as: "Graph", data: undefined},
-	{path: "/resultsTable", component: ResultsTable, as: "ResultsTable", data: undefined},
-	{path: "/configurationTable", component: ConfigurationTable, as: "ConfigurationTable", data: undefined}
+	{path: "/csmp/graph", component: Graph, as: "Graph", data: undefined},
+	{path: "/csmp/results", component: ResultsTable, as: "ResultsTable", data: undefined},
+	{path: "/csmp/configuration", component: ConfigurationTable, as: "ConfigurationTable", data: undefined}
 ])
 export class App {
 	constructor() {
