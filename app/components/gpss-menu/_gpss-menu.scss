@@ -1,0 +1,27 @@
+gpss-menu {
+  align-items: center;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+
+  .menu-button {
+	height: 64px;
+  }
+
+  .menu-button-group {
+	display: flex;
+	flex-direction: row;
+  }
+
+  .menu-button-title {
+	display: block;
+	line-height: 8px;
+  }
+
+  .menu-separator {
+	height: 64px;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #eee;
+  }
+}
+
