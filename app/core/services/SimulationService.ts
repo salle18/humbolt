@@ -11,6 +11,7 @@ export interface ISimulationFilter {
 export class SimulationService {
 
 	private simulation:Simulation;
+	private results:number[][] = [];
 	private filters:ISimulationFilter[] = [];
 
 	constructor() {
@@ -47,11 +48,11 @@ export class SimulationService {
 	}
 
 	getSimulationResults():number[][] {
-		return this.simulation.getResults();
+		return this.results;
 	}
 
 	setSimulationResults(results:number[][]):void {
-		this.simulation.setResults(results);
+		this.results = results;
 	}
 
 	getFilteredSimulationResults():number[][] {
@@ -61,7 +62,7 @@ export class SimulationService {
 		console.log(this.filters);
 		for (let i = 0; i < results.length; i++) {
 			filteredResults.push(results[i].filter((item, j) => {
-				return j===0 || this.filters[j - 1].value;
+				return j === 0 || this.filters[j - 1].value;
 			}));
 		}
 		return filteredResults;
