@@ -31,8 +31,6 @@ export class Simulation {
 	 */
 	private blocks:Dictionary<Block>;
 
-	private results:number[][] = [];
-
 	private config:ISimulationConfig = {
 		description: "Simulacija 1",
 		method: "RungeKuttaIV",
@@ -40,8 +38,6 @@ export class Simulation {
 		optimizeAsync: true,
 		integrationInterval: 0.01
 	};
-
-	private date:number = 0;
 
 	constructor() {
 		this.blocks = new Dictionary<Block>();
@@ -88,54 +84,6 @@ export class Simulation {
 	 */
 	getBlocks():Block[] {
 		return this.blocks.getValues();
-	}
-
-	/**
-	 * @return Metoda simulacije.
-	 */
-	getMethod():string {
-		return this.config.method;
-	}
-
-	/**
-	 * Postavlja metodu simulacije.
-	 *
-	 * @param method Metoda simulacije.
-	 */
-	setMethod(method:string):void {
-		this.config.method = method;
-	}
-
-	/**
-	 * @return Trajanje simulacije.
-	 */
-	getDuration():number {
-		return this.config.duration;
-	}
-
-	/**
-	 * Postavlja trajanje simulacije.
-	 *
-	 * @param duration Trajanje simulacije.
-	 */
-	setDuration(duration:number):void {
-		this.config.duration = duration;
-	}
-
-	/**
-	 * @return Interval integracije.
-	 */
-	getIntegrationInterval():number {
-		return this.config.integrationInterval;
-	}
-
-	/**
-	 * Postavlja interval integracije.
-	 *
-	 * @param integrationInterval Interval integracije.
-	 */
-	setIntegrationInterval(integrationInterval:number):void {
-		this.config.integrationInterval = integrationInterval;
 	}
 
 	/**
@@ -262,14 +210,6 @@ export class Simulation {
 	reset():void {
 		this.blocks.reset();
 		this.resetConfig();
-	}
-
-	getResults():number[][] {
-		return this.results;
-	}
-
-	setResults(results:number[][]):void {
-		this.results = results;
 	}
 
 }
