@@ -54,25 +54,10 @@ export class Dictionary<T> {
 	}
 
 	/**
-	 * @return Ključ zadatog blocka.
-	 */
-	getKey(value:T):string {
-		let index = this.getIndex(value);
-		return this.keys[index];
-	}
-
-	/**
 	 * @return Niz vrednosti.
 	 */
 	getValues():T[] {
 		return this.values;
-	}
-
-	/**
-	 * @return Niz ključeva.
-	 */
-	getKeys():string[] {
-		return this.keys;
 	}
 
 	/**

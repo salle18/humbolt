@@ -91,20 +91,6 @@ export class Simulation {
 	}
 
 	/**
-	 * @return Ključ zadatog blocka.
-	 */
-	getKey(block:Block):string {
-		return this.blocks.getKey(block);
-	}
-
-	/**
-	 * @return Niz ključeva elemenata simulacije.
-	 */
-	getKeys():string[] {
-		return this.blocks.getKeys();
-	}
-
-	/**
 	 * @return Metoda simulacije.
 	 */
 	getMethod():string {
