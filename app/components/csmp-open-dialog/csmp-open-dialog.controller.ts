@@ -23,6 +23,7 @@ export class CsmpOpenDialog {
 	openSimulation(id:string):void {
 		this.appService.reset();
 		this.appService.loadSimulation(id);
+		this.modalInstance.close();
 	}
 
 	close():void {
