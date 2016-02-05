@@ -18,6 +18,7 @@ export class CsmpSaveDialog {
 
 	save():void {
 		this.appService.save();
+		this.modalInstance.close();
 	}
 
 	close():void {
