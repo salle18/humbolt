@@ -4,7 +4,9 @@
 			 class="mdl-button mdl-button--primary mdl-button--raised block-list-item">
 			{{block.sign}}
 		</div>
-		<div csmp-upgrade-element class="mdl-tooltip mdl-tooltip--large" [attr.for]="block.className">{{block.info}}</div>
+		<div csmp-upgrade-element class="mdl-tooltip mdl-tooltip--large" [attr.for]="block.className">
+			<img [attr.src]="block.info" />
+		</div>
 		<span class="block-description">{{block.description}}</span>
 	</div>
 </div>
