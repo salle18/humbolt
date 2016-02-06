@@ -1,36 +1,46 @@
 import {Directive, ElementRef} from "angular2/core";
 
-interface IPosition {
-	top: number;
-	left: number;
-}
-
 @Directive({
 	selector: "[csmp-pannable]",
 	host: {
 		"(mousedown)": "onMouseDown($event)",
-		"(mouseup)": "onMouseUp($event)"
+		"(document:mouseup)": "onMouseUp($event)",
+		"(document:mousemove)": "onMouseMove($event)",
+		style: "cursor:-webkit-grab"
 	}
 })
 export class CsmpPannable {
-	private mousePosition:IPosition;
+	private top:number = 0;
+	private left:number = 0;
+	private panning:boolean = false;
+	private element:any;
 
 	constructor(private elementRef:ElementRef) {
+		this.element = elementRef.nativeElement;
 	}
 
 	onMouseDown(e:MouseEvent) {
-		this.mousePosition = {
-			top: e.pageY,
-			left: e.pageX
-		};
+		if (this.element.children[0] === e.target) {
+			this.top = e.pageY;
+			this.left = e.pageX;
+			this.panning = true;
+			this.element.style.cursor = "-webkit-grabbing";
+		}
+	}
+
+	onMouseMove(e:MouseEvent) {
+		if (this.panning) {
+			let scrollTop = this.element.scrollTop + this.top - e.pageY;
+			let scrollLeft = this.element.scrollLeft + this.left - e.pageX;
+			this.element.scrollTop = scrollTop < 0 ? 0 : scrollTop > this.element.scrollHeight ? this.element.scrollHeight : scrollTop;
+			this.element.scrollLeft = scrollLeft < 0 ? 0 : scrollLeft > this.element.scrollWidth ? this.element.scrollWidth : scrollLeft;
+			this.top = e.pageY;
+			this.left = e.pageX;
+		}
 	}
 
 	onMouseUp(e:MouseEvent) {
-		let offset = {
-			top: this.mousePosition.top - e.pageY,
-			left: this.mousePosition.left - e.pageX
-		};
-		this.elementRef.nativeElement.scrollTop = offset.top;
-		this.elementRef.nativeElement.scrollLeft = offset.left;
+		this.panning = false;
+		this.element.style.cursor = "-webkit-grab";
 	}
 }
