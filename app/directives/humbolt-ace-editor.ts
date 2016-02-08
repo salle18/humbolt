@@ -1,4 +1,5 @@
 import {Directive, ElementRef, OnInit} from "angular2/core";
+import {GpssAppService} from "../core/services/GpssAppService";
 var ace = require("ace");
 require("ace/theme-monokai");
 
@@ -8,12 +9,13 @@ require("ace/theme-monokai");
 })
 export class HumboltAceEditor implements OnInit {
 
-	constructor(private elementRef:ElementRef) {
+	constructor(private elementRef:ElementRef, private gpssAppService:GpssAppService) {
 	}
 
 	ngOnInit():void {
 		let editor = ace.edit(this.elementRef.nativeElement);
 		editor.setTheme("ace/theme/monokai");
 		editor.focus();
+		this.gpssAppService.setEditor(editor);
 	}
 }
