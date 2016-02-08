@@ -38,7 +38,7 @@ export class ServerService {
 		return this.httpService.post<number[][]>(this.getApi() + "/simulate", T);
 	}
 
-	listSimulations<T>():Observable<T[]> {
+	listSimulations<T>():Observable<T> {
 		return this.httpService.get<any>(this.getApi() + "/simulation");
 	}
 
