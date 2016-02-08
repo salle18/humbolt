@@ -1,8 +1,10 @@
 "use strict";
 
-import {Block, IJSONBlock, IPosition} from "./Block";
+import {Block} from "./Block";
 import {Dictionary} from "./Dictionary";
-import {EmptyBlock} from "./Block";
+import {EmptyBlock} from "./EmptyBlock";
+
+import {IJSONBlock} from "./interfaces/IJSONBlock";
 
 export interface ISimulationConfig {
 	description: string;
