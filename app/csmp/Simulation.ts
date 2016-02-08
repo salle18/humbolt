@@ -3,31 +3,9 @@
 import {Block} from "./Block";
 import {Dictionary} from "./Dictionary";
 import {EmptyBlock} from "./EmptyBlock";
-
 import {IJSONBlock} from "./interfaces/IJSONBlock";
-
-export interface ISimulationConfig {
-	description: string;
-	method: string;
-	integrationInterval: number;
-	duration: number;
-	optimizeAsync: boolean;
-}
-
-export interface IJSONSimulation {
-	description: string;
-	date: number;
-	method: string;
-	duration: number;
-	integrationInterval: number;
-	blocks: IJSONBlock[];
-	optimizeAsync: boolean;
-}
-
-export interface IMetaJSONMethod {
-	className: string;
-	description: string;
-}
+import {ISimulationConfig} from "./interfaces/ISimulationConfig";
+import {IJSONSimulation} from "./interfaces/IJSONSimulation";
 
 export class Simulation {
 	/**
