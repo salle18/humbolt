@@ -1,65 +1,14 @@
 "use strict";
 
 import {Simulation} from "./Simulation";
+import {EmptyBlock} from "./EmptyBlock";
 
-export enum Rotation {Top, Right, Bottom, Left}
+import {Rotation} from "./enums/Rotation";
 
-/**
- * Enum za tipove grupisanje tipova elemenata.
- */
-export enum BlockType {
-	Generator, Trigonometry, Mathematical, Limiter, External, Other
-}
-
-/**
- * Interfejs za parametre i string parametre.
- */
-export interface IParam<T> {
-	description: string;
-	value: T;
-}
-
-/**
- * Interfejs za izlazni block. Sadrži block i indeks ulaza na izlaznom blocku.
- */
-export interface IOutput {
-	block: Block;
-	targetIndex: number;
-}
-
-export interface IPosition {
-	top: number;
-	left: number;
-}
-
-/**
- * JSON format u kome se čuvaju blocki simulacije i koji se šalje serveru.
- */
-export interface IJSONBlock {
-	className: string;
-	position: IPosition;
-	params: number[];
-	stringParams: string[];
-	inputs: number[];
-	rotation: number;
-}
-
-/**
- * JSON format u kome se čuvaju meta podaci o bloku.
- */
-export interface IMetaJSONBlock {
-	className: string;
-	numberOfParams: number;
-	numberOfStringParams: number;
-	maxNumberOfInputs: number;
-	hasOutput:boolean;
-	sign: string;
-	description: string;
-	info: string;
-	paramDescription: string[];
-	stringParamDescription: string[];
-	isAsync: boolean;
-}
+import {IParam} from "./interfaces/IParam";
+import {IOutput} from "./interfaces/IOutput";
+import {IPosition} from "./interfaces/IPosition";
+import {IMetaJSONBlock} from "./interfaces/IMetaJSONBlock";
 
 /**
  * Apstraktna klasa Block. Svi csmp blocki moraju biti izvedeni iz ove klase.
@@ -304,20 +253,6 @@ export class Block {
 
 	getBasedIndex():number {
 		return this.getIndex() + 1;
-	}
-
-}
-
-/**
- * Klasa za prazan block bez parametara i ulaza.
- * Koristi se kao prazan ulaz na blocku.
- */
-export class EmptyBlock extends Block {
-
-	public sorted:boolean = true;
-
-	getIndex():number {
-		return -1;
 	}
 
 }
