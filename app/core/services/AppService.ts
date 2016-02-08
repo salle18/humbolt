@@ -59,7 +59,7 @@ export class AppService {
 	}
 
 	save():void {
-		this.serverService.setApiType(ApiType.CSMP).saveSimulation(this.simulationService.saveJSON())
+		this.serverService.setApiType(ApiType.CSMP).saveSimulation<IJSONSimulation>(this.simulationService.saveJSON())
 			.subscribe(
 				simulation => this.messageService.success("Simulation saved..."),
 				error => this.handleError(error)
@@ -68,7 +68,7 @@ export class AppService {
 
 	run():void {
 		let JSONSimulation = this.simulationService.saveJSON();
-		this.serverService.setApiType(ApiType.CSMP).postSimulation(JSONSimulation)
+		this.serverService.setApiType(ApiType.CSMP).postSimulation<IJSONSimulation, number[][]>(JSONSimulation)
 			.subscribe(
 				results => {
 					this.simulationService.setSimulationResults(results);
@@ -93,17 +93,19 @@ export class AppService {
 	}
 
 	listSimulations():void {
-		this.serverService.setApiType(ApiType.CSMP).listSimulations().subscribe(
-			simulations => {
-				this.simulations.length = 0;
-				this.simulations.push.apply(this.simulations, simulations);
-			},
-			error => this.handleError(error)
-		);
+		this.serverService.setApiType(ApiType.CSMP).listSimulations<any>()
+			.map(res => res.csmpSimulations)
+			.subscribe(
+				simulations => {
+					this.simulations.length = 0;
+					this.simulations.push.apply(this.simulations, simulations);
+				},
+				error => this.handleError(error)
+			);
 	}
 
 	loadSimulation(id:string):void {
-		this.serverService.setApiType(ApiType.CSMP).loadSimulation(id).subscribe(
+		this.serverService.setApiType(ApiType.CSMP).loadSimulation<IJSONSimulation>(id).subscribe(
 			simulation => {
 				this.reset();
 				let blocks = this.createSimulationBlocks(simulation.blocks);
@@ -118,7 +120,7 @@ export class AppService {
 	}
 
 	removeSimulation(id:string):void {
-		this.serverService.setApiType(ApiType.CSMP).removeSimulation(id).subscribe(
+		this.serverService.setApiType(ApiType.CSMP).removeSimulation<IJSONSimulation>(id).subscribe(
 			simulation => {
 				this.messageService.success("Simulation deleted...");
 				this.listSimulations();
