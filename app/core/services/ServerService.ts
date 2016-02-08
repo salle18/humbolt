@@ -35,7 +35,7 @@ export class ServerService {
 	}
 
 	postSimulation<T, Y>(simulation:T):Observable<Y> {
-		return this.httpService.post<number[][]>(this.getApi() + "/simulate", T);
+		return this.httpService.post<Y>(this.getApi() + "/simulate", simulation);
 	}
 
 	listSimulations<T>():Observable<T> {
@@ -43,11 +43,11 @@ export class ServerService {
 	}
 
 	saveSimulation<T>(simulation:T):Observable<T> {
-		return this.httpService.post<IJSONSimulation>(this.getApi() + "/simulation", simulation);
+		return this.httpService.post<T>(this.getApi() + "/simulation", simulation);
 	}
 
 	loadSimulation<T>(id:string):Observable<T> {
-		return this.httpService.get<IJSONSimulation>(this.getApi() + "/simulation/" + id);
+		return this.httpService.get<T>(this.getApi() + "/simulation/" + id);
 	}
 
 	removeSimulation<T>(id:string):Observable<T> {
