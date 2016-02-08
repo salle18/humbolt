@@ -34,23 +34,23 @@ export class ServerService {
 		return this.httpService.get<IMetaJSONMethod[]>(this.getApi() + "/integrationmethods");
 	}
 
-	postSimulation(JSONSimulation:IJSONSimulation):Observable<number[][]> {
-		return this.httpService.post<number[][]>(this.getApi() + "/simulate", JSONSimulation);
+	postSimulation<T, Y>(simulation:T):Observable<Y> {
+		return this.httpService.post<number[][]>(this.getApi() + "/simulate", T);
 	}
 
-	listSimulations():Observable<IJSONSimulation[]> {
-		return this.httpService.get<any>(this.getApi() + "/simulation").map(res => res.csmpSimulations);
+	listSimulations<T>():Observable<T[]> {
+		return this.httpService.get<any>(this.getApi() + "/simulation");
 	}
 
-	saveSimulation(JSONSimulation:IJSONSimulation):Observable<IJSONSimulation> {
-		return this.httpService.post<IJSONSimulation>(this.getApi() + "/simulation", JSONSimulation);
+	saveSimulation<T>(simulation:T):Observable<T> {
+		return this.httpService.post<IJSONSimulation>(this.getApi() + "/simulation", simulation);
 	}
 
-	loadSimulation(id:string):Observable<IJSONSimulation> {
+	loadSimulation<T>(id:string):Observable<T> {
 		return this.httpService.get<IJSONSimulation>(this.getApi() + "/simulation/" + id);
 	}
 
-	removeSimulation(id:string):Observable<IJSONSimulation> {
+	removeSimulation<T>(id:string):Observable<T> {
 		return this.httpService.delete(this.getApi() + "/simulation/" + id);
 	}
 }
