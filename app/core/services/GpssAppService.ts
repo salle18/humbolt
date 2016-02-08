@@ -1,19 +1,15 @@
 import {Injectable} from "angular2/core";
-
-export interface IEditor {
-	setValue(value:string):void;
-	focus();
-}
+import IEditor = AceAjax.Editor;
 
 @Injectable()
 export class GpssAppService {
 
-	private editor:any;
+	private editor:IEditor;
 
 	getEditor():IEditor {
 		return this.editor;
 	}
-	
+
 	setEditor(editor:IEditor):void {
 		this.editor = editor;
 	}
