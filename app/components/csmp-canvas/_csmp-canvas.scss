@@ -9,5 +9,8 @@ csmp-canvas {
   position: relative;
   .jsplumb-endpoint {
 	z-index: 999;
+	&.outputEndpoint {
+	  cursor: copy;
+	}
   }
 }
