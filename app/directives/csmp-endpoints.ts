@@ -24,7 +24,8 @@ export class CsmpEndpoints implements OnInit {
 			fillStyle: "#337ab7"
 		},
 		connectorOverlays: [["Arrow", {location: 0.5}]],
-		uuid: ""
+		uuid: "",
+		cssClass: "outputEndpoint"
 	};
 
 	private inputEndpoint = {
