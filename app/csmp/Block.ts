@@ -1,6 +1,5 @@
 "use strict";
 
-import * as Exception from "./helpers/Exception";
 import {Simulation} from "./Simulation";
 
 export enum Rotation {Top, Right, Bottom, Left}
