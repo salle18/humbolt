@@ -3,6 +3,8 @@ import {RouterLink} from "angular2/router";
 import {CsmpUpgradeElement} from "../../directives/csmp-upgrade-element";
 import {ModalProvider} from "../../modules/modal/ModalProvider";
 import {GpssAppService} from "../../core/services/GpssAppService";
+import {GpssOpenDialog} from "../gpss-open-dialog/gpss-open-dialog.controller";
+import {GpssSaveDialog} from "../gpss-save-dialog/gpss-save-dialog.controller";
 
 @Component({
 	selector: "gpss-menu",
@@ -20,13 +22,11 @@ export class GpssMenu {
 	}
 
 	openDialog():void {
-		console.log("open simulation dialog");
-		//this.modal.open(CsmpOpenDialog, []);
+		this.modal.open(GpssOpenDialog, []);
 	}
 
 	saveDialog():void {
-		console.log("open save dialog");
-		//this.modal.open(CsmpSaveDialog, []);
+		this.modal.open(GpssSaveDialog, []);
 	}
 
 	run():void {
