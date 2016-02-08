@@ -1,7 +1,8 @@
 import {Component, DoCheck} from "angular2/core";
-import {Block, IParam} from "../../csmp/Block";
+import {Block} from "../../csmp/Block";
 import {SimulationService} from "../../core/services/SimulationService";
 import {AppService} from "../../core/services/AppService";
+import {IParam} from "../../csmp/interfaces/IParam";
 
 @Component({
 	selector: "csmp-inspector",

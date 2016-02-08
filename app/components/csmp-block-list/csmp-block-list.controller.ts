@@ -1,8 +1,8 @@
 import {Component} from "angular2/core";
 import {CsmpUpgradeElement} from "../../directives/csmp-upgrade-element";
-import {IMetaJSONBlock} from "../../csmp/Block";
 import {CsmpCloneBlock} from "../../directives/csmp-clone-block";
 import {AppService} from "../../core/services/AppService";
+import {IMetaJSONBlock} from "../../csmp/interfaces/IMetaJSONBlock";
 
 @Component({
 	selector: "csmp-block-list",
