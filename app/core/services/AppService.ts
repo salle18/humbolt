@@ -11,7 +11,7 @@ import {IMetaJSONMethod, ISimulationConfig} from "../../csmp/Simulation";
 import {ILoginData} from "./AuthService";
 import {IJSONSimulation} from "../../csmp/Simulation";
 import {Observable} from "rxjs/Observable";
-import {IJSONBlock} from "../../csmp/Block";
+import {IJSONBlock} from "../../csmp/interfaces/IJSONBlock";
 import {IUser} from "./AuthService";
 
 @Injectable()
