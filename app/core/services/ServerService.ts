@@ -1,8 +1,9 @@
 import {Injectable} from "angular2/core";
-import {IJSONSimulation, IMetaJSONMethod} from "../../csmp/Simulation";
 import {Observable} from "rxjs/Observable";
 import {HttpService} from "./HttpService";
 import {IMetaJSONBlock} from "../../csmp/interfaces/IMetaJSONBlock";
+import {IJSONSimulation} from "../../csmp/interfaces/IJSONSimulation";
+import {IMetaJSONMethod} from "../../csmp/interfaces/IMetaJSONMethod";
 
 @Injectable()
 export class ServerService {

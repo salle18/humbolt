@@ -2,9 +2,9 @@ import {Component} from "angular2/core";
 import {AppService} from "../../core/services/AppService";
 import {ModalInstance} from "../../modules/modal/ModalInstance";
 import {SimulationService} from "../../core/services/SimulationService";
-import {IMetaJSONMethod, ISimulationConfig} from "../../csmp/Simulation";
-import {IJSONSimulation} from "../../csmp/Simulation";
-
+import {IJSONSimulation} from "../../csmp/interfaces/IJSONSimulation";
+import {IMetaJSONMethod} from "../../csmp/interfaces/IMetaJSONMethod";
+import {ISimulationConfig} from "../../csmp/interfaces/ISimulationConfig";
 
 @Component({
 	selector: "csmp-save-dialog",

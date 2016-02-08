@@ -12,8 +12,9 @@ import {IJSONBlock} from "../../csmp/interfaces/IJSONBlock";
 import {IMetaJSONBlock} from "../../csmp/interfaces/IMetaJSONBlock";
 import {IUser} from "./AuthService";
 import {ILoginData} from "./AuthService";
-import {IJSONSimulation} from "../../csmp/Simulation";
-import {IMetaJSONMethod, ISimulationConfig} from "../../csmp/Simulation";
+import {IJSONSimulation} from "../../csmp/interfaces/IJSONSimulation";
+import {IMetaJSONMethod} from "../../csmp/interfaces/IMetaJSONMethod";
+import {ISimulationConfig} from "../../csmp/interfaces/ISimulationConfig";
 
 @Injectable()
 export class AppService {

@@ -1,7 +1,7 @@
 import {Component} from "angular2/core";
-import {IJSONSimulation} from "../../csmp/Simulation";
 import {AppService} from "../../core/services/AppService";
 import {ModalInstance} from "../../modules/modal/ModalInstance";
+import {IJSONSimulation} from "../../csmp/interfaces/IJSONSimulation";
 
 @Component({
 	selector: "csmp-open-dialog",

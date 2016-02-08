@@ -1,6 +1,8 @@
 import {Injectable} from "angular2/core";
-import {Simulation, IJSONSimulation, ISimulationConfig} from "../../csmp/Simulation";
+import {Simulation} from "../../csmp/Simulation";
 import {Block} from "../../csmp/Block";
+import {IJSONSimulation} from "../../csmp/interfaces/IJSONSimulation";
+import {ISimulationConfig} from "../../csmp/interfaces/ISimulationConfig";
 
 export interface ISimulationFilter {
 	label: string;
