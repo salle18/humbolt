@@ -3,7 +3,7 @@ import {Router} from "angular2/router";
 import {SimulationService} from "./SimulationService";
 import {PlumbService} from "./PlumbService";
 import {PlumbServiceUtilities} from "./PlumbServiceUtilities";
-import {ServerService} from "./ServerService";
+import {ServerService, ApiType} from "./ServerService";
 import {AuthService} from "./AuthService";
 import {MessageService} from "./MessageService";
 import {Block} from "../../csmp/Block";
@@ -59,7 +59,7 @@ export class AppService {
 	}
 
 	save():void {
-		this.serverService.saveSimulation(this.simulationService.saveJSON())
+		this.serverService.setApiType(ApiType.CSMP).saveSimulation(this.simulationService.saveJSON())
 			.subscribe(
 				simulation => this.messageService.success("Simulation saved..."),
 				error => this.handleError(error)
@@ -68,7 +68,7 @@ export class AppService {
 
 	run():void {
 		let JSONSimulation = this.simulationService.saveJSON();
-		this.serverService.postSimulation(JSONSimulation)
+		this.serverService.setApiType(ApiType.CSMP).postSimulation(JSONSimulation)
 			.subscribe(
 				results => {
 					this.simulationService.setSimulationResults(results);
@@ -79,21 +79,21 @@ export class AppService {
 	}
 
 	loadMetaBlocks():void {
-		this.serverService.getMetaBlocks().subscribe(
+		this.serverService.setApiType(ApiType.CSMP).getMetaBlocks().subscribe(
 			metaBlocks => this.metaBlocks.push.apply(this.metaBlocks, metaBlocks),
 			error => this.handleError(error)
 		);
 	}
 
 	loadIntegrationMethods():void {
-		this.serverService.getIntegrationMethods().subscribe(
+		this.serverService.setApiType(ApiType.CSMP).getIntegrationMethods().subscribe(
 			integrationMethods => this.integrationMethods.push.apply(this.integrationMethods, integrationMethods),
 			error => this.handleError(error)
 		);
 	}
 
 	listSimulations():void {
-		this.serverService.listSimulations().subscribe(
+		this.serverService.setApiType(ApiType.CSMP).listSimulations().subscribe(
 			simulations => {
 				this.simulations.length = 0;
 				this.simulations.push.apply(this.simulations, simulations);
@@ -103,7 +103,7 @@ export class AppService {
 	}
 
 	loadSimulation(id:string):void {
-		this.serverService.loadSimulation(id).subscribe(
+		this.serverService.setApiType(ApiType.CSMP).loadSimulation(id).subscribe(
 			simulation => {
 				this.reset();
 				let blocks = this.createSimulationBlocks(simulation.blocks);
@@ -118,7 +118,7 @@ export class AppService {
 	}
 
 	removeSimulation(id:string):void {
-		this.serverService.removeSimulation(id).subscribe(
+		this.serverService.setApiType(ApiType.CSMP).removeSimulation(id).subscribe(
 			simulation => {
 				this.messageService.success("Simulation deleted...");
 				this.listSimulations();

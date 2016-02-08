@@ -5,7 +5,7 @@ import {IMetaJSONBlock} from "../../csmp/interfaces/IMetaJSONBlock";
 import {IJSONSimulation} from "../../csmp/interfaces/IJSONSimulation";
 import {IMetaJSONMethod} from "../../csmp/interfaces/IMetaJSONMethod";
 
-export enum ApiType {csmp, gpss}
+export enum ApiType {CSMP, GPSS}
 
 
 @Injectable()
