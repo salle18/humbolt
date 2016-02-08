@@ -7,9 +7,10 @@ import {MessageService} from "./MessageService";
 import {AuthService} from "./AuthService";
 import {HttpService} from "./HttpService";
 import {SnackbarService} from "../../modules/snackbar/SnackbarService";
+import {GpssAppService} from "./GpssAppService";
 
 
 export let APP_SERVICES:Array<any> = [
 	AppService, SimulationService, PlumbService, PlumbServiceUtilities, ServerService, MessageService,
-	AuthService, HttpService, SnackbarService
+	AuthService, HttpService, SnackbarService, GpssAppService
 ];
