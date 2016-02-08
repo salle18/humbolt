@@ -23,6 +23,7 @@ export class CsmpEndpoints implements OnInit {
 		paintStyle: {
 			fillStyle: "#337ab7"
 		},
+		connector: ["Flowchart"],
 		connectorOverlays: [["Arrow", {location: 0.5}]],
 		uuid: "",
 		cssClass: "outputEndpoint"
