@@ -30,6 +30,7 @@ export class CsmpPannable {
 
 	onMouseMove(e:MouseEvent) {
 		if (this.panning) {
+			e.preventDefault();
 			let scrollTop = this.element.scrollTop + this.prevPageY - e.pageY;
 			let scrollLeft = this.element.scrollLeft + this.prevPageX - e.pageX;
 			this.prevPageY = e.pageY;
