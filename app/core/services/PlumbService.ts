@@ -1,7 +1,8 @@
 import "sporritt/jsPlumb";
 import {Injectable, NgZone} from "angular2/core";
 import {SimulationService} from "./SimulationService";
-import {Block, EmptyBlock} from "../../csmp/Block";
+import {Block} from "../../csmp/Block";
+import {EmptyBlock} from "../../csmp/EmptyBlock";
 
 declare let jsPlumb:any;
 
