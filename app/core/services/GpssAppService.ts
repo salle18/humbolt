@@ -14,7 +14,7 @@ export interface IGpssSimulation {
 export class GpssAppService {
 
 	private editor:IEditor;
-	private simulations:IGpssSimulation[] = [];
+	public simulations:IGpssSimulation[] = [];
 
 	private simulation:IGpssSimulation = {
 		data: "",
