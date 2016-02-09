@@ -18,6 +18,7 @@ export class HumboltAceEditor implements OnInit {
 		let isReadonly = this.readonly === "true";
 		let editor = ace.edit(this.elementRef.nativeElement);
 		editor.setReadOnly(isReadonly);
+		editor.$blockScrolling = Infinity;
 		if (!isReadonly) {
 			editor.setTheme("ace/theme/monokai");
 			editor.focus();
