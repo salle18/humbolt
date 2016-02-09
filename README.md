@@ -28,8 +28,8 @@ Za više informacija možete pogledati [ModernWebDevBuild](https://github.com/ds
 ## Folderi
 
 ```
-+.tmp
-+app
++.tmp - privremeni folder u koji se smeštaju transpajlirane verzije typescript fajlova i scss fajlova.
++app - folder koji sadrži sav kod aplikacije, ovo je jedini folder koji bi trebalo ručno menjati. U svakom folderu unutar foldera app nalazi se README.md fajl u kome se nalaze kratka uputstva o dobroj praksi i organizaciji koda.
 	+components - sadrži sve angular2 komponente
 		+csmp-block
 		+csmp-block-list
@@ -108,11 +108,11 @@ Za više informacija možete pogledati [ModernWebDevBuild](https://github.com/ds
 	+styles
 		main.scss - stilovi svih komponenti, stranica i direktiva su u ovom fajlu
 		vendor.sccs - sve stilove biblioteka uvozimo u ovaj fajl
-+dist
-+docs
-+jspm_packages
-+node_modules
-+typings
++dist - folder u kome se stvara produkciona verzija aplikacije, skripte i stilovi su povezani u po jedan fajl i minifikovani.
++docs - generisana dokumentacija projekta
++jspm_packages - jspm biblioteke se čuvaju u ovom folderu
++node_modules - npm biblioteke se čuvaju u ovom folderu
++typings - typescript definicije klasa se čuvaju u ovom folderu
 jspm.conf.js
 package.json
 tsconfig.json
