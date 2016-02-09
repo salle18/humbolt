@@ -26,7 +26,7 @@ bootstrap(App, [
 	ROUTER_PROVIDERS,
 	HTTP_PROVIDERS,
 	ELEMENT_PROBE_PROVIDERS, // remove in production
-	provide(LocationStrategy, {useClass: PathLocationStrategy}) // can be switched to HashLocationStrategy if you cannot configure your server appropriately for URL rewriting
+	provide(LocationStrategy, {useClass: HashLocationStrategy}) // can be switched to HashLocationStrategy if you cannot configure your server appropriately for URL rewriting
 
 ]).then(
 	(success:any) => console.log("Bootstrap successful"),
