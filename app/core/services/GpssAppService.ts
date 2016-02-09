@@ -78,6 +78,7 @@ export class GpssAppService {
 	}
 
 	save():void {
+		this.simulation.data = this.editor.getValue();
 		this.serverService.setApiType(ApiType.GPSS).saveSimulation<IGpssSimulation>(this.simulation)
 			.subscribe(
 				simulation => this.messageService.success("Simulation saved..."),
