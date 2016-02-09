@@ -23,7 +23,7 @@ export class ServerService {
 	}
 
 	private getApi():string {
-		return this.api + ApiType[this.apiType];
+		return this.api + ApiType[this.apiType].toLowerCase();
 	}
 
 	getMetaBlocks():Observable<IMetaJSONBlock[]> {
