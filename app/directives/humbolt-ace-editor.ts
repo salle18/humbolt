@@ -9,16 +9,19 @@ require("ace/theme-monokai");
 })
 export class HumboltAceEditor implements OnInit {
 
-	@Input readonly:boolean;
+	@Input() readonly:string;
 
 	constructor(private elementRef:ElementRef, private gpssAppService:GpssAppService) {
 	}
 
 	ngOnInit():void {
+		let isReadonly = this.readonly === "true";
 		let editor = ace.edit(this.elementRef.nativeElement);
-		editor.setTheme("ace/theme/monokai");
-		editor.focus();
-		editor.setReadOnly(this.readonly);
-		this.gpssAppService.setEditor(editor, this.readonly);
+		editor.setReadOnly(isReadonly);
+		if (!isReadonly) {
+			editor.setTheme("ace/theme/monokai");
+			editor.focus();
+		}
+		this.gpssAppService.setEditor(editor, isReadonly);
 	}
 }
