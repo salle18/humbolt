@@ -30,7 +30,7 @@ export class GpssMenu {
 	}
 
 	run():void {
-		console.log("run simulation");
+		this.gpssAppService.run();
 	}
 
 }
