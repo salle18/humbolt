@@ -14,6 +14,7 @@ export interface IGpssSimulation {
 export class GpssAppService {
 
 	private editor:IEditor;
+	private resultsEditor:IEditor;
 	public simulations:IGpssSimulation[] = [];
 
 	private simulation:IGpssSimulation = {
@@ -26,13 +27,11 @@ export class GpssAppService {
 
 	}
 
-	getEditor():IEditor {
-		return this.editor;
+	setEditor(editor:IEditor, readonly:boolean):void {
+		readonly ? this.resultsEditor = editor : this.editor = editor;
 	}
 
-	setEditor(editor:IEditor):void {
-		this.editor = editor;
-	}
+	setResultsEditor
 
 	getSimulation():IGpssSimulation {
 		return this.simulation;
@@ -40,6 +39,7 @@ export class GpssAppService {
 
 	reset():void {
 		this.editor.setValue("");
+		this.resultsEditor.setValue("");
 		this.editor.focus();
 	}
 
@@ -82,6 +82,17 @@ export class GpssAppService {
 		this.serverService.setApiType(ApiType.GPSS).saveSimulation<IGpssSimulation>(this.simulation)
 			.subscribe(
 				simulation => this.messageService.success("Simulation saved..."),
+				error => this.handleError(error)
+			);
+	}
+
+	run():void {
+		this.simulation.data = this.editor.getValue();
+		this.serverService.setApiType(ApiType.GPSS).postSimulation(this.simulation)
+			.subscribe(
+				results => {
+					this.resultsEditor.setValue(results);
+				},
 				error => this.handleError(error)
 			);
 	}
