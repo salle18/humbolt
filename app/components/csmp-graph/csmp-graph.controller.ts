@@ -20,7 +20,7 @@ export class CsmpGraph implements OnInit {
 			width: 1200,
 			height: 800,
 		};
-		console.log(data);
+
 		if (data.length > 0) {
 			let graph = new Dygraph(this.elementRef.nativeElement, data, graphOptions);
 		}
