@@ -5,17 +5,16 @@ import {AppService} from "../../core/services/AppService";
 import {CsmpOpenDialog} from "../csmp-open-dialog/csmp-open-dialog.controller";
 import {CsmpSaveDialog} from "../csmp-save-dialog/csmp-save-dialog.controller";
 import {CsmpRunDialog} from "../csmp-run-dialog/csmp-run-dialog.controller";
-import {ModalProvider} from "../../modules/modal/ModalProvider";
+import {ModalService} from "../../modules/modal/ModalService";
 
 @Component({
 	selector: "csmp-menu",
 	templateUrl: "components/csmp-menu/csmp-menu.template.html",
-	directives: [CsmpUpgradeElement, RouterLink],
-	providers: [ModalProvider]
+	directives: [CsmpUpgradeElement, RouterLink]
 })
 export class CsmpMenu {
 
-	constructor(private appService:AppService, private modal:ModalProvider) {
+	constructor(private appService:AppService, private modal:ModalService) {
 	}
 
 	newSimulation():void {

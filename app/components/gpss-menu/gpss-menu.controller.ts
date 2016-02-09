@@ -1,20 +1,19 @@
 import {Component} from "angular2/core";
 import {RouterLink} from "angular2/router";
 import {CsmpUpgradeElement} from "../../directives/csmp-upgrade-element";
-import {ModalProvider} from "../../modules/modal/ModalProvider";
 import {GpssAppService} from "../../core/services/GpssAppService";
 import {GpssOpenDialog} from "../gpss-open-dialog/gpss-open-dialog.controller";
 import {GpssSaveDialog} from "../gpss-save-dialog/gpss-save-dialog.controller";
+import {ModalService} from "../../modules/modal/ModalService";
 
 @Component({
 	selector: "gpss-menu",
 	templateUrl: "components/gpss-menu/gpss-menu.template.html",
-	directives: [CsmpUpgradeElement, RouterLink],
-	providers: [ModalProvider]
+	directives: [CsmpUpgradeElement, RouterLink]
 })
 export class GpssMenu {
 
-	constructor(private modal:ModalProvider, private gpssAppService:GpssAppService) {
+	constructor(private modal:ModalService, private gpssAppService:GpssAppService) {
 	}
 
 	newSimulation():void {
