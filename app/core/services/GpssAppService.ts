@@ -31,8 +31,6 @@ export class GpssAppService {
 		readonly ? this.resultsEditor = editor : this.editor = editor;
 	}
 
-	setResultsEditor
-
 	getSimulation():IGpssSimulation {
 		return this.simulation;
 	}
@@ -88,7 +86,7 @@ export class GpssAppService {
 
 	run():void {
 		this.simulation.data = this.editor.getValue();
-		this.serverService.setApiType(ApiType.GPSS).postSimulation(this.simulation)
+		this.serverService.setApiType(ApiType.GPSS).postSimulation<IGpssSimulation, string>(this.simulation)
 			.subscribe(
 				results => {
 					this.resultsEditor.setValue(results);
