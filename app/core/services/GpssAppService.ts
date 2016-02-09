@@ -86,13 +86,17 @@ export class GpssAppService {
 
 	run():void {
 		this.simulation.data = this.editor.getValue();
+		this.messageService.loader();
 		this.serverService.setApiType(ApiType.GPSS).postSimulation<IGpssSimulation, Object>(this.simulation)
 			.subscribe(
 				results => {
-					console.log(results);
+					this.messageService.hideLoader();
 					this.resultsEditor.setValue(JSON.stringify(results, null, "\t"));
 				},
-				error => this.handleError(error)
+				error => {
+					this.messageService.hideLoader();
+					this.handleError(error);
+				}
 			);
 	}
 
