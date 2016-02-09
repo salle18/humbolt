@@ -9,7 +9,6 @@ import {IGpssSimulation} from "../../core/services/GpssAppService";
 	templateUrl: "components/gpss-open-dialog/gpss-open-dialog.template.html"
 })
 export class GpssOpenDialog {
-	
 	private simulations:IGpssSimulation[] = [];
 
 
