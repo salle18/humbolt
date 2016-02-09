@@ -1,6 +1,7 @@
 import {Component} from "angular2/core";
 import {GpssAppService} from "../../core/services/GpssAppService";
 import {ModalInstance} from "../../modules/modal/ModalInstance";
+import {IGpssSimulation} from "../../core/services/GpssAppService";
 
 
 @Component({
@@ -8,10 +9,13 @@ import {ModalInstance} from "../../modules/modal/ModalInstance";
 	templateUrl: "components/gpss-open-dialog/gpss-open-dialog.template.html"
 })
 export class GpssOpenDialog {
+	
+	private simulations:IGpssSimulation[] = [];
 
 
 	constructor(private gpssAppService:GpssAppService, private modalInstance:ModalInstance) {
-
+		this.gpssAppService.listSimulations();
+		this.simulations = this.gpssAppService.simulations;
 	}
 
 	removeSimulation(id:string):void {
