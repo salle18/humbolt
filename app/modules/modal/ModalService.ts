@@ -7,7 +7,7 @@ import "GoogleChrome/dialog-polyfill";
 declare var dialogPolyfill:any;
 
 @Injectable()
-export class ModalProvider {
+export class ModalService {
 
 	constructor(private dcl:DynamicComponentLoader, private appRef:ApplicationRef) {
 	}
@@ -31,7 +31,7 @@ export class ModalProvider {
 		});
 	}
 
-	addModal(bindings:ResolvedProvider[]):Promise<ComponentRef> {
+	private addModal(bindings:ResolvedProvider[]):Promise<ComponentRef> {
 		let appRef = this.appRef["_rootComponents"][0].location;
 		return this.dcl.loadNextToLocation(Modal, appRef, bindings);
 	}
