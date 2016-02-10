@@ -12,6 +12,7 @@ import {IMetaJSONBlock} from "../../csmp/interfaces/IMetaJSONBlock";
 import {IJSONSimulation} from "../../csmp/interfaces/IJSONSimulation";
 import {IMetaJSONMethod} from "../../csmp/interfaces/IMetaJSONMethod";
 import {ISimulationConfig} from "../../csmp/interfaces/ISimulationConfig";
+import {FileService} from "./FileService";
 
 @Injectable()
 export class CsmpAppService {
@@ -23,7 +24,7 @@ export class CsmpAppService {
 
 	constructor(private simulationService:SimulationService, private plumbService:PlumbService,
 				private plumbServiceUtilities:PlumbServiceUtilities, private serverService:ServerService,
-				private messageService:MessageService, private router:Router) {
+				private messageService:MessageService, private router:Router, private fileService:FileService) {
 		this.loadMetaBlocks();
 		this.loadIntegrationMethods();
 	}
@@ -61,6 +62,10 @@ export class CsmpAppService {
 				simulation => this.messageService.success("Simulation saved..."),
 				error => this.handleError(error)
 			);
+	}
+
+	createLocalFile():string {
+		return this.fileService.createFileLink(JSON.stringify(this.simulationService.saveJSON(), null, "\t"));
 	}
 
 	run():void {
