@@ -26,6 +26,14 @@ export class CsmpOpenDialog {
 		this.modalInstance.close();
 	}
 
+	openLocalSimulation(e:any):void {
+		let file = e.target.files[0];
+		if (file) {
+			this.appService.loadLocalSimulation(file);
+		}
+		this.modalInstance.close();
+	}
+
 	close():void {
 		this.modalInstance.close();
 	}

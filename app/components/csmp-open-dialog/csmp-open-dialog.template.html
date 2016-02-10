@@ -2,9 +2,9 @@
 <div class="mdl-dialog__content">
 	<ul class="mdl-list">
 		<li class="mdl-list__item" *ngFor="#simulation of simulations; #i=index">
-				<a class="mdl-list__item-primary-content" (click)="openSimulation(simulation._id)">
-					<span>{{simulation.description}}</span>
-				</a>
+			<a class="mdl-list__item-primary-content" (click)="openSimulation(simulation._id)">
+				<span>{{simulation.description}}</span>
+			</a>
 				<span class="mdl-list__item-secondary-content">
 					<button class="mdl-list__item-secondary-action" (click)="removeSimulation(simulation._id)">
 						<span class="material-icons">delete</span>
@@ -14,5 +14,8 @@
 	</ul>
 </div>
 <div class="mdl-dialog__actions">
+	<div class="mdl-button mdl-button--primary mdl-button--icon mdl-button--file">
+		<i class="material-icons">attach_file</i><input type="file" (change)="openLocalSimulation($event)">
+	</div>
 	<button type="button" class="mdl-button" (click)="close()">Zatvori</button>
 </div>
