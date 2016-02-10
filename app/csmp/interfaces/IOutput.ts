@@ -1,6 +1,6 @@
 import {Block} from "../Block";
 /**
- * Interfejs za izlazni block. Sadrži block i indeks ulaza na izlaznom blocku.
+ * Interfejs za izlazni blok. Sadrži blok i indeks ulaza na izlaznom bloku.
  */
 export interface IOutput {
 	block: Block;

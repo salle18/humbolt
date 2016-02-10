@@ -1,7 +1,7 @@
 import {IPosition} from "./IPosition";
 
 /**
- * JSON format u kome se čuvaju blocki simulacije i koji se šalje serveru.
+ * JSON format u kome se čuvaju blokovi simulacije i koji se šalje serveru.
  */
 export interface IJSONBlock {
 	className: string;
