@@ -11,61 +11,61 @@ import {IPosition} from "./interfaces/IPosition";
 import {IMetaJSONBlock} from "./interfaces/IMetaJSONBlock";
 
 /**
- * Apstraktna klasa Block. Svi csmp blocki moraju biti izvedeni iz ove klase.
+ * Apstraktna klasa Block. Svi csmp blokovi moraju biti izvedeni iz ove klase.
  */
 export class Block {
 
 	/**
-	 * Niz parametara blocka.
+	 * Niz parametara bloka.
 	 */
 	public params:IParam<number>[] = [];
 
 	/**
-	 * Niz elemenata koji su ulazi u trenutni block.
+	 * Niz elemenata koji su ulazi u trenutni blok.
 	 */
 	public inputs:Block[] = [];
 
 	/**
-	 * Niz elemenata koji su izlazi iz trenutnog blocka.
+	 * Niz elemenata koji su izlazi iz trenutnog bloka.
 	 */
 	public outputs:IOutput[] = [];
 
 	/**
-	 * Broj parametara blocka.
+	 * Broj parametara bloka.
 	 */
 	protected numberOfParams:number = 0;
 	/**
-	 * Broj tekstualnih parametara blocka.
+	 * Broj tekstualnih parametara bloka.
 	 */
 	protected numberOfStringParams:number = 0;
 
 	/**
-	 * Maksimalni broj ulaza u block.
+	 * Maksimalni broj ulaza u blok.
 	 */
 	protected maxNumberOfInputs:number = 0;
 
 	/**
-	 * Pokazuje da li block ima izlaz, samo Quit block nema izlaz.
+	 * Pokazuje da li blok ima izlaz, samo Quit blok nema izlaz.
 	 */
 	protected hasOutput:boolean = true;
 
 	/**
-	 * Svaki block ima referencu na simulaciju u kojoj se nalazi. Neki blocki zahtevaju pristup spoljnoj simulaciji kako bi se izračunali.
+	 * Svaki blok ima referencu na simulaciju u kojoj se nalazi. Neki blokovi zahtevaju pristup spoljnoj simulaciji kako bi se izračunali.
 	 */
 	protected simulation:Simulation = null;
 
 	/**
-	 * Oznaka blocka.
+	 * Oznaka bloka.
 	 */
 	public sign:string = "";
 
 	/**
-	 * Opis blocka.
+	 * Opis bloka.
 	 */
 	protected description:string = "";
 
 	/**
-	 * Tekstualni parametri, svi blocki prihvataju samo numeričke parametre a IoT block prihvata i tekstualne za unos adrese web servisa.
+	 * Tekstualni parametri, svi blokovi prihvataju samo numeričke parametre a IoT block prihvata i tekstualne za unos adrese web servisa(username, password).
 	 */
 	public stringParams:IParam<string>[] = [];
 
@@ -75,7 +75,7 @@ export class Block {
 	public className:string = "Block";
 
 	/**
-	 * Top i left koordinate blocka.
+	 * Top i left koordinate bloka.
 	 */
 	public position:IPosition = {
 		top: 0,
@@ -83,17 +83,17 @@ export class Block {
 	};
 
 	/**
-	 * Da li je block trenutno aktivan.
+	 * Da li je blok trenutno aktivan.
 	 */
 	public active:boolean = false;
 
 	/**
-	 * Da li je block asinhron.
+	 * Da li je blok asinhron.
 	 */
 	public isAsync:boolean = false;
 
 	/**
-	 * Jedinstveni ključ blocka u simulaciji. Koristi se kao id DOM blocka.
+	 * Jedinstveni ključ bloka u simulaciji. Koristi se kao id DOM blocka.
 	 */
 	public key:string = "";
 
@@ -127,7 +127,7 @@ export class Block {
 			};
 		}
 		/**
-		 * Svi ulazni blocki su na početku prazni blocki sa rezulatom 0.
+		 * Svi ulazni blokovi su na početku prazni blokovi sa rezulatom 0.
 		 */
 		for (let i = 0; i < this.maxNumberOfInputs; i++) {
 			this.inputs[i] = new EmptyBlock();
@@ -135,16 +135,9 @@ export class Block {
 	}
 
 	/**
-	 * Svaki block može da se inicijalizuje. Ova metoda se poziva prilikom pokretanja simulacije.
-	 */
-	init():void {
-		return;
-	}
-
-	/**
-	 * Dodaje block u niz izlaznih elemenata. Pošto jedan block može da bude vezan na više ulaza izlaznog blocka pamtimo i indeks ulaza na izlaznom blocku.
-	 * @param targetIndex Indeks ulaza na izlaznom blocku.
-	 * @param block Izlazni block.
+	 * Dodaje blok u niz izlaznih elemenata. Pošto jedan blok može da bude vezan na više ulaza izlaznog bloka pamtimo i indeks ulaza na izlaznom bloku.
+	 * @param targetIndex Indeks ulaza na izlaznom bloku.
+	 * @param block Izlazni blok.
 	 */
 	addOutput(targetIndex:number, block:Block):void {
 		this.outputs.push({
@@ -154,9 +147,9 @@ export class Block {
 	}
 
 	/**
-	 * Uklanja block iz niza izlaznih elemenata. Pošto jedan block može da bude vezan na više ulaza izlaznog blocka proveravamo i indeks ulaza na izlaznom blocku.
-	 * @param targetIndex Indeks ulaza na izlaznom blocku.
-	 * @param block Izlazni block.
+	 * Uklanja blok iz niza izlaznih elemenata. Pošto jedan blok može da bude vezan na više ulaza izlaznog bloka proveravamo i indeks ulaza na izlaznom bloku.
+	 * @param targetIndex Indeks ulaza na izlaznom bloku.
+	 * @param block Izlazni blok.
 	 */
 	removeOutput(targetIndex:number, block:Block):void {
 		for (let i = 0; i < this.outputs.length; i++) {
@@ -169,7 +162,7 @@ export class Block {
 
 	/**
 	 * Postavlja referencu simulacije.
-	 * @param simulation Simulacija u kojoj se block nalazi.
+	 * @param simulation Simulacija u kojoj se blok nalazi.
 	 */
 	setSimulation(simulation:Simulation) {
 		this.simulation = simulation;
@@ -177,33 +170,33 @@ export class Block {
 
 	/**
 	 * @param descrption Opis ukoliko ne postoji simulacija ili ne postoji opis bloka.
-	 * @return Opis blocka sa rednim brojem blocka u simulaciji.
+	 * @return Opis blocka sa rednim brojem bloka u simulaciji.
 	 */
 	getIndexDescription(description:string = ""):string {
 		if (this.simulation && this.description) {
-			return (this.simulation.getIndex(this) + 1) + ". " + this.description;
+			return this.getBasedIndex() + ". " + this.description;
 		}
 		return description;
 	}
 
 	/**
-	 * @return Da li block ima izlaz.
+	 * @return Da li blok ima izlaz.
 	 */
 	getHasOutput():boolean {
 		return this.hasOutput;
 	}
 
 	/**
-	 * @return Redni broj blocka u simulaciji.
+	 * @return Redni broj bloka u simulaciji.
 	 */
 	getIndex() {
 		return this.simulation.getIndex(this);
 	}
 
 	/**
-	 * Uklanja sve reference za block iz niza ulaznih i niza izlaznih elemenata.
+	 * Uklanja sve reference za blok iz niza ulaznih i niza izlaznih elemenata.
 	 *
-	 * @param block Block za koji uklanjamo reference.
+	 * @param block Blok za koji uklanjamo reference.
 	 */
 	removeReference(block:Block):void {
 		for (let i = 0; i < this.inputs.length; i++) {
@@ -219,17 +212,22 @@ export class Block {
 		}
 	}
 
+	/**
+	 * Učitavamo sve parametre iz prostog niza brojeva.
+	 */
 	loadParams(params:number[]):void {
 		params.forEach((param, i) => this.params[i].value = param);
 	}
 
+	/**
+	 * Učitavamo sve tekstualne parametre iz prostog niza stringova.
+	 */
 	loadStringParams(params:string[]):void {
 		params.forEach((param, i) => this.stringParams[i].value = param);
 	}
 
 	/**
 	 * Učitavamo sve podatke iz meta JSON objekta u blok.
-	 *
 	 */
 	loadMetaJSON(MetaJSONBlock:IMetaJSONBlock):void {
 		for (let key in MetaJSONBlock) {
@@ -239,6 +237,9 @@ export class Block {
 		}
 	}
 
+	/**
+	 * @return Jedinstveni ključ za endpoint na bloku.
+	 */
 	getEndpointUuid(index:number, output?:boolean):string {
 		if (output) {
 			return this.key + "_o" + index;
@@ -246,11 +247,17 @@ export class Block {
 		return this.key + "_i" + index;
 	}
 
+	/**
+	 * Rotira element u zadatom smeru.
+	 */
 	rotate(direction:string):void {
 		let amount = direction === "Right" ? 1 : -1;
 		this.rotation = Rotation[Rotation[(this.rotation + amount + 4) % 4]];
 	}
 
+	/**
+	 * @return Indeks elementa sa bazom 1.
+	 */
 	getBasedIndex():number {
 		return this.getIndex() + 1;
 	}
