@@ -1,3 +1,12 @@
-graph-page {
-
+page-graph {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  csmp-graph {
+	position: absolute;
+	top: 64px;
+	right: 0;
+	bottom: 0;
+	left: 0;
+  }
 }

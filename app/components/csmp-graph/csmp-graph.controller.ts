@@ -16,9 +16,7 @@ export class CsmpGraph implements OnInit {
 		let data = this.simulationService.getFilteredSimulationResults();
 		let labels = ["Vreme"].concat(this.simulationService.getFilteredLabels());
 		let graphOptions = {
-			labels: labels,
-			width: 1200,
-			height: 800,
+			labels: labels
 		};
 
 		if (data.length > 0) {
