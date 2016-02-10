@@ -17,7 +17,7 @@ import {IMetaJSONMethod} from "../../csmp/interfaces/IMetaJSONMethod";
 import {ISimulationConfig} from "../../csmp/interfaces/ISimulationConfig";
 
 @Injectable()
-export class AppService {
+export class CsmpAppService {
 
 	public activeBlock:Block = null;
 	public metaBlocks:IMetaJSONBlock[] = [];

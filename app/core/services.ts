@@ -1,4 +1,4 @@
-import {AppService} from "./services/AppService";
+import {CsmpAppService} from "./services/CsmpAppService";
 import {SimulationService} from "./services/SimulationService";
 import {PlumbService} from "./services/PlumbService";
 import {PlumbServiceUtilities} from "./services/PlumbServiceUtilities";
@@ -12,6 +12,6 @@ import {ModalService} from "../modules/modal/ModalService";
 
 
 export let APP_SERVICES:Array<any> = [
-	AppService, SimulationService, PlumbService, PlumbServiceUtilities, ServerService, MessageService,
+	CsmpAppService, SimulationService, PlumbService, PlumbServiceUtilities, ServerService, MessageService,
 	AuthService, HttpService, SnackbarService, GpssAppService, ModalService
 ];
