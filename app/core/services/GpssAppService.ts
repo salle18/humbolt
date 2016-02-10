@@ -3,12 +3,8 @@ import IEditor = AceAjax.Editor;
 import {ServerService} from "./ServerService";
 import {MessageService} from "./MessageService";
 import {ApiType} from "./ServerService";
+import {IGpssSimulation} from "../../gpss/interfaces/IGpssSimulation";
 
-export interface IGpssSimulation {
-	description: string;
-	date: number;
-	data: string;
-}
 
 @Injectable()
 export class GpssAppService {
