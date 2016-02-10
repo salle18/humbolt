@@ -3,7 +3,7 @@
 import {Component} from "angular2/core";
 import {RouterLink} from "angular2/router";
 import {CsmpUpgradeElement} from "../../directives/csmp-upgrade-element";
-import {AppService} from "../../core/services/AppService";
+import {AuthService} from "../../core/services/AuthService";
 import {IUser} from "../../core/services/AuthService";
 
 @Component({
@@ -15,11 +15,11 @@ export class Hub {
 
 	public user:IUser;
 
-	constructor(private appService:AppService) {
-		this.user = this.appService.user();
+	constructor(private authService:AuthService) {
+		this.user = this.authService.user();
 	}
 
 	logout():void {
-		this.appService.logout();
+		this.authService.logout();
 	}
 }
