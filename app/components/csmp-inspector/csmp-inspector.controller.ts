@@ -1,7 +1,7 @@
 import {Component, DoCheck} from "angular2/core";
 import {Block} from "../../csmp/Block";
 import {SimulationService} from "../../core/services/SimulationService";
-import {AppService} from "../../core/services/AppService";
+import {CsmpAppService} from "../../core/services/CsmpAppService";
 import {IParam} from "../../csmp/interfaces/IParam";
 
 @Component({
@@ -13,7 +13,7 @@ export class CsmpInspector implements DoCheck {
 	public blocks:Block[] = [];
 	public activeBlock:Block = null;
 
-	constructor(private appService:AppService, private simulationService:SimulationService) {
+	constructor(private appService:CsmpAppService, private simulationService:SimulationService) {
 		this.blocks = simulationService.getBlocks();
 	}
 

@@ -1,7 +1,7 @@
 import {Component} from "angular2/core";
 import {CsmpUpgradeElement} from "../../directives/csmp-upgrade-element";
 import {CsmpCloneBlock} from "../../directives/csmp-clone-block";
-import {AppService} from "../../core/services/AppService";
+import {CsmpAppService} from "../../core/services/CsmpAppService";
 import {IMetaJSONBlock} from "../../csmp/interfaces/IMetaJSONBlock";
 
 @Component({
@@ -13,7 +13,7 @@ export class CsmpBlockList {
 
 	public blocks:IMetaJSONBlock[];
 
-	constructor(private appService:AppService) {
+	constructor(private appService:CsmpAppService) {
 		this.blocks = this.appService.metaBlocks;
 	}
 

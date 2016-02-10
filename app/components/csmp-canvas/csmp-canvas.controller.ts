@@ -6,7 +6,7 @@ import "jquery-ui/ui/droppable";
 import {CsmpDraggable} from "../../directives/csmp-draggable";
 import {CsmpEndpoints} from "../../directives/csmp-endpoints";
 import {CsmpInteractiveBlock} from "../../directives/csmp-interactive-block";
-import {AppService} from "../../core/services/AppService";
+import {CsmpAppService} from "../../core/services/CsmpAppService";
 import {PlumbService} from "../../core/services/PlumbService";
 import {PlumbServiceUtilities} from "../../core/services/PlumbServiceUtilities";
 
@@ -20,7 +20,7 @@ export class CsmpCanvas implements OnInit, AfterViewInit {
 
 	private blocks:Block[];
 
-	constructor(private elementRef:ElementRef, private zone:NgZone, private appService:AppService, private simulationService:SimulationService,
+	constructor(private elementRef:ElementRef, private zone:NgZone, private appService:CsmpAppService, private simulationService:SimulationService,
 				private plumbService:PlumbService, private plumbServiceUtilities:PlumbServiceUtilities) {
 		this.blocks = simulationService.getBlocks();
 	}

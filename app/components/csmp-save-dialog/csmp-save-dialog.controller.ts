@@ -1,5 +1,5 @@
 import {Component} from "angular2/core";
-import {AppService} from "../../core/services/AppService";
+import {CsmpAppService} from "../../core/services/CsmpAppService";
 import {ModalInstance} from "../../modules/modal/ModalInstance";
 import {SimulationService} from "../../core/services/SimulationService";
 import {ISimulationConfig} from "../../csmp/interfaces/ISimulationConfig";
@@ -12,7 +12,7 @@ export class CsmpSaveDialog {
 
 	private config:ISimulationConfig;
 
-	constructor(private appService:AppService, private simulationService:SimulationService, private modalInstance:ModalInstance) {
+	constructor(private appService:CsmpAppService, private simulationService:SimulationService, private modalInstance:ModalInstance) {
 		this.config = this.simulationService.getSimulationConfig();
 	}
 

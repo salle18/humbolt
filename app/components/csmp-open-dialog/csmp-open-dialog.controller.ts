@@ -1,5 +1,5 @@
 import {Component} from "angular2/core";
-import {AppService} from "../../core/services/AppService";
+import {CsmpAppService} from "../../core/services/CsmpAppService";
 import {ModalInstance} from "../../modules/modal/ModalInstance";
 import {IJSONSimulation} from "../../csmp/interfaces/IJSONSimulation";
 
@@ -11,7 +11,7 @@ export class CsmpOpenDialog {
 
 	private simulations:IJSONSimulation[];
 
-	constructor(private appService:AppService, private modalInstance:ModalInstance) {
+	constructor(private appService:CsmpAppService, private modalInstance:ModalInstance) {
 		this.appService.listSimulations();
 		this.simulations = this.appService.simulations;
 	}

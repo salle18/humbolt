@@ -1,5 +1,5 @@
 import {Component} from "angular2/core";
-import {AppService} from "../../core/services/AppService";
+import {CsmpAppService} from "../../core/services/CsmpAppService";
 import {ModalInstance} from "../../modules/modal/ModalInstance";
 import {SimulationService} from "../../core/services/SimulationService";
 import {IJSONSimulation} from "../../csmp/interfaces/IJSONSimulation";
@@ -16,7 +16,7 @@ export class CsmpRunDialog {
 	private methods:IMetaJSONMethod[] = [];
 	private isAsync:boolean;
 
-	constructor(private appService:AppService, private simulationService:SimulationService, private modalInstance:ModalInstance) {
+	constructor(private appService:CsmpAppService, private simulationService:SimulationService, private modalInstance:ModalInstance) {
 		this.config = this.simulationService.getSimulationConfig();
 		this.methods = this.appService.integrationMethods;
 		this.isAsync = this.simulationService.isAsync();
