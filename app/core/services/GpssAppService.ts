@@ -9,8 +9,8 @@ import {IGpssSimulation} from "../../gpss/interfaces/IGpssSimulation";
 @Injectable()
 export class GpssAppService {
 
-	private editor:IEditor;
-	private resultsEditor:IEditor;
+	private editor:IEditor = null;
+	private resultsEditor:IEditor = null;
 	public simulations:IGpssSimulation[] = [];
 
 	private simulation:IGpssSimulation = {
@@ -32,9 +32,11 @@ export class GpssAppService {
 	}
 
 	reset():void {
-		this.editor.setValue("");
-		this.resultsEditor.setValue("");
-		this.editor.focus();
+		if (this.editor) {
+			this.editor.setValue("");
+			this.resultsEditor.setValue("");
+			this.editor.focus();
+		}
 	}
 
 	listSimulations():void {
