@@ -7,5 +7,6 @@
 </div>
 <div class="mdl-dialog__actions">
 	<button type="button" class="mdl-button  mdl-button--colored" (click)="save()">Sačuvaj</button>
+	<a [href]="localFile" type="button" class="mdl-button  mdl-button--accent" [download]="config.description+'.wcsmp'">JSON</a>
 	<button type="button" class="mdl-button" (click)="close()">Prekid</button>
 </div>
