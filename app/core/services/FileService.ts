@@ -15,4 +15,14 @@ export class FileService {
 		return this.fileLink;
 	}
 
+	readFile(file:Blob):Promise<string> {
+		return new Promise((resolve, reject) => {
+			let reader = new FileReader();
+			reader.onload = function (e:any) {
+				resolve(e.target.result);
+			};
+			reader.readAsText(file);
+		});
+	}
+
 }
