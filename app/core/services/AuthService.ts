@@ -4,6 +4,8 @@ import {Router} from "angular2/router";
 import {HttpService} from "./HttpService";
 import {Observable} from "rxjs/Observable";
 import {MessageService} from "./MessageService";
+import {CsmpAppService} from "./CsmpAppService";
+import {GpssAppService} from "./GpssAppService";
 
 export interface IUser {
 	name: string;
@@ -27,7 +29,8 @@ export class AuthService {
 	private url:string = "http://localhost:9000";
 	private identifier:string = "user_data";
 
-	constructor(private httpService:HttpService, private messageService:MessageService, private router:Router) {
+	constructor(private httpService:HttpService, private messageService:MessageService, private router:Router,
+				private csmpAppService:CsmpAppService, private gpssAppService:GpssAppService) {
 		let user = this.user();
 		if (user) {
 			this.httpService.setToken(user.token);
@@ -55,6 +58,8 @@ export class AuthService {
 
 	logout():void {
 		this.clearUser();
+		this.csmpAppService.reset();
+		this.gpssAppService.reset();
 		this.httpService.clearToken();
 		this.router.navigate(["Login"]);
 	}
