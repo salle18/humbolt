@@ -68,10 +68,7 @@ export class PlumbService {
 			 * Pamtimo stari parametar index.
 			 */
 			oldIndex = info.connection.getParameter("index");
-			/**
-			 * Sprečavamo da se block veže za samog sebe.
-			 */
-			return info.sourceId !== info.targetId;
+			return true;
 		});
 
 		this.instance.bind("connection", (info) => {
