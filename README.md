@@ -70,7 +70,7 @@ Za više informacija možete pogledati [ModernWebDevBuild](https://github.com/ds
 			SimulationService.ts - servis koji definiše i upravlja csmp simulacijom
 	+csmp
 		+enums - enumeracije koje koristi csmp
-			Rotation - definiše moguće položaje csmp bloka
+			Rotation/ts - definiše moguće položaje csmp bloka
 		+interfaces - interfejsi koje koristi csmp
 			IJSONBlock.ts - opisuje json reprezentaciju jednog bloka u simulaciji
 			IJSONSimulation.ts - opisuje json reprezentaciju jedne simulacije
@@ -99,11 +99,11 @@ Za više informacija možete pogledati [ModernWebDevBuild](https://github.com/ds
 	+modules
 		+modal
 			+components
-			ModalInstance - instanca modala koja se prosleđuje kreiranoj komponenti u modalu kao i servisu odakle je pozvan modal
-			ModalService - omogućava kreiranje komponente u modalnom prozoru
+			ModalInstance.ts - instanca modala koja se prosleđuje kreiranoj komponenti u modalu kao i servisu odakle je pozvan modal
+			ModalService.ts - omogućava kreiranje komponente u modalnom prozoru
 		+snackbar
 			+components
-			SnackbarService - dinamički dodaje element material design snackbar i omogućava prikazivanje poruka u tom elementu
+			SnackbarService.ts - dinamički dodaje element material design snackbar i omogućava prikazivanje poruka u tom elementu
 	+pages
 		+configuration-table
 		+csmp
