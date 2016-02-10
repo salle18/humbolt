@@ -7,11 +7,11 @@ Typescript jezik koristimo umesto običnog javascript koda kako bismo lakše def
 Aplikacija koristi [angular2](https://angular.io/) za upravljanje interfejsom a kreirana je korišćenjem [ModernWebDev yeoman generatora](https://github.com/dsebastien/modernWebDevGenerator).
 
 Biblioteke koje koristimo u projektu:
-* [material design lite](http://www.getmdl.io/) za stilizovanje interfejsa
-* [jsPlumb](https://jsplumbtoolkit.com) za povezivanje elemenata konektorima
-* [jquery ui](https://jqueryui.com/) za omogućavanje naprednih drag and drop funkcionalnosti
-* [ace editor](https://ace.c9.io/) za prikazivanje editora za gpss
-* [dypgraphs](http://dygraphs.com/) za iscrtavanje grafikona rezultata csmp simulacije
+- [material design lite](http://www.getmdl.io/) za stilizovanje interfejsa
+- [jsPlumb](https://jsplumbtoolkit.com) za povezivanje elemenata konektorima
+- [jquery ui](https://jqueryui.com/) za omogućavanje naprednih drag and drop funkcionalnosti
+- [ace editor](https://ace.c9.io/) za prikazivanje editora za gpss
+- [dypgraphs](http://dygraphs.com/) za iscrtavanje grafikona rezultata csmp simulacije
 
 Za upravljanje bibliotekama koristimo [jspm](http://jspm.io/) i sve nove biblioteke treba uvesti korišćenjem ovog menadžera.
 
@@ -31,72 +31,72 @@ Za više informacija možete pogledati [ModernWebDevBuild](https://github.com/ds
 +.tmp - privremeni folder u koji se smeštaju transpajlirane verzije typescript fajlova i scss fajlova.
 +app - folder koji sadrži sav kod aplikacije, ovo je jedini folder koji bi trebalo ručno menjati. U svakom folderu unutar foldera app nalazi se README.md fajl u kome se nalaze kratka uputstva o dobroj praksi i organizaciji koda.
 	+components - sadrži sve angular2 komponente
-		+csmp-block
-		+csmp-block-list
-		+csmp-canvas
-		+csmp-configuration-table
-		+csmp-graph
-		+csmp-header
-		+csmp-inspector
-		+csmp-menu
-		+csmp-open-dialog
-		+csmp-panel
-		+csmp-results-table
-		+csmp-run-dialog
-		+csmp-save-dialog
-		+gpss-menu
-		+gpss-open-dialog
-		+gpss-save-dialog
-		+humbolt-loader
+		+csmp-block - predstavlja jedan blok na canvas-u
+		+csmp-block-list - lista blokova
+		+csmp-canvas - canvas na koji se prevlače blokovi
+		+csmp-configuration-table - tabela konfiguracija
+		+csmp-graph - predstavljanje rezultata simulacije grafikonom
+		+csmp-header - pomoćeni omotač za liniju navigacije
+		+csmp-inspector - inspektor za csmp blokove
+		+csmp-menu - meni za csmp
+		+csmp-open-dialog - dialog koji se otvara u modalnom prozoru za otvaranje sačuvanih simulacija
+		+csmp-panel - pomoćni omotač za komponente koje zauzimaju celu visinu
+		+csmp-results-table - prikaz rezultata izračunvanja simulacije
+		+csmp-run-dialog - dialog koji se otvara u modalnom prozoru za pokretanje simulacije
+		+csmp-save-dialog - dialog koji se otvara u modalnom prozoru za čuvanje simulacije
+		+gpss-menu - meni za gpss
+		+gpss-open-dialog - dialog koji se otvara u modalnom prozoru za otvaranje sačuvanih simulacija
+		+gpss-save-dialog - dialog koji se otvara u modalnom prozoru za čuvanje simulacije
+		+humbolt-loader - dialog koji se otvara prilikom asinhronih operacija na serveru
 	+core
 		app.ts - glavna komponenta aplikacije, sadrži putanje svih stranica koje prikazujemo
 		boot.st - pokretanje aplikacije, ovde se definišu provajderi
 		services.ts - svi servisi koje aplikacija koristi moraju da se navedu u ovom fajlu
 		+commons
-			KeyEvent.ts
+			KeyEvent.ts - pomoćna enumeracija definiše key codes za pritisak tastera
 		+services - klase servisa
-			AppService.ts
-			AuthService.ts
-			GpssAppService.ts
-			HttpService.ts
-			MessageService.ts
-			PlumbService.ts
-			PlumbServiceUtilities.ts
-			ServerService.ts
-			SimulationService.ts
+			AuthService.ts - servis za autentikaciju korisnika
+			CsmpAppService.ts - servis za celokupan csmp, injektuje ostale servise u sebe
+			GpssAppService.ts - servis za celokupan gpss, injektuje ostale servise u sebe
+			HttpService.ts - servis omotač za Http, postavlja headers za autentikaciju prilikom svakog zahteva
+			MessageService.ts - servis za prikaz poruka korisniku
+			PlumbService.ts - servis koji povezuje csmp sa jsPlumb bibliotekom
+			PlumbServiceUtilities.ts - pomoćni servis za dodatne operacije sa jsPlumb bibliotekom
+			ServerService.ts - servis koji definiše specifične serverske zahteve
+			SimulationService.ts - servis koji definiše i upravlja csmp simulacijom
 	+csmp
 		+enums - enumeracije koje koristi csmp
-			Rotation
+			Rotation - definiše moguće položaje csmp bloka
 		+interfaces - interfejsi koje koristi csmp
-			IJSONBlock.ts
-			IJSONSimulation.ts
-			IMetaJSONBlock.ts
-			IMetaJSONMethod.ts
-			IOutput.ts
-			IParam.ts
-			IPosition.ts
-			ISimulationConfig.ts
+			IJSONBlock.ts - opisuje json reprezentaciju jednog bloka u simulaciji
+			IJSONSimulation.ts - opisuje json reprezentaciju jedne simulacije
+			IMetaJSONBlock.ts - opisuje meta podatke o svakom bloku
+			IMetaJSONMethod.ts - opisuje json reprezentaciju mogućih metoda simulacije
+			IOutput.ts - opisuje izlaze iz bloka
+			IParam.ts - opisuje parametre bloka
+			IPosition.ts - opisuje poziciju bloka
+			ISimulationConfig.ts - opisuje konfiguraciju simulacije
 		Block.ts - klasa csmp bloka
 		Dictionary.ts - pomoćna klasa
 		EmptyBlock.ts - prazan blok, pomoćna klasa
 		Simulation.ts - klasa simulacije
 	+directives - direktive za razliku od komponenti ne kreiraju novi element već dodaju funkcionalnost postojećem
-		csmp-clone-block.ts
-		csmp-draggable.ts
-		csmp-endpoints.ts
-		csmp-interactive-block.ts
-		csmp-pannable.ts
-		csmp-upgrade-element.ts
-		humbolt-ace-editor.ts
-		LoggedInRouterOutlet.ts
+		csmp-clone-block.ts - definiše direktivu koja klonira blok iz liste blokova i omogućava prevlačenje na canvas
+		csmp-draggable.ts - omogućava povalačenje bloka po canvasu
+		csmp-endpoints.ts - dodaje tačke za jsPlumb konektore na blok na canvasu
+		csmp-interactive-block.ts - dodaje događaje miša i tastature za blok
+		csmp-pannable.ts - omogućava pan canvasa povlačenjem miša
+		csmp-upgrade-element.ts - dodaje material design funkcionalnosti na dinamički dodat element
+		humbolt-ace-editor.ts - dodaje ace editor na zadati element
+		LoggedInRouterOutlet.ts - proverava da li je korisnik ulogovan pre prikazivanja stranice
 	+modules
 		+modal
 			+components
-			ModalInstance
-			ModalService
+			ModalInstance - instanca modala koja se prosleđuje kreiranoj komponenti u modalu kao i servisu odakle je pozvan modal
+			ModalService - omogućava kreiranje komponente u modalnom prozoru
 		+snackbar
 			+components
-			SnackbarService
+			SnackbarService - dinamički dodaje element material design snackbar i omogućava prikazivanje poruka u tom elementu
 	+pages
 		+configuration-table
 		+csmp
@@ -110,16 +110,21 @@ Za više informacija možete pogledati [ModernWebDevBuild](https://github.com/ds
 		vendor.sccs - sve stilove biblioteka uvozimo u ovaj fajl
 +dist - folder u kome se stvara produkciona verzija aplikacije, skripte i stilovi su povezani u po jedan fajl i minifikovani.
 +docs - generisana dokumentacija projekta
-+jspm_packages - jspm biblioteke se čuvaju u ovom folderu
-+node_modules - npm biblioteke se čuvaju u ovom folderu
-+typings - typescript definicije klasa se čuvaju u ovom folderu
-jspm.conf.js
-package.json
++jspm_packages - jspm biblioteke se čuvaju u ovom folderu, ovaj folder se dinamički kreira i ne treba ga editovati
++node_modules - npm biblioteke se čuvaju u ovom folderu, ovaj folder se dinamički kreira i ne treba ga editovati
++typings - typescript definicije klasa se čuvaju u ovom folderu, ovaj folder se dinamički kreira i ne treba ga editovati
+jspm.conf.js - fajl koji sadrži konkretne verzije biblioteka koje jspm učitava
+package.json - definiše sve informacije o projektu i biblioteke koje projekat koristi
 tsconfig.json
 tsd.json
 ```
 		
 ## Autentikacija
+
+Za autentikaciju aplikacija koristi [JSON web tokens](https://jwt.io/) koje čuva u lokalnom skladištu brauzera (local storage).
+Token se dobija prilikom logovanja a zatim se šalje prilikom svakog zahteva ka humbolt serveru.
+Direktiva LoggedInRouterOutlet preusmerava korisnika na stanicu za logovanje ukoliko token ne postoji u lokalnom skladištu.
+Za logout se token uklanja iz lokalnog skladišta čime se onemogućava dalje korišćenje api-ja servera.
 
 ## CSMP
 
