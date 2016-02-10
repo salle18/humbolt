@@ -2,7 +2,7 @@
 
 import {Component} from "angular2/core";
 import {CsmpUpgradeElement} from "../../directives/csmp-upgrade-element";
-import {AppService} from "../../core/services/AppService";
+import {AuthService} from "../../core/services/AuthService";
 import {ILoginData} from "../../core/services/AuthService";
 
 
@@ -18,10 +18,10 @@ export class Login {
 		password: ""
 	};
 
-	constructor(private appService:AppService) {
+	constructor(private authService:AuthService) {
 	}
 
 	login():void {
-		this.appService.login(this.user);
+		this.authService.login(this.user);
 	}
 }
