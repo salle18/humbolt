@@ -87,7 +87,12 @@ export class CsmpAppService {
 
 	loadMetaBlocks():void {
 		this.serverService.setApiType(ApiType.CSMP).getMetaBlocks().subscribe(
-			metaBlocks => this.metaBlocks.push.apply(this.metaBlocks, metaBlocks),
+			(metaBlocks:IMetaJSONBlock[]) => {
+				metaBlocks.sort((a, b) => {
+					return a.sign.localeCompare(b.sign);
+				});
+				this.metaBlocks.push.apply(this.metaBlocks, metaBlocks);
+			},
 			error => this.handleError(error)
 		);
 	}
