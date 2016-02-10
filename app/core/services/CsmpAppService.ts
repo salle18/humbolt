@@ -4,14 +4,11 @@ import {SimulationService} from "./SimulationService";
 import {PlumbService} from "./PlumbService";
 import {PlumbServiceUtilities} from "./PlumbServiceUtilities";
 import {ServerService, ApiType} from "./ServerService";
-import {AuthService} from "./AuthService";
 import {MessageService} from "./MessageService";
 import {Block} from "../../csmp/Block";
 import {Observable} from "rxjs/Observable";
 import {IJSONBlock} from "../../csmp/interfaces/IJSONBlock";
 import {IMetaJSONBlock} from "../../csmp/interfaces/IMetaJSONBlock";
-import {IUser} from "./AuthService";
-import {ILoginData} from "./AuthService";
 import {IJSONSimulation} from "../../csmp/interfaces/IJSONSimulation";
 import {IMetaJSONMethod} from "../../csmp/interfaces/IMetaJSONMethod";
 import {ISimulationConfig} from "../../csmp/interfaces/ISimulationConfig";
@@ -26,7 +23,7 @@ export class CsmpAppService {
 
 	constructor(private simulationService:SimulationService, private plumbService:PlumbService,
 				private plumbServiceUtilities:PlumbServiceUtilities, private serverService:ServerService,
-				private authService:AuthService, private messageService:MessageService, private router:Router) {
+				private messageService:MessageService, private router:Router) {
 		this.loadMetaBlocks();
 		this.loadIntegrationMethods();
 	}
@@ -151,19 +148,6 @@ export class CsmpAppService {
 			}
 		}
 		return null;
-	}
-
-	user():IUser {
-		return this.authService.user();
-	}
-
-	login(loginData:ILoginData):void {
-		this.authService.login(loginData);
-	}
-
-	logout():void {
-		this.reset();
-		this.authService.logout();
 	}
 
 	handleError(error:any) {
