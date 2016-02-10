@@ -38,7 +38,8 @@ export class CsmpEndpoints implements OnInit {
 		},
 		paintStyle: {
 			fillStyle: "#337ab7"
-		}
+		},
+		cssClass: "inputEndpoint"
 	};
 
 	constructor(private plumbService:PlumbService, private zone:NgZone) {
