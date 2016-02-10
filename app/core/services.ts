@@ -9,9 +9,10 @@ import {HttpService} from "./services/HttpService";
 import {SnackbarService} from "../modules/snackbar/SnackbarService";
 import {GpssAppService} from "./services/GpssAppService";
 import {ModalService} from "../modules/modal/ModalService";
+import {FileService} from "./services/FileService";
 
 
 export let APP_SERVICES:Array<any> = [
 	CsmpAppService, SimulationService, PlumbService, PlumbServiceUtilities, ServerService, MessageService,
-	AuthService, HttpService, SnackbarService, GpssAppService, ModalService
+	AuthService, HttpService, SnackbarService, GpssAppService, ModalService, FileService
 ];
