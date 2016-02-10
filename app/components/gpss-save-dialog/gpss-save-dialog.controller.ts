@@ -1,6 +1,7 @@
 import {Component} from "angular2/core";
 import {ModalInstance} from "../../modules/modal/ModalInstance";
-import {GpssAppService, IGpssSimulation} from "../../core/services/GpssAppService";
+import {GpssAppService} from "../../core/services/GpssAppService";
+import {IGpssSimulation} from "../../gpss/interfaces/IGpssSimulation";
 
 @Component({
 	selector: "gpss-save-dialog",
