@@ -26,7 +26,7 @@ export class Simulation {
 	}
 
 	/**
-	 * Dodaje block simulaciji.
+	 * Dodaje blok simulaciji.
 	 * Ako je integrator dodaje ga i u niz integratora.
 	 *
 	 * @param block Block koji se dodaje.
@@ -38,10 +38,10 @@ export class Simulation {
 	}
 
 	/**
-	 * Uklanja block iz simulacije. Za svaki block u simulaciji uklanja referencu na ovaj block.
+	 * Uklanja blok iz simulacije. Za svaki blok u simulaciji uklanja referencu na ovaj block.
 	 * Ako je integrator uklanja se i iz niza integratora.
 	 *
-	 * @param key Ključ blocka koji se uklanja.
+	 * @param key Ključ bloka koji se uklanja.
 	 */
 	removeBlock(key:string):void {
 		let block = this.blocks.get(key);
@@ -53,8 +53,8 @@ export class Simulation {
 	}
 
 	/**
-	 * @param key Ključ blocka.
-	 * @return Block sa zadatim ključem.
+	 * @param key Ključ bloka.
+	 * @return Blok sa zadatim ključem.
 	 */
 	getBlock(key:string):Block {
 		return this.blocks.get(key);
@@ -69,9 +69,9 @@ export class Simulation {
 	}
 
 	/**
-	 * Indeks zadatog blocka u simulaciji.
+	 * Indeks zadatog bloka u simulaciji.
 	 *
-	 * @param block Block simulacije.
+	 * @param block Blok simulacije.
 	 */
 	getIndex(block:Block) {
 		return this.blocks.getIndex(block);
@@ -139,13 +139,13 @@ export class Simulation {
 		}
 
 		/**
-		 * Ponovo prolazimo kroz sve blocke i dodajemo veze.
+		 * Ponovo prolazimo kroz sve blokove i dodajemo veze.
 		 */
 		for (let i = 0; i < JSONBlocks.length; i++) {
 			let JSONBlock = JSONBlocks[i];
 			let block = blocks[i];
 			/**
-			 * Rekonstruišemo sve ulaze na blocku i obrnuto na izlaznom blocku rekonstruišemo izlaz.
+			 * Rekonstruišemo sve ulaze na bloku i obrnuto na izlaznom blocku rekonstruišemo izlaz.
 			 */
 			for (let j = 0; j < JSONBlock.inputs.length; j++) {
 				let index = JSONBlock.inputs[j];
