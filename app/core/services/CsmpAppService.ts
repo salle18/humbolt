@@ -126,6 +126,19 @@ export class CsmpAppService {
 		);
 	}
 
+	loadLocalSimulation(file:Blob):void {
+		this.fileService.readFile(file).then(result => {
+			let simulation = JSON.parse(result);
+			this.reset();
+			let blocks = this.createSimulationBlocks(simulation.blocks);
+			this.simulationService.loadSimulation(simulation, blocks);
+			setTimeout(() => {
+				this.plumbService.resetConnections();
+				this.plumbServiceUtilities.resetRotations();
+			});//bugfix https://github.com/angular/angular/issues/6005
+		})
+	}
+
 	removeSimulation(id:string):void {
 		this.serverService.setApiType(ApiType.CSMP).removeSimulation<IJSONSimulation>(id).subscribe(
 			simulation => {
