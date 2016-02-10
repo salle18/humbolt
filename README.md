@@ -126,9 +126,86 @@ Token se dobija prilikom logovanja a zatim se šalje prilikom svakog zahteva ka 
 Direktiva LoggedInRouterOutlet preusmerava korisnika na stanicu za logovanje ukoliko token ne postoji u lokalnom skladištu.
 Za logout se token uklanja iz lokalnog skladišta čime se onemogućava dalje korišćenje api-ja servera.
 
+## Humbolt server
+
+### PUBLIC ROUTES
+-`POST /login` - vraća token ako je autentikacija uspešna
+
+#### CSMP
+-`GET api/csmp/blocks` - vraća listu dostupnih blokova za simulaciju
+-`GET api/csmp/integrationmethods` - vraća listu dostupnih metoda integracije
+
+### PROTECTED ROUTES
+
+#### CSMP
+-`POST /csmp/simulate` - pokreće simulaciju, u telu zahteva očekuje IJSONSimulation objekat
+-`GET /csmp/simulation` - vraća listu sačuvanih simulacija
+-`GET /csmp/simulation/:id` - vraća simulaciju za zadati id
+-`POST /csmp/simulation` - čuva simulaciju, u telu zahteva očekuje IJSONSimulation objekat
+-`DELETE /csmp/simulation/:id` - briše simulaciju za zadati id
+
+#### GPSS
+-`POST /gpss/simulate` - pokreće simulaciju, u telu zahteva očekuje IGpssSimulation
+-`GET /gpss/simulation` - vraća listu sačuvanih simulacija
+-`GET /gpss/simulation/:id` - vraća simulaciju za zadati id
+-`POST /gpss/simulation` - čuva simulaciju, u telu zahteva očekuje IGpssSimulation
+-`DELETE /gpss/simulation/:id` - briše simulaciju za zadati id
+
 ## CSMP
 
 Simulacioni jezik CSMP (Continuous System Modelling Program) razvijen je u IBM-u ranih 60-tih godina i predstavljao je pravi analogni simulator. To je softver namenjen modelovanju i simulaciji dinamičkih sistema u ograničenom vremenskom intervalu.
 CSMP se svrstava u simulacione jezike, a zbog svog značaja izučavaju ga, predvđieno nastavnim programom, na Fakultetu Organizacionih Nauka, u okviru predmeta Simulacije i simulacioni jezici, studenti informacionog smera.
 
+Humbolt klijent sve blokove i metode simulacije preuzima sa humbolt servera tj. klijent nije svestan nijednog bloka,
+ovo omogućava da se na serveru doda novi blok ili metoda simulacije bez ikakvih promena na klijentu.
+
+IMetaJSONBlock opisuje jedan blok.
+```
+export interface IMetaJSONBlock {
+	className: string;
+	numberOfParams: number;
+	numberOfStringParams: number;
+	maxNumberOfInputs: number;
+	hasOutput:boolean;
+	sign: string;
+	description: string;
+	info: string;
+	paramDescription: string[];
+	stringParamDescription: string[];
+	isAsync: boolean;
+}
+```
+
+Klasa Block je generička implementacija bloka koja učitava IMetaJSONBlock od koje se stvara jedna instanca bloka.
+Klasa Simulation sadrži niz blokova i metode za dodavanje, uklanjanje, povezivanje i indeksiranje blokova.
+Prilikom pokretanja simulacije iz simulacije se uzimaju samo neophodni podaci opisani u IJSONSimulation.
+```
+export interface IJSONSimulation {
+	description: string;
+	date: number;
+	method: string;
+	duration: number;
+	integrationInterval: number;
+	blocks: IJSONBlock[];
+	optimizeAsync: boolean;
+}
+```
+
+IJSONBlock sadrži sve neophodne informacije da bi se blok procesirao na serveru i kako bi simulacija mogla da se reprodukuje nakon čuvanja.
+```
+export interface IJSONBlock {
+	className: string;
+	position: IPosition;
+	params: number[];
+	stringParams: string[];
+	inputs: number[];
+	rotation: number;
+}
+```
+
+
 ## GPSS
+
+Gpss klijent se sastoji od dva editora, prvi je za unos teksta simulacije a drugi za prikazivanje rezultata simulacije.
+Sav sadržaj iz prvog editora se šalje humbolt serveru na obradu a celokupan odgovor se prikazuje u drugom editoru.
+Omogućene su iste operacije čuvanja, otvaranja i brisanja simulacije kao i u csmp delu.
