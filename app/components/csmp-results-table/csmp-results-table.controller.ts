@@ -1,9 +1,11 @@
 import {Component} from "angular2/core";
 import {SimulationService, ISimulationFilter} from "../../core/services/SimulationService";
+import {CsmpUpgradeElement} from "../../directives/csmp-upgrade-element";
 
 @Component({
 	selector: "csmp-results-table",
-	templateUrl: "components/csmp-results-table/csmp-results-table.template.html"
+	templateUrl: "components/csmp-results-table/csmp-results-table.template.html",
+	directives: [CsmpUpgradeElement]
 })
 export class CsmpResultsTable {
 
