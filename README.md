@@ -89,6 +89,9 @@ Za više informacija možete pogledati [ModernWebDevBuild](https://github.com/ds
 		csmp-upgrade-element.ts - dodaje material design funkcionalnosti na dinamički dodat element
 		humbolt-ace-editor.ts - dodaje ace editor na zadati element
 		LoggedInRouterOutlet.ts - proverava da li je korisnik ulogovan pre prikazivanja stranice
+	+gpss
+		+interfaces
+			IGpssSimulation - opisuje json reprezentaciju gpss simulacije
 	+modules
 		+modal
 			+components
