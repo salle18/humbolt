@@ -1,6 +1,6 @@
 import {Directive, Input} from "angular2/core";
 import {Block} from "../csmp/Block";
-import {AppService} from "../core/services/AppService";
+import {CsmpAppService} from "../core/services/CsmpAppService";
 import {KeyEvent} from "../core/commons/KeyEvent";
 
 @Directive({
@@ -14,7 +14,7 @@ export class CsmpInteractiveBlock {
 
 	@Input() block:Block;
 
-	constructor(private appService:AppService) {
+	constructor(private appService:CsmpAppService) {
 	}
 
 	onClick() {
