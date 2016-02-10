@@ -1,6 +1,8 @@
 # Humbolt client
+===================
 
 ## O projektu
+===================
 
 Humbolt klijent je kreiran s ciljem da u jednoj aplikaciji obuhvati CSMP i GPSS simulacije. Aplikacija je napisana u [TypeScript jeziku](http://www.typescriptlang.org/) koji se [transpajlira](https://en.wikipedia.org/wiki/Source-to-source_compiler) u javascript ES5 kod.
 Typescript jezik koristimo umesto običnog javascript koda kako bismo lakše definisali klase i imali strogo definisane tipove podataka.                                                                       
@@ -16,6 +18,7 @@ Biblioteke koje koristimo u projektu:
 Za upravljanje bibliotekama koristimo [jspm](http://jspm.io/) i sve nove biblioteke treba uvesti korišćenjem ovog menadžera.
 
 ## Pokretanje projekta
+===================
 
 Da biste pokrenuli projekat morate imati instaliran [node](https://nodejs.org/en/download/), a zatim i globalno instaliran [gulp](http://gulpjs.com/), to možete uraditi pokretanjem komande `npm install gulp -g` u komandnoj liniji.
 
@@ -26,6 +29,7 @@ Zatim je potrebno instalirati zavisne biblioteke projekta pokretanjem komandi `j
 Za više informacija možete pogledati [ModernWebDevBuild](https://github.com/dsebastien/modernWebDevBuild) projektnu dokumentaciju.
 
 ## Folderi
+===================
 
 ```
 +.tmp - privremeni folder u koji se smeštaju transpajlirane verzije typescript fajlova i scss fajlova.
@@ -123,6 +127,7 @@ tsd.json
 ```
 		
 ## Autentikacija
+===================
 
 Za autentikaciju aplikacija koristi [JSON web tokens](https://jwt.io/) koje čuva u lokalnom skladištu brauzera (local storage).
 Token se dobija prilikom logovanja a zatim se šalje prilikom svakog zahteva ka humbolt serveru.
@@ -130,8 +135,11 @@ Direktiva LoggedInRouterOutlet preusmerava korisnika na stanicu za logovanje uko
 Za logout se token uklanja iz lokalnog skladišta čime se onemogućava dalje korišćenje api-ja servera.
 
 ## Humbolt server
+===================
 
 ### PUBLIC ROUTES
+
+#### Autentikacija
 -`POST /login` - vraća token ako je autentikacija uspešna
 
 #### CSMP
@@ -155,6 +163,7 @@ Za logout se token uklanja iz lokalnog skladišta čime se onemogućava dalje ko
 -`DELETE /gpss/simulation/:id` - briše simulaciju za zadati id
 
 ## CSMP
+===================
 
 Simulacioni jezik CSMP (Continuous System Modelling Program) razvijen je u IBM-u ranih 60-tih godina i predstavljao je pravi analogni simulator. To je softver namenjen modelovanju i simulaciji dinamičkih sistema u ograničenom vremenskom intervalu.
 CSMP se svrstava u simulacione jezike, a zbog svog značaja izučavaju ga, predvđieno nastavnim programom, na Fakultetu Organizacionih Nauka, u okviru predmeta Simulacije i simulacioni jezici, studenti informacionog smera.
@@ -208,6 +217,7 @@ export interface IJSONBlock {
 
 
 ## GPSS
+===================
 
 Gpss klijent se sastoji od dva editora, prvi je za unos teksta simulacije a drugi za prikazivanje rezultata simulacije.
 Sav sadržaj iz prvog editora se šalje humbolt serveru na obradu a celokupan odgovor se prikazuje u drugom editoru.
