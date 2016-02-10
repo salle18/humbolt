@@ -4,11 +4,6 @@ import {ModalService} from "../../modules/modal/ModalService";
 import {HumboltLoader} from "../../components/humbolt-loader/humbolt-loader.controller";
 import {ModalInstance} from "../../modules/modal/ModalInstance";
 
-export class Message {
-	constructor(public value:string) {
-	}
-}
-
 @Injectable()
 export class MessageService {
 
