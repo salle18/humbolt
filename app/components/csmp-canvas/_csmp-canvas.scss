@@ -12,5 +12,8 @@ csmp-canvas {
 	&.outputEndpoint {
 	  cursor: copy;
 	}
+	&.inputEndpoint {
+	  cursor: alias;
+	}
   }
 }
