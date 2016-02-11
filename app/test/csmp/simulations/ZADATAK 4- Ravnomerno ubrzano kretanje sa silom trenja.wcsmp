@@ -1,0 +1,127 @@
+{
+	"description": "ZADATAK 4: Ravnomerno ubrzano kretanje sa silom trenja",
+	"method": "RungeKuttaIV",
+	"integrationInterval": 0.01,
+	"duration": 20,
+	"blocks": [
+		{
+			"className": "Integrator",
+			"params": [
+				0,
+				-1,
+				0
+			],
+			"stringParams": [],
+			"position": {
+				"top": 320,
+				"left": 460
+			},
+			"inputs": [
+				6,
+				7,
+				-1
+			],
+			"rotation": 0
+		},
+		{
+			"className": "Integrator",
+			"params": [
+				0,
+				0,
+				0
+			],
+			"stringParams": [],
+			"position": {
+				"top": 320,
+				"left": 650
+			},
+			"inputs": [
+				0,
+				-1,
+				-1
+			],
+			"rotation": 0
+		},
+		{
+			"className": "Constant",
+			"params": [
+				200
+			],
+			"stringParams": [],
+			"position": {
+				"top": 130,
+				"left": 110
+			},
+			"inputs": [],
+			"rotation": 0
+		},
+		{
+			"className": "Constant",
+			"params": [
+				30
+			],
+			"stringParams": [],
+			"position": {
+				"top": 230,
+				"left": 110
+			},
+			"inputs": [],
+			"rotation": 0
+		},
+		{
+			"className": "Constant",
+			"params": [
+				9.81
+			],
+			"stringParams": [],
+			"position": {
+				"top": 530,
+				"left": 110
+			},
+			"inputs": [],
+			"rotation": 0
+		},
+		{
+			"className": "Constant",
+			"params": [
+				0.5
+			],
+			"stringParams": [],
+			"position": {
+				"top": 420,
+				"left": 110
+			},
+			"inputs": [],
+			"rotation": 0
+		},
+		{
+			"className": "Divide",
+			"params": [],
+			"stringParams": [],
+			"position": {
+				"top": 180,
+				"left": 260
+			},
+			"inputs": [
+				2,
+				3
+			],
+			"rotation": 0
+		},
+		{
+			"className": "Multiply",
+			"params": [],
+			"stringParams": [],
+			"position": {
+				"top": 470,
+				"left": 260
+			},
+			"inputs": [
+				5,
+				4
+			],
+			"rotation": 0
+		}
+	],
+	"date": 1455140540784
+}

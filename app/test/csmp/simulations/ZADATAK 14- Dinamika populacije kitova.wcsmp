@@ -1,0 +1,146 @@
+{
+	"description": "Simulacija 1",
+	"method": "RungeKuttaIV",
+	"integrationInterval": 0.1,
+	"duration": 3,
+	"optimizeAsync": true,
+	"blocks": [
+		{
+			"className": "Integrator",
+			"params": [
+				15000,
+				0.225,
+				0.25
+			],
+			"stringParams": [],
+			"position": {
+				"top": 160,
+				"left": 260
+			},
+			"inputs": [
+				3,
+				2,
+				1
+			],
+			"rotation": 0
+		},
+		{
+			"className": "Integrator",
+			"params": [
+				15000,
+				0.25,
+				-0.235
+			],
+			"stringParams": [],
+			"position": {
+				"top": 350,
+				"left": 320
+			},
+			"inputs": [
+				-1,
+				0,
+				6
+			],
+			"rotation": 0
+		},
+		{
+			"className": "Integrator",
+			"params": [
+				10000,
+				0.125,
+				-0.18
+			],
+			"stringParams": [],
+			"position": {
+				"top": 690,
+				"left": 130
+			},
+			"inputs": [
+				-1,
+				1,
+				7
+			],
+			"rotation": 0
+		},
+		{
+			"className": "Amplify",
+			"params": [
+				-0.36
+			],
+			"stringParams": [],
+			"position": {
+				"top": 10,
+				"left": 350
+			},
+			"inputs": [
+				0
+			],
+			"rotation": 2
+		},
+		{
+			"className": "Add",
+			"params": [
+				1,
+				1,
+				1
+			],
+			"stringParams": [],
+			"position": {
+				"top": 440,
+				"left": 670
+			},
+			"inputs": [
+				0,
+				1,
+				2
+			],
+			"rotation": 0
+		},
+		{
+			"className": "Amplify",
+			"params": [
+				2
+			],
+			"stringParams": [],
+			"position": {
+				"top": 440,
+				"left": 870
+			},
+			"inputs": [
+				4
+			],
+			"rotation": 0
+		},
+		{
+			"className": "Amplify",
+			"params": [
+				1
+			],
+			"stringParams": [],
+			"position": {
+				"top": 470,
+				"left": 330
+			},
+			"inputs": [
+				1
+			],
+			"rotation": 2
+		},
+		{
+			"className": "Amplify",
+			"params": [
+				1
+			],
+			"stringParams": [],
+			"position": {
+				"top": 820,
+				"left": 170
+			},
+			"inputs": [
+				2
+			],
+			"rotation": 2
+		}
+	],
+	"date": 1455137643694
+}
