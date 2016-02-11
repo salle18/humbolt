@@ -12,7 +12,7 @@ csmp-canvas {
 	&.outputEndpoint {
 	  cursor: copy;
 	}
-	&.inputEndpoint {
+	&.inputEndpoint.jsplumb-endpoint-connected {
 	  cursor: alias;
 	}
   }
