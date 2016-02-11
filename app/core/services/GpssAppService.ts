@@ -32,9 +32,11 @@ export class GpssAppService {
 	}
 
 	reset():void {
-		this.editor.setValue("");
-		this.resultsEditor.setValue("");
-		this.editor.focus();
+		if (this.editor) {
+			this.editor.setValue("");
+			this.resultsEditor.setValue("");
+			this.editor.focus();
+		}
 	}
 
 	listSimulations():void {
