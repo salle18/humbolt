@@ -68,6 +68,7 @@ export class PlumbService {
 			 * Pamtimo stari parametar index.
 			 */
 			oldIndex = info.connection.getParameter("index");
+
 			return true;
 		});
 
