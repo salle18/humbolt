@@ -17,24 +17,9 @@
 				"left": 190
 			},
 			"inputs": [
-				1,
+				0,
 				-1,
 				-1
-			],
-			"rotation": 0
-		},
-		{
-			"className": "Amplify",
-			"params": [
-				1
-			],
-			"stringParams": [],
-			"position": {
-				"top": 230,
-				"left": 420
-			},
-			"inputs": [
-				0
 			],
 			"rotation": 0
 		}
