@@ -19,7 +19,7 @@ export class FileService {
 	}
 
 	saveFile(data:string, filename:string):void {
-		let a = document.createElement("a");
+		let a:any = document.createElement("a");
 		let fileLink = this.createFileLink(data);
 		a.href = fileLink;
 		a.download = filename;
