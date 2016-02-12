@@ -2,7 +2,7 @@
 	   max="{{TOTAL_ROWS}}"
 	   value="0" tabindex="0" (change)="filterResults($event.target.value)">
 <table class="mdl-data-table" *ngIf="TOTAL_ROWS">
-	<thead>
+	<tbody>
 	<tr>
 		<th>
 			<a [href]="resultsFile" class="mdl-button mdl-button--icon" type="button"
@@ -11,12 +11,11 @@
 			</a>
 			Vreme
 		</th>
-		<th *ngFor="#filter of filters"><input type="checkbox" [(ngModel)]="filter.value"> {{filter.label}}</th>
+		<td *ngFor="#row of results">{{row[0]}}</td>
 	</tr>
-	</thead>
-	<tbody>
-	<tr *ngFor="#row of results">
-		<td *ngFor="#result of row">{{result}}</td>
+	<tr *ngFor="#filter of filters; #i=index">
+		<th><input type="checkbox" [(ngModel)]="filter.value"> {{filter.label}}</th>
+		<td *ngFor="#row of results">{{row[i + 1]}}</td>
 	</tr>
 	</tbody>
 </table>
