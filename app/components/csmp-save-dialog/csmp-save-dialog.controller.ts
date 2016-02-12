@@ -10,18 +10,20 @@ import {ISimulationConfig} from "../../csmp/interfaces/ISimulationConfig";
 })
 export class CsmpSaveDialog {
 	private localFile:string;
-	private filename:string;
 	private config:ISimulationConfig;
 
 	constructor(private appService:CsmpAppService, private simulationService:SimulationService, private modalInstance:ModalInstance) {
 		this.config = this.simulationService.getSimulationConfig();
-		this.filename = this.config.description + this.appService.extension.simulation;
-		this.localFile = this.appService.createLocalFile(this.simulationService.saveJSON());
 	}
 
 	save():void {
 		this.appService.save();
 		this.modalInstance.close();
+	}
+
+	saveLocalFile():void {
+		let filename = this.config.description + this.appService.extension.simulation;
+		this.appService.createLocalFile(this.simulationService.saveJSON(), filename);
 	}
 
 
