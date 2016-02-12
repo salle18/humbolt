@@ -26,7 +26,7 @@ export class CsmpResultsTable {
 		this.filename = this.simulationService.getSimulationConfig().description + this.appService.extension.results;
 		this.resultsFile = this.appService.createLocalFile({
 			simulation: this.simulationService.saveJSON(),
-			results: this.results
+			results: this.simulationResults
 		});
 	}
 
