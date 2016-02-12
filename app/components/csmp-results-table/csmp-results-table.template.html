@@ -5,10 +5,9 @@
 	<tbody>
 	<tr>
 		<th>
-			<a [href]="resultsFile" class="mdl-button mdl-button--icon" type="button"
-			   [download]="filename">
+			<button class="mdl-button mdl-button--icon" type="button" (click)="saveLocalFile()">
 				<span class="material-icons">save</span>
-			</a>
+			</button>
 			Vreme
 		</th>
 		<td *ngFor="#row of results">{{row[0]}}</td>

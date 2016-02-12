@@ -15,19 +15,12 @@ export class CsmpResultsTable {
 	private results:number[][] = [];
 	private TOTAL_ROWS:number = 0;
 	private NUMBER_OF_VISIBLE_ROWS:number = 100;
-	private resultsFile:string = "";
-	private filename:string;
 
 	constructor(private simulationService:SimulationService, private appService:CsmpAppService) {
 		this.filters = this.simulationService.getSimulationFilters();
 		this.simulationResults = this.simulationService.getSimulationResults();
 		this.TOTAL_ROWS = this.simulationResults.length;
 		this.results = this.simulationResults.slice(0, this.NUMBER_OF_VISIBLE_ROWS);
-		this.filename = this.simulationService.getSimulationConfig().description + this.appService.extension.results;
-		this.resultsFile = this.appService.createLocalFile({
-			simulation: this.simulationService.saveJSON(),
-			results: this.simulationResults
-		});
 	}
 
 	filterResults(index:number):void {
@@ -37,5 +30,13 @@ export class CsmpResultsTable {
 			index = maxIndex;
 		}
 		this.results = this.simulationResults.slice(index, index + this.NUMBER_OF_VISIBLE_ROWS);
+	}
+
+	saveLocalFile():void {
+		let filename = this.simulationService.getSimulationConfig().description + this.appService.extension.results;
+		this.appService.createLocalFile({
+			simulation: this.simulationService.saveJSON(),
+			results: this.simulationResults
+		}, filename);
 	}
 }
