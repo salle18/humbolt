@@ -143,8 +143,8 @@ export class CsmpAppService {
 			this.reset();
 			let simulation = JSON.parse(result);
 			if (simulation.simulation && simulation.results) {
-				simulation = simulation.simulation;
 				this.simulationService.setSimulationResults(simulation.results);
+				simulation = simulation.simulation;
 			}
 			let blocks = this.createSimulationBlocks(simulation.blocks);
 			this.simulationService.loadSimulation(simulation, blocks);
