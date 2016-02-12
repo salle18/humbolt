@@ -151,6 +151,9 @@ export class CsmpAppService {
 				this.plumbService.resetConnections();
 				this.plumbServiceUtilities.resetRotations();
 			});//bugfix https://github.com/angular/angular/issues/6005
+			if (simulation.results) {
+				this.simulationService.setSimulationResults(simulation.results);
+			}
 		});
 	}
 
