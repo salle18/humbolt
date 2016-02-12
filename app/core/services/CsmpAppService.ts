@@ -64,7 +64,10 @@ export class CsmpAppService {
 			);
 	}
 
-	createLocalFile(data: Object):string {
+	createLocalFile(data:Object, compressed:boolean = true):string {
+		if (compressed) {
+			return this.fileService.createFileLink(JSON.stringify(data));
+		}
 		return this.fileService.createFileLink(JSON.stringify(data, null, "\t"));
 	}
 
