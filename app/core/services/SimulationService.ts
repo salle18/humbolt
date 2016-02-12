@@ -46,6 +46,8 @@ export class SimulationService {
 	}
 
 	reset():void {
+		this.filters.length = 0;
+		this.results.length = 0;
 		this.simulation.reset();
 	}
 
