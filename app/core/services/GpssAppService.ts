@@ -47,7 +47,7 @@ export class GpssAppService {
 					this.simulations.length = 0;
 					this.simulations.push.apply(this.simulations, simulations);
 				},
-				error => this.handleError(error)
+				error => this.messageService.handleError(error)
 			);
 	}
 
@@ -60,7 +60,7 @@ export class GpssAppService {
 				this.simulation.date = simulation.date;
 				this.simulation.data = simulation.data;
 			},
-			error => this.handleError(error)
+			error => this.messageService.handleError(error)
 		);
 	}
 
@@ -69,7 +69,7 @@ export class GpssAppService {
 			simulation => {
 				this.messageService.success("Simulation deleted...");
 				this.listSimulations();
-			}, error => this.handleError(error)
+			}, error => this.messageService.handleError(error)
 		);
 	}
 
@@ -78,7 +78,7 @@ export class GpssAppService {
 		this.serverService.setApiType(ApiType.GPSS).saveSimulation<IGpssSimulation>(this.simulation)
 			.subscribe(
 				simulation => this.messageService.success("Simulation saved..."),
-				error => this.handleError(error)
+				error => this.messageService.handleError(error)
 			);
 	}
 
@@ -93,17 +93,8 @@ export class GpssAppService {
 				},
 				error => {
 					this.messageService.hideLoader();
-					this.handleError(error);
+					this.messageService.handleError(error);
 				}
 			);
-	}
-
-	handleError(error:any) {
-		if (error && error.message) {
-			this.messageService.error(error.message);
-		} else {
-			console.error(error);
-			this.messageService.error("Unknown error, see console.");
-		}
 	}
 }
