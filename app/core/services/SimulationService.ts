@@ -117,6 +117,7 @@ export class SimulationService {
 
 	loadSimulation(JSONSimulation:IJSONSimulation, blocks:Block[]):void {
 		this.simulation.loadSimulation(JSONSimulation, blocks);
+		this.initFilters();
 	}
 
 }
