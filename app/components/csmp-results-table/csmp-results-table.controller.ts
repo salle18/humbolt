@@ -19,7 +19,6 @@ export class CsmpResultsTable {
 	private filename:string;
 
 	constructor(private simulationService:SimulationService, private appService:CsmpAppService) {
-		this.simulationService.initFilters();
 		this.filters = this.simulationService.getSimulationFilters();
 		this.simulationResults = this.simulationService.getSimulationResults();
 		this.TOTAL_ROWS = this.simulationResults.length;
