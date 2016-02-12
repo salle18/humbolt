@@ -71,11 +71,12 @@ export class SimulationService {
 	}
 
 	initFilters():void {
-		this.filters = this.getLabels().map(label => {
-			return {
+		this.filters.length = 0;
+		this.getLabels().forEach(label => {
+			this.filters.push({
 				label: label,
 				value: false
-			};
+			});
 		});
 	}
 
