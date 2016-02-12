@@ -15,8 +15,4 @@ import {CsmpHeader} from "../../components/csmp-header/csmp-header.controller";
 	directives: [CsmpMenu, CsmpPanel, CsmpBlockList, CsmpCanvas, CsmpPannable, CsmpInspector, CsmpHeader]
 })
 export class Csmp {
-
-	constructor() {
-		console.log("Csmp component loaded");
-	}
 }

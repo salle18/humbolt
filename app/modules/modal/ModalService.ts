@@ -21,7 +21,6 @@ export class ModalService {
 			return this.dcl.loadIntoLocation(component, modalReference.location, "modal", contentBindings).then(contentReference => {
 				let dialogElement = modalReference.location.nativeElement;
 				if (!dialogElement.showModal) {
-					console.log(dialogElement);
 					dialogPolyfill.registerDialog(dialogElement);
 				}
 				dialogElement.showModal();

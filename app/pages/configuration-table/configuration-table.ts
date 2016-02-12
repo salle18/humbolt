@@ -9,8 +9,4 @@ import {CsmpHeader} from "../../components/csmp-header/csmp-header.controller";
 	directives: [CsmpConfigurationTable, RouterLink, CsmpHeader]
 })
 export class ConfigurationTable {
-
-	constructor() {
-		console.log("ConfigurationTable component loaded");
-	}
 }
