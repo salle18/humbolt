@@ -64,7 +64,7 @@ export class CsmpAppService {
 		this.serverService.setApiType(ApiType.CSMP).saveSimulation<IJSONSimulation>(this.simulationService.saveJSON())
 			.subscribe(
 				simulation => this.messageService.success("Simulation saved..."),
-				error => this.handleError(error)
+				error => this.messageService.handleError(error)
 			);
 	}
 
@@ -87,7 +87,7 @@ export class CsmpAppService {
 				},
 				error => {
 					this.messageService.hideLoader();
-					this.handleError(error);
+					this.messageService.handleError(error);
 				}
 			);
 	}
@@ -100,14 +100,14 @@ export class CsmpAppService {
 				});
 				this.metaBlocks.push.apply(this.metaBlocks, metaBlocks);
 			},
-			error => this.handleError(error)
+			error => this.messageService.handleError(error)
 		);
 	}
 
 	loadIntegrationMethods():void {
 		this.serverService.setApiType(ApiType.CSMP).getIntegrationMethods().subscribe(
 			integrationMethods => this.integrationMethods.push.apply(this.integrationMethods, integrationMethods),
-			error => this.handleError(error)
+			error => this.messageService.handleError(error)
 		);
 	}
 
@@ -119,7 +119,7 @@ export class CsmpAppService {
 					this.simulations.length = 0;
 					this.simulations.push.apply(this.simulations, simulations);
 				},
-				error => this.handleError(error)
+				error => this.messageService.handleError(error)
 			);
 	}
 
@@ -134,7 +134,7 @@ export class CsmpAppService {
 					this.plumbServiceUtilities.resetRotations();
 				});//bugfix https://github.com/angular/angular/issues/6005
 			},
-			error => this.handleError(error)
+			error => this.messageService.handleError(error)
 		);
 	}
 
@@ -159,7 +159,7 @@ export class CsmpAppService {
 			simulation => {
 				this.messageService.success("Simulation deleted...");
 				this.listSimulations();
-			}, error => this.handleError(error)
+			}, error => this.messageService.handleError(error)
 		);
 	}
 
@@ -181,15 +181,6 @@ export class CsmpAppService {
 			}
 		}
 		return null;
-	}
-
-	handleError(error:any) {
-		if (error && error.message) {
-			this.messageService.error(error.message);
-		} else {
-			console.error(error);
-			this.messageService.error("Unknown error, see console.");
-		}
 	}
 
 }
