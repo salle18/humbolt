@@ -5,9 +5,10 @@
 	<thead>
 	<tr>
 		<th>
-			<button (click)="exportResults()" class="mdl-button mdl-button--icon" type="button">
+			<a [href]="resultsFile" class="mdl-button mdl-button--icon" type="button"
+			   [download]="config.description + '_results.json'">
 				<span class="material-icons">save</span>
-			</button>
+			</a>
 			Vreme
 		</th>
 		<th *ngFor="#filter of filters"><input type="checkbox" [(ngModel)]="filter.value"> {{filter.label}}</th>
