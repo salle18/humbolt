@@ -2,7 +2,6 @@ import {Component} from "angular2/core";
 import {SimulationService, ISimulationFilter} from "../../core/services/SimulationService";
 import {CsmpUpgradeElement} from "../../directives/csmp-upgrade-element";
 import {CsmpAppService} from "../../core/services/CsmpAppService";
-import {ISimulationConfig} from "../../csmp/interfaces/ISimulationConfig";
 
 @Component({
 	selector: "csmp-results-table",
@@ -17,7 +16,7 @@ export class CsmpResultsTable {
 	private TOTAL_ROWS:number = 0;
 	private NUMBER_OF_VISIBLE_ROWS:number = 100;
 	private resultsFile:string = "";
-	private config:ISimulationConfig;
+	private filename:string;
 
 	constructor(private simulationService:SimulationService, private appService:CsmpAppService) {
 		this.simulationService.initFilters();
@@ -25,7 +24,7 @@ export class CsmpResultsTable {
 		this.simulationResults = this.simulationService.getSimulationResults();
 		this.TOTAL_ROWS = this.simulationResults.length;
 		this.results = this.simulationResults.slice(0, this.NUMBER_OF_VISIBLE_ROWS);
-		this.config = this.simulationService.getSimulationConfig();
+		this.filename = this.simulationService.getSimulationConfig().description + this.appService.extension.results;
 		this.resultsFile = this.appService.createLocalFile({
 			simulation: this.simulationService.saveJSON(),
 			results: this.results
