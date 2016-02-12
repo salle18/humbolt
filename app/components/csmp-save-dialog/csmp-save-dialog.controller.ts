@@ -15,7 +15,7 @@ export class CsmpSaveDialog {
 
 	constructor(private appService:CsmpAppService, private simulationService:SimulationService, private modalInstance:ModalInstance) {
 		this.config = this.simulationService.getSimulationConfig();
-		this.localFile = this.appService.createLocalFile();
+		this.localFile = this.appService.createLocalFile(this.simulationService.saveJSON());
 	}
 
 	save():void {
