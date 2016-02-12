@@ -2,6 +2,7 @@ import {Component} from "angular2/core";
 import {CsmpAppService} from "../../core/services/CsmpAppService";
 import {ModalInstance} from "../../modules/modal/ModalInstance";
 import {SimulationService} from "../../core/services/SimulationService";
+import {ISimulationConfig} from "../../csmp/interfaces/ISimulationConfig";
 
 @Component({
 	selector: "csmp-save-dialog",
@@ -10,9 +11,11 @@ import {SimulationService} from "../../core/services/SimulationService";
 export class CsmpSaveDialog {
 	private localFile:string;
 	private filename:string;
+	private config:ISimulationConfig;
 
 	constructor(private appService:CsmpAppService, private simulationService:SimulationService, private modalInstance:ModalInstance) {
-		this.filename = this.simulationService.getSimulationConfig().description + this.appService.extension.simulation;
+		this.config = this.simulationService.getSimulationConfig();
+		this.filename = this.config.description + this.appService.extension.simulation;
 		this.localFile = this.appService.createLocalFile(this.simulationService.saveJSON());
 	}
 
