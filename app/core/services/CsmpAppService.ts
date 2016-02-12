@@ -24,7 +24,7 @@ export class CsmpAppService {
 	public extension = {
 		simulation: ".wcsmp",
 		results: ".wcsmpx"
-	}
+	};
 
 	constructor(private simulationService:SimulationService, private plumbService:PlumbService,
 				private plumbServiceUtilities:PlumbServiceUtilities, private serverService:ServerService,
