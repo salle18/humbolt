@@ -18,8 +18,6 @@ import {LocationStrategy, PathLocationStrategy, HashLocationStrategy, ROUTER_PRO
 // enableProdMode(); // enable for production (also uncomment the import above!)
 
 // bootstrap our app
-console.log("Bootstrapping the App");
-
 // in [] is the list of injector bindings. Those bindings are used when an injector is created. Passing these here make the bindings available application-wide
 bootstrap(App, [
 	APP_SERVICES, // alternative way of filling the injector with all the classes we want to be able to inject
@@ -28,7 +26,6 @@ bootstrap(App, [
 	ELEMENT_PROBE_PROVIDERS, // remove in production
 	provide(LocationStrategy, {useClass: HashLocationStrategy}) // can be switched to HashLocationStrategy if you cannot configure your server appropriately for URL rewriting
 
-]).then(
-	(success:any) => console.log("Bootstrap successful"),
+]).catch(
 	(error:any) => console.error(error)
 );

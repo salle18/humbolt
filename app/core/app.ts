@@ -35,8 +35,5 @@ import {ConfigurationTable} from "../pages/configuration-table/configuration-tab
 	{path: "/csmp/configuration", component: ConfigurationTable, as: "ConfigurationTable", data: undefined}
 ])
 export class App {
-	constructor() {
-		console.log("Application bootstrapped!");
-	}
 }
 
