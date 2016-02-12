@@ -8,7 +8,7 @@ import {ErrorHandler} from "./ErrorHandler";
 @Injectable()
 export class MessageService {
 
-	private timeout:number = 2000;
+	private timeout:number = 3000;
 	private modalInstance:Promise<ModalInstance>;
 
 	constructor(private snackbarService:SnackbarService, private modal:ModalService, private errorHandler:ErrorHandler) {
