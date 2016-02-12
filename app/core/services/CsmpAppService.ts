@@ -21,6 +21,10 @@ export class CsmpAppService {
 	public metaBlocks:IMetaJSONBlock[] = [];
 	public integrationMethods:IMetaJSONMethod[] = [];
 	public simulations:IJSONSimulation[] = [];
+	public extension = {
+		simulation: "wcsmp",
+		results: "wcsmpx"
+	}
 
 	constructor(private simulationService:SimulationService, private plumbService:PlumbService,
 				private plumbServiceUtilities:PlumbServiceUtilities, private serverService:ServerService,
