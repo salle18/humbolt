@@ -140,20 +140,18 @@ export class CsmpAppService {
 
 	loadLocalSimulation(file:Blob):void {
 		this.fileService.readFile(file).then(result => {
-			let simulation = JSON.parse(result);
-			if (simulation.simulation) {
-				simulation = simulation.simulation;
-			}
 			this.reset();
+			let simulation = JSON.parse(result);
+			if (simulation.simulation && simulation.results) {
+				simulation = simulation.simulation;
+				this.simulationService.setSimulationResults(simulation.results);
+			}
 			let blocks = this.createSimulationBlocks(simulation.blocks);
 			this.simulationService.loadSimulation(simulation, blocks);
 			setTimeout(() => {
 				this.plumbService.resetConnections();
 				this.plumbServiceUtilities.resetRotations();
 			});//bugfix https://github.com/angular/angular/issues/6005
-			if (simulation.results) {
-				this.simulationService.setSimulationResults(simulation.results);
-			}
 		});
 	}
 
