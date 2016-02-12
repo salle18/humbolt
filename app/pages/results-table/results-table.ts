@@ -9,8 +9,4 @@ import {CsmpHeader} from "../../components/csmp-header/csmp-header.controller";
 	directives: [CsmpResultsTable, RouterLink, CsmpHeader]
 })
 export class ResultsTable {
-
-	constructor() {
-		console.log("ResultsTable component loaded");
-	}
 }

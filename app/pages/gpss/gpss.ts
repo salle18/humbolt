@@ -12,8 +12,4 @@ import {HumboltAceEditor} from "../../directives/humbolt-ace-editor";
 	directives: [CsmpHeader, GpssMenu, RouterLink, HumboltAceEditor]
 })
 export class Gpss {
-
-	constructor() {
-		console.log("Gpss component loaded");
-	}
 }

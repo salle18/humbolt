@@ -9,8 +9,4 @@ import {CsmpHeader} from "../../components/csmp-header/csmp-header.controller";
 	directives: [CsmpGraph, RouterLink, CsmpHeader]
 })
 export class Graph {
-
-	constructor() {
-		console.log("Graph component loaded");
-	}
 }
