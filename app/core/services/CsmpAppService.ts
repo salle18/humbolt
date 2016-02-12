@@ -141,6 +141,9 @@ export class CsmpAppService {
 	loadLocalSimulation(file:Blob):void {
 		this.fileService.readFile(file).then(result => {
 			let simulation = JSON.parse(result);
+			if (simulation.simulation) {
+				simulation = simulation.simulation;
+			}
 			this.reset();
 			let blocks = this.createSimulationBlocks(simulation.blocks);
 			this.simulationService.loadSimulation(simulation, blocks);
