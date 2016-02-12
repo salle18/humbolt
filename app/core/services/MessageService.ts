@@ -3,6 +3,7 @@ import {SnackbarService} from "../../modules/snackbar/SnackbarService";
 import {ModalService} from "../../modules/modal/ModalService";
 import {HumboltLoader} from "../../components/humbolt-loader/humbolt-loader.controller";
 import {ModalInstance} from "../../modules/modal/ModalInstance";
+import {ErrorHandler} from "./ErrorHandler";
 
 @Injectable()
 export class MessageService {
@@ -10,7 +11,7 @@ export class MessageService {
 	private timeout:number = 2000;
 	private modalInstance:Promise<ModalInstance>;
 
-	constructor(private snackbarService:SnackbarService, private modal:ModalService) {
+	constructor(private snackbarService:SnackbarService, private modal:ModalService, private errorHandler:ErrorHandler) {
 	}
 
 	loader():void {
@@ -35,6 +36,10 @@ export class MessageService {
 
 	warning(message:string):void {
 		this.show(message);
+	}
+
+	handleError(error:any) {
+		this.error(this.errorHandler.handle(error));
 	}
 
 	private show(message:string):void {
