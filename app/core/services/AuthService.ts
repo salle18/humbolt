@@ -52,7 +52,7 @@ export class AuthService {
 						this.messageService.error(res.message);
 					}
 				},
-				error => this.messageService.error("Error sending login data...")
+				error => this.messageService.handleError(error)
 			);
 	}
 
