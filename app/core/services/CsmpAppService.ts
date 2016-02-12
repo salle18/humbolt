@@ -64,8 +64,8 @@ export class CsmpAppService {
 			);
 	}
 
-	createLocalFile():string {
-		return this.fileService.createFileLink(JSON.stringify(this.simulationService.saveJSON(), null, "\t"));
+	createLocalFile(data: Object):string {
+		return this.fileService.createFileLink(JSON.stringify(data, null, "\t"));
 	}
 
 	run():void {
