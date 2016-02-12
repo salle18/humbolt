@@ -22,8 +22,8 @@ export class CsmpAppService {
 	public integrationMethods:IMetaJSONMethod[] = [];
 	public simulations:IJSONSimulation[] = [];
 	public extension = {
-		simulation: "wcsmp",
-		results: "wcsmpx"
+		simulation: ".wcsmp",
+		results: ".wcsmpx"
 	}
 
 	constructor(private simulationService:SimulationService, private plumbService:PlumbService,
