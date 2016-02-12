@@ -3,16 +3,9 @@ import {Injectable} from "angular2/core";
 @Injectable()
 export class FileService {
 
-	private fileLink:string = null;
-
-	createFileLink(data:string):string {
-
+	private createFileLink(data:string):string {
 		var blob = new Blob([data], {type: "application/json"});
-		if (this.fileLink !== null) {
-			window.URL.revokeObjectURL(this.fileLink);//prevent memory leak
-		}
-		this.fileLink = window.URL.createObjectURL(blob);
-		return this.fileLink;
+		return window.URL.createObjectURL(blob);
 	}
 
 	readFile(file:Blob):Promise<string> {
@@ -23,6 +16,18 @@ export class FileService {
 			};
 			reader.readAsText(file);
 		});
+	}
+
+	saveFile(data:string, filename:string):void {
+		let a = document.createElement("a");
+		let fileLink = this.createFileLink(data);
+		a.href = fileLink;
+		a.download = filename;
+		a.style.display = "none";
+		document.body.appendChild(a);
+		a.click();
+		document.body.removeChild(a);
+		window.URL.revokeObjectURL(fileLink);//prevent memory leak
 	}
 
 }
