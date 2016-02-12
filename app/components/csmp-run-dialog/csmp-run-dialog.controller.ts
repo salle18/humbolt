@@ -23,6 +23,7 @@ export class CsmpRunDialog {
 	}
 
 	run():void {
+		this.simulationService.initFilters();
 		this.appService.run();
 		this.modalInstance.close();
 	}
