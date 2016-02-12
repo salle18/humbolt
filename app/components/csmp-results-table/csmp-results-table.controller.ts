@@ -26,7 +26,10 @@ export class CsmpResultsTable {
 		this.TOTAL_ROWS = this.simulationResults.length;
 		this.results = this.simulationResults.slice(0, this.NUMBER_OF_VISIBLE_ROWS);
 		this.config = this.simulationService.getSimulationConfig();
-		this.resultsFile = this.appService.createLocalFile(this.results);
+		this.resultsFile = this.appService.createLocalFile({
+			simulation: this.simulationService.saveJSON(),
+			results: this.results
+		});
 	}
 
 	filterResults(index:number):void {
