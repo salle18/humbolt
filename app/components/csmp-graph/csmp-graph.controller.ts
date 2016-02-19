@@ -20,7 +20,7 @@ export class CsmpGraph implements OnInit {
 			legend: "always"
 		};
 
-		if (data.length > 0) {
+		if (data.length > 0 && data[0].length > 1) {
 			let graph = new Dygraph(this.elementRef.nativeElement, data, graphOptions);
 		}
 	}
