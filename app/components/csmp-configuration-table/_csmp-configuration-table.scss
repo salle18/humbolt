@@ -1,3 +1,9 @@
 csmp-configuration-table {
-
+	table.mdl-data-table {
+	  td, th {
+		&.spacer {
+		  border-right: double 2px #222;
+		}
+	  }
+	}
 }
