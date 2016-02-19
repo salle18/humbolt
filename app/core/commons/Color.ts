@@ -254,5 +254,5 @@ export class Color {
 	public static BLUE_GREY_600 = "#546E7A";
 	public static BLUE_GREY_700 = "#455A64";
 	public static BLUE_GREY_800 = "#37474F";
-	public static BLUE_GREY_900 = "#263238"
+	public static BLUE_GREY_900 = "#263238";
 }

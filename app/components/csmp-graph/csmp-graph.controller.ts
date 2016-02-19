@@ -1,10 +1,12 @@
 import {Component, ElementRef, OnInit} from "angular2/core";
 import {SimulationService} from "../../core/services/SimulationService";
+import {HumboltMessageBox} from "../humbolt-message-box/humbolt-message-box.controller";
 var Dygraph = require("danvk/dygraphs");
 
 @Component({
 	selector: "csmp-graph",
-	templateUrl: "components/csmp-graph/csmp-graph.template.html"
+	templateUrl: "components/csmp-graph/csmp-graph.template.html",
+	directives: [HumboltMessageBox]
 })
 export class CsmpGraph implements OnInit {
 

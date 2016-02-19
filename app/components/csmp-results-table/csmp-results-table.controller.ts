@@ -2,11 +2,12 @@ import {Component} from "angular2/core";
 import {SimulationService, ISimulationFilter} from "../../core/services/SimulationService";
 import {CsmpUpgradeElement} from "../../directives/csmp-upgrade-element";
 import {CsmpAppService} from "../../core/services/CsmpAppService";
+import {HumboltMessageBox} from "../humbolt-message-box/humbolt-message-box.controller";
 
 @Component({
 	selector: "csmp-results-table",
 	templateUrl: "components/csmp-results-table/csmp-results-table.template.html",
-	directives: [CsmpUpgradeElement]
+	directives: [CsmpUpgradeElement, HumboltMessageBox]
 })
 export class CsmpResultsTable {
 
