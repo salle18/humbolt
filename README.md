@@ -9,6 +9,7 @@ Typescript jezik koristimo umesto običnog javascript koda kako bismo lakše def
 Aplikacija koristi [angular2](https://angular.io/) za upravljanje interfejsom a kreirana je korišćenjem [ModernWebDev yeoman generatora](https://github.com/dsebastien/modernWebDevGenerator).
 
 Biblioteke koje koristimo u projektu:
+
 * [material design lite](http://www.getmdl.io/) za stilizovanje interfejsa
 * [jsPlumb](https://jsplumbtoolkit.com) za povezivanje elemenata konektorima
 * [jquery ui](https://jqueryui.com/) za omogućavanje naprednih drag and drop funkcionalnosti
@@ -25,6 +26,12 @@ Da biste pokrenuli projekat morate imati instaliran [node](https://nodejs.org/en
 Pošto za pisanje stilova koristimo sass preprocesor potrebno je instalirati [ruby](https://www.ruby-lang.org/en/downloads/) i [sass](http://sass-lang.com/install)
 
 Zatim je potrebno instalirati zavisne biblioteke projekta pokretanjem komandi `jspm install` i `npm install` u folderu projekta.
+
+Samo pokretanje aplikacije vrši se pokretanjem komande
+`gulp serve`
+
+Produkciona verzija se kreira u folderu dist pokretanjem komande
+`gulp serve-dist`
 
 Za više informacija možete pogledati [ModernWebDevBuild](https://github.com/dsebastien/modernWebDevBuild) projektnu dokumentaciju.
 
