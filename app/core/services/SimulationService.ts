@@ -62,8 +62,6 @@ export class SimulationService {
 	getFilteredSimulationResults():number[][] {
 		let results = this.getSimulationResults();
 		let filteredResults:number[][] = [];
-		console.log(results);
-		console.log(this.filters);
 		for (let i = 0; i < results.length; i++) {
 			filteredResults.push(results[i].filter((item, j) => {
 				return j === 0 || this.filters[j - 1].value;
