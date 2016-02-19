@@ -115,6 +115,10 @@ export class SimulationService {
 		return this.simulation.isAsync();
 	}
 
+	isEmpty():boolean {
+		return this.simulation.isEmpty();
+	}
+
 	loadSimulation(JSONSimulation:IJSONSimulation, blocks:Block[]):void {
 		this.simulation.loadSimulation(JSONSimulation, blocks);
 		this.initFilters();

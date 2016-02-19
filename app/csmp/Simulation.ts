@@ -170,6 +170,13 @@ export class Simulation {
 	}
 
 	/**
+	 * @return Da li ima blokova u simulaciji.
+	 */
+	isEmpty():boolean {
+		return this.blocks.length() === 0;
+	}
+
+	/**
 	 * @return Konfiguracija simulacije.
 	 */
 	getConfig():ISimulationConfig {
