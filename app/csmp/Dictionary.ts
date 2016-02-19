@@ -78,4 +78,11 @@ export class Dictionary<T> {
 		this.keyCounter = 0;
 	}
 
+	/**
+	 * Dužina dictinary.
+	 */
+	length():number {
+		return this.keys.length;
+	}
+
 }
