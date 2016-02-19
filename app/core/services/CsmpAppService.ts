@@ -76,7 +76,29 @@ export class CsmpAppService {
 		}
 	}
 
+	preRunCheck():void {
+		let config = this.simulationService.getSimulationConfig();
+		if (!(config.duration > 0)) {
+			throw new Error("Dužina simulacije mora biti veća od nule.");
+		}
+		if (!(config.integrationInterval > 0)) {
+			throw new Error("Interval integracije mora biti veći od nule.");
+		}
+		if (config.duration < config.integrationInterval) {
+			throw new Error("Dužina simulacije mora biti veća od intervala integracije.");
+		}
+		if (this.simulationService.getBlocks().length === 0) {
+			throw new Error("Simulacija mora da ima najmanje jedan blok.");
+		}
+	}
+
 	run():void {
+		try {
+			this.preRunCheck();
+		} catch (e:Error) {
+			this.messageService.error(e.message);
+			return;
+		}
 		let JSONSimulation = this.simulationService.saveJSON();
 		this.messageService.loader();
 		this.serverService.setApiType(ApiType.CSMP).postSimulation<IJSONSimulation, number[][]>(JSONSimulation)
