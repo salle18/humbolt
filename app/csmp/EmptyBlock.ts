@@ -6,10 +6,10 @@ import {Block} from "./Block";
  */
 export class EmptyBlock extends Block {
 
-	public sorted:boolean = true;
+    public sorted:boolean = true;
 
-	getIndex():number {
-		return -1;
-	}
+    getIndex():number {
+        return -1;
+    }
 
 }

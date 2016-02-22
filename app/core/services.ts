@@ -1,3 +1,5 @@
+"use strict";
+
 import {CsmpAppService} from "./services/CsmpAppService";
 import {SimulationService} from "./services/SimulationService";
 import {PlumbService} from "./services/PlumbService";
@@ -14,6 +16,6 @@ import {ErrorHandler} from "./services/ErrorHandler";
 
 
 export let APP_SERVICES:Array<any> = [
-	CsmpAppService, SimulationService, PlumbService, PlumbServiceUtilities, ServerService, MessageService,
-	AuthService, HttpService, SnackbarService, GpssAppService, ModalService, FileService, ErrorHandler
+    CsmpAppService, SimulationService, PlumbService, PlumbServiceUtilities, ServerService, MessageService,
+    AuthService, HttpService, SnackbarService, GpssAppService, ModalService, FileService, ErrorHandler
 ];

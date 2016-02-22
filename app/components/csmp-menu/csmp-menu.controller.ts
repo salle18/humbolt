@@ -8,37 +8,37 @@ import {CsmpRunDialog} from "../csmp-run-dialog/csmp-run-dialog.controller";
 import {ModalService} from "../../modules/modal/ModalService";
 
 @Component({
-	selector: "csmp-menu",
-	templateUrl: "components/csmp-menu/csmp-menu.template.html",
-	directives: [CsmpUpgradeElement, RouterLink]
+    selector: "csmp-menu",
+    templateUrl: "components/csmp-menu/csmp-menu.template.html",
+    directives: [CsmpUpgradeElement, RouterLink]
 })
 export class CsmpMenu {
 
-	constructor(private appService:CsmpAppService, private modal:ModalService) {
-	}
+    constructor(private appService:CsmpAppService, private modal:ModalService) {
+    }
 
-	newSimulation():void {
-		this.appService.reset();
-	}
+    newSimulation():void {
+        this.appService.reset();
+    }
 
-	openDialog():void {
-		this.modal.open(CsmpOpenDialog, []);
-	}
+    openDialog():void {
+        this.modal.open(CsmpOpenDialog, []);
+    }
 
-	saveDialog():void {
-		this.modal.open(CsmpSaveDialog, []);
-	}
+    saveDialog():void {
+        this.modal.open(CsmpSaveDialog, []);
+    }
 
-	runDialog():void {
-		this.modal.open(CsmpRunDialog, []);
-	}
+    runDialog():void {
+        this.modal.open(CsmpRunDialog, []);
+    }
 
-	rotateBlock(direction:string):void {
-		this.appService.rotateActiveBlock(direction);
-	}
+    rotateBlock(direction:string):void {
+        this.appService.rotateActiveBlock(direction);
+    }
 
-	removeBlock():void {
-		this.appService.removeActiveBlock();
-	}
+    removeBlock():void {
+        this.appService.removeActiveBlock();
+    }
 
 }

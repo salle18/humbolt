@@ -1,21 +1,21 @@
 csmp-block {
-  display: block;
-  position: absolute;
-  &.active {
-	outline: double 4px $primary-dark;
-  }
-  .csmp-block-content {
-	font-size: 2em;
-	height: 64px;
-	line-height: 64px;
-  }
-  .index {
-	position: absolute;
-	top: 0;
-	left: 10px;
-	z-index: 100;
-	color: $white;
-	font-size: large;
-	font-weight: 700;
-  }
+    display: block;
+    position: absolute;
+    &.active {
+        outline: double 4px $primary-dark;
+    }
+    .csmp-block-content {
+        font-size: 2em;
+        height: 64px;
+        line-height: 64px;
+    }
+    .index {
+        position: absolute;
+        top: 0;
+        left: 10px;
+        z-index: 100;
+        color: $white;
+        font-size: large;
+        font-weight: 700;
+    }
 }

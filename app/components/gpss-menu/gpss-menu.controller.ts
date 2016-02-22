@@ -7,29 +7,29 @@ import {GpssSaveDialog} from "../gpss-save-dialog/gpss-save-dialog.controller";
 import {ModalService} from "../../modules/modal/ModalService";
 
 @Component({
-	selector: "gpss-menu",
-	templateUrl: "components/gpss-menu/gpss-menu.template.html",
-	directives: [CsmpUpgradeElement, RouterLink]
+    selector: "gpss-menu",
+    templateUrl: "components/gpss-menu/gpss-menu.template.html",
+    directives: [CsmpUpgradeElement, RouterLink]
 })
 export class GpssMenu {
 
-	constructor(private modal:ModalService, private gpssAppService:GpssAppService) {
-	}
+    constructor(private modal:ModalService, private gpssAppService:GpssAppService) {
+    }
 
-	newSimulation():void {
-		this.gpssAppService.reset();
-	}
+    newSimulation():void {
+        this.gpssAppService.reset();
+    }
 
-	openDialog():void {
-		this.modal.open(GpssOpenDialog, []);
-	}
+    openDialog():void {
+        this.modal.open(GpssOpenDialog, []);
+    }
 
-	saveDialog():void {
-		this.modal.open(GpssSaveDialog, []);
-	}
+    saveDialog():void {
+        this.modal.open(GpssSaveDialog, []);
+    }
 
-	run():void {
-		this.gpssAppService.run();
-	}
+    run():void {
+        this.gpssAppService.run();
+    }
 
 }

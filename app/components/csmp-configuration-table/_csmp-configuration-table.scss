@@ -1,12 +1,12 @@
 csmp-configuration-table {
-	table.mdl-data-table {
-	  td, th {
-		text-align: center;
-		font-weight: 700;
-		font-size: 1.2em;
-		&.spacer {
-		  border-right: double 2px #222;
-		}
-	  }
-	}
+    table.mdl-data-table {
+        td, th {
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.2em;
+            &.spacer {
+                border-right: double 2px #222;
+            }
+        }
+    }
 }
