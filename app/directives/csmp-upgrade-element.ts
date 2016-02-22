@@ -5,14 +5,14 @@ import {Directive, ElementRef, OnInit} from "angular2/core";
 declare var componentHandler:any;
 
 @Directive({
-	selector: "[csmp-upgrade-element]"
+    selector: "[csmp-upgrade-element]"
 })
 export class CsmpUpgradeElement implements OnInit {
 
-	constructor(private elementRef:ElementRef) {
-	}
+    constructor(private elementRef:ElementRef) {
+    }
 
-	ngOnInit():void {
-		componentHandler.upgradeElement(this.elementRef.nativeElement);
-	}
+    ngOnInit():void {
+        componentHandler.upgradeElement(this.elementRef.nativeElement);
+    }
 }

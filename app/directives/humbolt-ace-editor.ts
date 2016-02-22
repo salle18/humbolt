@@ -5,24 +5,24 @@ require("ace/theme-monokai");
 
 
 @Directive({
-	selector: "[humbolt-ace-editor]"
+    selector: "[humbolt-ace-editor]"
 })
 export class HumboltAceEditor implements OnInit {
 
-	@Input() readonly:string;
+    @Input() readonly:string;
 
-	constructor(private elementRef:ElementRef, private gpssAppService:GpssAppService) {
-	}
+    constructor(private elementRef:ElementRef, private gpssAppService:GpssAppService) {
+    }
 
-	ngOnInit():void {
-		let isReadonly = this.readonly === "true";
-		let editor = ace.edit(this.elementRef.nativeElement);
-		editor.setReadOnly(isReadonly);
-		editor.$blockScrolling = Infinity;
-		if (!isReadonly) {
-			editor.setTheme("ace/theme/monokai");
-			editor.focus();
-		}
-		this.gpssAppService.setEditor(editor, isReadonly);
-	}
+    ngOnInit():void {
+        let isReadonly = this.readonly === "true";
+        let editor = ace.edit(this.elementRef.nativeElement);
+        editor.setReadOnly(isReadonly);
+        editor.$blockScrolling = Infinity;
+        if (!isReadonly) {
+            editor.setTheme("ace/theme/monokai");
+            editor.focus();
+        }
+        this.gpssAppService.setEditor(editor, isReadonly);
+    }
 }
