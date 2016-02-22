@@ -1,4 +1,4 @@
 export interface IMetaJSONMethod {
-	className: string;
-	description: string;
+    className: string;
+    description: string;
 }

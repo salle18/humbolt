@@ -1,4 +1,4 @@
 export interface IPosition {
-	top: number;
-	left: number;
+    top: number;
+    left: number;
 }
