@@ -13,5 +13,6 @@ import {HumboltAceEditor} from "../../directives/humbolt-ace-editor";
 })
 export class Gpss {
     constructor() {
+        return;
     }
 }

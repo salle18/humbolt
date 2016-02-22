@@ -9,5 +9,6 @@ export class CsmpBlock {
     @Input() block:Block;
 
     constructor() {
+        return;
     }
 }

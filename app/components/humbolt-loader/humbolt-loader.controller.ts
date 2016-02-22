@@ -8,5 +8,6 @@ import {CsmpUpgradeElement} from "../../directives/csmp-upgrade-element";
 })
 export class HumboltLoader {
     constructor() {
+        return;
     }
 }

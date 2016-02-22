@@ -4,6 +4,7 @@ import {Injectable} from "angular2/core";
 export class FileService {
 
     constructor() {
+        return;
     }
 
     private createFileLink(data:string):string {

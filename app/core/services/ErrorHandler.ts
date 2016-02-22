@@ -4,6 +4,7 @@ import {Injectable} from "angular2/core";
 export class ErrorHandler {
 
     constructor() {
+        return;
     }
 
     handle(error:any):string {

@@ -10,5 +10,6 @@ import {CsmpHeader} from "../../components/csmp-header/csmp-header.controller";
 })
 export class Graph {
     constructor() {
+        return;
     }
 }

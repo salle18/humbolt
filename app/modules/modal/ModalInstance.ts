@@ -6,6 +6,7 @@ export class ModalInstance {
     public modalReference:ComponentRef;
 
     constructor() {
+        return;
     }
 
     close():void {
