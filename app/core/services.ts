@@ -16,6 +16,6 @@ import {ErrorHandler} from "./services/ErrorHandler";
 
 
 export let APP_SERVICES:Array<any> = [
-	CsmpAppService, SimulationService, PlumbService, PlumbServiceUtilities, ServerService, MessageService,
-	AuthService, HttpService, SnackbarService, GpssAppService, ModalService, FileService, ErrorHandler
+    CsmpAppService, SimulationService, PlumbService, PlumbServiceUtilities, ServerService, MessageService,
+    AuthService, HttpService, SnackbarService, GpssAppService, ModalService, FileService, ErrorHandler
 ];

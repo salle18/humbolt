@@ -21,18 +21,18 @@ import {ConfigurationTable} from "../pages/configuration-table/configuration-tab
 //import {appServicesInjectables} from "core/services/services";
 
 @Component({
-	selector: "app",
-	templateUrl: "core/app.template.html", //template: "<router-outlet></router-outlet>",
-	directives: [LoggedInRouterOutlet, RouterLink]
+    selector: "app",
+    templateUrl: "core/app.template.html", //template: "<router-outlet></router-outlet>",
+    directives: [LoggedInRouterOutlet, RouterLink]
 })
 @RouteConfig([
-	{path: "/", component: Hub, as: "Hub", data: undefined},
-	{path: "/login", component: Login, as: "Login", data: undefined},
-	{path: "/csmp", component: Csmp, as: "Csmp", data: undefined},
-	{path: "/gpss", component: Gpss, as: "Gpss", data: undefined},
-	{path: "/csmp/graph", component: Graph, as: "Graph", data: undefined},
-	{path: "/csmp/results", component: ResultsTable, as: "ResultsTable", data: undefined},
-	{path: "/csmp/configuration", component: ConfigurationTable, as: "ConfigurationTable", data: undefined}
+    {path: "/", component: Hub, as: "Hub", data: undefined},
+    {path: "/login", component: Login, as: "Login", data: undefined},
+    {path: "/csmp", component: Csmp, as: "Csmp", data: undefined},
+    {path: "/gpss", component: Gpss, as: "Gpss", data: undefined},
+    {path: "/csmp/graph", component: Graph, as: "Graph", data: undefined},
+    {path: "/csmp/results", component: ResultsTable, as: "ResultsTable", data: undefined},
+    {path: "/csmp/configuration", component: ConfigurationTable, as: "ConfigurationTable", data: undefined}
 ])
 export class App {
 }
