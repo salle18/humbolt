@@ -1,3 +1,5 @@
+"use strict";
+
 import {CsmpAppService} from "./services/CsmpAppService";
 import {SimulationService} from "./services/SimulationService";
 import {PlumbService} from "./services/PlumbService";
