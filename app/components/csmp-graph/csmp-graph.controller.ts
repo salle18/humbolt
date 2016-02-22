@@ -4,27 +4,26 @@ import {HumboltMessageBox} from "../humbolt-message-box/humbolt-message-box.cont
 var Dygraph = require("danvk/dygraphs");
 
 @Component({
-	selector: "csmp-graph",
-	templateUrl: "components/csmp-graph/csmp-graph.template.html",
-	directives: [HumboltMessageBox]
+    selector: "csmp-graph",
+    templateUrl: "components/csmp-graph/csmp-graph.template.html",
+    directives: [HumboltMessageBox]
 })
 export class CsmpGraph implements OnInit {
 
-	constructor(private elementRef:ElementRef, private simulationService:SimulationService) {
+    constructor(private elementRef:ElementRef, private simulationService:SimulationService) {
+    }
 
-	}
+    ngOnInit():void {
+        let data = this.simulationService.getFilteredSimulationResults();
+        let labels = ["Vreme"].concat(this.simulationService.getFilteredLabels());
+        let graphOptions = {
+            labels: labels,
+            legend: "always"
+        };
 
-	ngOnInit():void {
-		let data = this.simulationService.getFilteredSimulationResults();
-		let labels = ["Vreme"].concat(this.simulationService.getFilteredLabels());
-		let graphOptions = {
-			labels: labels,
-			legend: "always"
-		};
-
-		if (data.length > 0 && data[0].length > 1) {
-			let graph = new Dygraph(this.elementRef.nativeElement, data, graphOptions);
-		}
-	}
+        if (data.length > 0 && data[0].length > 1) {
+            let graph = new Dygraph(this.elementRef.nativeElement, data, graphOptions);
+        }
+    }
 
 }
