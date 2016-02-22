@@ -4,4 +4,5 @@
 /// <reference path="browser\ambient\jquery.jsPlumb\jquery.jsPlumb.d.ts" />
 /// <reference path="browser\ambient\jquery\jquery.d.ts" />
 /// <reference path="browser\ambient\jqueryui\jqueryui.d.ts" />
+/// <reference path="browser\ambient\node\node.d.ts" />
 /// <reference path="browser\ambient\zone.js\zone.js.d.ts" />
