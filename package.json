@@ -22,12 +22,12 @@
     "jspm": {
         "configFile": "jspm.conf.js",
         "dependencies": {
-            "GoogleChrome/dialog-polyfill": "github:GoogleChrome/dialog-polyfill@^0.4.2",
+            "GoogleChrome/dialog-polyfill": "github:GoogleChrome/dialog-polyfill@^0.4.3",
             "ace": "github:ajaxorg/ace-builds@^1.2.3",
             "danvk/dygraphs": "github:danvk/dygraphs@^1.1.1",
             "google/material-design-lite": "github:google/material-design-lite@^1.1.1",
             "jquery-ui": "github:components/jqueryui@^1.11.4",
-            "sporritt/jsPlumb": "github:sporritt/jsPlumb@^2.0.6",
+            "sporritt/jsPlumb": "github:sporritt/jsPlumb@^2.0.7",
             "angular2": "npm:angular2@2.0.0-beta.7",
             "babel-runtime": "npm:babel-runtime@6.5.0",
             "normalize.css": "github:necolas/normalize.css@3.0.3",
