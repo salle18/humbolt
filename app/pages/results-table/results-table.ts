@@ -4,9 +4,11 @@ import {CsmpResultsTable} from "../../components/csmp-results-table/csmp-results
 import {CsmpHeader} from "../../components/csmp-header/csmp-header.controller";
 
 @Component({
-	selector: "page-results-table",
-	templateUrl: "pages/results-table/results-table.template.html",
-	directives: [CsmpResultsTable, RouterLink, CsmpHeader]
+    selector: "page-results-table",
+    templateUrl: "pages/results-table/results-table.template.html",
+    directives: [CsmpResultsTable, RouterLink, CsmpHeader]
 })
 export class ResultsTable {
+    constructor() {
+    }
 }

@@ -7,9 +7,11 @@ import {RouterLink} from "angular2/router";
 import {HumboltAceEditor} from "../../directives/humbolt-ace-editor";
 
 @Component({
-	selector: "page-gpss",
-	templateUrl: "pages/gpss/gpss.template.html",
-	directives: [CsmpHeader, GpssMenu, RouterLink, HumboltAceEditor]
+    selector: "page-gpss",
+    templateUrl: "pages/gpss/gpss.template.html",
+    directives: [CsmpHeader, GpssMenu, RouterLink, HumboltAceEditor]
 })
 export class Gpss {
+    constructor() {
+    }
 }

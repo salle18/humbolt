@@ -7,19 +7,19 @@ import {AuthService} from "../../core/services/AuthService";
 import {IUser} from "../../core/services/AuthService";
 
 @Component({
-	selector: "page-hub",
-	templateUrl: "pages/hub/hub.template.html",
-	directives: [CsmpUpgradeElement, RouterLink]
+    selector: "page-hub",
+    templateUrl: "pages/hub/hub.template.html",
+    directives: [CsmpUpgradeElement, RouterLink]
 })
 export class Hub {
 
-	public user:IUser;
+    public user:IUser;
 
-	constructor(private authService:AuthService) {
-		this.user = this.authService.user();
-	}
+    constructor(private authService:AuthService) {
+        this.user = this.authService.user();
+    }
 
-	logout():void {
-		this.authService.logout();
-	}
+    logout():void {
+        this.authService.logout();
+    }
 }

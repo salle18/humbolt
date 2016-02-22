@@ -7,21 +7,21 @@ import {ILoginData} from "../../core/services/AuthService";
 
 
 @Component({
-	selector: "page-login",
-	templateUrl: "pages/login/login.template.html",
-	directives: [CsmpUpgradeElement]
+    selector: "page-login",
+    templateUrl: "pages/login/login.template.html",
+    directives: [CsmpUpgradeElement]
 })
 export class Login {
 
-	private user:ILoginData = {
-		name: "",
-		password: ""
-	};
+    private user:ILoginData = {
+        name: "",
+        password: ""
+    };
 
-	constructor(private authService:AuthService) {
-	}
+    constructor(private authService:AuthService) {
+    }
 
-	login():void {
-		this.authService.login(this.user);
-	}
+    login():void {
+        this.authService.login(this.user);
+    }
 }
