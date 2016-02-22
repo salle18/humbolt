@@ -1,21 +1,21 @@
 <h4 class="mdl-dialog__title">Open...</h4>
 <div class="mdl-dialog__content">
-	<ul class="mdl-list">
-		<li class="mdl-list__item" *ngFor="#simulation of simulations; #i=index">
-			<a class="mdl-list__item-primary-content" (click)="openSimulation(simulation._id)">
-				<span>{{simulation.description}}</span>
-			</a>
+    <ul class="mdl-list">
+        <li class="mdl-list__item" *ngFor="#simulation of simulations; #i=index">
+            <a class="mdl-list__item-primary-content" (click)="openSimulation(simulation._id)">
+                <span>{{simulation.description}}</span>
+            </a>
 				<span class="mdl-list__item-secondary-content">
 					<button class="mdl-list__item-secondary-action" (click)="removeSimulation(simulation._id)">
-						<span class="material-icons">delete</span>
-					</button>
+                        <span class="material-icons">delete</span>
+                    </button>
     			</span>
-		</li>
-	</ul>
+        </li>
+    </ul>
 </div>
 <div class="mdl-dialog__actions">
-	<button class="mdl-button mdl-button--primary mdl-button--file">
-		FAJL<input type="file" (change)="openLocalSimulation($event)">
-	</button>
-	<button type="button" class="mdl-button" (click)="close()">Zatvori</button>
+    <button class="mdl-button mdl-button--primary mdl-button--file">
+        FAJL<input type="file" (change)="openLocalSimulation($event)">
+    </button>
+    <button type="button" class="mdl-button" (click)="close()">Zatvori</button>
 </div>
