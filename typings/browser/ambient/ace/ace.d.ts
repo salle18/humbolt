@@ -1,3 +1,5 @@
+// Compiled using typings@0.6.8
+// Source: https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/2f7fb157a8482a8efa1a50e724b27bf8736eb379/ace/ace.d.ts
 // Type definitions for Ace Ajax.org Cloud9 Editor
 // Project: http://ace.ajax.org/
 // Definitions by: Diullei Gomes <https://github.com/Diullei>
