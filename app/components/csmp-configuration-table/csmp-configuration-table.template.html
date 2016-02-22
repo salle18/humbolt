@@ -5,6 +5,7 @@
     <thead>
     <tr>
         <th class="spacer">RB</th>
+        <th class="spacer">OPIS</th>
         <th class="spacer">TIP</th>
         <th>U1</th>
         <th>U2</th>
@@ -17,6 +18,7 @@
     <tbody>
     <tr *ngFor="#block of blocks">
         <td class="spacer">{{block.getBasedIndex()}}.</td>
+        <td class="spacer">{{block.description}}</td>
         <td class="spacer">{{block.sign}}</td>
         <td>{{block.inputs[0]?.getBasedIndex() || 0}}</td>
         <td>{{block.inputs[1]?.getBasedIndex() || 0}}</td>
