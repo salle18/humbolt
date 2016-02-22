@@ -95,7 +95,7 @@ export class CsmpAppService {
 	run():void {
 		try {
 			this.preRunCheck();
-		} catch (e:Error) {
+		} catch (e) {
 			this.messageService.error(e.message);
 			return;
 		}
