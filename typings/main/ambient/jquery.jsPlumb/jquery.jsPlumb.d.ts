@@ -90,6 +90,7 @@ interface ConnectParams {
 	anchor?: string;
 	anchors?: any[];
 	label?: string;
+    uuids?: any[];
 }
 
 interface DragOptions {

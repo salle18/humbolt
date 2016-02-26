@@ -34,8 +34,8 @@ interface jsPlumbInstance {
     	getConnections(options?: any, flat?: any): any[];
     	deleteEndpoint(uuid: string, doNotRepaintAfterwards?: boolean): jsPlumbInstance;
     	deleteEndpoint(endpoint: Endpoint, doNotRepaintAfterwards?: boolean): jsPlumbInstance;
-    	repaint(el: string): jsPlumbInstance;
-    	repaint(el: Element): jsPlumbInstance;
+    	repaint(el: string, options: any): jsPlumbInstance;
+    	repaint(el: Element, options: any): jsPlumbInstance;
     	getInstance(): jsPlumbInstance;
     detach(el: string): void;
 	getInstance(defaults: Defaults): jsPlumbInstance;
@@ -90,6 +90,7 @@ interface ConnectParams {
 	anchor?: string;
 	anchors?: any[];
 	label?: string;
+    uuids?: any[];
 }
 
 interface DragOptions {
