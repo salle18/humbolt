@@ -1,0 +1,25 @@
+{
+  "version": "0.0.1",
+  "name": "csmp_angular2",
+  "launch_path": "/index.html",
+  "description": "Humbolt client.",
+  "icons": {
+    "128": "/images/touch/icon-128x128.png"
+  },
+  "developer": {
+    "name": "salle18",
+    "url": "http://elab.rs"
+  },
+  "installs_allowed_from": [
+    "*"
+  ],
+  "default_locale": "en",
+  "permissions": {
+  },
+  "locales": {
+    "en": {
+      "name": "csmp_angular2",
+      "description": "Humbolt client."
+    }
+  }
+}

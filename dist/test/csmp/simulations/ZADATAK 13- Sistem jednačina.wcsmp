@@ -1,0 +1,288 @@
+{
+	"description": "ZADATAK 13: Sistem jednačina",
+	"method": "RungeKuttaIV",
+	"integrationInterval": 0.01,
+	"duration": 2,
+	"optimizeAsync": true,
+	"blocks": [
+		{
+			"className": "Integrator",
+			"params": [
+				0,
+				-2,
+				3
+			],
+			"stringParams": [],
+			"position": {
+				"top": 230,
+				"left": 410
+			},
+			"inputs": [
+				1,
+				6,
+				16
+			],
+			"rotation": 0
+		},
+		{
+			"className": "Integrator",
+			"params": [
+				-4.65,
+				0,
+				0
+			],
+			"stringParams": [],
+			"position": {
+				"top": 250,
+				"left": 700
+			},
+			"inputs": [
+				0,
+				-1,
+				-1
+			],
+			"rotation": 0
+		},
+		{
+			"className": "Integrator",
+			"params": [
+				0,
+				2.667,
+				-0.667
+			],
+			"stringParams": [],
+			"position": {
+				"top": 630,
+				"left": 450
+			},
+			"inputs": [
+				7,
+				3,
+				17
+			],
+			"rotation": 0
+		},
+		{
+			"className": "Integrator",
+			"params": [
+				2.12,
+				1,
+				0
+			],
+			"stringParams": [],
+			"position": {
+				"top": 530,
+				"left": 680
+			},
+			"inputs": [
+				-1,
+				2,
+				-1
+			],
+			"rotation": 0
+		},
+		{
+			"className": "Offset",
+			"params": [
+				-10
+			],
+			"stringParams": [],
+			"position": {
+				"top": 20,
+				"left": 640
+			},
+			"inputs": [
+				15
+			],
+			"rotation": 2
+		},
+		{
+			"className": "Sign",
+			"params": [],
+			"stringParams": [],
+			"position": {
+				"top": 20,
+				"left": 410
+			},
+			"inputs": [
+				4
+			],
+			"rotation": 2
+		},
+		{
+			"className": "Amplify",
+			"params": [
+				2.75
+			],
+			"stringParams": [],
+			"position": {
+				"top": 110,
+				"left": 210
+			},
+			"inputs": [
+				5
+			],
+			"rotation": 1
+		},
+		{
+			"className": "Amplify",
+			"params": [
+				2
+			],
+			"stringParams": [],
+			"position": {
+				"top": 510,
+				"left": 280
+			},
+			"inputs": [
+				6
+			],
+			"rotation": 0
+		},
+		{
+			"className": "Amplify",
+			"params": [
+				0.25
+			],
+			"stringParams": [],
+			"position": {
+				"top": 420,
+				"left": 410
+			},
+			"inputs": [
+				14
+			],
+			"rotation": 0
+		},
+		{
+			"className": "Offset",
+			"params": [
+				0.17
+			],
+			"stringParams": [],
+			"position": {
+				"top": 380,
+				"left": 600
+			},
+			"inputs": [
+				8
+			],
+			"rotation": 0
+		},
+		{
+			"className": "Multiply",
+			"params": [],
+			"stringParams": [],
+			"position": {
+				"top": 370,
+				"left": 790
+			},
+			"inputs": [
+				9,
+				13
+			],
+			"rotation": 0
+		},
+		{
+			"className": "Multiply",
+			"params": [],
+			"stringParams": [],
+			"position": {
+				"top": 260,
+				"left": 930
+			},
+			"inputs": [
+				1,
+				1
+			],
+			"rotation": 0
+		},
+		{
+			"className": "Amplify",
+			"params": [
+				3
+			],
+			"stringParams": [],
+			"position": {
+				"top": 560,
+				"left": 970
+			},
+			"inputs": [
+				3
+			],
+			"rotation": 0
+		},
+		{
+			"className": "Add",
+			"params": [
+				1,
+				1,
+				0
+			],
+			"stringParams": [],
+			"position": {
+				"top": 440,
+				"left": 920
+			},
+			"inputs": [
+				11,
+				12,
+				-1
+			],
+			"rotation": 2
+		},
+		{
+			"className": "Time",
+			"params": [],
+			"stringParams": [],
+			"position": {
+				"top": 420,
+				"left": 280
+			},
+			"inputs": [],
+			"rotation": 0
+		},
+		{
+			"className": "Time",
+			"params": [],
+			"stringParams": [],
+			"position": {
+				"top": 20,
+				"left": 810
+			},
+			"inputs": [],
+			"rotation": 2
+		},
+		{
+			"className": "Amplify",
+			"params": [
+				1
+			],
+			"stringParams": [],
+			"position": {
+				"top": 330,
+				"left": 440
+			},
+			"inputs": [
+				0
+			],
+			"rotation": 2
+		},
+		{
+			"className": "Amplify",
+			"params": [
+				1
+			],
+			"stringParams": [],
+			"position": {
+				"top": 750,
+				"left": 480
+			},
+			"inputs": [
+				2
+			],
+			"rotation": 2
+		}
+	],
+	"date": 1455136957682
+}

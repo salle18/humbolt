@@ -1,0 +1,237 @@
+{
+	"description": "ZADATAK 6: Slobodan pad",
+	"method": "RungeKuttaIV",
+	"integrationInterval": 0.01,
+	"duration": 10,
+	"blocks": [
+		{
+			"className": "Integrator",
+			"params": [
+				15,
+				1,
+				1
+			],
+			"stringParams": [],
+			"position": {
+				"top": 270,
+				"left": 480
+			},
+			"inputs": [
+				-1,
+				13,
+				12
+			],
+			"rotation": 0
+		},
+		{
+			"className": "Integrator",
+			"params": [
+				0,
+				0,
+				0
+			],
+			"stringParams": [],
+			"position": {
+				"top": 280,
+				"left": 710
+			},
+			"inputs": [
+				0,
+				-1,
+				-1
+			],
+			"rotation": 0
+		},
+		{
+			"className": "Multiply",
+			"params": [],
+			"stringParams": [],
+			"position": {
+				"top": 420,
+				"left": 550
+			},
+			"inputs": [
+				0,
+				0
+			],
+			"rotation": 1
+		},
+		{
+			"className": "Multiply",
+			"params": [],
+			"stringParams": [],
+			"position": {
+				"top": 570,
+				"left": 490
+			},
+			"inputs": [
+				11,
+				2
+			],
+			"rotation": 2
+		},
+		{
+			"className": "Constant",
+			"params": [
+				0.4
+			],
+			"stringParams": [],
+			"position": {
+				"top": 730,
+				"left": 50
+			},
+			"inputs": [],
+			"rotation": 0
+		},
+		{
+			"className": "Constant",
+			"params": [
+				1.25
+			],
+			"stringParams": [],
+			"position": {
+				"top": 840,
+				"left": 50
+			},
+			"inputs": [],
+			"rotation": 0
+		},
+		{
+			"className": "Constant",
+			"params": [
+				1.1
+			],
+			"stringParams": [],
+			"position": {
+				"top": 920,
+				"left": 270
+			},
+			"inputs": [],
+			"rotation": 0
+		},
+		{
+			"className": "Multiply",
+			"params": [],
+			"stringParams": [],
+			"position": {
+				"top": 780,
+				"left": 210
+			},
+			"inputs": [
+				4,
+				5
+			],
+			"rotation": 0
+		},
+		{
+			"className": "Multiply",
+			"params": [],
+			"stringParams": [],
+			"position": {
+				"top": 830,
+				"left": 430
+			},
+			"inputs": [
+				7,
+				6
+			],
+			"rotation": 0
+		},
+		{
+			"className": "Constant",
+			"params": [
+				75
+			],
+			"stringParams": [],
+			"position": {
+				"top": 1030,
+				"left": 230
+			},
+			"inputs": [],
+			"rotation": 0
+		},
+		{
+			"className": "Amplify",
+			"params": [
+				2
+			],
+			"stringParams": [],
+			"position": {
+				"top": 1030,
+				"left": 430
+			},
+			"inputs": [
+				9
+			],
+			"rotation": 0
+		},
+		{
+			"className": "Divide",
+			"params": [],
+			"stringParams": [],
+			"position": {
+				"top": 830,
+				"left": 610
+			},
+			"inputs": [
+				8,
+				10
+			],
+			"rotation": 3
+		},
+		{
+			"className": "Invert",
+			"params": [],
+			"stringParams": [],
+			"position": {
+				"top": 570,
+				"left": 350
+			},
+			"inputs": [
+				3
+			],
+			"rotation": 2
+		},
+		{
+			"className": "Constant",
+			"params": [
+				9.81
+			],
+			"stringParams": [],
+			"position": {
+				"top": 270,
+				"left": 240
+			},
+			"inputs": [],
+			"rotation": 0
+		},
+		{
+			"className": "Quit",
+			"params": [],
+			"stringParams": [],
+			"position": {
+				"top": 280,
+				"left": 870
+			},
+			"inputs": [
+				1,
+				15
+			],
+			"rotation": 0
+		},
+		{
+			"className": "Constant",
+			"params": [
+				300
+			],
+			"stringParams": [],
+			"position": {
+				"top": 400,
+				"left": 710
+			},
+			"inputs": [],
+			"rotation": 0
+		}
+	],
+	"date": 1455140616617
+}
