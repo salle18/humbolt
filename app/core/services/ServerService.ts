@@ -11,7 +11,7 @@ export enum ApiType {CSMP, GPSS}
 @Injectable()
 export class ServerService {
 
-    private api = "http://localhost:9000/api/";
+    private api = "/api/v1/";
     private apiType:ApiType;
 
     constructor(private httpService:HttpService) {
@@ -31,7 +31,7 @@ export class ServerService {
     }
 
     getIntegrationMethods():Observable<IMetaJSONMethod[]> {
-        return this.httpService.get<IMetaJSONMethod[]>(this.getApi() + "/integrationmethods");
+        return this.httpService.get<IMetaJSONMethod[]>(this.getApi() + "/methods");
     }
 
     postSimulation<T, Y>(simulation:T):Observable<Y> {

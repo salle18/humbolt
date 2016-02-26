@@ -26,7 +26,7 @@ interface IResponse {
 @Injectable()
 export class AuthService {
 
-    private url:string = "http://localhost:9000";
+    private url:string = "";
     private identifier:string = "user_data";
 
     constructor(private httpService:HttpService, private messageService:MessageService, private router:Router,
