@@ -1,1 +1,25 @@
-<div csmp-upgrade-element class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header"><header class="mdl-layout__header"><div class="mdl-layout__header-row"><div class="mdl-layout-spacer"></div><a class="mdl-navigation__link" href="#" id="hub-user"><span class="material-icons">person</span> {{user.name}}</a><ul csmp-upgrade-element class="mdl-menu mdl-menu--bottom-right mdl-js-menu" for="hub-user"><li class="mdl-menu__item" (click)="logout()"><span class="material-icons">exit_to_app</span> Izloguj se</li></ul></div></header><div class="mdl-layout__drawer"><span class="mdl-layout-title">Humbolt</span><nav class="mdl-navigation"><a class="mdl-navigation__link" [routerlink]="['Csmp']">CSMP</a> <a class="mdl-navigation__link" [routerlink]="['Gpss']">GPSS</a></nav></div><main class="mdl-layout__content"><div class="page-content"></div></main></div>
+<div csmp-upgrade-element class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer  mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+            <div class="mdl-layout-spacer"></div>
+            <a class="mdl-navigation__link" href="#" id="hub-user"><span class="material-icons">person</span>
+                {{user.name}}</a>
+            <ul csmp-upgrade-element class="mdl-menu mdl-menu--bottom-right mdl-js-menu" for="hub-user">
+                <li class="mdl-menu__item" (click)="logout()"><span class="material-icons">exit_to_app</span> Izloguj se
+                </li>
+            </ul>
+        </div>
+    </header>
+    <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Humbolt</span>
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" [routerLink]="['Csmp']">CSMP</a>
+            <a class="mdl-navigation__link" [routerLink]="['Gpss']">GPSS</a>
+        </nav>
+    </div>
+    <main class="mdl-layout__content">
+        <div class="page-content">
+            <!-- content -->
+        </div>
+    </main>
+</div>

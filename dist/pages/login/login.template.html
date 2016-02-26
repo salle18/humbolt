@@ -1,1 +1,18 @@
-<div class="mdl-card mdl-shadow--2dp login_card"><div class="mdl-card__title mdl-card--expand"><h2 class="mdl-card__title-text">Uloguj se na Humbolt</h2></div><form (ngsubmit)="login()"><div csmp-upgrade-element class="mdl-textfield mdl-js-textfield"><input autofocus class="mdl-textfield__input" type="text" id="name" [(ngmodel)]="user.name"> <label class="mdl-textfield__label" for="name">Korisničko ime:</label></div><div csmp-upgrade-element class="mdl-textfield mdl-js-textfield"><input class="mdl-textfield__input" type="password" id="password" [(ngmodel)]="user.password"> <label class="mdl-textfield__label" for="password">Šifra:</label></div><button csmp-upgrade-element type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored pull-right">Uloguj se</button></form></div>
+<div class="mdl-card mdl-shadow--2dp login_card">
+    <div class="mdl-card__title mdl-card--expand">
+        <h2 class="mdl-card__title-text">Uloguj se na Humbolt</h2>
+    </div>
+    <form (ngSubmit)="login()">
+        <div csmp-upgrade-element class="mdl-textfield mdl-js-textfield">
+            <input autofocus class="mdl-textfield__input" type="text" id="name" [(ngModel)]="user.name">
+            <label class="mdl-textfield__label" for="name">Korisničko ime:</label>
+        </div>
+        <div csmp-upgrade-element class="mdl-textfield mdl-js-textfield">
+            <input class="mdl-textfield__input" type="password" id="password" [(ngModel)]="user.password">
+            <label class="mdl-textfield__label" for="password">Šifra:</label>
+        </div>
+        <button csmp-upgrade-element type="submit"
+                class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored pull-right">Uloguj se
+        </button>
+    </form>
+</div>
