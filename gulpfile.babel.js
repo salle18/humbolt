@@ -45,6 +45,13 @@ options.mangleProductionJSBundle = false; // Mangled JS bundles are currently no
  */
 //options.systemjsConfigurationFile = "my-systemjs.config.js";
 
+/*
+ HTML minification is not supported by Angular 2 anymore and it will become obsolete:
+ https://github.com/dsebastien/modernWebDevBuild/issues/67
+ https://github.com/angular/angular/issues/5789
+ */
+options.minifyProductionHTML = false;
+
 
 modernWebDevBuild.registerTasks(gulp, options);
 
