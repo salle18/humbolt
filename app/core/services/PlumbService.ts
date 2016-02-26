@@ -4,12 +4,10 @@ import {SimulationService} from "./SimulationService";
 import {Block} from "../../csmp/Block";
 import {EmptyBlock} from "../../csmp/EmptyBlock";
 
-declare let jsPlumb:any;
-
 @Injectable()
 export class PlumbService {
 
-    private instance:JsPlumbInstance = null;
+    private instance:jsPlumbInstance = null;
 
     constructor(private simulationService:SimulationService, private zone:NgZone) {
         jsPlumb.ready(() => {
@@ -24,7 +22,7 @@ export class PlumbService {
         });
     }
 
-    getInstance():JsPlumbInstance {
+    getInstance():jsPlumbInstance {
         return this.instance;
     }
 
