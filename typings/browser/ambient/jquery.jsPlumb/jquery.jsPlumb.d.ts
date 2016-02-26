@@ -10,14 +10,14 @@ declare var jsPlumb: jsPlumbInstance;
 
 interface jsPlumbInstance {
 	setRenderMode(renderMode: string): string;
-	bind(event: string, callback: (e) => void ): void;
+	bind(event: string, callback: (e: any) => void ): void;
 	unbind(event?: string): void;
 	ready(callback: () => void): void;
 	importDefaults(defaults: Defaults): void;
 	Defaults: Defaults;
 	restoreDefaults(): void;
 	addClass(el: any, clazz: string): void;
-	addEndpoint(ep: string): any;
+	addEndpoint(ep: string, op1: any, op2: any): any;
 	removeClass(el: any, clazz: string): void;
 	hasClass(el: any, clazz: string): void;
     	draggable(el: string, options?: DragOptions): jsPlumbInstance;
@@ -37,6 +37,7 @@ interface jsPlumbInstance {
     	repaint(el: string, options: any): jsPlumbInstance;
     	repaint(el: Element, options: any): jsPlumbInstance;
     	getInstance(): jsPlumbInstance;
+    selectEndpoints(options: any):any;
     detach(el: string): void;
 	getInstance(defaults: Defaults): jsPlumbInstance;
 	getInstanceIndex(): number;
