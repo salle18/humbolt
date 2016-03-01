@@ -16,7 +16,7 @@ export class GpssAppService {
     private simulation:IGpssSimulation = {
         data: "",
         description: "Simulacija 1",
-        date: +new Date()
+        created_at: new Date().toISOString()
     };
 
     constructor(private serverService:ServerService, private messageService:MessageService) {
@@ -56,7 +56,7 @@ export class GpssAppService {
             simulation => {
                 this.editor.setValue(simulation.data);
                 this.simulation.description = simulation.description;
-                this.simulation.date = simulation.date;
+                this.simulation.created_at = simulation.created_at;
                 this.simulation.data = simulation.data;
             },
             error => this.messageService.handleError(error)

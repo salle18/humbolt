@@ -103,7 +103,7 @@ export class Simulation {
             duration: this.config.duration,
             optimizeAsync: this.config.optimizeAsync,
             blocks: blocks,
-            created_at: new Date().toUTCString()
+            created_at: new Date().toISOString()
         };
     }
 

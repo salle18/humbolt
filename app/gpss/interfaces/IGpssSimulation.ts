@@ -1,5 +1,5 @@
 export interface IGpssSimulation {
     description: string;
-    date: number;
+    created_at: string;
     data: string;
 }
