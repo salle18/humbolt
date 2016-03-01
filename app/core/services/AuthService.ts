@@ -18,9 +18,8 @@ export interface ILoginData {
 }
 
 interface IResponse {
-    success:boolean;
     token?:string;
-    message?:string;
+    error?:string;
 }
 
 @Injectable()
@@ -51,7 +50,7 @@ export class AuthService {
                     } else if (res.error) {
                         this.messageService.error(res.error);
                     } else {
-                        this.messageService.error("Unknown login error.")
+                        this.messageService.error("Unknown login error.");
                     }
                 },
                 error => this.messageService.handleError(error)
