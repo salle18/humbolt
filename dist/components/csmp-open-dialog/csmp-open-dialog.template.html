@@ -2,11 +2,11 @@
 <div class="mdl-dialog__content">
     <ul class="mdl-list">
         <li class="mdl-list__item" *ngFor="#simulation of simulations; #i=index">
-            <a class="mdl-list__item-primary-content" (click)="openSimulation(simulation._id)">
+            <a class="mdl-list__item-primary-content" (click)="openSimulation(simulation.id)">
                 <span>{{simulation.description}}</span>
             </a>
 				<span class="mdl-list__item-secondary-content">
-					<button class="mdl-list__item-secondary-action" (click)="removeSimulation(simulation._id)">
+					<button class="mdl-list__item-secondary-action" (click)="removeSimulation(simulation.id)">
                         <span class="material-icons">delete</span>
                     </button>
     			</span>
