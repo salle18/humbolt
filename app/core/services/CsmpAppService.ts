@@ -136,7 +136,6 @@ export class CsmpAppService {
 
     listSimulations():void {
         this.serverService.setApiType(ApiType.CSMP).listSimulations<any>()
-            .map(res => res.csmpSimulations)
             .subscribe(
                 simulations => {
                     this.simulations.length = 0;
