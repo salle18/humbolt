@@ -2,7 +2,7 @@ import {IJSONBlock} from "./IJSONBlock";
 
 export interface IJSONSimulation {
     description: string;
-    date: number;
+    created_at: string;
     method: string;
     duration: number;
     integrationInterval: number;
