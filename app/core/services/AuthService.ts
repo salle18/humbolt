@@ -41,15 +41,17 @@ export class AuthService {
         this.httpService.post<IResponse>(this.url + "/login", loginData)
             .subscribe(
                 res => {
-                    if (res.success) {
+                    if (res.token) {
                         this.setUser({
                             name: loginData.name,
                             token: res.token
                         });
                         this.httpService.setToken(res.token);
                         this.router.navigate(["Hub"]);
+                    } else if (res.error) {
+                        this.messageService.error(res.error);
                     } else {
-                        this.messageService.error(res.message);
+                        this.messageService.error("Unknown login error.")
                     }
                 },
                 error => this.messageService.handleError(error)
