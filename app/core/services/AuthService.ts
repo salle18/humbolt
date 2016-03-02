@@ -8,11 +8,6 @@ import {CsmpAppService} from "./CsmpAppService";
 import {GpssAppService} from "./GpssAppService";
 import {TokenService} from "./TokenService";
 
-export interface IUser {
-    name: string;
-    token: string;
-}
-
 export interface ILoginData {
     name: string;
     password: string;
@@ -38,7 +33,8 @@ export class AuthService {
             .subscribe(
                 res => {
                     if (res.token) {
-                        this.tokenService.setToken(loginData.name, res.token);
+                        this.setUser(loginData.name);
+                        this.tokenService.setToken(res.token);
                         this.router.navigate(["Hub"]);
                     } else if (res.error) {
                         this.messageService.error(res.error);
@@ -54,12 +50,19 @@ export class AuthService {
         this.tokenService.clear();
         this.csmpAppService.reset();
         this.gpssAppService.reset();
-        this.httpService.clearToken();
         this.router.navigate(["Login"]);
     }
 
     isLoggedIn():boolean {
         return this.tokenService.hasValidToken();
+    }
+
+    setUser(username:string):void {
+        localStorage.setItem("username", username);
+    }
+
+    getUser():string {
+        return localStorage.getItem("username");
     }
 
 }
