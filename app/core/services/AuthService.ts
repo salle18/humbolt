@@ -47,6 +47,7 @@ export class AuthService {
     }
 
     logout():void {
+        localStorage.removeItem("username");
         this.tokenService.clear();
         this.csmpAppService.reset();
         this.gpssAppService.reset();
