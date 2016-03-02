@@ -24,19 +24,38 @@ export class HttpService {
     }
 
     get<T>(url:string):Observable<T> {
-        return this.http.get(url, this.getRequestOptionsArgs()).map(res => res.json());
+        return this.http.get(url, this.getRequestOptionsArgs()).map(res => {
+            this.refreshToken(res.headers);
+            return res.json();
+        });
     }
 
     post<T>(url:string, data:Object):Observable<T> {
-        return this.http.post(url, JSON.stringify(data), this.getRequestOptionsArgs()).map(res => res.json());
+        return this.http.post(url, JSON.stringify(data), this.getRequestOptionsArgs()).map(res => {
+            this.refreshToken(res.headers);
+            return res.json();
+        });
     }
 
     delete<T>(url:string):Observable<T> {
-        return this.http.delete(url, this.getRequestOptionsArgs()).map(res => res.json());
+        return this.http.delete(url, this.getRequestOptionsArgs()).map(res => {
+            this.refreshToken(res.headers);
+            return res.json();
+        });
     }
 
     setToken(token:string):void {
-        this.token = token;
+        if (token) {
+            this.token = token;
+        }
+    }
+
+    refreshToken(headers:Headers) {
+        let auth = headers.get("Authorization");
+        let regex = new RegExp("Bearer ");
+        if (auth && regex.test(auth)) {
+            this.setToken(auth.split(" ")[1]);
+        }
     }
 
     clearToken():void {
