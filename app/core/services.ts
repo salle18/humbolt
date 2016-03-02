@@ -13,9 +13,10 @@ import {GpssAppService} from "./services/GpssAppService";
 import {ModalService} from "../modules/modal/ModalService";
 import {FileService} from "./services/FileService";
 import {ErrorHandler} from "./services/ErrorHandler";
+import {TokenService} from "./services/TokenService";
 
 
 export let APP_SERVICES:Array<any> = [
     CsmpAppService, SimulationService, PlumbService, PlumbServiceUtilities, ServerService, MessageService,
-    AuthService, HttpService, SnackbarService, GpssAppService, ModalService, FileService, ErrorHandler
+    AuthService, HttpService, SnackbarService, GpssAppService, ModalService, FileService, ErrorHandler, TokenService
 ];
