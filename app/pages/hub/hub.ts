@@ -4,7 +4,6 @@ import {Component} from "angular2/core";
 import {RouterLink} from "angular2/router";
 import {CsmpUpgradeElement} from "../../directives/csmp-upgrade-element";
 import {AuthService} from "../../core/services/AuthService";
-import {IUser} from "../../core/services/AuthService";
 
 @Component({
     selector: "page-hub",
@@ -13,10 +12,10 @@ import {IUser} from "../../core/services/AuthService";
 })
 export class Hub {
 
-    public user:IUser;
+    public user:string;
 
     constructor(private authService:AuthService) {
-        this.user = this.authService.user();
+        this.user = this.authService.getUser();
     }
 
     logout():void {
