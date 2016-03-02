@@ -6,6 +6,7 @@ import {Observable} from "rxjs/Observable";
 import {MessageService} from "./MessageService";
 import {CsmpAppService} from "./CsmpAppService";
 import {GpssAppService} from "./GpssAppService";
+import {TokenService} from "./TokenService";
 
 export interface IUser {
     name: string;
@@ -29,11 +30,7 @@ export class AuthService {
     private identifier:string = "user_data";
 
     constructor(private httpService:HttpService, private messageService:MessageService, private router:Router,
-                private csmpAppService:CsmpAppService, private gpssAppService:GpssAppService) {
-        let user = this.user();
-        if (user) {
-            this.httpService.setToken(user.token);
-        }
+                private csmpAppService:CsmpAppService, private gpssAppService:GpssAppService, private tokenService:TokenService) {
     }
 
     login(loginData:ILoginData):void {
@@ -41,11 +38,7 @@ export class AuthService {
             .subscribe(
                 res => {
                     if (res.token) {
-                        this.setUser({
-                            name: loginData.name,
-                            token: res.token
-                        });
-                        this.httpService.setToken(res.token);
+                        this.tokenService.setToken(loginData.name, res.token);
                         this.router.navigate(["Hub"]);
                     } else if (res.error) {
                         this.messageService.error(res.error);
@@ -58,7 +51,7 @@ export class AuthService {
     }
 
     logout():void {
-        this.clearUser();
+        this.tokenService.clear();
         this.csmpAppService.reset();
         this.gpssAppService.reset();
         this.httpService.clearToken();
@@ -66,27 +59,7 @@ export class AuthService {
     }
 
     isLoggedIn():boolean {
-        return this.user() !== null;
-    }
-
-    user():IUser {
-        let user = localStorage.getItem(this.identifier);
-        return user ? JSON.parse(user) : null;
-    }
-
-    getToken():string {
-        let user = this.user();
-        if (user) {
-            return user.token;
-        }
-    }
-
-    setUser(user:IUser):void {
-        localStorage.setItem(this.identifier, JSON.stringify(user));
-    }
-
-    clearUser():void {
-        localStorage.removeItem(this.identifier);
+        return this.tokenService.hasValidToken();
     }
 
 }
