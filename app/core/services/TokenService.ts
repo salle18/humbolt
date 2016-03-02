@@ -15,7 +15,7 @@ export class TokenService {
     }
 
     setExpires():void {
-        localStorage.setItem("expires", +new Date() + this.TOKEN_VALIDITY);
+        localStorage.setItem("expires", (+new Date() + this.TOKEN_VALIDITY) + "");
     }
 
     getExpires():number {
