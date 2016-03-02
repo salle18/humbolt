@@ -3,21 +3,20 @@
 import {Injectable} from "angular2/core";
 import {Http, Response, Headers, RequestOptionsArgs} from "angular2/http";
 import {Observable} from "rxjs/Observable";
-import {AuthService} from "./AuthService";
+import {TokenService} from "./TokenService";
 import "rxjs/add/operator/map";
 
 @Injectable()
 export class HttpService {
 
     private headers:Headers = new Headers();
-    private token:string = "";
 
-    constructor(private http:Http) {
+    constructor(private http:Http, private tokenService:TokenService) {
     }
 
     getRequestOptionsArgs():RequestOptionsArgs {
         this.headers.set("Content-Type", "application/json");
-        this.headers.set("Authorization", "Bearer " + this.token);
+        this.headers.set("Authorization", "Bearer " + this.tokenService.getToken());
         return {
             headers: this.headers
         };
@@ -44,21 +43,11 @@ export class HttpService {
         });
     }
 
-    setToken(token:string):void {
-        if (token) {
-            this.token = token;
-        }
-    }
-
     refreshToken(headers:Headers) {
         let auth = headers.get("Authorization");
         let regex = new RegExp("Bearer ");
         if (auth && regex.test(auth)) {
-            this.setToken(auth.split(" ")[1]);
+            this.tokenService.setToken(auth.split(" ")[1]);
         }
-    }
-
-    clearToken():void {
-        this.token = "";
     }
 }
