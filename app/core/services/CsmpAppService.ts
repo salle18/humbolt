@@ -104,13 +104,14 @@ export class CsmpAppService {
         this.serverService.setApiType(ApiType.CSMP).postSimulation<IJSONSimulation, number[][]>(JSONSimulation)
             .subscribe(
                 results => {
-                    this.messageService.hideLoader();
                     this.simulationService.setSimulationResults(results);
                     this.router.navigate(["ResultsTable"]);
                 },
                 error => {
-                    this.messageService.hideLoader();
                     this.messageService.handleError(error);
+                },
+                () => {
+                    this.messageService.hideLoader();
                 }
             );
     }
