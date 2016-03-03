@@ -22,32 +22,20 @@ export class HttpService {
         };
     }
 
+    raw(url:string):Observable<Response> {
+        return this.http.get(url, this.getRequestOptionsArgs());
+    }
+
     get<T>(url:string):Observable<T> {
-        return this.http.get(url, this.getRequestOptionsArgs()).map(res => {
-            this.refreshToken(res.headers);
-            return res.json();
-        });
+        return this.http.get(url, this.getRequestOptionsArgs()).map(res => res.json());
     }
 
     post<T>(url:string, data:Object):Observable<T> {
-        return this.http.post(url, JSON.stringify(data), this.getRequestOptionsArgs()).map(res => {
-            this.refreshToken(res.headers);
-            return res.json();
-        });
+        return this.http.post(url, JSON.stringify(data), this.getRequestOptionsArgs()).map(res => res.json());
     }
 
     delete<T>(url:string):Observable<T> {
-        return this.http.delete(url, this.getRequestOptionsArgs()).map(res => {
-            this.refreshToken(res.headers);
-            return res.json();
-        });
+        return this.http.delete(url, this.getRequestOptionsArgs()).map(res => res.json());
     }
 
-    refreshToken(headers:Headers) {
-        let auth = headers.get("Authorization");
-        let regex = new RegExp("Bearer ");
-        if (auth && regex.test(auth)) {
-            this.tokenService.setToken(auth.split(" ")[1]);
-        }
-    }
 }
