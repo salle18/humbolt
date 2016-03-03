@@ -15,7 +15,7 @@ export class MessageService {
     }
 
     loader():void {
-        this.modalInstance = this.modal.open(HumboltLoader, []);
+        this.modalInstance = this.modal.open(<any>HumboltLoader, []);
     }
 
     hideLoader():void {
