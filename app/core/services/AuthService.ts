@@ -29,6 +29,7 @@ export class AuthService {
     }
 
     login(loginData:ILoginData):void {
+        this.messageService.loader();
         this.httpService.post<IResponse>(this.url + "/login", loginData)
             .subscribe(
                 res => {
@@ -42,7 +43,8 @@ export class AuthService {
                         this.messageService.error("Unknown login error.");
                     }
                 },
-                error => this.messageService.handleError(error)
+                error => this.messageService.handleError(error),
+                () => this.messageService.hideLoader()
             );
     }
 

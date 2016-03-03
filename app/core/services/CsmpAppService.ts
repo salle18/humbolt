@@ -110,9 +110,7 @@ export class CsmpAppService {
                 error => {
                     this.messageService.handleError(error);
                 },
-                () => {
-                    this.messageService.hideLoader();
-                }
+                () => this.messageService.hideLoader()
             );
     }
 
