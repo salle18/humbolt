@@ -22,30 +22,32 @@ export class MessageService {
         this.modalInstance.then(instance => instance.close());
     }
 
-    success(message:string):void {
-        this.show(message);
+    success(message:string, actionHandler:()=>void = null, actionText:string = ""):void {
+        this.show(message, actionHandler, actionText);
     }
 
-    info(message:string):void {
-        this.show(message);
+    info(message:string, actionHandler:()=>void = null, actionText:string = ""):void {
+        this.show(message, actionHandler, actionText);
     }
 
-    error(message:string):void {
-        this.show(message);
+    error(message:string, actionHandler:()=>void = null, actionText:string = ""):void {
+        this.show(message, actionHandler, actionText);
     }
 
-    warning(message:string):void {
-        this.show(message);
+    warning(message:string, actionHandler:()=>void = null, actionText:string = ""):void {
+        this.show(message, actionHandler, actionText);
     }
 
     handleError(error:any) {
         this.error(this.errorHandler.handle(error));
     }
 
-    private show(message:string):void {
+    private show(message:string, actionHandler:()=>void, actionText:string):void {
         this.snackbarService.showSnackbar({
             message: message,
-            timeout: this.timeout
+            timeout: this.timeout,
+            actionHandler: actionHandler,
+            actionText: actionText
         });
     }
 }
