@@ -19,7 +19,12 @@ export class MessageService {
     }
 
     hideLoader():void {
-        this.modalInstance.then(instance => instance.close());
+        if (this.modalInstance) {
+            this.modalInstance.then(instance => {
+                instance.close();
+                this.modalInstance = null;
+            });
+        }
     }
 
     success(message:string, actionHandler:()=>void = null, actionText:string = ""):void {
@@ -39,6 +44,7 @@ export class MessageService {
     }
 
     handleError(error:any) {
+        this.hideLoader();
         this.error(this.errorHandler.handle(error));
     }
 
