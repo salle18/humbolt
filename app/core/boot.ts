@@ -15,7 +15,7 @@ import {APP_SERVICES} from "./services";
 import {LocationStrategy, PathLocationStrategy, HashLocationStrategy, ROUTER_PROVIDERS} from "angular2/router";
 
 // enable production mode of Angular
-// enableProdMode(); // enable for production (also uncomment the import above!)
+enableProdMode(); // enable for production (also uncomment the import above!)
 
 // bootstrap our app
 // in [] is the list of injector bindings. Those bindings are used when an injector is created. Passing these here make the bindings available application-wide
