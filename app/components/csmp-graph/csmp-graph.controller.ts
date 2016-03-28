@@ -19,6 +19,7 @@ export class CsmpGraph implements OnInit {
         let graphOptions = {
             labels: labels,
             legend: "always"
+			valueFormatter: n => n
         };
 
         if (data.length > 0 && data[0].length > 1) {
