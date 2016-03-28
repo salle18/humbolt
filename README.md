@@ -31,7 +31,7 @@ Samo pokretanje aplikacije vrši se pokretanjem komande
 `gulp serve`
 
 Produkciona verzija se kreira u folderu dist pokretanjem komande
-`gulp serve-dist`
+`npm run compile`
 
 Za više informacija možete pogledati [ModernWebDevBuild](https://github.com/dsebastien/modernWebDevBuild) projektnu dokumentaciju.
 
