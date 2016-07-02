@@ -24,7 +24,7 @@ const barrels: string[] = [
     'rxjs',
 
     // App specific barrels.
-    'app', 'app/shared',
+    'app', 'components', 'directives', 'pages', 'services'
     /** @cli-barrel */
 ];
 
