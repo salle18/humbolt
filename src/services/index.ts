@@ -8,5 +8,5 @@ export {MessageService} from './MessageService';
 export {PlumbService} from './PlumbService';
 export {PlumbServiceUtilities} from './PlumbServiceUtilities';
 export {ServerService} from './ServerService';
-export {SimulationService} from './SimulationService';
+export {SimulationService, ISimulationFilter} from './SimulationService';
 export {TokenService} from './TokenService';
