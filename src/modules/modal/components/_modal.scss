@@ -1,0 +1,7 @@
+dialog.mdl-dialog {
+    min-width: 340px;
+    .mdl-dialog__content {
+        max-height: 400px;
+        overflow-y: auto;
+    }
+}
