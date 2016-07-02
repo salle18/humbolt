@@ -1,7 +1,7 @@
 import {Directive, Input} from "@angular/core";
 import {Block} from "../csmp/Block";
-import {CsmpAppService} from "../core/services/CsmpAppService";
-import {KeyEvent} from "../core/commons/KeyEvent";
+import {CsmpAppService} from "../services";
+import {KeyEvent} from "../commons/KeyEvent";
 
 @Directive({
     selector: "[csmp-interactive-block]",

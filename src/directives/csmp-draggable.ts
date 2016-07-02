@@ -1,5 +1,5 @@
 import {Directive, Input, OnInit, NgZone, ElementRef} from "@angular/core";
-import {PlumbService} from "../core/services/PlumbService";
+import {PlumbService} from "../services";
 import {Block} from "../csmp/Block";
 import DraggableEventUIParams = JQueryUI.DraggableEventUIParams;
 
