@@ -5,9 +5,10 @@
 /* global require, module */
 
 var Angular2App = require('angular-cli/lib/broccoli/angular2-app');
+var autoprefixer = require('broccoli-autoprefixer');  // add autoprefixer
 
 module.exports = function(defaults) {
-  return new Angular2App(defaults, {
+  var app = new Angular2App(defaults, {
     vendorNpmFiles: [
       'systemjs/dist/system-polyfills.js',
       'systemjs/dist/system.src.js',
@@ -18,4 +19,6 @@ module.exports = function(defaults) {
       '@angular/**/*.+(js|js.map)'
     ]
   });
+
+  return autoprefixer(app, { browsers: ['last 2 version'] }); // use autoprefixer
 };

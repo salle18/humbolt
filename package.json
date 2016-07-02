@@ -9,7 +9,8 @@
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
     "pree2e": "webdriver-manager update",
-    "e2e": "protractor"
+    "e2e": "protractor",
+    "format": "clang-format -i -style=file --glob=src/**/*.ts"
   },
   "private": true,
   "dependencies": {
@@ -20,7 +21,7 @@
     "@angular/http": "2.0.0-rc.3",
     "@angular/platform-browser": "2.0.0-rc.3",
     "@angular/platform-browser-dynamic": "2.0.0-rc.3",
-    "@angular/router": "3.0.0-alpha.7",
+    "@angular/router": "3.0.0-alpha.8",
     "es6-shim": "0.35.1",
     "exists-sync": "0.0.3",
     "minimatch": "^3.0.2",
@@ -34,6 +35,8 @@
   },
   "devDependencies": {
     "angular-cli": "1.0.0-beta.8",
+    "broccoli-autoprefixer": "^4.1.0",
+    "clang-format": "^1.0.41",
     "codelyzer": "0.0.20",
     "ember-cli-inject-live-reload": "1.4.0",
     "jasmine-core": "2.4.1",
