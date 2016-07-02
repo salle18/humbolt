@@ -24,8 +24,11 @@ const barrels: string[] = [
     'rxjs',
 
     // App specific barrels.
-    'app', 'common', 'components', 'directives', 'pages', 'services'
+    'app', 'common', 'components', 'directives', 'pages', 'services',
     /** @cli-barrel */
+    
+    // Csmp and Gpss barrels.
+    'csmp', 'gpss'
 ];
 
 const cliSystemConfigPackages: any = {};
