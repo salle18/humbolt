@@ -1,14 +1,11 @@
 import {Component, ElementRef, NgZone, OnInit, AfterViewInit} from "@angular/core";
 import {Block} from "../../csmp/Block";
-import {SimulationService} from "../../core/services/SimulationService";
+import {CsmpAppService, SimulationService, PlumbService, PlumbServiceUtilities} from "../../services";
 import {CsmpBlock} from "../../components/csmp-block/csmp-block.controller";
 import "jquery-ui/ui/droppable";
 import {CsmpDraggable} from "../../directives/csmp-draggable";
 import {CsmpEndpoints} from "../../directives/csmp-endpoints";
 import {CsmpInteractiveBlock} from "../../directives/csmp-interactive-block";
-import {CsmpAppService} from "../../core/services/CsmpAppService";
-import {PlumbService} from "../../core/services/PlumbService";
-import {PlumbServiceUtilities} from "../../core/services/PlumbServiceUtilities";
 
 
 @Component({

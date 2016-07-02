@@ -1,6 +1,6 @@
 import {Component} from "@angular/core";
 import {ModalInstance} from "../../modules/modal/ModalInstance";
-import {GpssAppService} from "../../core/services/GpssAppService";
+import {GpssAppService} from "../../services";
 import {IGpssSimulation} from "../../gpss/interfaces/IGpssSimulation";
 
 @Component({

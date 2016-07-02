@@ -1,7 +1,7 @@
 import {Component} from "@angular/core";
 import {CsmpUpgradeElement} from "../../directives/csmp-upgrade-element";
 import {CsmpCloneBlock} from "../../directives/csmp-clone-block";
-import {CsmpAppService} from "../../core/services/CsmpAppService";
+import {CsmpAppService} from "../../services";
 import {IMetaJSONBlock} from "../../csmp/interfaces/IMetaJSONBlock";
 
 @Component({

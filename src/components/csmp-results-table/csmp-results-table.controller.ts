@@ -1,7 +1,6 @@
 import {Component} from "@angular/core";
-import {SimulationService, ISimulationFilter} from "../../core/services/SimulationService";
+import {CsmpAppService, SimulationService, ISimulationFilter} from "../../services";
 import {CsmpUpgradeElement} from "../../directives/csmp-upgrade-element";
-import {CsmpAppService} from "../../core/services/CsmpAppService";
 import {HumboltMessageBox} from "../humbolt-message-box/humbolt-message-box.controller";
 
 @Component({

@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {SimulationService} from "../../core/services/SimulationService";
+import {SimulationService} from "../../services";
 import {Block} from "../../csmp/Block";
 import {HumboltMessageBox} from "../humbolt-message-box/humbolt-message-box.controller";
 

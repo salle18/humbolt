@@ -1,5 +1,5 @@
 import {Component, ElementRef, OnInit} from "@angular/core";
-import {SimulationService} from "../../core/services/SimulationService";
+import {SimulationService} from "../../services";
 import {HumboltMessageBox} from "../humbolt-message-box/humbolt-message-box.controller";
 var Dygraph = require("danvk/dygraphs");
 

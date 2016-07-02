@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {GpssAppService} from "../../core/services/GpssAppService";
+import {GpssAppService} from "../../services";
 import {ModalInstance} from "../../modules/modal/ModalInstance";
 import {IGpssSimulation} from "../../gpss/interfaces/IGpssSimulation";
 

@@ -1,8 +1,6 @@
 import {Component} from "@angular/core";
-import {CsmpAppService} from "../../core/services/CsmpAppService";
+import {CsmpAppService, SimulationService} from "../../services";
 import {ModalInstance} from "../../modules/modal/ModalInstance";
-import {SimulationService} from "../../core/services/SimulationService";
-import {IJSONSimulation} from "../../csmp/interfaces/IJSONSimulation";
 import {IMetaJSONMethod} from "../../csmp/interfaces/IMetaJSONMethod";
 import {ISimulationConfig} from "../../csmp/interfaces/ISimulationConfig";
 

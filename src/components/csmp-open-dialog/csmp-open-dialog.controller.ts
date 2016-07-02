@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {CsmpAppService} from "../../core/services/CsmpAppService";
+import {CsmpAppService} from "../../services";
 import {ModalInstance} from "../../modules/modal/ModalInstance";
 import {IJSONSimulation} from "../../csmp/interfaces/IJSONSimulation";
 

@@ -1,7 +1,6 @@
 import {Component} from "@angular/core";
-import {CsmpAppService} from "../../core/services/CsmpAppService";
+import {CsmpAppService, SimulationService} from "../../services";
 import {ModalInstance} from "../../modules/modal/ModalInstance";
-import {SimulationService} from "../../core/services/SimulationService";
 import {ISimulationConfig} from "../../csmp/interfaces/ISimulationConfig";
 
 @Component({
