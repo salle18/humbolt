@@ -1,0 +1,19 @@
+csmp-canvas {
+    background-color: #fff;
+    background-image: radial-gradient(#ccc 10%, transparent 11%),
+    radial-gradient(#ccc 9%, transparent 12%);
+    background-size: 10px 10px;
+    display: block;
+    height: 2000px;
+    width: 3000px;
+    position: relative;
+    .jsplumb-endpoint {
+        z-index: 999;
+        &.outputEndpoint {
+            cursor: copy;
+        }
+        &.inputEndpoint.jsplumb-endpoint-connected {
+            cursor: alias;
+        }
+    }
+}

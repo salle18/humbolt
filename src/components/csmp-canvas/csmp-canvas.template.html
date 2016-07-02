@@ -1,0 +1,4 @@
+<csmp-block csmp-draggable csmp-endpoints csmp-interactive-block *ngFor="#block of blocks" [id]="block.key"
+            [style.top.px]="block.position.top"
+            [style.left.px]="block.position.left" class="csmp-canvas-block" [class.active]="block.active"
+            [block]="block" tabindex="1"></csmp-block>

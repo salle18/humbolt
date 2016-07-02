@@ -1,0 +1,23 @@
+<button type="button" id="csmp-menu-file" class="mdl-button"><span
+    class="material-icons">more_vert</span> GPSS
+</button>
+<ul csmp-upgrade-element class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="csmp-menu-file">
+    <li class="mdl-menu__item" (click)="newSimulation()"><span class="material-icons">add</span> Nova
+        simulacija
+    </li>
+    <li class="mdl-menu__item" (click)="openDialog()"><span class="material-icons">cloud_download</span>
+        Otvori...
+    </li>
+    <li class="mdl-menu__item" (click)="saveDialog()"><span class="material-icons">cloud_upload</span>
+        Sačuvaj...
+    </li>
+    <li class="mdl-menu__item" [routerLink]="['Hub']"><span class="material-icons">exit_to_app</span>
+        Izlaz
+    </li>
+</ul>
+<button type="button" class="mdl-button mdl-button--primary mdl-button--raised" (click)="run()">
+    Simuliraj <span class="material-icons">play_arrow</span>
+</button>
+<button type="button" class="mdl-button"><span class="material-icons">help</span>
+    Help
+</button>

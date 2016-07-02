@@ -1,0 +1,23 @@
+csmp-block-list {
+
+    .list-item {
+        float: left;
+        font-weight: 700;
+        margin-bottom: 10px;
+        text-align: center;
+        &:nth-child(2n+1) {
+            clear: left;
+        }
+    }
+
+    .block-description {
+        display: block;
+        line-height: 15px;
+        padding-top: 5px;
+    }
+
+    .block-list {
+        overflow: hidden;
+        padding: 20px 0 30px;
+    }
+}

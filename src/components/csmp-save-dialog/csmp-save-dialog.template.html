@@ -1,0 +1,12 @@
+<h4 class="mdl-dialog__title">Save...</h4>
+<div class="mdl-dialog__content">
+    <div class="mdl-textfield">
+        <label>Naziv:</label>
+        <input type="text" class="mdl-textfield__input" [(ngModel)]="config.description">
+    </div>
+</div>
+<div class="mdl-dialog__actions">
+    <button type="button" class="mdl-button  mdl-button--colored" (click)="save()">ONLINE</button>
+    <button type="button" class="mdl-button  mdl-button--colored" (click)="saveLocalFile()">Fajl</button>
+    <button type="button" class="mdl-button" (click)="close()">Prekid</button>
+</div>

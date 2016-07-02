@@ -1,0 +1,42 @@
+<button type="button" id="csmp-menu-file" class="mdl-button"><span
+    class="material-icons">more_vert</span> CSMP
+</button>
+<ul csmp-upgrade-element class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="csmp-menu-file">
+    <li class="mdl-menu__item" (click)="newSimulation()"><span class="material-icons">add</span> Nova
+        simulacija
+    </li>
+    <li class="mdl-menu__item" (click)="openDialog()"><span class="material-icons">cloud_download</span>
+        Otvori...
+    </li>
+    <li class="mdl-menu__item" (click)="saveDialog()"><span class="material-icons">cloud_upload</span>
+        Sačuvaj...
+    </li>
+    <li class="mdl-menu__item" [routerLink]="['Hub']"><span class="material-icons">exit_to_app</span>
+        Izlaz
+    </li>
+</ul>
+<div class="menu-button-group">
+    <button type="button" class="mdl-button menu-button" (click)="removeBlock()">
+        <span class="material-icons">delete</span>
+        <span class="menu-button-title">Obriši</span>
+    </button>
+    <div class="menu-separator"></div>
+    <button type="button" class="mdl-button menu-button" (click)="rotateBlock('Right')">
+        <span class="material-icons">rotate_right</span>
+        <span class="menu-button-title">Rotiraj</span>
+    </button>
+    <button type="button" class="mdl-button menu-button" (click)="rotateBlock('Left')">
+        <span class="material-icons">rotate_left</span>
+        <span class="menu-button-title">Rotiraj</span>
+    </button>
+    <div class="menu-separator"></div>
+</div>
+<button type="button" class="mdl-button mdl-button--primary mdl-button--raised" (click)="runDialog()">
+    Simuliraj <span class="material-icons">play_arrow</span>
+</button>
+<button [routerLink]="['ConfigurationTable']" class="mdl-button mdl-button--colored" type="button">
+    <span class="material-icons">format_list_numbered</span> Tabela konfiguracija
+</button>
+<button type="button" class="mdl-button"><span class="material-icons">help</span>
+    Help
+</button>

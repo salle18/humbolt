@@ -1,0 +1,12 @@
+<div class="block-list">
+    <div class="mdl-cell mdl-cell--6-col list-item" *ngFor="#block of blocks">
+        <div csmp-clone-block [attr.id]="block.className" [attr.className]="block.className"
+             class="mdl-button mdl-button--primary mdl-button--raised block-list-item">
+            {{block.sign}}
+        </div>
+        <div csmp-upgrade-element class="mdl-tooltip mdl-tooltip--right" [attr.for]="block.className">
+            <p>{{block.info}}</p>
+        </div>
+        <span class="block-description">{{block.description}}</span>
+    </div>
+</div>

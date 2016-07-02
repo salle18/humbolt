@@ -1,0 +1,50 @@
+<div *ngIf="blocks.length">
+    <h3 class="title">Blokovi</h3>
+    <table class="mdl-data-table">
+        <tr *ngFor="#block of blocks" [class.active]="block===activeBlock" (click)="setActiveBlock(block)">
+            <td class="mdl-data-table__cell--non-numeric">
+                {{block.getIndexDescription()}}
+            </td>
+        </tr>
+    </table>
+</div>
+<div *ngIf="activeBlock">
+    <h3 class="title">{{activeBlock?.getIndexDescription()}}</h3>
+
+    <div *ngIf="activeBlock?.params.length">
+        <h3>Parametri</h3>
+        <table class="mdl-data-table">
+            <tr *ngFor="#param of activeBlock.params; #i=index">
+                <td>{{param.description}}</td>
+                <td><input type="number" step="any" [(ngModel)]="param.value"></td>
+            </tr>
+        </table>
+    </div>
+    <div *ngIf="activeBlock?.stringParams.length">
+        <h3>Tekstualni parametri</h3>
+        <table class="mdl-data-table">
+            <tr *ngFor="#stringParam of activeBlock.stringParams; #i=index">
+                <td>{{stringParam.description}}</td>
+                <td><input type="text" [(ngModel)]="stringParam.value"></td>
+            </tr>
+        </table>
+    </div>
+    <div *ngIf="activeBlock?.inputs.length">
+        <h3>Ulazi</h3>
+        <table class="mdl-data-table">
+            <tr *ngFor="#input of activeBlock.inputs; #i=index">
+                <td>Ulaz {{i + 1}}</td>
+                <td>{{input.getIndexDescription('nema ulaz')}}</td>
+            </tr>
+        </table>
+    </div>
+    <div *ngIf="activeBlock?.outputs.length">
+        <h3>Izlazi</h3>
+        <table class="mdl-data-table">
+            <tr *ngFor="#output of activeBlock.outputs; #i=index">
+                <td>Izlaz {{i + 1}}</td>
+                <td>{{output.block.getIndexDescription()}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+<humbolt-message-box *ngIf="!TOTAL_ROWS">Nema podataka za prikaz, dodajte elemente u simulaciju i pokrenite simulaciju
+    kako biste prikazali tabelu rezultata.
+</humbolt-message-box>
+<input csmp-upgrade-element *ngIf="TOTAL_ROWS" class="mdl-slider mdl-js-slider" type="range" min="0"
+       max="{{TOTAL_ROWS}}"
+       value="0" tabindex="0" (change)="filterResults($event.target.value)">
+<table class="mdl-data-table" *ngIf="TOTAL_ROWS">
+    <tbody>
+    <tr>
+        <th>
+            <button class="mdl-button" type="button" (click)="saveLocalFile()">
+                <span class="material-icons">save</span> Sačuvaj...
+            </button>
+        </th>
+        <td *ngFor="#row of results">{{row[0]}}</td>
+    </tr>
+    <tr *ngFor="#filter of filters; #i=index">
+        <th><input type="checkbox" [(ngModel)]="filter.value"> {{filter.label}}</th>
+        <td *ngFor="#row of results">{{row[i + 1]}}</td>
+    </tr>
+    </tbody>
+</table>

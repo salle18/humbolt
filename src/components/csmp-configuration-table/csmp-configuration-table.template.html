@@ -1,0 +1,31 @@
+<humbolt-message-box *ngIf="!blocks.length">Nema podataka za prikaz, dodajte elemente u simulaciju kako biste prikazali
+    tabelu konfiguracija.
+</humbolt-message-box>
+<table class="mdl-data-table mdl-shadow--2dp" *ngIf="blocks.length">
+    <thead>
+    <tr>
+        <th class="spacer">RB</th>
+        <th class="spacer">OPIS</th>
+        <th class="spacer">TIP</th>
+        <th>U1</th>
+        <th>U2</th>
+        <th class="spacer">U3</th>
+        <th>P1</th>
+        <th>P2</th>
+        <th class="spacer">P3</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="#block of blocks">
+        <td class="spacer">{{block.getBasedIndex()}}.</td>
+        <td class="spacer">{{block.description}}</td>
+        <td class="spacer">{{block.sign}}</td>
+        <td>{{block.inputs[0]?.getBasedIndex() || 0}}</td>
+        <td>{{block.inputs[1]?.getBasedIndex() || 0}}</td>
+        <td class="spacer">{{block.inputs[2]?.getBasedIndex() || 0}}</td>
+        <td>{{block.params[0]?.value || 0}}</td>
+        <td>{{block.params[1]?.value || 0}}</td>
+        <td class="spacer">{{block.params[2]?.value || 0}}</td>
+    </tr>
+    </tbody>
+</table>

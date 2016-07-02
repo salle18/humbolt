@@ -1,0 +1,11 @@
+csmp-results-table {
+    height: 100%;
+    overflow: auto;
+
+    table.mdl-data-table {
+        table-layout: fixed;
+        th {
+            text-align: left;
+        }
+    }
+}
